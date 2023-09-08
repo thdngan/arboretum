@@ -32,9 +32,9 @@ export default (() => {
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")
           .map((res) => JSResourceToScriptElement(res, true))}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.10/katex.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.10/katex.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.10/contrib/auto-render.min.js"></script>
+        
+        
+        
 
       </head>
     )
