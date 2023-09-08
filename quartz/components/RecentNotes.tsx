@@ -16,7 +16,7 @@ interface Options {
 
 const defaultOptions = (cfg: GlobalConfiguration): Options => ({
   title: "Recent Notes",
-  limit: 3,
+  limit: 2,
   linkToMore: false,
   filter: () => true,
   sort: byDateAndAlphabetical(cfg),
@@ -26,6 +26,9 @@ export default ((userOpts?: Partial<Options>) => {
   function RecentNotes(props: QuartzComponentProps) {
     const { allFiles, fileData, displayClass, cfg } = props
     const opts = { ...defaultOptions(cfg), ...userOpts }
+    if (fileData.slug !== "index") {
+      return <></>
+    }
     const pages = allFiles.filter(opts.filter).sort(opts.sort)
     const remaining = Math.max(0, pages.length - opts.limit)
     return (

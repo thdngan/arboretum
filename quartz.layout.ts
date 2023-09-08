@@ -21,9 +21,27 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
+    
     Component.DesktopOnly(Component.TableOfContents()),
-  ],
-  right: [Component.Graph(), Component.Backlinks()],
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        title: "Recent Posts",
+        limit: 2,
+        filter: (f) =>
+          f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+        linkToMore: "posts/" as SimpleSlug,
+      }),
+    ),
+    ],
+  right: [Component.Graph(), Component.DesktopOnly(
+    Component.RecentNotes({
+      title: "Topics",
+      limit: 3,
+      filter: (f) =>
+        f.slug!.startsWith("subjects/") && f.slug! !== "subjects/index" && !f.frontmatter?.noindex,
+      linkToMore: "subjects/" as SimpleSlug,
+    }),
+  ),Component.Backlinks()],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
