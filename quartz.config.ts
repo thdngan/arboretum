@@ -20,24 +20,24 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#F4F4F4", /**faf8f8 for background*/
-          lightgray: "#FF6B6B", /**e5e5e5 for background of search and borders*/
-          gray: "#6B8E23", /**b8b8b8 for date and reading time, graph links, heavier borders*/
+          light: "#FFFFFF", /**faf8f8 for background*/
+          lightgray: "rgba(117, 129, 107,0.4)", /**e5e5e5 for background of search and borders*/
+          gray: "#7C8B95", /**b8b8b8 for date and reading time, graph links, heavier borders*/
           darkgray: "#333333", /**4e4e4e for text*/
-          dark: "#000000", /**2b2b2b for headings and icons*/
-          secondary: "#5EAB3A", /**284b63 for titles and links, current graph node*/
+          dark: "#003153", /**2b2b2b for headings and icons*/
+          secondary: "#996515", /**284b63 for titles and links, current graph node*/
           tertiary: "#dadada", /**84a59d for when hovering above link*/
-          highlight: "rgba(143, 159, 169, 0.15)", /**rgba(143, 159, 169, 0.15) for background of internal link*/
+          highlight: "rgba(117, 129, 107, 0.15)", /**rgba(143, 159, 169, 0.15) for background of internal link*/
         },
         darkMode: {
-          light: "#161618", /**161618 */
-          lightgray: "#393639",
+          light: "#1A2421", /**161618 */
+          lightgray: "rgba(225, 227, 221,0.3)",
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          secondary: "rgba(250, 189, 89,0.9)",
+          tertiary: "#996515",
+          highlight: "rgba(58, 176, 158, 0.3)",
         },
       },
     },
