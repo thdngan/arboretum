@@ -3,7 +3,7 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "The Arboretum", /**🐧 */
+    pageTitle: "🐧 The Arboretum", /**🐧 */
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -35,7 +35,7 @@ const config: QuartzConfig = {
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "rgba(250, 189, 89,0.9)",
+          secondary: "rgba(250, 189, 89,0.8)",
           tertiary: "#996515",
           highlight: "rgba(58, 176, 158, 0.3)",
         },
