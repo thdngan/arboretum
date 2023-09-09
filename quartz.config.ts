@@ -30,12 +30,12 @@ const config: QuartzConfig = {
           highlight: "rgba(117, 129, 107, 0.15)", /**rgba(143, 159, 169, 0.15) for background of internal link*/
         },
         darkMode: {
-          light: "#1A2421", /**161618 */
+          light: "#141716", /**161618 ,#0d1210, 1A2421*/
           lightgray: "rgba(225, 227, 221,0.3)",
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "rgba(250, 189, 89,0.8)",
+          secondary: "#bd9a60",
           tertiary: "#996515",
           highlight: "rgba(58, 176, 158, 0.3)",
         },
