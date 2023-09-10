@@ -26,7 +26,7 @@ const config: QuartzConfig = {
           darkgray: "#333333", /**4e4e4e for text*/
           dark: "#003153", /**2b2b2b for headings and icons*/
           secondary: "#996515", /**284b63 for titles and links, current graph node*/
-          tertiary: "#dadada", /**84a59d for when hovering above link*/
+          tertiary: "#457B9D", /**84a59d for when hovering above link*/
           highlight: "rgba(117, 129, 107, 0.15)", /**rgba(143, 159, 169, 0.15) for background of internal link*/
         },
         darkMode: {
@@ -36,7 +36,7 @@ const config: QuartzConfig = {
           darkgray: "#d4d4d4",
           dark: "#ebebec",
           secondary: "#bd9a60",
-          tertiary: "#996515",
+          tertiary: "#2A9D8F",
           highlight: "rgba(58, 176, 158, 0.3)",
         },
       },
