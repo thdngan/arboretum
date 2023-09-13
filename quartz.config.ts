@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     defaultDateType: "created",
     theme: {
       typography: {
-        header: "Chelsea Market", /** Schibsted Grotesk*/
+        header: "Schibsted Grotesk", /** Schibsted Grotesk, Chelsea Market*/
         body: "Source Sans Pro", /**Source Sans Pro */
         code: "IBM Plex Mono", /**IBM Plex Mono */
       },
@@ -23,7 +23,7 @@ const config: QuartzConfig = {
           light: "#FFFFFF", /**faf8f8 for background*/
           lightgray: "rgba(117, 129, 107,0.4)", /**e5e5e5 for background of search and borders*/
           gray: "#7C8B95", /**b8b8b8 for date and reading time, graph links, heavier borders*/
-          darkgray: "#333333", /**4e4e4e for text*/
+          darkgray: "#000000", /**4e4e4e for text*/
           dark: "#003153", /**2b2b2b for headings and icons*/
           secondary: "#996515", /**284b63 for titles and links, current graph node*/
           tertiary: "#457B9D", /**84a59d for when hovering above link*/
