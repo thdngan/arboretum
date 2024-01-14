@@ -13,7 +13,7 @@ function PageTitle({ fileData, cfg }: QuartzComponentProps) {
 
 PageTitle.css = `
 .page-title {
-  margin: -10px;
+  margin: -12px;
 }
 `
 
