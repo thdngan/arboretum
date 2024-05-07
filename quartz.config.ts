@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🐧 The Arboretum", /**🐧 */
+    pageTitle: "🐧 the arboretum", /**🐧 */
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -28,7 +28,7 @@ const config: QuartzConfig = {
       colors: {
         lightMode: {
           light: "#EEEEEE", /**faf8f8 for background                                             ; #FFFFFF*/
-          lightgray: "rgba(117, 129, 107,0.4)", /**e5e5e5 for background of search and borders   ; rgba(117, 129, 107,0.4)*/
+          lightgray: "#D1D1D1", /**e5e5e5 for background of search and borders   ; rgba(117, 129, 107,0.4)*/
           gray: "#7C8B95", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
           darkgray: "#000000", /**4e4e4e for text                                                ; #000000*/
           dark: "#1F4172", /**2b2b2b for headings and icons                                      ; #003153*/
@@ -41,7 +41,7 @@ const config: QuartzConfig = {
           lightgray: "rgba(225, 227, 221,0.3)",
           gray: "#646464",
           darkgray: "#EAEAEA",
-          dark: "#ECBC55",
+          dark: "#ECB159",     /* ECBC55*/
           secondary: "#85CFCB",
           tertiary: "#F39189",
           highlight: "rgba(143, 159, 169, 0.2)",
