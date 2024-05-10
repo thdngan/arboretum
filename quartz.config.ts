@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🐧 the arboretum", /**🐧 */
+    pageTitle: "L'arboretum", /**🐧 */
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -21,30 +21,30 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk", /** Schibsted Grotesk, Chelsea Market*/
-        body: "Roboto Serif", /**Source Sans Pro */
-        code: "IBM Plex Mono", /**IBM Plex Mono */
+        header: "Inter", /** Schibsted Grotesk, Chelsea Market*/
+        body: "Poppins", /**Source Sans Pro, Roboto Serif */
+        code: "JetBrains Mono", /**IBM Plex Mono */
       },
       colors: {
         lightMode: {
-          light: "#EEEEEE", /**faf8f8 for background                                             ; #FFFFFF*/
-          lightgray: "#D1D1D1", /**e5e5e5 for background of search and borders   ; rgba(117, 129, 107,0.4)*/
+          light: "#EAEAEA", /**faf8f8 for background                                             ; #FFFFFF*/
+          lightgray: "rgba(200, 183, 146,0.7)", /**e5e5e5 for background of search and borders   ; rgba(117, 129, 107,0.4)*/
           gray: "#7C8B95", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
           darkgray: "#000000", /**4e4e4e for text                                                ; #000000*/
-          dark: "#1F4172", /**2b2b2b for headings and icons                                      ; #003153*/
-          secondary: "#B7657B", /**284b63 for titles and links, current graph node               ; #996515*/
-          tertiary: "#61C0BF", /**84a59d for when hovering above link                            ; #457B9D*/
-          highlight: "rgba(143, 159, 169, 0.15)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
+          dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
+          secondary: "#6C5A37", /**284b63 for titles and links, current graph node               ; #B7657B*/
+          tertiary: "#AD925C", /**84a59d for when hovering above link                            ; #457B9D*/
+          highlight: "rgba(213, 200, 174, 0.5)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
         },
         darkMode: {
-          light: "#3C3633", /**161618 ,#0d1210, 1A2421, #141716*/
-          lightgray: "rgba(225, 227, 221,0.3)",
+          light: "#212227", /**161618 ,#0d1210, 1A2421, #141716*/
+          lightgray: "rgba(224, 224, 224,0.25)",
           gray: "#646464",
           darkgray: "#EAEAEA",
-          dark: "#ECB159",     /* ECBC55*/
-          secondary: "#85CFCB",
-          tertiary: "#F39189",
-          highlight: "rgba(143, 159, 169, 0.2)",
+          dark: "#C2C2C2",     /* ECBC55, ECB159, F5B700*/
+          secondary: "#dda169", /*85CFCB */
+          tertiary: "#865a32",
+          highlight: "rgba(216, 183, 151, 0.1)",
         },
       },
     },
@@ -55,6 +55,7 @@ const config: QuartzConfig = {
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "filesystem"],
       }),
+      Plugin.Quoting(),
       Plugin.Latex({ renderEngine: "katex" }),
       Plugin.SyntaxHighlighting({
         theme: {

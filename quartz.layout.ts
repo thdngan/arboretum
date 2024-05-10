@@ -19,7 +19,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Breadcrumbs(),
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.TagList(),
+    
   ],
   left: [
     Component.PageTitle(),
@@ -31,31 +31,38 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
-        limit: 2,
+        limit: 4,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
         linkToMore: "posts/" as SimpleSlug,
       }),
     ),
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Recent Notes",
-        limit: 2,
-        filter: (f) =>
-          f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
-        linkToMore: "notes/" as SimpleSlug,
-      }),
-    ),
+
+    // Component.DesktopOnly(Component.Explorer())
     ],
-  right: [Component.Graph(), Component.DesktopOnly(
-    Component.RecentNotes({
-      title: "Topics",
-      limit: 3,
-      filter: (f) =>
-        f.slug!.startsWith("subjects/") && f.slug! !== "subjects/index" && !f.frontmatter?.noindex,
-      linkToMore: "subjects/" as SimpleSlug,
-    }),
-  ),Component.Backlinks()],
+  right: [Component.Graph(),
+  //   Component.DesktopOnly(
+  //   Component.RecentNotes({
+  //     title: "Topics",
+  //     limit: 3,
+  //     filter: (f) =>
+  //       f.slug!.startsWith("subjects/") && f.slug! !== "subjects/index" && !f.frontmatter?.noindex,
+  //     linkToMore: "subjects/" as SimpleSlug,
+  //   }),
+  // ),
+  // Component.DesktopOnly(
+  //   Component.RecentNotes({
+  //     title: "Recent Notes",
+  //     limit: 2,
+  //     filter: (f) =>
+  //       f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
+  //     linkToMore: "notes/" as SimpleSlug,
+  //   }),
+  // ),
+  // Component.Explorer(),
+  Component.TagList(),
+  Component.Backlinks(),],
+  
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)

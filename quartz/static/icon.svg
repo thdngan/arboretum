@@ -1,17 +1,6 @@
-import { pathToRoot } from "../util/path"
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { classNames } from "../util/lang"
-import { i18n } from "../i18n"
-
-
-const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzComponentProps) => {
-  const title = cfg?.pageTitle ?? i18n(cfg.locale).propertyDefaults.title
-  const baseDir = pathToRoot(fileData.slug!)
-  return (
-    <h1 class={classNames(displayClass, "page-title")}>
-      <a href={baseDir}> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="20%" viewBox="0 0 112 112" enable-background="new 0 0 112 112" xml:space="preserve">
-<path fill="currentColor" opacity="1.000000" stroke="none" 
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 112 112" enable-background="new 0 0 112 112" xml:space="preserve">
+<path fill="#000000" opacity="1.000000" stroke="none" 
 	d="
 M6.399996,113.000000 
 	C9.952457,105.885315 9.989563,97.693420 12.111163,90.072098 
@@ -64,7 +53,7 @@ M6.399996,113.000000
 	C12.061466,102.997353 11.717424,108.188667 10.000000,113.000000 
 	C8.933331,113.000000 7.866662,113.000000 6.399996,113.000000 
 z"/>
-<path fill="currentColor" opacity="1.000000" stroke="none" 
+<path fill="#000000" opacity="1.000000" stroke="none" 
 	d="
 M80.479706,96.067749 
 	C79.924118,97.052391 79.512138,97.751335 79.100159,98.450279 
@@ -72,7 +61,7 @@ M80.479706,96.067749
 	C83.861481,86.593643 85.797226,73.961319 89.441902,61.820366 
 	C90.673859,74.251503 87.972923,85.631226 80.479706,96.067749 
 z"/>
-<path fill="currentColor" opacity="1.000000" stroke="none" 
+<path fill="#000000" opacity="1.000000" stroke="none" 
 	d="
 M76.979523,31.998470 
 	C79.470474,35.516289 76.648857,36.722317 74.762878,38.073864 
@@ -80,7 +69,7 @@ M76.979523,31.998470
 	C68.994682,34.994640 69.143608,32.668880 70.809029,30.834696 
 	C72.932838,28.495661 74.946251,30.027483 76.979523,31.998470 
 z"/>
-<path fill="currentColor" opacity="1.000000" stroke="none" 
+<path fill="#000000" opacity="1.000000" stroke="none" 
 	d="
 M39.876419,34.949127 
 	C40.561680,36.060699 41.154972,36.900723 41.293125,37.809906 
@@ -88,15 +77,4 @@ M39.876419,34.949127
 	C36.331665,41.651409 35.707191,39.288910 35.849968,37.033958 
 	C35.995872,34.729572 36.844475,33.085754 39.876419,34.949127 
 z"/>
-</svg>{title}</a>
-    </h1>
-  )
-}
-
-PageTitle.css = `
-.page-title {
-  margin: -12px;
-}
-`
-
-export default (() => PageTitle) satisfies QuartzComponentConstructor
+</svg>
