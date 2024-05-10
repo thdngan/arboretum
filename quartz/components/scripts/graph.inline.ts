@@ -226,7 +226,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       }
 
       // highlight links
-      linkNodes.transition().duration(200).attr("stroke", "var(--gray)").attr("stroke-width", 1)
+      linkNodes.transition().duration(200).attr("stroke", "var(--tertiary)").attr("stroke-width", 1)
 
       const bigFont = fontSize * 1.5
 
