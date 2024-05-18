@@ -32,7 +32,7 @@ const config: QuartzConfig = {
           gray: "#9ea0a9", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
           darkgray: "#1F1F1F", /**4e4e4e for text                                                ; #000000*/
           dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
-          secondary: "#35827d", /**284b63 for titles and links, current graph node               ; #6C5A37*/
+          secondary: "#296561", /**284b63 for titles and links, current graph node               ; #6C5A37*/
           tertiary: "#709997", /**84a59d for when hovering above link                            ; #457B9D*/
           highlight: "rgba(171, 196, 193, 0.1)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
 
@@ -50,7 +50,7 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#EAEAEA",
           dark: "#FFFFFF",     /* ECBC55, ECB159, F5B700, C2C2C2*/
-          secondary: "#4cbdb7", /*85CFCB, dda169 */
+          secondary: "#86b8b5", /*85CFCB, dda169 */
           tertiary: "#709997",
           highlight: "rgba(166, 221, 219, 0.1)",
 

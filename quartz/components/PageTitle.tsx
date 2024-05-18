@@ -9,8 +9,8 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
   const baseDir = pathToRoot(fileData.slug!)
   return (
     <h1 class={classNames(displayClass, "page-title")}>
-      <a href={baseDir}> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="15%" viewBox="0 0 112 112" enable-background="new 0 0 112 112" xml:space="preserve">
+      <a href={baseDir}><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="15%" viewBox="0 0 100 112" enable-background="new 0 0 112 112" xml:space="preserve">
 <path fill="currentColor" opacity="1.000000" stroke="none" 
 	d="
 M6.399996,113.000000 
