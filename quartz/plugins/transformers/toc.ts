@@ -25,8 +25,9 @@ interface TocEntry {
 }
 
 const slugAnchor = new Slugger()
+
 export const TableOfContents: QuartzTransformerPlugin<Partial<Options> | undefined> = (
-  userOpts,
+  userOpts
 ) => {
   const opts = { ...defaultOptions, ...userOpts }
   return {
@@ -40,13 +41,31 @@ export const TableOfContents: QuartzTransformerPlugin<Partial<Options> | undefin
               slugAnchor.reset()
               const toc: TocEntry[] = []
               let highestDepth: number = opts.maxDepth
+              let currentNumber: number[] = Array(opts.maxDepth).fill(0)
+              let minDepth = Infinity // To find the minimum depth
+
+              // First pass to find the minimum depth
               visit(tree, "heading", (node) => {
                 if (node.depth <= opts.maxDepth) {
+                  minDepth = Math.min(minDepth, node.depth)
+                }
+              })
+
+              // Second pass to build TOC
+              visit(tree, "heading", (node) => {
+                if (node.depth <= opts.maxDepth) {
+                  const adjustedDepth = node.depth - minDepth + 1
+                  currentNumber[adjustedDepth - 1]++
+                  // Reset numbering for deeper levels
+                  for (let i = adjustedDepth; i < currentNumber.length; i++) {
+                    currentNumber[i] = 0
+                  }
+                  const label = currentNumber.slice(0, adjustedDepth).join(".")
                   const text = toString(node)
-                  highestDepth = Math.min(highestDepth, node.depth)
+                  highestDepth = Math.min(highestDepth, adjustedDepth)
                   toc.push({
-                    depth: node.depth,
-                    text,
+                    depth: adjustedDepth,
+                    text: `${label}. ${text}`,
                     slug: slugAnchor.slug(text),
                   })
                 }
@@ -55,7 +74,7 @@ export const TableOfContents: QuartzTransformerPlugin<Partial<Options> | undefin
               if (toc.length > 0 && toc.length > opts.minEntries) {
                 file.data.toc = toc.map((entry) => ({
                   ...entry,
-                  depth: entry.depth - highestDepth,
+                  depth: entry.depth - highestDepth + 1, // Normalize to start from 1
                 }))
                 file.data.collapseToc = opts.collapseByDefault
               }

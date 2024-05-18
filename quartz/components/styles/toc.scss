@@ -36,18 +36,52 @@ button#toc {
     opacity: 0;
   }
 
-  & ul {
-    list-style: none;
+  & ol {
+    list-style-position: inside;
     margin: 0.5rem 0;
     padding: 0;
-    & > li > a {
-      color: var(--dark);
-      opacity: 0.35;
+    opacity: 1;
       transition:
         0.5s ease opacity,
         0.3s ease color;
       &.in-view {
         opacity: 0.75;
+      }
+    & > li > a {
+      color: var(--dark);
+      // display: list-item;
+      text-decoration: none;
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      &.in-view {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0.5rem 0;
+    padding: 0;
+    opacity: 1;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      &.in-view {
+        opacity: 0.75;
+      }
+    & > li > a {
+      color: var(--dark);
+      // display: list-item;
+      text-decoration: none;
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      &.in-view {
+        opacity: 0.9;
       }
     }
   }
@@ -55,6 +89,8 @@ button#toc {
   @for $i from 0 through 6 {
     & .depth-#{$i} {
       padding-left: calc(1rem * #{$i});
+
+
     }
   }
 }

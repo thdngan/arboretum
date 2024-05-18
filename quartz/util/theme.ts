@@ -7,6 +7,12 @@ export interface ColorScheme {
   secondary: string
   tertiary: string
   highlight: string
+  nodefirst: string
+  nodesecond: string
+  nodethird: string
+  wikiheading: string
+  wikibackground: string
+  wikiborder: string
 }
 
 interface Colors {
@@ -49,6 +55,12 @@ ${stylesheet.join("\n\n")}
   --secondary: ${theme.colors.lightMode.secondary};
   --tertiary: ${theme.colors.lightMode.tertiary};
   --highlight: ${theme.colors.lightMode.highlight};
+  --nodefirst: ${theme.colors.lightMode.nodefirst};
+  --nodesecond: ${theme.colors.lightMode.nodesecond};
+  --nodethird: ${theme.colors.lightMode.nodethird};
+  --wikiheading: ${theme.colors.lightMode.wikiheading};
+  --wikibackground: ${theme.colors.lightMode.wikibackground};
+  --wikiborder: ${theme.colors.lightMode.wikiborder};
 
   --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
   --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
@@ -64,6 +76,12 @@ ${stylesheet.join("\n\n")}
   --secondary: ${theme.colors.darkMode.secondary};
   --tertiary: ${theme.colors.darkMode.tertiary};
   --highlight: ${theme.colors.darkMode.highlight};
+  --nodefirst: ${theme.colors.darkMode.nodefirst};
+  --nodesecond: ${theme.colors.darkMode.nodesecond};
+  --nodethird: ${theme.colors.darkMode.nodethird};
+  --wikiheading: ${theme.colors.darkMode.wikiheading};
+  --wikibackground: ${theme.colors.darkMode.wikibackground};
+  --wikiborder: ${theme.colors.darkMode.wikiborder};
 }
 `
 }

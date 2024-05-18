@@ -181,11 +181,11 @@
   
   .meta,
   .content-meta {
-    font-family: myfont, var(--bodyFont);
+    font-family: myfont; //var(--bodyFont);
     font-size: small;
   }
 
-  a {
+a {
     font-weight: bold;
     text-decoration: underline;
     color: var(--secondary);
@@ -205,7 +205,7 @@ h1.page-title a {
   text-decoration: none;
   color: var(--darkgray);
   font-family: myfont;
-  font-size:xx-large;
+  font-size:x-large;
 }
 
 pre.quoting {
@@ -214,4 +214,232 @@ pre.quoting {
   border: none;
   padding: 0;
   position: unset;
+}
+
+h2 {
+  border-bottom: 1px solid #aaa;
+  margin: 1;
+  padding-bottom: 0.3em;
+  padding-top: 0.5em;
+}
+
+// h2.underline { padding-right:20px; border-bottom:1px solid red; position:relative; }
+// h2.underline span { display:block; border-bottom:1px solid white; position:absolute; bottom:-1px } /*border color must be same as background color. assumed here to be white*/ 
+
+//////////////////////////////////////////
+//////////////////////////////////////////
+// wikipedia style////////////////////////
+//////////////////////////////////////////
+//////////////////////////////////////////
+
+/* infobox callout */
+.callout[data-callout="infobox"] {
+  background-color: var(--wikibackground);
+  --callout-icon: none;
+  border: 1px solid var(--wikiborder);
+  // border-radius: 0px;
+  float: right;
+  width: 300px;
+  margin: 24px 0px 10px 10px;
+  padding: 3px;
+  // opacity:0.1;
+}
+
+/* mobile breakpoint */
+@media (max-width: 767px) {
+  .callout[data-callout="infobox"] {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .callout[data-callout="infobox"] {
+    width:100%;
+    float: none;
+  }
+}
+
+/* stack infoboxes vertically with 'clear' */
+.callout[data-callout="infobox"] {
+  clear: right;
+}
+
+/* Remove Callout Title */
+.callout[data-callout="infobox"] .callout-title {
+  display: none;
+}
+
+
+/* H2 Title */
+.callout[data-callout="infobox"] h4 {
+  margin: 0px 0px 0px 0px ;
+  width: 100%;
+  font-family: var(--bodyFont);
+  font-size: 16px;
+  text-align: center;
+  padding-left: 38px;
+  border-radius: 2px;
+  background-color: var(--wikiheading);
+  // padding: 0px 0px 0px 19px;
+  // box-sizing: border-box;
+  width: auto;
+}
+
+/* H3 Title */
+.callout[data-callout="infobox"] h5 {
+  margin: 4px 0px 0px ;
+  width: 100%;
+  font-family: var(--bodyFont);
+  font-size: 16px;
+  text-align: center;
+  padding-left: 38px;
+  border-radius: 2px;
+  background-color: var(--wikiheading);
+  // padding: 0px;
+  // box-sizing: border-box;
+  width: auto;
+}
+
+/* Spacing */
+.callout[data-callout="infobox"] p {
+  margin-block-start: 10px;
+  margin-block-end: 0px;
+  width: 100%;
+}
+
+/* Image */
+.callout[data-callout="infobox"] img {
+  display: block;
+  margin: auto;
+  padding: 0px;
+  text-align: center;
+}
+
+/* Table */
+.callout[data-callout="infobox"] table {
+  margin: 0px !important;
+  width: 100%;
+  font-size: 14px;
+  border: 0px solid var(--wikiborder);
+  background-color: var(--wikibackground);
+}
+
+.callout[data-callout="infobox"] th {
+  padding-left: 12px; 
+  padding-right: 0px;
+  vertical-align: top;
+  // font-weight:normal;
+  display:none;
+}
+
+.callout[data-callout="infobox"] td {
+ padding-left: 12px; 
+ padding-right: 0px;
+ vertical-align: top;
+}
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// wikipedia CAPTION CALLOUT////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+/*----caption left callout----*/
+.callout[data-callout="caption_left"] {
+  --color: var(--wikibackground);
+  --border: var(--wikiborder);
+  --bg: var(--wikibackground);
+  float: left;
+  max-width: 40%;
+  padding: 6px;
+  margin: 24px 12px 2px 0px;
+}
+
+.callout[data-callout="caption_left"] > .callout-title {
+  display: none;
+}
+
+.callout[data-callout="caption_left"] img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.callout[data-callout="caption_left"] p {
+  text-align: left;
+  padding: 2px;
+  margin: auto;
+  font-size: 16px;
+}
+
+/* mobile breakpoint */
+@media (max-width: 767px) {
+  .callout[data-callout="caption_left"] {
+    max-width: 50%;
+  }
+}
+
+/*----caption center callout----*/
+.callout[data-callout="caption"] {
+  --color: var(--wikibackground);
+  --border: var(--wikiborder);
+  --bg: var(--wikibackground);
+  padding: 6px;
+  max-width: 80%;
+  margin: auto;
+}
+
+.callout[data-callout="caption"] > .callout-title {
+  display: none;
+}
+
+.callout[data-callout="caption"] img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.callout[data-callout="caption"] p {
+  text-align: center;
+  padding: 2px;
+  margin: auto;
+  font-size: 16px;
+}
+
+/*----caption right callout----*/
+.callout[data-callout="caption_right"] {
+  --color: var(--wikibackground);
+  --border: var(--wikiborder);
+  --bg: var(--wikibackground);
+  float: right;
+  max-width: 40%;
+  padding: 6px;
+  margin: 24px 0px 2px 12px;
+}
+
+.callout[data-callout="caption_right"] > .callout-title {
+  display: none;
+}
+
+.callout[data-callout="caption_right"] img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.callout[data-callout="caption_right"] p {
+  text-align: left;
+  padding: 2px;
+  margin: auto;
+  font-size: 16px;
+}
+
+/* mobile breakpoint */
+@media (max-width: 767px) {
+  .callout[data-callout="caption_right"] {
+    max-width: 50%;
+  }
 }

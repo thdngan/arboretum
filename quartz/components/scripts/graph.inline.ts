@@ -142,7 +142,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     .join("line")
     .attr("class", "link")
     .attr("stroke", "var(--lightgray)")
-    .attr("stroke-width", 1)
+    .attr("stroke-width", 0.75)
 
   // svg groups
   const graphNode = svg.append("g").selectAll("g").data(graphData.nodes).enter().append("g")
@@ -151,11 +151,15 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
-      return "var(--secondary)"
+      return "var(--nodefirst)"
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
-      return "var(--tertiary)"
-    } else {
-      return "var(--gray)"
+      return "var(--nodesecond)"
+    }
+    // else if (d.tags.includes("chemistry")) {
+    //   return "#9E1946"
+    // }
+    else {
+      return "var(--nodethird)"
     }
   }
 
@@ -217,16 +221,16 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
         d3.selectAll<HTMLElement, NodeData>(".link")
           .transition()
           .duration(200)
-          .style("opacity", 0.2)
+          .style("opacity", 0.1)
         d3.selectAll<HTMLElement, NodeData>(".node")
           .filter((d) => !connectedNodes.includes(d.id))
           .transition()
           .duration(200)
-          .style("opacity", 0.2)
+          .style("opacity", 0.1)
       }
 
       // highlight links
-      linkNodes.transition().duration(200).attr("stroke", "var(--tertiary)").attr("stroke-width", 1)
+      linkNodes.transition().duration(200).attr("stroke", "var(--nodefirst)").attr("stroke-width", 1)
 
       const bigFont = fontSize * 1.5
 
