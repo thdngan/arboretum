@@ -23,6 +23,8 @@ export const defaultContentPageLayout: PageLayout = {
     
   ],
   left: [
+    // Component.DesktopOnly(Component.PageTitle()),
+    // Component.MobileOnly(Component.PageTitleMobile()),
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
