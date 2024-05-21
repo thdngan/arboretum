@@ -10,6 +10,7 @@ export const sharedPageComponents: SharedLayout = {
       GitHub: "https://github.com/thdngan",
       Email: "mailto:trinhhoangdieungan@gmail.com",
     },
+    // config.plugins.transformers.find((e) => {e.name === "Remark42"})?.options
   }),
 }
 
@@ -19,6 +20,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Breadcrumbs(),
     Component.ArticleTitle(),
     Component.ContentMeta(),
+    Component.MobileOnly(Component.TagList()),
+    // Component.Comments(),
     // Component.MobileOnly(Component.TableOfContents()),
     
   ],
@@ -31,6 +34,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Darkmode(),
     
     Component.DesktopOnly(Component.TableOfContents()),
+    // Component.TableOfContents(),
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
@@ -72,8 +76,9 @@ export const defaultContentPageLayout: PageLayout = {
   //   }),
   // ),
   // Component.Explorer(),
-  Component.TagList(),
-  Component.Backlinks(),],
+  Component.DesktopOnly(Component.TagList()),
+  Component.Backlinks(),
+],
   
 }
 

@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "Névtelen",
+    title: "L'arboretum",
     description: "Nincs leírás",
   },
   components: {
@@ -24,6 +24,10 @@ export default {
     backlinks: {
       title: "Visszautalások",
       noBacklinksFound: "Nincs visszautalás",
+    },
+    taglist: {
+      title: "Tags",
+      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Világos mód",

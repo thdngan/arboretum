@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "Không có tiêu đề",
+    title: "L'arboretum",
     description: "Không có mô tả được cung cấp",
   },
   components: {
@@ -24,6 +24,10 @@ export default {
     backlinks: {
       title: "Liên Kết Ngược",
       noBacklinksFound: "Không có liên kết ngược được tìm thấy",
+    },
+    taglist: {
+      title: "Tags",
+      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Sáng",

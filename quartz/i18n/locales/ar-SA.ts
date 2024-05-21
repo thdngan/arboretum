@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "غير معنون",
+    title: "L'arboretum",
     description: "لم يتم تقديم أي وصف",
   },
   components: {
@@ -24,6 +24,10 @@ export default {
     backlinks: {
       title: "وصلات العودة",
       noBacklinksFound: "لا يوجد وصلات عودة",
+    },
+    taglist: {
+      title: "Tags",
+      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "الوضع النهاري",

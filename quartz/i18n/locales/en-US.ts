@@ -25,6 +25,10 @@ export default {
       title: "Backlinks",
       noBacklinksFound: "No backlinks found",
     },
+    taglist: {
+      title: "Tags",
+      noTagsFound: "No tags found",
+    },
     themeToggle: {
       lightMode: "Light mode",
       darkMode: "Dark mode",

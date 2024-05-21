@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "無題",
+    title: "L'arboretum",
     description: "説明なし",
   },
   components: {
@@ -24,6 +24,10 @@ export default {
     backlinks: {
       title: "バックリンク",
       noBacklinksFound: "バックリンクはありません",
+    },
+    taglist: {
+      title: "Tags",
+      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "ライトモード",

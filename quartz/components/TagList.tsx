@@ -1,7 +1,10 @@
 import { pathToRoot, slugTag } from "../util/path"
-import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import style from "./styles/taglist.scss"
+import { i18n } from "../i18n"
+import { classNames } from "../util/lang"
 
-function TagList({ fileData, displayClass }: QuartzComponentProps) {
+function TagList({ fileData, displayClass,cfg }: QuartzComponentProps) {
   const tags = fileData.frontmatter?.tags
   const baseDir = pathToRoot(fileData.slug!)
   if (tags && tags.length > 0) {
@@ -9,7 +12,9 @@ function TagList({ fileData, displayClass }: QuartzComponentProps) {
       // <h3>Tag List</h3>
       <div class="section">
         <div class="desc">
-        <h3>Tags</h3>
+        <div class={classNames(displayClass, "taglist")}>
+        <h3>{i18n(cfg.locale).components.taglist.title}</h3>
+        
         <ul class={`tags ${displayClass ?? ""}`}>
         {tags.map((tag) => {
           const display = `${tag}`
@@ -24,6 +29,7 @@ function TagList({ fileData, displayClass }: QuartzComponentProps) {
         })}
         </ul>
         </div>
+        </div>
         
       </div>
       
@@ -33,29 +39,5 @@ function TagList({ fileData, displayClass }: QuartzComponentProps) {
   }
 }
 
-TagList.css = `
-.tags {
-  list-style: none;
-  display:flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  gap: 0.4rem;
-  margin: 1rem 0;
-}
-  
-.tags > li {
-  display: inline-block;
-  white-space: nowrap;
-  margin: 0;
-  overflow-wrap: normal;
-}
-
-a.tag-link {
-  border-radius: 8px;
-  background-color: var(--highlight);
-  padding: 0.2rem 0.4rem;
-  margin: 0 0.1rem;
-}
-`
-
+TagList.css = style
 export default (() => TagList) satisfies QuartzComponentConstructor

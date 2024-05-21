@@ -1,0 +1,39 @@
+@use "../../styles/variables.scss" as *;
+
+
+
+.taglist {
+  & > h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  & > .tags {
+    list-style: none;
+    display:flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    gap: 0.4rem;
+    margin: 1rem 0;
+
+    & > h3 {
+      font-size: 0.5rem;
+      margin: 0;
+    }
+
+  }
+    
+  & > .tags > li {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0;
+    overflow-wrap: normal;
+  }
+  
+  & > a.tag-link {
+    border-radius: 8px;
+    background-color: var(--highlight);
+    padding: 0.2rem 0.4rem;
+    margin: 0 0.1rem;
+  }
+}
