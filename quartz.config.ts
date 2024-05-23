@@ -22,7 +22,7 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Lora", /** Schibsted Grotesk, Chelsea Market*/
+        header: "Libre Baskerville", /** Schibsted Grotesk, Chelsea Market*/
         body: "Inter", /**Source Sans Pro, Roboto Serif */
         code: "JetBrains Mono", /**IBM Plex Mono */
       },
