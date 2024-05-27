@@ -13,6 +13,9 @@ export interface ColorScheme {
   wikiheading: string
   wikibackground: string
   wikiborder: string
+  gradient1:string
+  gradient2:string
+  italic:string
 }
 
 interface Colors {
@@ -61,6 +64,9 @@ ${stylesheet.join("\n\n")}
   --wikiheading: ${theme.colors.lightMode.wikiheading};
   --wikibackground: ${theme.colors.lightMode.wikibackground};
   --wikiborder: ${theme.colors.lightMode.wikiborder};
+  --gradient1: ${theme.colors.lightMode.gradient1};
+  --gradient2: ${theme.colors.lightMode.gradient2};
+  --italic: ${theme.colors.lightMode.italic};
 
   --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
   --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
@@ -82,6 +88,9 @@ ${stylesheet.join("\n\n")}
   --wikiheading: ${theme.colors.darkMode.wikiheading};
   --wikibackground: ${theme.colors.darkMode.wikibackground};
   --wikiborder: ${theme.colors.darkMode.wikiborder};
+  --gradient1: ${theme.colors.darkMode.gradient1};
+  --gradient2: ${theme.colors.darkMode.gradient2};
+  --italic: ${theme.colors.darkMode.italic};
 }
 `
 }

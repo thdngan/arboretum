@@ -120,7 +120,7 @@ export const tableRegex = new RegExp(
 // matches any wikilink, only used for escaping wikilinks inside tables
 export const tableWikilinkRegex = new RegExp(/(!?\[\[[^\]]*?\]\])/, "g")
 
-const highlightRegex = new RegExp(/==([^=]+)==/, "g")
+const highlightRegex = new RegExp(/==([^=*]+)==/, "g")
 const commentRegex = new RegExp(/%%[\s\S]*?%%/, "g")
 // from https://github.com/escwxyz/remark-obsidian-callout/blob/main/src/index.ts
 const calloutRegex = new RegExp(/^\[\!(\w+)\]([+-]?)/)

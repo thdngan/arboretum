@@ -16,11 +16,12 @@ section {
   box-sizing: border-box;
   background-color: var(--light);
   font-family: var(--bodyFont);
+  font-size: large;
   color: var(--darkgray);
 }
 
 .text-highlight {
-  background-color: #fff23688;
+  background-color: #fbd04188;
   padding: 0 0.1rem;
   border-radius: 5px;
 }
@@ -54,8 +55,10 @@ ul,
 }
 
 strong {
-  font-weight: $semiBoldWeight;
+  // font-weight: $semiBoldWeight;
+  font-weight: 1000;
 }
+
 
 a {
   font-weight: $semiBoldWeight;
@@ -311,7 +314,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-top: 1.62rem;
   margin-bottom: 1rem;
 }

@@ -223,6 +223,29 @@ h2 {
   padding-top: 0.5em;
 }
 
+strong .text-highlight {
+  background-color: #86ff8846;
+  padding: 0 0.1rem;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+em {
+  color: var(--italic);
+}
+
+em strong {
+  // background-color: #f3ec78;
+  background-image: linear-gradient(45deg, var(--gradient1), var(--gradient2));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+
 // h2.underline { padding-right:20px; border-bottom:1px solid red; position:relative; }
 // h2.underline span { display:block; border-bottom:1px solid white; position:absolute; bottom:-1px } /*border color must be same as background color. assumed here to be white*/ 
 
