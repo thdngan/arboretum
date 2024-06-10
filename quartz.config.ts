@@ -47,7 +47,7 @@ const config: QuartzConfig = {
 
           gradient1: "#310979",
           gradient2: "#00d4ff",
-          italic: "#00A693",
+          italic: "#1F1F1F",
         },
         darkMode: {
           light: "#2F3037", /**161618 ,#0d1210, 1A2421, #141716*/
@@ -69,7 +69,7 @@ const config: QuartzConfig = {
 
           gradient1: "#00e2ff",
           gradient2: "#f5b0ff",
-          italic: "#81d8d0",
+          italic: "#EAEAEA",
         },
       },
     },

@@ -243,6 +243,20 @@ em strong {
   -webkit-text-fill-color: transparent; 
   -moz-text-fill-color: transparent;
   font-weight: 900;
+  padding-right: 0.7em; //prevent cutting off on the right
+  margin-right: -0.7em;
+}
+
+body,
+section {
+  margin: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--light);
+  font-family: InterDisam;
+  font-feature-settings: "ss04" 1;
+  font-size: large;
+  color: var(--darkgray);
 }
 
 
@@ -378,7 +392,7 @@ em strong {
   float: left;
   max-width: 40%;
   padding: 6px;
-  margin: 24px 12px 2px 0px;
+  margin: 24px 1cm 2px 0px; /*top right bottom left*/
 }
 
 .callout[data-callout="caption_left"] > .callout-title {
@@ -440,7 +454,7 @@ em strong {
   float: right;
   max-width: 40%;
   padding: 6px;
-  margin: 24px 0px 2px 12px;
+  margin: 24px 0px 2px 0.5cm;
 }
 
 .callout[data-callout="caption_right"] > .callout-title {
