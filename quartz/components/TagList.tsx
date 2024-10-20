@@ -4,7 +4,12 @@ import style from "./styles/taglist.scss"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
 
-function TagList({ fileData, displayClass,cfg }: QuartzComponentProps) {
+// function TagList({ fileData, displayClass,cfg }: QuartzComponentProps) => {
+const TagList: QuartzComponent = ({
+  fileData,
+  displayClass,
+  cfg,
+}: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
   const baseDir = pathToRoot(fileData.slug!)
   if (tags && tags.length > 0) {

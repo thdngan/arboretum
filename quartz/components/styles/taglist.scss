@@ -1,8 +1,9 @@
-@use "../../styles/variables.scss" as *;
+// @use "../../styles/variables.scss" as *;
 
 
 
 .taglist {
+  position: relative;
   & > h3 {
     font-size: 1rem;
     margin: 0;

@@ -26,9 +26,9 @@ export const defaultContentPageLayout: PageLayout = {
     
   ],
   left: [
-    Component.DesktopOnly(Component.PageTitle()),
-    Component.MobileOnly(Component.PageTitleMobile()),
-    // Component.PageTitle(),
+    // Component.DesktopOnly(Component.PageTitle()),
+    // Component.MobileOnly(Component.PageTitleMobile()),
+    Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
@@ -56,7 +56,8 @@ export const defaultContentPageLayout: PageLayout = {
 
     // Component.DesktopOnly(Component.Explorer())
     ],
-  right: [Component.Graph(),
+  right: [
+    Component.Graph(),
   //   Component.DesktopOnly(
   //   Component.RecentNotes({
   //     title: "Topics",
@@ -76,8 +77,9 @@ export const defaultContentPageLayout: PageLayout = {
   //   }),
   // ),
   // Component.Explorer(),
-  Component.DesktopOnly(Component.TagList()),
+  // Component.DesktopOnly(Component.TagList()),
   Component.Backlinks(),
+  Component.DesktopOnly(Component.TagList()),
 ],
   
 }
