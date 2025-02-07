@@ -133,6 +133,7 @@ a {
       text-decoration: line-through;
       text-decoration-color: var(--gray);
       color: var(--gray);
+      mix-blend-mode: difference; /* Auto-adjusts based on background */
     }
 
     & li > * {

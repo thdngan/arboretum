@@ -16,6 +16,8 @@ export interface ColorScheme {
   gradient1:string
   gradient2:string
   italic:string
+  link:string
+  border:string
 }
 
 interface Colors {
@@ -67,6 +69,8 @@ ${stylesheet.join("\n\n")}
   --gradient1: ${theme.colors.lightMode.gradient1};
   --gradient2: ${theme.colors.lightMode.gradient2};
   --italic: ${theme.colors.lightMode.italic};
+  --link: ${theme.colors.lightMode.link};
+  --border: ${theme.colors.lightMode.border};
 
   --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
   --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
@@ -91,6 +95,8 @@ ${stylesheet.join("\n\n")}
   --gradient1: ${theme.colors.darkMode.gradient1};
   --gradient2: ${theme.colors.darkMode.gradient2};
   --italic: ${theme.colors.darkMode.italic};
+  --link: ${theme.colors.darkMode.link};
+  --border: ${theme.colors.darkMode.border};
 }
 `
 }
