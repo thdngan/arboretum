@@ -29,12 +29,12 @@ const config: QuartzConfig = {
       colors: {
         lightMode: {
           light: "#f5f5f5", /**faf8f8 for background                                             ; #FFFFFF, f5f5f5*/
-          lightgray: "rgba(105, 137, 150,0.2)", /**e5e5e5 for background of search and borders   ; rgba(117, 129, 107,0.4)*/
+          lightgray: "rgba(105, 137, 150,0.2)", /**e5e5e5 for background of search             ;rgba(117, 129, 107,0.4)*/
           gray: "#E06C75", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
           darkgray: "#1F1F1F", /**4e4e4e for text                                                ; #000000*/
           dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
           secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37*/
-          tertiary: "#709997", /**84a59d for when hovering above link                            ; #457B9D*/
+          tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
           highlight: "rgba(171, 196, 193, 0.1)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
 
           nodefirst: "#35827d",
@@ -64,18 +64,18 @@ const config: QuartzConfig = {
           // #4Dff0000
         darkMode: {
           light: "#282c34", /**background: 161618 ,#0d1210, 1A2421, #141716, #2F3037*/
-          lightgray: "rgba(224, 108, 117,0.7)", /*background of search, inline code and borders: rgba(224, 224, 224,0.25) */
+          lightgray: "rgba(224, 224, 224,0.2)", /*background of search, inline code and borders: rgba(224, 224, 224,0.25),rgba(175, 62, 77,0.5) */
           gray: "#c678dd", /* date and reading time, graph links, heavier borders: b8b8b8 */
           darkgray: "#abb2bf",/*text: EAEAEA  */
           dark: "#d6d6d6",     /* headings and icons, search text: ECBC55, ECB159, F5B700, C2C2C2, FFFFFF*/
-          secondary: "#98c379", /*titles and links, current graph node: 85CFCB, dda169, 86b8b5 */
-          tertiary: "#709997",/*for when hovering above link: 709997*/
+          secondary: "#7d9a69", /*titles and links, current graph node: 85CFCB, dda169, 86b8b5 */
+          tertiary: "#E06C75",/*for when hovering above link: 709997*/
           highlight: "rgba(166, 221, 219, 0.1)", /*background of internal link */
 
           nodefirst: "#E06C75",
           nodesecond: "#98c379",
           nodethird: "#c678dd",
-          border: "#61afef",
+          border: "rgba(224, 224, 224,0.5)",
           link: "rgba(224, 224, 224,0.25)",
 
           wikiheading: "#67796b",

@@ -20,7 +20,8 @@ section {
 }
 
 .text-highlight {
-  background-color: #fbd04188;
+  background-color: rgba(251, 208, 65, 0.4);
+  color: var(--dark);
   padding: 0 0.1rem;
   border-radius: 5px;
 }
