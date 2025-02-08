@@ -33,7 +33,6 @@ export default ((opts: Options) => {
     if (disableComment) {
       return <></>
     }
-
     return (
       <div
         class={classNames(displayClass, "giscus")}
