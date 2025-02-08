@@ -137,6 +137,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     .attr("viewBox", [-width / 2 / scale, -height / 2 / scale, width / scale, height / scale])
 
 
+
   // draw links between nodes
   const link = svg
     .append("g")
@@ -325,28 +326,79 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
 
 
 function renderGlobalGraph() {
-  const slug = getFullSlug(window)
-  const container = document.getElementById("global-graph-outer")
-  const sidebar = container?.closest(".sidebar") as HTMLElement
-  container?.classList.add("active")
-  if (sidebar) {
-    sidebar.style.zIndex = "1"
-  }
-
-  renderGraph("global-graph-container", slug)
-
-  function hideGlobalGraph() {
-    container?.classList.remove("active")
-    const graph = document.getElementById("global-graph-container")
+    const slug = getFullSlug(window)
+    const container = document.getElementById("global-graph-outer")
+    const sidebar = container?.closest(".sidebar") as HTMLElement
+    container?.classList.add("active")
     if (sidebar) {
-      sidebar.style.zIndex = "unset"
+      sidebar.style.zIndex = "1"
     }
-    if (!graph) return
-    removeAllChildren(graph)
+  
+    renderGraph("global-graph-container", slug)
+  
+    // Add the legend specifically for the global graph
+    const svg = d3
+    .select<HTMLElement, NodeData>("#" + container)
+    .append("svg")
+    const width = parseFloat(svg.attr("width"))
+    
+    
+    // Remove existing legend if present
+    svg.select(".legend").remove()
+  
+    const legendData = [
+      { label: "Current Page", color: "var(--nodefirst)" },
+      { label: "Tags", color: "var(--nodesecond)" },
+      { label: "Visited Posts", color: "var(--nodevisited)" },
+      { label: "Other Posts", color: "var(--nodethird)" },
+    ]
+  
+    const legend = svg.append("g").attr("class", "legend")
+  
+    // Position the legend dynamically for different screen sizes
+    const isMobile = window.innerWidth < 768
+    const legendX = isMobile ? 10 : width - 150 // Adjust for mobile and desktop
+    const legendY = 20
+  
+    legend.attr("transform", `translate(${legendX}, ${legendY})`)
+  
+    // Create legend items
+    legend
+      .selectAll("legend-item")
+      .data(legendData)
+      .enter()
+      .append("g")
+      .attr("class", "legend-item")
+      .attr("transform", (_, i) => `translate(0, ${i * 20})`)
+      .each(function (d) {
+        d3.select(this)
+          .append("rect")
+          .attr("width", 12)
+          .attr("height", 12)
+          .attr("fill", d.color)
+  
+        d3.select(this)
+          .append("text")
+          .attr("x", 20)
+          .attr("y", 10)
+          .style("font-size", "12px")
+          .style("fill", "var(--text-color)")
+          .text(d.label)
+      })
+  
+    function hideGlobalGraph() {
+      container?.classList.remove("active")
+      const graph = document.getElementById("global-graph-container")
+      if (sidebar) {
+        sidebar.style.zIndex = "unset"
+      }
+      if (!graph) return
+      removeAllChildren(graph)
+    }
+  
+    registerEscapeHandler(container, hideGlobalGraph)
   }
-
-  registerEscapeHandler(container, hideGlobalGraph)
-}
+  
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const slug = e.detail.url
