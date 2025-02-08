@@ -66,5 +66,42 @@
         width: 90%;
       }
     }
+    #global-graph-outer {
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100%;
+      backdrop-filter: blur(4px);
+      display: none;
+      overflow: hidden;
+    
+      &.active {
+        display: inline-block;
+      }
+    
+      & > #global-graph-container {
+        border: 1px solid var(--border);
+        background-color: var(--light);
+        border-radius: 5px;
+        box-sizing: border-box;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 60vh;
+        width: 50vw;
+        padding: 10px; // Add padding so legend isn't touching the edges
+    
+        @media all and (max-width: $fullPageWidth) {
+          width: 90%;
+        }
+      }
+    }
+    
+    
   }
 }
+
+

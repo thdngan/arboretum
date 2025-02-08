@@ -10,6 +10,7 @@ export interface ColorScheme {
   nodefirst: string
   nodesecond: string
   nodethird: string
+  nodevisited: string
   wikiheading: string
   wikibackground: string
   wikiborder: string
@@ -63,6 +64,7 @@ ${stylesheet.join("\n\n")}
   --nodefirst: ${theme.colors.lightMode.nodefirst};
   --nodesecond: ${theme.colors.lightMode.nodesecond};
   --nodethird: ${theme.colors.lightMode.nodethird};
+  --nodevisited: ${theme.colors.lightMode.nodevisited};
   --wikiheading: ${theme.colors.lightMode.wikiheading};
   --wikibackground: ${theme.colors.lightMode.wikibackground};
   --wikiborder: ${theme.colors.lightMode.wikiborder};
@@ -89,6 +91,7 @@ ${stylesheet.join("\n\n")}
   --nodefirst: ${theme.colors.darkMode.nodefirst};
   --nodesecond: ${theme.colors.darkMode.nodesecond};
   --nodethird: ${theme.colors.darkMode.nodethird};
+  --nodevisited: ${theme.colors.darkMode.nodevisited};
   --wikiheading: ${theme.colors.darkMode.wikiheading};
   --wikibackground: ${theme.colors.darkMode.wikibackground};
   --wikiborder: ${theme.colors.darkMode.wikiborder};

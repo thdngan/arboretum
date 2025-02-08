@@ -112,6 +112,8 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     links: links.filter((l) => neighbourhood.has(l.source) && neighbourhood.has(l.target)),
   }
 
+  
+
   const simulation: d3.Simulation<NodeData, LinkData> = d3
     .forceSimulation(graphData.nodes)
     .force("charge", d3.forceManyBody().strength(-100 * repelForce))
@@ -134,6 +136,41 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     .attr("height", height)
     .attr("viewBox", [-width / 2 / scale, -height / 2 / scale, width / scale, height / scale])
 
+
+  // Create a legend container
+  const legendData = [
+    { label: "Current Page", color: "var(--nodefirst)" },
+    { label: "Tags", color: "var(--nodesecond)" },
+    { label: "Visited Posts", color: "var(--nodevisited)" },
+    { label: "Other Posts", color: "var(--nodethird)" },
+  ]
+
+  const legend = svg.append("g").attr("class", "legend").attr("transform", `translate(${width - 150}, ${20})`)
+
+  // Create legend items
+  legend
+    .selectAll("legend-item")
+    .data(legendData)
+    .enter()
+    .append("g")
+    .attr("class", "legend-item")
+    .attr("transform", (_, i) => `translate(0, ${i * 20})`)
+    .each(function (d) {
+      d3.select(this)
+        .append("rect")
+        .attr("width", 12)
+        .attr("height", 12)
+        .attr("fill", d.color)
+
+      d3.select(this)
+        .append("text")
+        .attr("x", 20)
+        .attr("y", 10)
+        .style("font-size", "12px")
+        .style("fill", "var(--text-color)")
+        .text(d.label)
+    })
+
   // draw links between nodes
   const link = svg
     .append("g")
@@ -152,9 +189,14 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return "var(--nodefirst)"
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
-      return "var(--nodesecond)"
-    }
+    // } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    //   return "var(--nodesecond)"
+    // }
+    } else if (d.id.startsWith("tags/")) {
+      return "var(--nodesecond)";
+    } else if (visited.has(d.id)) {
+      return "var(--nodevisited)"; // You can define a new color for visited posts
+    } 
     // else if (d.tags.includes("chemistry")) {
     //   return "#9E1946"
     // }
@@ -313,6 +355,8 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     labels.attr("x", (d: any) => d.x).attr("y", (d: any) => d.y)
   })
 }
+
+
 
 function renderGlobalGraph() {
   const slug = getFullSlug(window)
