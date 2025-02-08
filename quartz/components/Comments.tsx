@@ -6,7 +6,7 @@ import script from "./scripts/comments.inline"
 type Options = {
   provider: "giscus"
   options: {
-    repo: '${string}/${string}'
+    repo: `${string}/${string}`
     repoId: string
     category: string
     categoryId: string
