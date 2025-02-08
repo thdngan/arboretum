@@ -5,6 +5,25 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
+  afterBody: [
+    Component.Comments({
+      provider: 'giscus',
+      options: {
+        // from data-repo
+        repo: 'thdngan/arboretum',
+        // from data-repo-id
+        repoId: 'R_kgDOHxknJg',
+        // from data-category
+        category: 'Announcements',
+        // from data-category-id
+        categoryId: 'DIC_kwDOHxknJs4CfhAs',
+        themeUrl: "https://thdngan.github.io/arboretum/static/giscus", // corresponds to quartz/static/giscus/
+        lightTheme: "light", // corresponds to light-theme.css in quartz/static/giscus/
+        darkTheme: "dark", // corresponds to dark-theme.css quartz/static/giscus/
+        inputPosition: "top",
+      }
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/thdngan",
@@ -12,6 +31,7 @@ export const sharedPageComponents: SharedLayout = {
     },
     // config.plugins.transformers.find((e) => {e.name === "Remark42"})?.options
   }),
+  
 }
 
 // components for pages that display a single page (e.g. a single note)
