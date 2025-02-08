@@ -80,7 +80,8 @@ export const defaultContentPageLayout: PageLayout = {
   // Component.DesktopOnly(Component.TagList()),
   // Component.DesktopOnly(Component.TableOfContents()),
   Component.Backlinks(),
-  Component.DesktopOnly(Component.TableOfContents()),
+  // Component.DesktopOnly(Component.TableOfContents()),
+  Component.DesktopOnly(Component.TagList()),
   // Component.TagList(),
 ],
   

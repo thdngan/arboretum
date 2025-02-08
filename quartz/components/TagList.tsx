@@ -15,8 +15,8 @@ const TagList: QuartzComponent = ({
   if (tags && tags.length > 0) {
     return (
       // <h3>Tag List</h3>
-      <div class="section">
-        <div class="desc">
+      // <div class="section">
+        // <div class="desc">
         <div class={classNames(displayClass, "taglist")}>
         <h3>{i18n(cfg.locale).components.taglist.title}</h3>
         
@@ -34,9 +34,9 @@ const TagList: QuartzComponent = ({
         })}
         </ul>
         </div>
-        </div>
+        // </div>
         
-      </div>
+      // </div>
       
     )
   } else {
