@@ -97,12 +97,12 @@ function setupFloatingButtons() {
     }
   }
 
-  // Hide tooltips after click
-  const tooltip = this.querySelector('.floating-button-tooltip');
-  if (tooltip) {
-    tooltip.style.opacity = '0';
-    tooltip.style.visibility = 'hidden';
-  }
+  // // Hide tooltips after click
+  // const tooltip = this.querySelector('.floating-button-tooltip');
+  // if (tooltip) {
+  //   tooltip.style.opacity = '0';
+  //   tooltip.style.visibility = 'hidden';
+  // }
 
   // 设置事件监听
   buttonGroups.forEach(group => {
