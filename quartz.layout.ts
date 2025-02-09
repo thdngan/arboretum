@@ -75,6 +75,7 @@ export const defaultContentPageLayout: PageLayout = {
       linkToMore: "notes/" as SimpleSlug,
     }),
   ),
+  Component.FloatingButtons({position: 'right'}),
 
     // Component.DesktopOnly(Component.Explorer())
     ],
@@ -119,6 +120,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.Explorer()),
+    Component.FloatingButtons({position: 'right'}),
   ],
   right: [],
 }

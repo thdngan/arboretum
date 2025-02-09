@@ -21,6 +21,8 @@ import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
+import ScrollToTop from "./_ScrollToTop"
+import FloatingButtons from "./_FloatingButtons"
 
 export {
   ArticleTitle,
@@ -46,4 +48,6 @@ export {
   NotFound,
   Breadcrumbs,
   Comments,
+  ScrollToTop,
+  FloatingButtons,
 }
