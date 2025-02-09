@@ -15,7 +15,7 @@ const PageTitleMobile: QuartzComponent = ({ fileData, cfg, displayClass }: Quart
 }
 
 PageTitleMobile.css = `
-.page-title {
+.page-title-mobile {
   margin: -12px;
 }
 `

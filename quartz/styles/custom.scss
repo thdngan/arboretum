@@ -205,7 +205,14 @@ h1.page-title a {
   text-decoration: none;
   color: var(--dark);
   font-family: myfont;
-  font-size:x-large;
+  font-size:1.5vw;
+}
+
+h1.page-title-mobile a {
+  text-decoration: none;
+  color: var(--dark);
+  font-family: myfont;
+  font-size:large;
 }
 
 pre.quoting {

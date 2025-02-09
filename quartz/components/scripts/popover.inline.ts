@@ -7,7 +7,9 @@ async function mouseEnterHandler(
   { clientX, clientY }: { clientX: number; clientY: number },
 ) {
   const link = this
-  if (link.dataset.noPopover === "true") {
+  if (link.dataset.noPopover === "true"|| 
+    link.id.includes("user-content-fnref-") ||
+    link.id.includes("permalink")) {
     return
   }
 
