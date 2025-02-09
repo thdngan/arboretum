@@ -37,6 +37,7 @@ export default ((opts: Options) => {
     return (
       <>
       <hr/>
+      <h2>💬 Penguin's Log</h2>
       <div
         class={classNames(displayClass, "giscus")}
         data-repo={opts.options.repo}
@@ -52,7 +53,7 @@ export default ((opts: Options) => {
         data-theme-url={
           opts.options.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
         }
-        // style={{ marginTop: "50px" }} // Add this line to set the 
+        style={{ marginTop: "50px" }} // Add this line to set the 
       ></div>
       </>
     )

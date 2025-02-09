@@ -16,7 +16,7 @@ export default ((opts?: Optionss) => {
     const links = opts?.links ?? []
     return (
     <footer class={`${displayClass ?? ""} footer`}>
-        <hr />
+        {/* <hr /> */}
         <div class="giscus"></div>
         {/* <hr /> */}
         {/* <div id="remark42"></div> */}
