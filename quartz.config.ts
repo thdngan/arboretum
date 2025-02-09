@@ -11,7 +11,7 @@ const config: QuartzConfig = {
   configuration: {
     pageTitle: "L'arboretum", /**🐧 */
     enableSPA: true,
-    enablePopovers: true,
+    enablePopovers: false,
     analytics: {
       provider: "plausible",
     },
