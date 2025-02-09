@@ -25,7 +25,7 @@ export default ((opts?: FloatingButtonsOptions) => {
             title="Scroll to top"
             data-action="scrollTop"
           >
-            {/* <span class="floating-button-tooltip">Scroll to top</span> */}
+            <span class="floating-button-tooltip">Scroll to top</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="18 15 12 9 6 15"></polyline>
             </svg>
@@ -36,7 +36,7 @@ export default ((opts?: FloatingButtonsOptions) => {
             title="Scroll to bottom"
             data-action="scrollBottom"
           >
-            {/* <span class="floating-button-tooltip">Scroll to bottom</span> */}
+            <span class="floating-button-tooltip">Scroll to bottom</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
