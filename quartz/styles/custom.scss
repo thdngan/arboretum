@@ -206,13 +206,13 @@ h1.page-title a {
   color: var(--dark);
   font-family: myfont;
   font-size:1.2vw;
-  
+
   @media (max-width: $tabletBreakpoint) {
-    font-size: 2.5vw;
+    font-size: 4vw;
   }
 
   @media (max-width: $mobileBreakpoint) {
-    font-size: 3vw;
+    font-size: 5vw;
   }
 }
 
