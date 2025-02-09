@@ -31,7 +31,7 @@ export const sharedPageComponents: SharedLayout = {
       GitHub: "https://github.com/thdngan",
       Email: "mailto:trinhhoangdieungan@gmail.com",
     },
-    // config.plugins.transformers.find((e) => {e.name === "Remark42"})?.options
+
   }),
   
 }
@@ -43,13 +43,9 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.MobileOnly(Component.TagList()),
-    // Component.Comments(),
-    // Component.MobileOnly(Component.TableOfContents()),
     
   ],
   left: [
-    // Component.DesktopOnly(Component.PageTitle()),
-    // Component.MobileOnly(Component.PageTitleMobile()),
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
@@ -57,56 +53,37 @@ export const defaultContentPageLayout: PageLayout = {
     
     Component.DesktopOnly(Component.TableOfContents()),
     // Component.TableOfContents(),
+    
     Component.DesktopOnly(
       Component.RecentNotes({
-        title: "Recent Posts",
+        title: "Recent Notes",
         limit: 2,
         filter: (f) =>
-          f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
-        linkToMore: "posts/" as SimpleSlug,
-      }),
-    ),
-    Component.DesktopOnly(
-    Component.RecentNotes({
-      title: "Recent Notes",
-      limit: 2,
-      filter: (f) =>
-        f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
-      linkToMore: "notes/" as SimpleSlug,
-    }),
-  ),
+          f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
+        linkToMore: "notes/" as SimpleSlug,
+      })),
+      // I had to reverse the order of Recent notes and posts so that the recent posts appear above, not sure why this is happening after i added the floating buttons
+      Component.DesktopOnly(
+        Component.RecentNotes({
+          title: "Recent Posts",
+          limit: 2,
+          filter: (f) =>
+            f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+          linkToMore: "posts/" as SimpleSlug,
+        }),
+      ),
+
   Component.FloatingButtons({position: 'right'}),
 
-    // Component.DesktopOnly(Component.Explorer())
+
     ],
   right: [
     Component.Graph(),
-  //   Component.DesktopOnly(
-  //   Component.RecentNotes({
-  //     title: "Topics",
-  //     limit: 3,
-  //     filter: (f) =>
-  //       f.slug!.startsWith("subjects/") && f.slug! !== "subjects/index" && !f.frontmatter?.noindex,
-  //     linkToMore: "subjects/" as SimpleSlug,
-  //   }),
-  // ),
-  // Component.DesktopOnly(
-  //   Component.RecentNotes({
-  //     title: "Recent Notes",
-  //     limit: 2,
-  //     filter: (f) =>
-  //       f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
-  //     linkToMore: "notes/" as SimpleSlug,
-  //   }),
-  // ),
-  // Component.Explorer(),
-  // Component.DesktopOnly(Component.TagList()),
-  // Component.DesktopOnly(Component.TableOfContents()),
-  Component.Backlinks(),
-  // Component.DesktopOnly(Component.TableOfContents()),
-  Component.DesktopOnly(Component.TagList()),
+    Component.Backlinks(),
+    Component.DesktopOnly(Component.TagList()),
   // Component.TagList(),
 ],
+
   
 }
 
@@ -115,12 +92,12 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
     Component.DesktopOnly(Component.PageTitle()),
-    Component.MobileOnly(Component.PageTitleMobile()),
+    // Component.MobileOnly(Component.PageTitleMobile()),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.Explorer()),
-    Component.FloatingButtons({position: 'right'}),
+    // Component.FloatingButtons({position: 'right'}),
   ],
   right: [],
 }

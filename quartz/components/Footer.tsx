@@ -4,6 +4,8 @@ import style from "./styles/footer.scss"
 import { version } from "../../package.json"
 import { i18n } from "../i18n"
 
+import script from "./scripts/_randomPage.inline"
+
 interface Optionss {
   links: Record<string, string>
 }
@@ -13,7 +15,7 @@ export default ((opts?: Optionss) => {
     const year = new Date().getFullYear()
     const links = opts?.links ?? []
     return (
-    <footer class={`${displayClass ?? ""}`}>
+    <footer class={`${displayClass ?? ""} footer`}>
         <hr />
         <div class="giscus"></div>
         {/* <hr /> */}
@@ -34,5 +36,6 @@ export default ((opts?: Optionss) => {
   }
 
   Footer.css = style
+  Footer.afterDOMLoaded = script
   return Footer
 }) satisfies QuartzComponentConstructor

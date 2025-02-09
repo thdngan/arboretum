@@ -50,6 +50,7 @@ export default ((opts: Options) => {
         data-theme-url={
           opts.options.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
         }
+        style={{ marginTop: "80px" }} // Add this line to set the 
       ></div>
     )
   }

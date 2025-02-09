@@ -178,12 +178,33 @@ a {
     }
 
     & .sidebar.left {
+      // z-index: 1;
+      // grid-area: grid-sidebar-left;
+      // flex-direction: column;
       left: calc(calc(96vw - $pageWidth) / 2 - $sidePanelWidth);
       @media all and (max-width: $fullPageWidth) {
         gap: 0;
         align-items: center;
+        height: unset;
+
+        // display: flex;
+        // flex-direction: row;
       }
     }
+  //   z-index: 1;
+  //   grid-area: grid-sidebar-left;
+  //   flex-direction: column;
+  //   @media all and (max-width: $fullPageWidth) {
+  //     gap: 0;
+  //     align-items: center;
+  //     position: initial;
+  //     display: flex;
+  //     // height: unset;
+  //     flex-direction: row;
+  //     padding: 0;
+  //     padding-top: 2rem;
+  //   }
+  // }
 
     & .sidebar.right {
       right: calc(calc(96vw - $pageWidth) / 2 - $sidePanelWidth);
