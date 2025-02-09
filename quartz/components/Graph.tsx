@@ -40,7 +40,7 @@ const defaultOptions: GraphOptions = {
     drag: true,
     zoom: true,
     depth: -1,
-    scale: 1.2,
+    scale: 1.,
     repelForce: 0.5,
     centerForce: 0.5,
     linkDistance: 30,
@@ -58,7 +58,7 @@ export default ((opts?: GraphOptions) => {
     const globalGraph = { ...defaultOptions.globalGraph, ...opts?.globalGraph }
     return (
       <div class={`graph ${displayClass ?? ""}`}>
-        <h3>Graph View</h3>
+        <h3>🧭 Interactive Map</h3>
         {/* Click top right symbol for full view */}
         <div class="graph-outer">
           <div id="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
