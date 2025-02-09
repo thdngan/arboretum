@@ -38,6 +38,16 @@ export default ((opts: Options) => {
       <>
       <hr/>
       <h2>💬 Penguin's Log</h2>
+      <p><strong>Captain’s Log, Day (?) </strong> 🐧✨
+      <br />
+      The icy shores are quiet, the stars twinkle above, and the trees... well, they don’t talk back (yet). But you can!
+      <br />
+      <br />
+      💬 This is the place to share your thoughts, challenge my ideas, or drop some cosmic wisdom. Did I get something wrong? Set me straight! Got a cool fact about space, trees, or penguins? I’m all ears (or flippers)!
+      <br />
+      <br />
+      <em>- Ryan</em> 
+      </p>
       <div
         class={classNames(displayClass, "giscus")}
         data-repo={opts.options.repo}
