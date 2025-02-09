@@ -14,6 +14,8 @@ function setupFloatingButtons() {
     currentCleanup = null
   }
 
+  const buttons = document.querySelectorAll<HTMLElement>('.floating-button');
+
   const buttonGroups = document.querySelectorAll<HTMLElement>('.button-group')
   function toggleGraph() {
     const graphComponent = document.querySelector('.graph') as HTMLElement
@@ -57,7 +59,10 @@ function setupFloatingButtons() {
   }
 
   // 处理按钮点击
-  function handleButtonClick(e: Event) {
+  function handleButtonClick(this: HTMLElement,e: Event) {
+    // const clickaction = this.getAttribute('data-action');
+    // if (!clickaction) return
+
     const button = (e.target as Element).closest('[data-action]')
     if (!button) return
     
@@ -90,6 +95,13 @@ function setupFloatingButtons() {
         navigateToRandomPage()
         break
     }
+  }
+
+  // Hide tooltips after click
+  const tooltip = this.querySelector('.floating-button-tooltip');
+  if (tooltip) {
+    tooltip.style.opacity = '0';
+    tooltip.style.visibility = 'hidden';
   }
 
   // 设置事件监听
