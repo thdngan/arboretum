@@ -40,8 +40,16 @@ function setupFloatingButtons() {
           graphComponent.classList.remove('active')
           document.removeEventListener('keydown', handleEsc)
         }
-      }
-      document.addEventListener('keydown', handleEsc)
+      };
+      const handleClickOutside = (e: MouseEvent) => {
+        if (!graphComponent.contains(e.target as Node)) {
+          graphComponent.classList.remove('active');
+          document.removeEventListener('keydown', handleEsc);
+          document.removeEventListener('click', handleClickOutside);
+        }
+      };
+      document.addEventListener('keydown', handleEsc);
+      document.addEventListener('click', handleClickOutside);
     } else {
       // 隐藏图谱
       graphComponent.classList.remove('active')

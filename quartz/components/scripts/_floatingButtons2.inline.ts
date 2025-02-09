@@ -120,7 +120,7 @@ function setupFloatingButtons() {
     if (!graphComponent) return
 
     const isVisible = graphComponent.classList.contains('active')
-    if (!isVisible) {
+    if (!isVisible) { 
       // 显示图谱
       graphComponent.classList.add('active')
       // 触发图谱渲染
