@@ -75,17 +75,15 @@ export const defaultContentPageLayout: PageLayout = {
         category: 'Announcements',
         // from data-category-id
         categoryId: "DIC_kwDOHxknJs4CfhAs",
+        mapping: "specific",
+        strict: false,
         themeUrl: "https://thdngan.github.io/arboretum/static/giscus", // corresponds to quartz/static/giscus/
         lightTheme: "light", // corresponds to light-theme.css in quartz/static/giscus/
         darkTheme: "dark", // corresponds to dark-theme.css quartz/static/giscus/
-        mapping: "pathname",
-        strict: "0",
         inputPosition: "top",
       }
     }),
   ],
-
-
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
