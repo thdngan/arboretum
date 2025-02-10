@@ -1,23 +1,44 @@
+// @use "quartz/styles/base.scss";
+
+// // put your custom CSS here!
+// @use "quartz/styles/variables.scss" as *;
+
 .recent-notes {
+  margin-bottom: -0.5cm;
+
   & > h3 {
     margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    width: 6cm;
+    // width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid var(--dark); 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+  }
+
+  & > h3 span{
+    background:var(--light); 
+    padding:0 10px; 
+    // background: var(--lightgray);
   }
 
   & > ul.recent-ul {
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 0rem;
     padding-left: 0;
+    // margin-bottom: -0.3cm;
 
     & > li {
       margin: 1rem 0;
+      margin-bottom: -0.1cm;
       .section > .desc > h3 > a {
         background-color: transparent;
       }
 
       .section > .meta {
         // font-family: biro_script_standardRgus;
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 0rem 0;
         opacity: 0.8;
       }
     }

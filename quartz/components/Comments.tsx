@@ -38,7 +38,8 @@ export default ((opts: Options) => {
       <>
       <hr/>
       <h2>💬 Logbook</h2>
-      <p>
+      <br />
+      <p-code-font>
       <strong>Captain’s Log, Day 120103 </strong> 
       <br />
       The icy shores are quiet, the stars twinkle ✨ above, and the trees... well, they don’t talk back (yet). But you can!
@@ -48,7 +49,7 @@ export default ((opts: Options) => {
       <br />
       <br />
       <em>- Ryan</em> 
-      </p>
+      </p-code-font>
       <div
         class={classNames(displayClass, "giscus")}
         data-repo={opts.options.repo}
