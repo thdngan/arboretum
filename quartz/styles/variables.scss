@@ -19,8 +19,8 @@ $calloutBoxFontsize: 16px;
  * assuming mobile < desktop
  */
 $breakpoints: (
-  mobile: 800px,
-  desktop: 1200px,
+  mobile: 600px, //800
+  desktop: 1000px, //1200
 );
 
 $mobile: "(max-width: #{map.get($breakpoints, mobile)})";
