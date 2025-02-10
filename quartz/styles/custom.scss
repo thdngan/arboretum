@@ -182,7 +182,7 @@
   .meta,
   .content-meta {
     font-family: myfont; //var(--bodyFont);
-    font-size: small;
+    font-size:x-small;
   }
 
 a {
@@ -279,7 +279,7 @@ section {
   background-color: var(--light);
   font-family: InterDisam;
   font-feature-settings: "ss04" 1;
-  font-size: large;
+  // font-size:medium;
   color: var(--darkgray);
 }
 
@@ -337,7 +337,7 @@ section {
   margin: 0px 0px 0px 0px ;
   width: 100%;
   font-family: var(--bodyFont);
-  font-size: 16px;
+  font-size: $calloutBoxFontsize;
   text-align: center;
   padding-left: 38px;
   border-radius: 2px;
@@ -352,7 +352,7 @@ section {
   margin: 4px 0px 0px ;
   width: 100%;
   font-family: var(--bodyFont);
-  font-size: 16px;
+  font-size: $calloutBoxFontsize;
   text-align: center;
   padding-left: 38px;
   border-radius: 2px;
@@ -381,7 +381,7 @@ section {
 .callout[data-callout="infobox"] table {
   margin: 0px !important;
   width: 100%;
-  font-size: 14px;
+  font-size: $calloutBoxFontsize;
   border: 0px solid var(--wikiborder);
   background-color: var(--wikibackground);
 }
@@ -433,7 +433,7 @@ section {
   text-align: left;
   padding: 2px;
   margin: auto;
-  font-size: 16px;
+  font-size: $calloutBoxFontsize;
 }
 
 /* mobile breakpoint */
@@ -467,7 +467,7 @@ section {
   text-align: center;
   padding: 2px;
   margin: auto;
-  font-size: 16px;
+  font-size: $calloutBoxFontsize;
 }
 
 /*----caption right callout----*/
@@ -495,7 +495,7 @@ section {
   text-align: left;
   padding: 2px;
   margin: auto;
-  font-size: 16px;
+  font-size: $calloutBoxFontsize;
 }
 
 /* mobile breakpoint */

@@ -236,6 +236,11 @@ export async function handleBuild(argv) {
         type: "css-text",
         cssImports: true,
       }),
+      sassPlugin({
+        filter: /\.inline\.scss$/,
+        type: "css",
+        cssImports: true,
+      }),
       {
         name: "inline-script-loader",
         setup(build) {
