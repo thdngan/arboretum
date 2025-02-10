@@ -6,6 +6,27 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [],
+  afterBody: [
+    Component.Comments({
+      provider: 'giscus',
+      options: {
+        // from data-repo
+        repo: "thdngan/arboretum",
+        // from data-repo-id
+        repoId: "R_kgDOHxknJg",
+        // from data-category
+        category: 'Announcements',
+        // from data-category-id
+        categoryId: "DIC_kwDOHxknJs4CfhAs",
+        mapping: "pathname",
+        strict: false,
+        themeUrl: "https://thdngan.github.io/arboretum/static/giscus", // corresponds to quartz/static/giscus/
+        lightTheme: "light", // corresponds to light-theme.css in quartz/static/giscus/
+        darkTheme: "dark", // corresponds to dark-theme.css quartz/static/giscus/
+        inputPosition: "top",
+      }
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/thdngan",
@@ -63,27 +84,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TagList()),
     // Component.TagList(),
   ],
-  afterBody: [
-    Component.Comments({
-      provider: 'giscus',
-      options: {
-        // from data-repo
-        repo: "thdngan/arboretum",
-        // from data-repo-id
-        repoId: "R_kgDOHxknJg",
-        // from data-category
-        category: 'Announcements',
-        // from data-category-id
-        categoryId: "DIC_kwDOHxknJs4CfhAs",
-        mapping: "pathname",
-        strict: false,
-        themeUrl: "https://thdngan.github.io/arboretum/static/giscus", // corresponds to quartz/static/giscus/
-        lightTheme: "light", // corresponds to light-theme.css in quartz/static/giscus/
-        darkTheme: "dark", // corresponds to dark-theme.css quartz/static/giscus/
-        inputPosition: "top",
-      }
-    }),
-  ],
+
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
