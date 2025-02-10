@@ -205,7 +205,7 @@ h1.page-title a {
   text-decoration: none;
   color: var(--dark);
   font-family: myfont;
-  font-size:1.2vw;
+  font-size: x-large;//1.2vw;
 
   @media (max-width: $tabletBreakpoint) {
     font-size: 3.5vw;
