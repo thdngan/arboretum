@@ -8,7 +8,7 @@
 
   & > h3 {
     margin: 0.5rem 0 0 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 6cm;
     // width: 100%; 
     text-align: center; 
@@ -31,8 +31,9 @@
 
     & > li {
       margin: 1rem 0;
-      margin-bottom: -0.1cm;
+      margin-bottom: -0.5cm;
       .section > .desc > h3 > a {
+        font-size: 1.3rem;
         background-color: transparent;
       }
 

@@ -41,7 +41,7 @@ const config: QuartzConfig = {
           nodesecond: "#9ad6d2",
           nodethird: "#c678dd",
           nodevisited: "#e5c07b",
-          border: "rgba(105, 137, 150,0.2)",
+          border: "rgba(105, 137, 150,0.5)",
           link: "rgba(105, 137, 150,0.2)",
 
           wikiheading: "#c8d0ca",
