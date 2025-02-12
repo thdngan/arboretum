@@ -45,14 +45,22 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     removeTags,
     showTags,
     focusOnHover,
+    excludeTags,
   } = JSON.parse(graph.dataset["cfg"]!)
 
-  const data: Map<SimpleSlug, ContentDetails> = new Map(
+  const originalData: Map<SimpleSlug, ContentDetails> = new Map(
     Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
       simplifySlug(k as FullSlug),
       v,
     ]),
   )
+
+  const data: Map<SimpleSlug, ContentDetails> = new Map(
+    [...originalData.entries()].filter(([key, value]) => {
+    return !value.tags?.some(tag => excludeTags.includes(tag))
+    })
+  )
+
   const links: LinkData[] = []
   const tags: SimpleSlug[] = []
 

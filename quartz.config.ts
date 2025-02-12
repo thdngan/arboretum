@@ -38,9 +38,13 @@ const config: QuartzConfig = {
           highlight: "rgba(171, 196, 193, 0.1)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
 
           nodefirst: "#35827d",
-          nodesecond: "#9ad6d2",
+          nodesecond: "#8bd0cb",
           nodethird: "#c678dd",
           nodevisited: "#e5c07b",
+          // nodefirst: "#E06C75",
+          // nodesecond: "#98c379",
+          // nodethird: "#c678dd",
+          // nodevisited: "#61afef", 
           border: "rgba(105, 137, 150,0.5)",
           link: "rgba(105, 137, 150,0.2)",
 
@@ -76,7 +80,7 @@ const config: QuartzConfig = {
           nodefirst: "#E06C75",
           nodesecond: "#98c379",
           nodethird: "#c678dd",
-          nodevisited: "#61afef",
+          nodevisited: "#61afef", 
           border: "rgba(224, 224, 224,0.5)",
           link: "rgba(224, 224, 224,0.25)",
 

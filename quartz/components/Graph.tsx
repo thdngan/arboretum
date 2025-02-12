@@ -15,6 +15,7 @@ export interface D3Config {
   opacityScale: number
   removeTags: string[]
   showTags: boolean
+  excludeTags: string[]
 }
 
 interface GraphOptions {
@@ -34,13 +35,14 @@ const defaultOptions: GraphOptions = {
     fontSize: 0.6, // what size should the node labels be?
     opacityScale: 1, // how quickly do we fade out the labels when zooming out?
     showTags:true,
-    removeTags:[]
+    removeTags:[],
+    excludeTags: [],
   },
   globalGraph: {
     drag: true,
     zoom: true,
     depth: -1,
-    scale: 1.,
+    scale: 1.1,
     repelForce: 0.5,
     centerForce: 0.5,
     linkDistance: 30,
@@ -49,6 +51,7 @@ const defaultOptions: GraphOptions = {
     showTags: true,
     removeTags: [],
     focusOnHover: true,
+    excludeTags: [],
   },
 }
 

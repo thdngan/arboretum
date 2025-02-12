@@ -1,6 +1,19 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+// Constants for config
+const tagsToRemove = ["graph-exclude", "explorer-exclude", "backlinks-exclude", "recents-exclude"]
+const graphConfig = {
+  localGraph: {
+    removeTags: tagsToRemove,
+    excludeTags: ["graph-exclude"]
+  },
+  globalGraph: {
+    removeTags: tagsToRemove,
+    excludeTags: ["graph-exclude"]
+  }
+};
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -79,7 +92,7 @@ export const defaultContentPageLayout: PageLayout = {
 
   ],
   right: [
-    Component.Graph(),
+    Component.Graph(graphConfig),
     Component.Backlinks(),
     Component.DesktopOnly(Component.TagList()),
     // Component.TagList(),
