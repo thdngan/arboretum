@@ -30,14 +30,14 @@ const config: QuartzConfig = {
         lightMode: {
           light: "#f5f5f5", /**faf8f8 for background                                             ; #FFFFFF, f5f5f5*/
           lightgray: "rgba(105, 137, 150,0.2)", /**e5e5e5 for background of search             ;rgba(117, 129, 107,0.4)*/
-          gray: "#E06C75", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
+          gray: "#d43542", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
           darkgray: "#1F1F1F", /**4e4e4e for text                                                ; #000000*/
           dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
           secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37*/
           tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
           highlight: "rgba(171, 196, 193, 0.1)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
 
-          nodefirst: "#35827d",
+          nodefirst: "#E06C75", /**35827d */
           nodesecond: "#8bd0cb",
           nodethird: "#c678dd",
           nodevisited: "#e5c07b",
