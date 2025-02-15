@@ -156,7 +156,7 @@ Figure on the left plots qualitatively the phase boundary as a function of $P$ a
 - This "**critical point**" $T_c$ is a function of the thermodynamic properties of the particular guest and, hence, is **different for each species**.
 - At each temperature below $T_c$, there exist both maximum and minimum pressures defining the domain of clathrate stability.
 - The **minimum pressure** exists because ***at lower pressures the gas entropy is very large (i.e., more favorable)***, and the **maximum pressure** exists because the coexisting pure guest phase has reached a low enough specific volume that the ***volume change*** (clathrate $\rightarrow$ guest + $H_2O$) is ***energetically favorable***.
-- The precise sign and value of $dT/dP$ at the high-pressure end of the clathrate stability field are sensitive functions of the compressibility of the clathrate, water, and guest molecule components, and are calculated for $CH_4$ and $N_2$ in [[lunine_stevenson_1985#High-pressure equilibria|§7]]. 
+- The precise sign and value of $dT/dP$ at the high-pressure end of the clathrate stability field are sensitive functions of the compressibility of the clathrate, water, and guest molecule components, and are calculated for $CH_4$ and $N_2$ in [[clathrate#High-pressure equilibria|§7]]. 
 - $P-T$ data in the literature are restricted to the low-pressure end in the figure ($\lesssim 4$ kilobars); studies by Tammann and Krige (1925) and van Berkum and Diepen (1979) appear to have located the critical point for $SO_2$ clathrate.
 
  Considering in more detail the nature of the guest-host interaction, it is inaccurate to think of the guest molecules as impurities occupying imperfections or substituting for  water molecules in the lattice structure.
@@ -238,12 +238,12 @@ where:
 - $\Delta h^ \beta, \Delta V^\beta$ are the **enthalpy** and **volume difference** between the empty hydrate and coexisting water phase,
 - $T_0$ is a reference temperature.
 
-In the **==low-pressure==** (<< 1 kilobar) regime considered in [[lunine_stevenson_1985#Clathrate equilibria at moderate pressures in the presence of ammonia|§5]] and [[lunine_stevenson_1985#High-pressure equilibria|§6]], **3 simplifications** are made:
+In the **==low-pressure==** (<< 1 kilobar) regime considered in [[clathrate#Clathrate equilibria at moderate pressures in the presence of ammonia|§5]] and [[clathrate#High-pressure equilibria|§6]], **3 simplifications** are made:
 - $C_{ij}(T,P)=C_{ij}(T)$.
-- The last term in equation [[lunine_stevenson_1985#^eq5|(5)]] is neglected.
+- The last term in equation [[clathrate#^eq5|(5)]] is neglected.
 - $f_j=P_j=$ pressure exerted by the guest species vapor (or supercritical fluid) phase.
 
-$C_{ij}$  are called ==Langmuir constants== and depend on the **molecular properties** through $\omega(r)$, the ==spherically averaged interaction between guest and cage==. This effective potential depends on the **shape** as well as **size** of the molecule. Equation [[lunine_stevenson_1985#^eq3|(3)]] explicitly ***assumes a spherical cage***; this is adequate for all cages. The **largest deviation from sphericity** is in structure I, where the vertices of the large cage as defined by water oxygen atoms vary in distance to center by $\lesssim 14\%$  (Davidson 1971).
+$C_{ij}$  are called ==Langmuir constants== and depend on the **molecular properties** through $\omega(r)$, the ==spherically averaged interaction between guest and cage==. This effective potential depends on the **shape** as well as **size** of the molecule. Equation [[clathrate#^eq3|(3)]] explicitly ***assumes a spherical cage***; this is adequate for all cages. The **largest deviation from sphericity** is in structure I, where the vertices of the large cage as defined by water oxygen atoms vary in distance to center by $\lesssim 14\%$  (Davidson 1971).
 
 McKoy and Sinanoglu (1963) and Parrish and Prausnitz (1972) derived expressions for the **==spherically averaged potentials for spherical and rodlike guest molecules using the Kihara potential==** appropriate for ==dispersion interactions== between guest and host:
 
@@ -308,24 +308,24 @@ $$
 
 - The quantities $\mathscr{F}(d)$ and $\mathscr{G}(d)$ are power series in $(d/a)^2$ included to allow accurate comparison between structure I and II Langmuir constants.
 
-For a given choice of parameters $\epsilon$, $\rho_m$, $c$, and temperature $T$ we **compute the integral in equation** [[lunine_stevenson_1985#^eq3|(3)]] using equation [[lunine_stevenson_1985#^eq7|(7)]] or [[lunine_stevenson_1985#^eq8|(8)]], terminating the integration at a value $r$ such that the **==probability of finding the molecule==**, $\exp[-\omega(r)/kT]$, at $r$ is $\lll 1$. This gives $C_{ij}(T)$, and in the low-pressure calculations for a single species $j$, equations [[lunine_stevenson_1985#^eq1|(1)]] and [[lunine_stevenson_1985#^eq2|(2)]] are then solved (using laboratory values for $\Delta\mu^\beta$; see below) for the dissociation pressure for species $j$. To solve for several guest species, abundance relations between them must be applied to close the system. ==Applications of equations== [[lunine_stevenson_1985#^eq1|(1)]]-[[lunine_stevenson_1985#^eq5|(5)]] to the ==high-pressure regime== is discussed in [[lunine_stevenson_1985#High-pressure equilibria|§7]].
+For a given choice of parameters $\epsilon$, $\rho_m$, $c$, and temperature $T$ we **compute the integral in equation** [[clathrate#^eq3|(3)]] using equation [[clathrate#^eq7|(7)]] or [[clathrate#^eq8|(8)]], terminating the integration at a value $r$ such that the **==probability of finding the molecule==**, $\exp[-\omega(r)/kT]$, at $r$ is $\lll 1$. This gives $C_{ij}(T)$, and in the low-pressure calculations for a single species $j$, equations [[clathrate#^eq1|(1)]] and [[clathrate#^eq2|(2)]] are then solved (using laboratory values for $\Delta\mu^\beta$; see below) for the dissociation pressure for species $j$. To solve for several guest species, abundance relations between them must be applied to close the system. ==Applications of equations== [[clathrate#^eq1|(1)]]-[[clathrate#^eq5|(5)]] to the ==high-pressure regime== is discussed in [[clathrate#High-pressure equilibria|§7]].
 
 ### Choice of Molecular Parameters
 
- We now fit the above equations to existing laboratory data on clathrate to derive values for $\epsilon$, $\rho$, and, where necessary, $c$. We will then use these parameters to predict the dissociation of clathrate at temperatures below that available in the data, or the dissociation pressure for guest molecules simiar to others but for which laboratory data are scant or nonexistent. We use our results in [[lunine_stevenson_1985#Applications|§9]] to predict the composition of the clathrate in plausible nebular models. Our derived parameters also will be used to predict the stability of clathrate under high pressure and in coexistence with an ammonia-water solution.
+ We now fit the above equations to existing laboratory data on clathrate to derive values for $\epsilon$, $\rho$, and, where necessary, $c$. We will then use these parameters to predict the dissociation of clathrate at temperatures below that available in the data, or the dissociation pressure for guest molecules simiar to others but for which laboratory data are scant or nonexistent. We use our results in [[clathrate#Applications|§9]] to predict the composition of the clathrate in plausible nebular models. Our derived parameters also will be used to predict the stability of clathrate under high pressure and in coexistence with an ammonia-water solution.
 
-In evaluating equation [[lunine_stevenson_1985#^eq1|(1)]] a choice of $\Delta\mu^\beta$, the difference in chemical potential between the empty clathrate lattice and coexisting liquid water or ice phase, must be made. To date no attempt has been made to calculate this from first principles; instead it has been derived by laboratory studies. For structure I van der Waals and Plateeuw (1959) suggest 167 cal mole$^{-1}$ at 273 K, based on the bromine clathrate. Parrish and Prausnitz (1972) and Holder, Corbin, and Papadopoulos (1980) derive $\Delta\mu^\beta \sim 310 \text{ cal mole}^{-1}$ based on cyclopropane and methane clathrate. Since the existence of a structure I bromine clathrate has been called into question (Parrish and Prausnitz 1972), we use the latter value. For structure II, Sortland and Robinson (1964) derive 211 cal mole$^{-1}$.
+In evaluating equation [[clathrate#^eq1|(1)]] a choice of $\Delta\mu^\beta$, the difference in chemical potential between the empty clathrate lattice and coexisting liquid water or ice phase, must be made. To date no attempt has been made to calculate this from first principles; instead it has been derived by laboratory studies. For structure I van der Waals and Plateeuw (1959) suggest 167 cal mole$^{-1}$ at 273 K, based on the bromine clathrate. Parrish and Prausnitz (1972) and Holder, Corbin, and Papadopoulos (1980) derive $\Delta\mu^\beta \sim 310 \text{ cal mole}^{-1}$ based on cyclopropane and methane clathrate. Since the existence of a structure I bromine clathrate has been called into question (Parrish and Prausnitz 1972), we use the latter value. For structure II, Sortland and Robinson (1964) derive 211 cal mole$^{-1}$.
 
 Of equal concern is the temperature dependence of $\Delta\mu^\beta$ below the ice point, on which authors *disagree*.
 - Parrish and Prausnitz conclude $\Delta\mu^\beta$ **decreases** by $\sim 6$% for both structures from 273 to 70 K;
 - Holder, Corbin, and Papadopoulos (1980) ***predict an increase of 27% for structure I over that temperature range***. 
 - Using the Debye model of solids, infrared spectral data on intermolecular translational frequencies in ice I and structure II clathrate (Johari and Chew 1984), and thermodynamic data in Giauque and Stout (1936), we estimate that $\Delta\mu^\beta$ **increases** $\sim 15$% from 273 to 70 K.
 - Unfortunately, data on librational vibrations in the clathrate lattice do not exist.
-- We adopt a constant $\Delta\mu^\beta$ in the low-pressure ice I regime. In the liquid-water field the temperature dependence of $\Delta\mu^\beta$ is large and dominated by the ice-to-liquid enthalpy change, this will be important for calculations in [[lunine_stevenson_1985#Clathrate equilibria at moderate pressures in the presence of ammonia|§6]] and [[lunine_stevenson_1985#High-pressure equilibria|§7]].
+- We adopt a constant $\Delta\mu^\beta$ in the low-pressure ice I regime. In the liquid-water field the temperature dependence of $\Delta\mu^\beta$ is large and dominated by the ice-to-liquid enthalpy change, this will be important for calculations in [[clathrate#Clathrate equilibria at moderate pressures in the presence of ammonia|§6]] and [[clathrate#High-pressure equilibria|§7]].
 
 ***Table 1*** lists the guest molecules included in the present study, along with sources of laboratory data and their temperature range. Molecules listed under "substantial data" were studied over a temperature range sufficient to allow fitting of Kihara or Lennard-Jones parameters such that the calculated dissociation pressures should be good within 10% at moderate temperatures ($\gtrsim$ 150 K) and probably within a factor of several extrapolated to low (T<100K) temperatures. Molecules in the "some data" category have been studied under restricted temperature ranges, and the consequent degree of uncertainty in dissociation pressure at low temperatures increases by about a factor of 10. Those molecules listed under the "little or no data category" required special treatment.... (Read more on page 8).
 
-... Note that two sets of Langmuir constants were calculated for each molecule, one for each structure, using the *same* mixed force parameters $c_m$, $\epsilon_m$, $\rho_m$. The calculations of incorporation of molecules from a solar composition gas into clathrate is done in [[lunine_stevenson_1985#Applications|§9]] for both structure I and II. Using the same force parameters in both structures assumes the guest molecule interaction with individual water molecules is not affected by cage size or number of water molecules per cage. This is a good approximation so long as the guest molecule is substantially smaller than the cage size, which is true for most molecules of interest here.
+... Note that two sets of Langmuir constants were calculated for each molecule, one for each structure, using the *same* mixed force parameters $c_m$, $\epsilon_m$, $\rho_m$. The calculations of incorporation of molecules from a solar composition gas into clathrate is done in [[clathrate#Applications|§9]] for both structure I and II. Using the same force parameters in both structures assumes the guest molecule interaction with individual water molecules is not affected by cage size or number of water molecules per cage. This is a good approximation so long as the guest molecule is substantially smaller than the cage size, which is true for most molecules of interest here.
 
 ***Table 2*** lists dissociation pressures derived from the data fits over a range of temperatures, below the low-pressure ice point, of interest to solar system studies. Also shown are corresponding data points, when available, from the data sources given in Table 1 (Read more on page 9).
 
@@ -351,8 +351,8 @@ where:
 - unsubscripted parameters refer to the pure guest molecules,
 - $\omega$ regers to the water lattice.
 - take $c_\omega=0$ as in Holder, Corbin and Papadopouslos (1980), since the main guest-water molecule interaction is with the pointlike oxygen atom; guest-hydrogen atom interaction has been shown by numerical modeling to be much less important.
-- Values of $\epsilon$, $\rho$, $c$ are obtained from tables based on virial data; these along with the mixed parameters for the known clathrate are used to derive effective $\rho_\omega$, $\epsilon_\omega$ from equation [[lunine_stevenson_1985#^eq9|(9)]].
-- Using tabulated $\epsilon$, $\rho$, $c$ for the unknown molecule, equations [[lunine_stevenson_1985#^eq9|(9)]] give the mixed parameters for this species from which we derive dissociation pressure in equations [[lunine_stevenson_1985#^eq1|(1)]]-[[lunine_stevenson_1985#^eq3|(3)]] and [[lunine_stevenson_1985#^eq7|(7)]] or [[lunine_stevenson_1985#^eq8|(8)]].
+- Values of $\epsilon$, $\rho$, $c$ are obtained from tables based on virial data; these along with the mixed parameters for the known clathrate are used to derive effective $\rho_\omega$, $\epsilon_\omega$ from equation [[clathrate#^eq9|(9)]].
+- Using tabulated $\epsilon$, $\rho$, $c$ for the unknown molecule, equations [[clathrate#^eq9|(9)]] give the mixed parameters for this species from which we derive dissociation pressure in equations [[clathrate#^eq1|(1)]]-[[clathrate#^eq3|(3)]] and [[clathrate#^eq7|(7)]] or [[clathrate#^eq8|(8)]].
 - Because two-parameter L-J fits to virial data are better established as "reference data" in the literature, and our two-parameter fit to the known N$_2$ dissocisation-pressures is fairly accurate, we employed the L-J potential for this portion of the study.
 
 \[...\]
@@ -367,7 +367,7 @@ $$
 
 The CO molecule interacts with a variable cage averaged dipolar field estimated by Davidson (1971) to be roughly comparable to that of a single water molecule.
 - Boltzmann factor in $\bar{\Gamma}_{ij}$ produces the strong temperature dependence.
-- Gurikov (1983) states that the numerical factor in equation [[lunine_stevenson_1985#^eq10|(10)]] should be $\frac{1}{3}$.
+- Gurikov (1983) states that the numerical factor in equation [[clathrate#^eq10|(10)]] should be $\frac{1}{3}$.
 
 \[...\]
 
@@ -392,7 +392,7 @@ where:
 
 \[...\]
 
-Consider a molecule with Langmuir constant $C_M$ occupying the large cage of a structure I clathrate, and a second molecule with Langmuir $C_H \ll C_M$. Equation [[lunine_stevenson_1985#^eq10|(10)]] can be **==generalized==** to read (writing out the large-cage term only):
+Consider a molecule with Langmuir constant $C_M$ occupying the large cage of a structure I clathrate, and a second molecule with Langmuir $C_H \ll C_M$. Equation [[clathrate#^eq10|(10)]] can be **==generalized==** to read (writing out the large-cage term only):
 
 $$
 \begin{aligned}
@@ -457,7 +457,7 @@ At **higher temperatures & pressures**, the liquid ammonia-water field would als
 ==Assumptions:==
 1. NH$_3$ does not incorporate as a guest molecule in clathrate
 2. NH$_3$ does not incorporate in the cage-forming ice clathrate lattice, nor does it form a clathrate lattice structure of its own.
-=> equate chemical potentials for the ammonia hydrates and clathrate + evaluate them using properties known from laboratory data or calculated from [[lunine_stevenson_1985#Statistical mechanical model to predict clathrate formation|§5]].
+=> equate chemical potentials for the ammonia hydrates and clathrate + evaluate them using properties known from laboratory data or calculated from [[clathrate#Statistical mechanical model to predict clathrate formation|§5]].
 
 Since complete clathrate and hydrate formation would exhaust the available water ice in a solar composition nebula, we examine ==phase equilibria== between the following assemblages (??):
 

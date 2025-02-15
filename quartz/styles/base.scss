@@ -16,19 +16,20 @@ section {
   box-sizing: border-box;
   background-color: var(--light);
   font-family: InterDisam;    //added
-  font-family: var(--bodyFont);
+  // font-family: var(--bodyFont);
   color: var(--darkgray);
 }
 
 .text-highlight {
   background-color: #fbd04188;
+  color: var(--dark);
   padding: 0 0.1rem;
   border-radius: 5px;
 }
 
 ::selection {
   background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-  color: var(--darkgray);
+  color: var(--dark);
 }
 
 p,
@@ -46,6 +47,11 @@ ul,
   fill: var(--darkgray);
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+ul,
+li {
+  font-family: InterDisam;    //added
 }
 
 .math {

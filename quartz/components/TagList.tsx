@@ -19,7 +19,7 @@ const TagList: QuartzComponent = ({
         // <div class="desc">
         <div class={classNames(displayClass, "taglist")}>
         <h3>{i18n(cfg.locale).components.taglist.title}</h3>
-        
+
         <ul class={`tags ${displayClass ?? ""}`}>
         {tags.map((tag) => {
           const display = `${tag}`
@@ -33,6 +33,7 @@ const TagList: QuartzComponent = ({
           )
         })}
         </ul>
+  
         </div>
         // </div>
         
