@@ -47,7 +47,7 @@ Go ahead, click around - I promise no black holes 🕳️🐧.
 
 
 
-I stumbled upon [Quartz](https://quartz.jzhao.xyz/) while on a quest to find a way to publish my [Obsidian](https://obsidian.md/) notes on a [[neutrino communication|neutrino application]]. What followed was an absolute **blast** (and, let’s be real, a mild headache) as I set up my own digital arboretum. Turns out, wrestling with front-end stuff when you’re a total noob is both exciting and painful - 10/10 would recommend, but also, _send help_.
+I stumbled upon [Quartz](https://quartz.jzhao.xyz/) while trying to figure out how to publish my [Obsidian](https://obsidian.md/) notes on a [[neutrino communication|neutrino application]]. What followed was an absolute **blast** (and, let’s be real, a fair amount of head-scratching) as I set up my own digital arboretum. Wrestling with front-end stuff when you’re a total noob is equal parts fun and frustrating (and somehow addicting). Would I recommend it? Absolutely. Would I do it again? Ask me after I recover.
 
 That said, the struggle was so worth it! I picked up a ton of new knowledge along the way, and this little blog wouldn’t exist without [Jacky Zhao](https://github.com/jackyzha0)'s incredible work. Huge thanks for making this possible!
 
