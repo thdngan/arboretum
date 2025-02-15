@@ -7,9 +7,9 @@ enableToc: false
 <img id="banner" src="/images/banner.svg">
 
 
-<!-- >*One could say, in fact, that no story really has a beginning, and that no story really has an end, as all of the world's stories are as jumbled as the items in the arboretum, with their details and secrets all heaped together so that the whole story, from beginning to end, depends on how you look at it.*
+>*One could say, in fact, that no story really has a beginning, and that no story really has an end, as all of the world's stories are as jumbled as the items in the arboretum, with their details and secrets all heaped together so that the whole story, from beginning to end, depends on how you look at it.*
 >
->&mdash; Lemony Snicket, The End -->
+>&mdash; Lemony Snicket, The End
 
 Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)!
 

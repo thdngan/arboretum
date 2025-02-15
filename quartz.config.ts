@@ -70,7 +70,7 @@ const config: QuartzConfig = {
           // #E06C75: redish?
           // #4Dff0000
         darkMode: {
-          light: "#282c34", /**background: 161618 ,#0d1210, 1A2421, #141716, #2F3037*/
+          light: "#1b1d23", /**background: 161618 ,#0d1210, 1A2421, #141716, #2F3037, #282c34*/
           lightgray: "rgba(224, 224, 224,0.2)", /*background of search, inline code and borders: rgba(224, 224, 224,0.25),rgba(175, 62, 77,0.5) */
           gray: "#c678dd", /* date and reading time, graph links, heavier borders: b8b8b8 */
           darkgray: "#abb2bf",/*text: EAEAEA  */
