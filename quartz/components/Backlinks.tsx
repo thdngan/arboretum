@@ -25,8 +25,8 @@ const Backlinks: QuartzComponent = ({
             </li>
           ))
         ) : (
-          // <li>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</li>
-          <p-body>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</p-body>
+          <li>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</li>
+          // <p-body>{i18n(cfg.locale).components.backlinks.noBacklinksFound}</p-body>
         )}
       </ul>
     </div>
