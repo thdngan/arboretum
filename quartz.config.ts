@@ -23,7 +23,7 @@ const config: QuartzConfig = {
       cdnCaching: true,
       typography: {
         header: "JetBrains", /** Schibsted Grotesk, Chelsea Market,Libre Baskerville*/
-        body: "Bricolage Grotesque", /**Source Sans Pro, Roboto Serif */
+        body: "Inter", /**Source Sans Pro, Roboto Serif */
         code: "JetBrains Mono", /**IBM Plex Mono */
       },
       colors: {
