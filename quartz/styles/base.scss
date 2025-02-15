@@ -17,6 +17,7 @@ section {
   background-color: var(--light);
   font-family: InterDisam;    //added
   // font-family: var(--bodyFont);
+  font-feature-settings: "ss04" 1;
   color: var(--darkgray);
 }
 
