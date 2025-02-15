@@ -247,6 +247,17 @@ p-code-font {
   // background: var(--lightgray);
 }
 
+p-index {
+  margin: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--light);
+  font-family: InterDisam;    //added
+  font-family: var(--bodyFont);
+  color: var(--darkgray);
+}
+
+
 strong .text-highlight {
   background-color: #86ff8846;
   padding: 0 0.1rem;
