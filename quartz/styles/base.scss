@@ -15,8 +15,9 @@ section {
   max-width: 100%;
   box-sizing: border-box;
   background-color: var(--light);
-  font-family: InterDisam;    //added
-  // font-family: var(--bodyFont);
+  font-family: var(--bodyFont);
+  // font-family: InterDisam;    //added
+  
   font-feature-settings: "ss04" 1;
   color: var(--darkgray);
 }
