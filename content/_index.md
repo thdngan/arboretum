@@ -5,7 +5,7 @@ enableToc: false
 ---
 
 <img id="banner" src="/images/banner.svg">
-<p-index>
+
 
 >*One could say, in fact, that no story really has a beginning, and that no story really has an end, as all of the world's stories are as jumbled as the items in the arboretum, with their details and secrets all heaped together so that the whole story, from beginning to end, depends on how you look at it.*
 >
@@ -19,11 +19,9 @@ Now, if you’re wondering why there are penguins 🐧 waddling around an arbore
 
 <!-- And why is it *L'arboretum*? Claire, it's French ✨! -->
 
-</p-index>
 
 # Lost in the trees? Don't worry, I've got a map 
 
-<p-index>
 
 You can hop between posts and notes by clicking on **[[daisyworld|links like this]]** inside each page or by using the **interactive map**. If you're on a desktop, you’ll find it on the **right side** of the page. On mobile? Scroll down, it’s waiting at the **bottom**. There are also handy buttons on the bottom right to:  
 🧭 **Open the global map** (for the adventurous)  
@@ -43,19 +41,19 @@ Or if you just wanna see what kind of rabbit holes I’ve fallen into, here are 
 
 Go ahead, click around - I promise no black holes 🕳️🐧.
 
-</p-index>
+
 
 # Acknowledgement
 
-<p-index>
+
 
 I stumbled upon [Quartz](https://quartz.jzhao.xyz/) while on a quest to find a way to publish my [Obsidian](https://obsidian.md/) notes on a [[neutrino communication|neutrino application]]. What followed was an absolute **blast** (and, let’s be real, a mild headache) as I set up my own digital arboretum. Turns out, wrestling with front-end stuff when you’re a total noob is both exciting and painful - 10/10 would recommend, but also, _send help_.
 
 That said, the struggle was so worth it! I picked up a ton of new knowledge along the way, and this little blog wouldn’t exist without [Jacky Zhao](https://github.com/jackyzha0) and the incredible tool they built. Huge thanks for making this possible!
 
-Also, big shout-out to [Eilleen](https://quartz.eilleeenz.com/) for their ridiculously helpful Quartz [customization log](https://quartz.eilleeenz.com/Quartz-customization-log)—those footnotes and floating buttons are absolute lifesavers 😉.
+Also, big shout-out to [Eilleen](https://quartz.eilleeenz.com/) for their ridiculously helpful Quartz [customization log](https://quartz.eilleeenz.com/Quartz-customization-log)—those floating buttons are absolute lifesavers 😉.
 
-</p-index>
+
 
 <!-- <hr />  -->
 
