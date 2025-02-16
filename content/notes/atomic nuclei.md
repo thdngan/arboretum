@@ -5,6 +5,7 @@ tags:
   - particle
   - physics
   - notes
+draft: true
 ---
 Atomic nuclei are the beating hearts of atoms, tiny powerhouses where nearly all of an atom’s mass resides. %% If atoms were solar systems, the nucleus would be the massive sun at the center, holding everything together with an invisible but unstoppable force.  %%Despite being just a fraction of an atom’s total size, nuclei are dense beyond imagination—if you could compress a chunk of matter to nuclear density, a sugar-cube-sized piece would weigh about a billion tons!
 

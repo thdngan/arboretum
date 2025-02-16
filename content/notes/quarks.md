@@ -20,4 +20,4 @@ Each quark carries a **color charge**—red, green, or blue—but this has nothi
 
 The **Top quark** is particularly special—it’s the heaviest known elementary particle, as massive as an entire gold atom but squeezed into a single point. It decays so fast that it never even forms hadrons, providing direct insight into fundamental physics.
 
-Quarks are tiny, elusive, and never seen in isolation, and they hold the entire material universe together. Without them, there would be no [[protons]], no [[neutrons]], and no [[atoms]]—just a chaotic sea of unstructured energy. They may be trapped in their quantum cages, but their influence shapes everything we know.
+Quarks are tiny, elusive, and never seen in isolation, and they hold the entire material universe together. Without them, there would be no [[protons]], no [[neutrons]], and no atoms—just a chaotic sea of unstructured energy. They may be trapped in their quantum cages, but their influence shapes everything we know.

@@ -8,7 +8,7 @@ tags:
 ---
 Mesons are the middleweights of the particle world—unstable, fleeting, but absolutely crucial in the realm of quantum forces. Unlike [[baryons]], which are built from three [[quarks]], mesons are made of just _two_: one quark and one antiquark, held together by the [[strong interactions|strong nuclear force]]. This makes them part of the **[[hadrons|hadron family]]**, but with a twist—they’re not as stable as [[baryons]] and tend to decay quickly into lighter particles.
 
-Mesons play a key role as force carriers within [[atomic nuclei]]. Even though the strong nuclear force is technically mediated by [[gluons]], mesons act as “middlemen,” helping [[protons]] and [[neutrons]] stick together. In fact, this idea was first proposed by physicist Hideki Yukawa, who predicted mesons before they were even discovered, suggesting they were responsible for keeping atomic nuclei intact.
+Mesons play a key role as force carriers within atomic nuclei. Even though the strong nuclear force is technically mediated by [[gluons]], mesons act as “middlemen,” helping [[protons]] and [[neutrons]] stick together. In fact, this idea was first proposed by physicist Hideki Yukawa, who predicted mesons before they were even discovered, suggesting they were responsible for keeping atomic nuclei intact.
 
 There are many types of mesons, but some of the most well-known include:
 

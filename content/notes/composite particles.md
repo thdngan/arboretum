@@ -9,7 +9,7 @@ tags:
 ---
 Include:
 - [[notes/hadrons|hadrons]]
-- [[atomic nuclei]]
-- [[atoms]]
-- [[molecules]]
+- atomic nuclei
+- atoms
+- molecules
 - [[ions]]

@@ -6,7 +6,7 @@ tags:
   - notebooks
 ---
 
-## Background
+
 
 Image segmentation is frequently used in digital image processing and analysis to divide a digital image into a number of regions of pixels, usually based on the properties of the pixels in the image. For instance, picture segmentation might be used to distinguish between the foreground and background or to group together clusters of pixels that have a common color or shape.
 

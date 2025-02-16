@@ -120,17 +120,14 @@ plt.title('SSTA over Nino3 and Nino3.4')
 
 ![[08_SSTA_over_nino3_nino34.png]]
 
-The difference in how much temperatures fluctuate between the Nino 3 and Nino 3.4 regions comes down to their locations and the unique oceanic processes at play in each area. While both are key players in the El Niño-Southern Oscillation (ENSO), they experience different levels of variability due to their positioning in the Pacific.
+**Nino 3 Region**, which sits between **5°S and 5°N latitude** and **210° to 270° longitude**, is in the central and eastern equatorial Pacific. It’s a hotspot for dramatic temperature changes linked to ENSO. When El Niño kicks in, this area sees intense warming, and during La Niña, it cools significantly. That’s because it’s right in the thick of large-scale ocean-atmosphere interactions that drive ENSO’s strongest effects.
 
-- **Nino 3 Region**: This stretch of ocean sits between **5°S and 5°N latitude** and **210° to 270° longitude**, placing it in the central and eastern equatorial Pacific. It’s a hotspot for dramatic temperature swings linked to ENSO. When El Niño kicks in, this area sees intense warming, and during La Niña, it cools significantly. That’s because it’s right in the thick of large-scale ocean-atmosphere interactions that drive ENSO’s strongest effects.
-    
-- **Nino 3.4 Region**: Covering **5°S to 5°N latitude** and **190° to 240° longitude**, Nino 3.4 sits slightly farther east but still overlaps with the central Pacific. It straddles the boundary where warm waters from El Niño start to fade and where the eastern Pacific’s cooler upwelling processes begin.
-    
+On the other hand, **Nino 3.4 Region**, which covers **5°S to 5°N latitude** and **190° to 240° longitude**, sits slightly farther east but still overlaps with the central Pacific. It straddles the boundary where warm waters from El Niño start to fade and where the eastern Pacific’s cooler upwelling processes begin.
 
-The big reason Nino 3 experiences more extreme fluctuations than Nino 3.4 lies in ocean dynamics. Nino 3 sits in a region where ENSO-related heat exchanges between the ocean and atmosphere are more pronounced, creating stronger temperature anomalies. Meanwhile, Nino 3.4, positioned closer to the eastern Pacific, has a **shallower thermocline**—meaning warm surface waters don’t mix as deeply with the colder layers below. As a result, temperature swings in Nino 3.4 tend to be more moderate compared to the wilder fluctuations seen in Nino 3.
-%% 
-In short, while both regions play an important role in ENSO, Nino 3 is the more volatile sibling, while Nino 3.4 is a bit more stable thanks to its eastern Pacific positioning and oceanic structure. %%
-
+The big reason Nino 3 experiences more extreme fluctuations than Nino 3.4 is because Nino 3 sits in a region where ENSO-related heat exchanges between the ocean and atmosphere are stronger, creating higher temperature anomalies. Meanwhile, Nino 3.4, positioned closer to the eastern Pacific, has a **shallower thermocline**—meaning warm surface waters don’t mix as deeply with the colder layers below.%%  As a result, temperature changes in Nino 3.4 tend to be more moderate compared to the wilder fluctuations seen in Nino 3.
+ 
+In short, while both regions play an important role in ENSO, Nino 3 is the more volatile sibling, while Nino 3.4 is a bit more stable thanks to its eastern Pacific positioning and oceanic structure. 
+ %%
 # Plotting average SST over the oceans
 
 ```python
@@ -159,7 +156,7 @@ plt.show()
 
 ![[08_average_SST.png]]
 
-If you take a look at the figure, you’ll notice a clear trend: sea surface temperatures (SST) are toasty near the equator and much cooler as you move toward the poles. This pattern isn’t random—it’s all about **radiative heating**, the process where the Sun’s energy gets absorbed by the Earth’s surface, including the ocean, and turned into heat.
+%% If you take a look at the figure, you’ll notice a clear trend: sea surface temperatures (SST) are toasty near the equator and much cooler as you move toward the poles. This pattern isn’t random—it’s all about **radiative heating**, the process where the Sun’s energy gets absorbed by the Earth’s surface, including the ocean, and turned into heat. %%
 
 In the tropics, especially in places like the equatorial Pacific, the Sun’s rays hit more directly, delivering a concentrated dose of energy. This means the ocean absorbs more heat, keeping SSTs warm year-round. But up near the poles, the Sun’s rays strike at a lower angle, spreading out that energy over a larger area. That, combined with long, dark winters, results in much lower radiative heating—hence, colder ocean temperatures.
 %% 
