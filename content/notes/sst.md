@@ -5,7 +5,7 @@ tags:
   - climate
   - notebooks
 ---
-This is just a one of the  #notebooks - what I did during classes :)
+Just a one of the  #notebooks, aka what I did in classes :)
 
 Data used in the code section below can be downloaded [here](https://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.html).
 

@@ -4,6 +4,7 @@ date: 2022-09-10
 tags:
   - climate
   - notebooks
+  - planetary-science
 ---
 
 %% $CO_2$   $H_2O$    $CH_4$   $\epsilon$ $NO_2$ %%

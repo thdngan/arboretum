@@ -6,7 +6,7 @@ tags:
   - physics
   - notes
 ---
-The **strong interaction** is the glue that holds everything together at the most fundamental level. Without it, atoms wouldn’t exist, stars couldn’t burn, and the matter that makes up you, me, and the entire universe would simply fall apart. As one of the four fundamental forces of nature, the strong interaction is the **most powerful**, easily overpowering gravity and electromagnetism within its tiny domain.
+The strong interaction is the glue that holds everything together at the most fundamental level. Without it, atoms wouldn’t exist, stars couldn’t burn, and the matter that makes up you, me, and the entire universe would simply fall apart. As one of the four fundamental forces of nature, the strong interaction is the **most powerful**, easily overpowering gravity and electromagnetism within its tiny domain.
 
 Strong interaction is basically what **binds [[quarks]] together** to form **[[protons]], [[neutrons]], and other [[hadrons]]**. It does this through **[[gluons]]**, the force-carrying [[bosons]] that constantly shuttle between [[quarks]], ensuring they stay tightly packed inside particles. Unlike other forces, which get weaker with distance, the strong force has a bizarre property called **confinement**—the farther you try to pull quarks apart, the stronger the force becomes, like an unbreakable elastic band. This is why no one has ever seen an isolated quark; they are always locked inside larger composite particles.
 

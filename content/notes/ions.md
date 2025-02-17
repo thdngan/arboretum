@@ -12,7 +12,7 @@ At their core, ions are just %% atoms that have had an [[electrons|electron]] st
 
 Ions play a super important role in **plasma**, the fourth state of matter, where extreme temperatures strip [[electrons]] from atoms, creating a chaotic sea of free-moving charged particles. This is what fuels the Sun, powers neon signs, and forms the glowing trails of auroras in Earth’s atmosphere.
 
-In biology, ions are also extremely imporant. Calcium (_Ca²⁺_), potassium (_K⁺_), sodium (_Na⁺_), and chloride (_Cl⁻_) ions control nerve impulses, muscle contractions, and countless other cellular processes. Without ions, your brain couldn’t send signals, your heart couldn’t beat, and your muscles couldn’t move.
+In biology, ions are also extremely important. Calcium (_Ca²⁺_), potassium (_K⁺_), sodium (_Na⁺_), and chloride (_Cl⁻_) ions control nerve impulses, muscle contractions, and countless other cellular processes. Without ions, your brain couldn’t send signals, your heart couldn’t beat, and your muscles couldn’t move.
 
 And in space? Ions are everywhere. Ionized gas forms the glowing clouds of nebulae, ion propulsion systems push spacecraft through the void, and cosmic rays—high-energy ions from deep space—constantly rain down on Earth.
 

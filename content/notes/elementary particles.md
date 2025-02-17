@@ -5,6 +5,7 @@ tags:
   - particle
   - physics
   - notes
+  - incomplete
 ---
 They are [[notes/subatomic particles|subatomic particles]] that are not composed of other particles.
 

@@ -3,6 +3,7 @@ tags:
   - notes
   - physics
   - chemistry
+  - planetary-science
 title: advection
 date: 2022-08-01
 ---

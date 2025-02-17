@@ -5,6 +5,7 @@ tags:
   - notes
   - chemistry
   - physics
+  - incomplete
 ---
 - escaping tendency
 - (of a real gas) an effective partial pressure replacing the mechanical partial pressure in an accurate computation of chemical equilibrium.

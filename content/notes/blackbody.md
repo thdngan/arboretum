@@ -3,6 +3,9 @@ title: Blackbody and Blackbody radiation
 date: 2022-09-05
 tags:
   - notes
+  - physics
+  - astrophysics
+  - planetary-science
 ---
 
 A blackbody absorbs all incident electromagnetic radiation, independent of frequency or angle of incidence. The term "black body" refers to how it absorbs all colors of light (you know, black objects absorb all colors in the visible spectrum and reflects none to the eyes).

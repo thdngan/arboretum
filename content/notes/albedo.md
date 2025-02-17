@@ -4,6 +4,7 @@ date: 2022-10-22
 tags:
   - climate
   - notes
+  - planetary-science
 ---
 %% Albedo refers to the measure of the reflectivity of a surface. Specifically, it quantifies the fraction of incoming solar radiation (sunlight) that is reflected back into space. Albedo is typically expressed as a percentage or a value between 0 and 1, where 0 represents a perfectly absorbing (black) surface that absorbs all incoming solar radiation, and 1 represents a perfectly reflecting (white) surface that reflects all incoming solar radiation.
 

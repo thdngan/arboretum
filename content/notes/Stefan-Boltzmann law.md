@@ -7,7 +7,7 @@ tags:
   - astrophysics
   - notes
 ---
-The **Stefan-Boltzmann law** tells you how much heat an object radiates simply based on its temperature. Whether it’s a dim ember, a scorching star, or even your own body, everything that has a temperature emits **thermal radiation**, and the Stefan-Boltzmann law tells us exactly how much. It’s one of the fundamental principles of **thermodynamics** and **astrophysics**, explaining why hotter objects shine brighter and why stars can be classified just by their glow.
+The Stefan-Boltzmann law tells you how much heat an object radiates simply based on its temperature. Whether it’s a dim ember, a scorching star, or even your own body, everything that has a temperature emits **thermal radiation**, and the Stefan-Boltzmann law tells us exactly how much. It’s one of the fundamental principles of **thermodynamics** and **astrophysics**, explaining why hotter objects shine brighter and why stars can be classified just by their glow.
 
 The law is beautifully simple: the total energy radiated per unit surface area of a perfect **[[blackbody]]** (an idealized object that absorbs and emits all radiation perfectly) is **proportional to the fourth power of its temperature**. Mathematically, it’s written as:
 
