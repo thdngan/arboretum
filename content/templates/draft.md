@@ -1,17 +1,6 @@
----
-title: Thermodynamics of Clathrate Hydrate
-date: 2024-05-15
-tags:
-  - chemistry
-  - physics
-  - planetary-science
-  - paper-notes
-  - thermodynamics
-draft: false
----
 (Reference: Lunine & Stevenson 1985)
 
-%% ## Side notes %%
+## Side notes 
 
 Which structure is dominant? -> more ==energetically favorable==??
 
@@ -24,9 +13,9 @@ Which structure is dominant? -> more ==energetically favorable==??
 4. **thermodynamic stability:** Gibbs free energy. structure with the ==lowest Gibbs free energy== is the most stable -> more likely to be dominant.
 
 
-%% ## Definition %%
+## Definition 
 
-%% Clathrate hydrates are **crystalline structures** in which **gas molecules** are *trapped* within **cages** formed by water molecules.  The most common type of clathrate hydrates involves water ice cages with gas molecules, typically methane, encased within them. However, other gases like carbon dioxide, hydrogen sulfide, and various hydrocarbons can also form clathrate hydrates under specific conditions. 
+ Clathrate hydrates are **crystalline structures** in which **gas molecules** are *trapped* within **cages** formed by water molecules.  The most common type of clathrate hydrates involves water ice cages with gas molecules, typically methane, encased within them. However, other gases like carbon dioxide, hydrogen sulfide, and various hydrocarbons can also form clathrate hydrates under specific conditions. 
 
  In this paper:
 
@@ -34,10 +23,10 @@ Which structure is dominant? -> more ==energetically favorable==??
 - The gas molecule occupying a cage site is the "**guest**" molecule. The term ***methane clathrate*** is used to denote a clathrate hydrate in which methane is the primary *guest* molecule.
 - Occasional discussion of clathrates in which a substance other than water ice is the host, for example, quinol, will emply the term ***quinol clathrale***.
 - A stoichiometric compound of water ice, in which molecules bond chemically with the water molecule and do not form a clathrate, will be denoted as a ***hydrate***, e.g., ammonia hydrate. 
- %%
+ 
 
 
-%% ## Importance in outer solar system
+ ## Importance in outer solar system
 
 - Volatiles like methane might be present on Titan, Triton, and potentially Pluto due to clathrates playing a role in their formation.
 - Advanced observational methods have opened up the opportunity for the initial direct observation of clathrates on celestial bodies in the outer solar system.
@@ -546,10 +535,11 @@ Use results from statistical model to calculate complete stability fields of bot
 
 
 ## Applications
- Apply the results of previous sections to calculate the abundance of volatiles incorporated in clathrate formed from a solar composition gas and explores implications for the current composition and evolution of satellites and giant-planet atmospheres. 
+ Apply the results of previous sections to calculate the abundance of volatiles incorporated in clathrate formed from a solar composition gas and explores implications for the current composition and evolution of satellites and giant-planet atmospheres.  
 
  
-## Summary & Conclusions %%
+%% ## Summary & Conclusions %%
+
 
 
 
