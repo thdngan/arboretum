@@ -52,7 +52,7 @@ const config: QuartzConfig = {
 
           wikiheading: "#c8d0ca",
           wikibackground: "#ebebeb",
-          wikiborder: "#a3a3aa3a3a33",
+          wikiborder: "#a3a3aa",
 
           gradient1: "#310979",
           gradient2: "#00d4ff",
