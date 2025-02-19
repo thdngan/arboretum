@@ -17,7 +17,7 @@ To explore this idea, James Lovelock and Andrew Watson introduced **Daisyworld**
 
 So, here’s how Daisyworld plays out:
 
-1. In the beginning, the planet is cold, so black daisies **thrive**. They absorb heat, warming up the planet.
+1. In the beginning, the planet is cold, so black daisies **thrive**. They absorb [[heat]], warming up the planet.
 2. As temperatures rise, it gets **too hot** for black daisies. But now, it’s perfect for white daisies! So they take over.
 3. More white daisies = more sunlight reflected back into space = **cooling effect**.
 4. Eventually, it gets too cold for white daisies, but now black daisies can make a comeback… and the cycle repeats.
@@ -30,7 +30,7 @@ Obviously, Earth is way more complicated than Daisyworld. There’s rotation, se
 
 For example, consider **clouds**. When temperatures rise, more water evaporates, forming clouds. And since clouds, like white daisies, have a high albedo, they reflect sunlight and **help cool the planet**—a natural negative feedback loop.
 
-But not all feedback loops are stabilizing. Take **polar ice and snow**. They reflect a ton of sunlight, keeping the poles cool. But when global temperatures rise, ice melts, revealing darker ocean or land underneath—which absorbs more heat, **melting even more ice**. This is a **positive feedback loop**, where warming triggers more warming. And with climate change accelerating, the natural reflectivity of our icy poles is disappearing fast.
+But not all feedback loops are stabilizing. Take **polar ice and snow**. They reflect a ton of sunlight, keeping the poles cool. But when global temperatures rise, ice melts, revealing darker ocean or land underneath—which absorbs more [[heat]], **melting even more ice**. This is a **positive feedback loop**, where warming triggers more warming. And with climate change accelerating, the natural reflectivity of our icy poles is disappearing fast.
 
 
 Daisyworld may be an imaginary planet, but it highlights something crucial: maintaining life on Earth depends on a delicate balance. Too much change—whether from natural cycles or human activities—can disrupt the system in ways that are hard to predict. If we want to keep our real-world **Daisyworld** livable, we have to understand and respect the feedback loops that keep our planet in check.

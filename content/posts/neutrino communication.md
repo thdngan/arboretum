@@ -12,13 +12,13 @@ tags:
 
 ***DISCLAIMER:*** *I don't study Particle Physics. Please let me know if you notice any mistakes.*
 
-In this post, I'll discuss the possibility of using [[notes/neutrinos|neutrinos]] for communication between New York and Tokyo and answer the questions: What can we gain with neutrino-based communication in comparison to the conventional communications? What's the most challenging for developing this kind of communication?
+In this post, I'll discuss the possibility of using [[neutrinos|neutrinos]] for communication between New York and Tokyo and answer the questions: What can we gain with neutrino-based communication in comparison to the conventional communications? What's the most challenging for developing this kind of communication?
 
 Of course in order to discuss all that, we need to grasp the basic concepts. The first question is undoubtedly:
 
 ## What are neutrinos?
 
-Basically they are elementary particles that have neutral charge and very VERY small mass (thought to be massless for a long time). They are [[notes/fermions|fermions]] that interact only via the [[notes/weak interactions|weak interactions]] and [[notes/gravity|gravity]].
+Basically they are elementary particles that have neutral charge and very VERY small mass (thought to be massless for a long time). They are [[fermions|fermions]] that interact only via the [[weak interactions|weak interactions]] and [[gravity|gravity]].
 
 *I know, I know...The explanation above is still kind of vague, especially if you're not deep into particle physics (honestly, same). Like, cool, they're [[fermions]], but... what even are [[fermions]]? What exactly counts as an [[elementary particles|elementary particle]]? Where do they hang out inside atoms? And how do they connect to the particles we actually recognize—[[electrons]], [[protons]], [[neutrons]]?*
 

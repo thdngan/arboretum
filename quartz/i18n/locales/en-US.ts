@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "Untitled",
     description: "No description provided",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "Backlinks",
       noBacklinksFound: "No backlinks found",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Light mode",
@@ -69,6 +65,7 @@ export default {
     error: {
       title: "Not Found",
       notFound: "Either this page is private or doesn't exist.",
+      home: "Return to Homepage",
     },
     folderContent: {
       folder: "Folder",

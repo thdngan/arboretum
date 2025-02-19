@@ -1,6 +1,0 @@
----
-title: All Notes
-tags:
-  - graph-exclude
----
-Short explanations of some of the terms and concepts I mentioned in [[posts/index|posts]].

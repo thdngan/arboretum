@@ -1,1 +1,4 @@
+---
+comments: false
+---
 Personal projects.

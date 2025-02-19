@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "Naamloos",
     description: "Geen beschrijving gegeven.",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "Backlinks",
       noBacklinksFound: "Geen backlinks gevonden",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Lichte modus",
@@ -70,6 +66,7 @@ export default {
     error: {
       title: "Niet gevonden",
       notFound: "Deze pagina is niet zichtbaar of bestaat niet.",
+      home: "Keer terug naar de start pagina",
     },
     folderContent: {
       folder: "Map",

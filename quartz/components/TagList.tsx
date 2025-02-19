@@ -14,11 +14,8 @@ const TagList: QuartzComponent = ({
   const baseDir = pathToRoot(fileData.slug!)
   if (tags && tags.length > 0) {
     return (
-      // <h3>Tag List</h3>
-      // <div class="section">
-        // <div class="desc">
         <div class={classNames(displayClass, "taglist")}>
-        <h3>{i18n(cfg.locale).components.taglist.title}</h3>
+        <h3 style="font-size: 1rem;">🏷️ Tags</h3>
 
         <ul class={`tags ${displayClass ?? ""}`}>
         {tags.map((tag) => {
@@ -35,9 +32,6 @@ const TagList: QuartzComponent = ({
         </ul>
   
         </div>
-        // </div>
-        
-      //  </div>
       
     )
   } else {
@@ -45,5 +39,34 @@ const TagList: QuartzComponent = ({
   }
 }
 
-TagList.css = style
+
+TagList.css = `
+.tags {
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  gap: 0.4rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.section-li > .section > .tags {
+  justify-content: flex-end;
+}
+  
+.tags > li {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0;
+  overflow-wrap: normal;
+}
+
+a.internal.tag-link {
+  border-radius: 5px;
+  background-color: var(--highlight);
+  padding: 0rem 0.4rem;
+  margin: 0 0.1rem;
+}
+`
+
 export default (() => TagList) satisfies QuartzComponentConstructor

@@ -35,13 +35,6 @@ export default ((opts: Options) => {
       return <></>
     }
 
-    // // Only comments if I choose to enable them in frontmatter
-    //  const enableComment: boolean = 
-    //     fileData.frontmatter?.comments === "true"
-    //   if (!enableComment) {
-    //     return <></>
-    //   }
-
     return (
       <>
       <hr/>
@@ -73,7 +66,6 @@ export default ((opts: Options) => {
         data-theme-url={
           opts.options.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
         }
-        style={{ marginTop: "50px" }} // Add this line to set the 
       ></div>
       </>
     )

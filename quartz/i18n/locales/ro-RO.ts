@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "Fără titlu",
     description: "Nici o descriere furnizată",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "Legături înapoi",
       noBacklinksFound: "Nu s-au găsit legături înapoi",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Modul luminos",
@@ -70,6 +66,7 @@ export default {
     error: {
       title: "Pagina nu a fost găsită",
       notFound: "Fie această pagină este privată, fie nu există.",
+      home: "Reveniți la pagina de pornire",
     },
     folderContent: {
       folder: "Dosar",

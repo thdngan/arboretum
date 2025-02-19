@@ -18,7 +18,7 @@ const graphConfig = {
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  // afterBody: [],
+  // afterBody: Explorer[],
   afterBody: [
     Component.Comments({
       provider: 'giscus',
@@ -56,27 +56,18 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Breadcrumbs(),
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.MobileOnly(Component.TagList()),
+    Component.MobileOnly(Component.TagList_noheading()),
 
   ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
-
-    Component.DesktopOnly(Component.TableOfContents()),
-    // Component.TableOfContents(),
-
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Recent Notes",
-        limit: 2,
-        filter: (f) =>
-          f.slug!.startsWith("notes/") && f.slug! !== "notes/index" && !f.frontmatter?.noindex,
-        linkToMore: "notes/" as SimpleSlug,
-      })),
-    // I had to reverse the order of Recent notes and posts so that the recent posts appear above, not sure why this is happening after i added the floating buttons
+    // Component.Search(),
+    // Component.Darkmode(),\
+    Component.Row([
+      Component.Search(),
+      Component.Darkmode(),
+    ]),
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
@@ -86,6 +77,17 @@ export const defaultContentPageLayout: PageLayout = {
         linkToMore: "posts/" as SimpleSlug,
       }),
     ),
+
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        title: "Recent Notes",
+        limit: 2,
+        filter: (f) =>
+          f.slug!.startsWith("notes_folder/") && f.slug! !== "notes_folder/index" && !f.frontmatter?.noindex,
+        linkToMore: "notes_folder/" as SimpleSlug,
+      })),
+
+      Component.DesktopOnly(Component.TableOfContents()),
 
     Component.FloatingButtons({ position: 'right' }),
 
@@ -107,8 +109,12 @@ export const defaultListPageLayout: PageLayout = {
     Component.PageTitle(),
     // Component.MobileOnly(Component.PageTitleMobile()),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
+    Component.Row([
+      Component.Search(),
+      Component.Darkmode(),
+    ]),
+    // Component.Search(),
+    // Component.Darkmode(),
     Component.DesktopOnly(Component.Explorer()),
     Component.FloatingButtons({position: 'right'}),
   ],

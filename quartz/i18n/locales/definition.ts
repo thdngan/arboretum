@@ -27,10 +27,6 @@ export interface Translation {
       title: string
       noBacklinksFound: string
     }
-    taglist: {
-      title: string
-      noTagsFound: string
-    }
     themeToggle: {
       lightMode: string
       darkMode: string
@@ -71,6 +67,7 @@ export interface Translation {
     error: {
       title: string
       notFound: string
+      home: string
     }
     folderContent: {
       folder: string

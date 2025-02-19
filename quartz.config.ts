@@ -15,6 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
+    locale: "en-US",
     baseUrl: "thdngan.github.io/arboretum",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
@@ -23,9 +24,10 @@ const config: QuartzConfig = {
       cdnCaching: true,
       typography: {
         header: "JetBrains", /** Schibsted Grotesk, Chelsea Market,Libre Baskerville*/
-        body: "Noto Sans", /**Source Sans Pro, Roboto Serif */
+        // body: "Noto Sans", /**Source Sans Pro, Roboto Serif */
         // body: "Roboto Slab", /**Source Sans Pro, Roboto Serif */
-        // body: "Inter", /**Source Sans Pro, Roboto Serif */
+        body: "Inter", /**Source Sans Pro, Roboto Serif */
+        // body: "Atkinson Hyperlegible",
         code: "JetBrains Mono", /**IBM Plex Mono */
       },
       colors: {
@@ -37,7 +39,8 @@ const config: QuartzConfig = {
           dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
           secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37*/
           tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
-          highlight: "rgba(171, 196, 193, 0.1)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
+          highlight: "rgba(171, 196, 193, 0.4)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
+          textHighlight: "#fff23688",
 
           nodefirst: "#E06C75", /**35827d */
           nodesecond: "#8bd0cb",
@@ -77,7 +80,8 @@ const config: QuartzConfig = {
           dark: "#d6d6d6",     /* headings and icons, search text: ECBC55, ECB159, F5B700, C2C2C2, FFFFFF*/
           secondary: "#7d9a69", /*titles and links, current graph node: 85CFCB, dda169, 86b8b5 */
           tertiary: "#E06C75",/*for when hovering above link: 709997*/
-          highlight: "rgba(166, 221, 219, 0.1)", /*background of internal link */
+          highlight: "rgba(171, 196, 193, 0.12)", /*background of internal link */
+          textHighlight: "#b3aa0288",
 
           nodefirst: "#E06C75",
           nodesecond: "#98c379",
@@ -113,7 +117,7 @@ const config: QuartzConfig = {
         priority: ["frontmatter", "filesystem"],
       }),
       // Plugin.Remark42({ host: "https://thdngan.github.io/arboretum/", site_id: "remark", no_footer: true }),
-      Plugin.Quoting(),
+      // Plugin.Quoting(),
       Plugin.Latex({ renderEngine: "katex" }),
       Plugin.SyntaxHighlighting({
         theme: {
@@ -127,7 +131,7 @@ const config: QuartzConfig = {
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
-      Plugin.Remark42({ host: "https://thdngan.github.io/arboretum/", site_id: "remark", theme: "dark", no_footer: true }),
+      // Plugin.ImageToolkit(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [

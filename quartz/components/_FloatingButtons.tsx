@@ -44,7 +44,7 @@ export default ((opts?: FloatingButtonsOptions) => {
           {/* GRAPH BUTTON */}
           <button
             class="floating-button"
-            title="Graph"
+            title="graph"
             data-action="graph"
           >
             <span class="floating-button-tooltip">Graph</span>
@@ -88,7 +88,7 @@ export default ((opts?: FloatingButtonsOptions) => {
           {/* RANDOM PAGE */}
           <button
             class="floating-button"
-            title="Random page button"
+            title="Random page floating button"
             data-action="randomPgFloating"
           >
             <span class="floating-button-tooltip">Random page</span>

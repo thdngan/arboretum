@@ -10,7 +10,7 @@ date: 2023-09-05
 
 %% ‼️ #incomplete ‼️ :/ %%
 
-# Colliding flows and the birth of stars
+## Colliding flows and the birth of stars
 
 
 
@@ -26,13 +26,13 @@ date: 2023-09-05
 The birth of stars is one of the most captivating processes in astrophysics, yet the journey from a vast, diffuse gas cloud to a brilliant new star is anything but simple. At the heart of this transformation lies the **gravitational collapse of molecular clouds**—cold, dense pockets of interstellar gas that serve as stellar nurseries. But what sets this collapse in motion? The answer probably lies in **colliding flows**, where turbulent gas streams crash into one another, compressing the material and setting the stage for star formation. Since molecular clouds are significantly denser than their surroundings, compression is inevitable. However, the real puzzle is identifying the forces that drive this compression and understanding how they shape the evolution of these structures.
 
 
-## The power of shock waves
+### The power of shock waves
 
 Within molecular clouds, which are cold and compact parts of interstellar space, multiple processes can trigger the creation of **shock waves**. These processes could be the collision of diverse gas streams or the movement of the cloud itself through the interstellar medium. When these shock waves travel through the gas in a molecular cloud, they condense the gas, increasing its density. The condensation brought about by shock waves can be a key factor for setting in motion the process of **gravitational collapse**, ultimately leading to the formation of stars. Through this gas compression, shock waves enhance the density of specific regions within the cloud. These denser areas are more apt to overcome the internal gas pressure and start collapsing under the influence of gravity. 
 
 %% When two streams of interstellar gas collide, they generate **shock waves**—powerful disturbances that ripple through the molecular cloud, dramatically increasing its density. These shock waves can be caused by anything from **supernova explosions** to the motion of clouds through the galaxy. As the gas is compressed, regions of high density begin to form. This is a crucial moment: if these dense pockets become massive enough, their own gravity takes over, pulling in more material and initiating the **collapse that leads to star formation**. Without these shock-induced density enhancements, most gas clouds would remain too diffuse to ever form stars. %%
 
-## Self-similarity: patterns in the chaos
+### Self-similarity: patterns in the chaos
 
 >[!caption_left]
 >![[self-simi-murakami.png]]
@@ -46,7 +46,7 @@ The behavior of x (distance or radius) and t (time) in these self-similar soluti
 
 
 
-## Planar geometry
+### Planar geometry
 
 >[!caption_right]
 >![[planepara.png]]
@@ -58,17 +58,17 @@ So we will have:
 - $v = v_x, \rho = \rho_x$
 - $\dfrac{d}{dy} = \dfrac{d}{dz} = 0$
 
-## Radiative cooling
+### Radiative cooling
 
-A key assumption that we made for this particular problem is that radiative losses balance out compressional heating, maintaining a relatively low temperature for the contracting gas cloud. In simpler terms, as the gas becomes compressed during collapse, the increased internal energy can escape through radiation, causing the gas to heat up less efficiently compared to what one would anticipate for gas undergoing adiabatic compression.
+A key assumption that we made for this particular problem is that radiative losses balance out compressional [[heat|heating]], maintaining a relatively low temperature for the contracting gas cloud. In simpler terms, as the gas becomes compressed during collapse, the increased internal energy can escape through radiation, causing the gas to [[heat]] up less efficiently compared to what one would anticipate for gas undergoing adiabatic compression.
 
-# Objectives
+## Objectives
 
 The objective here is to present a self-similar solution that considers two physical phenomena: self-gravity and radiative cooling.
 - We address the complete set of hydrodynamic equations,
-- Introduce a **cooling term** into the energy equation to account for heat loss, and search for self-similar solutions.
+- Introduce a **cooling term** into the energy equation to account for [[heat]] loss, and search for self-similar solutions.
 
-# The physical system
+## The physical system
 
 The compressible Navier-Stokes equations with cooling are formulated as follows:
 
@@ -88,12 +88,12 @@ $$
 \dfrac{\partial\rho(\epsilon+\dfrac{u^2}{2})}{\partial t} + \bm{\nabla}\cdot\left[\rho\left(\epsilon+\dfrac{u^2}{2}\right)\bm{u}\right]=-\bm{\nabla}\cdot(P\bm{u})-\rho\bm{u}\cdot\bm{\nabla}\phi - \Lambda
 $$
 
-where t is time, u is the velocity vector, φ is the gravitational potential, G is the gravitational constant, $\epsilon$ is the specific internal energy and Λ is the volumic cooling rate. The heat interchange encompasses both heating and cooling, though our focus is solely on situations where cooling surpasses heating. As a result, the combined effect of these two is negative here. The behavior of the gas adheres to the principles of the ideal gas law.
+where t is time, u is the velocity vector, φ is the gravitational potential, G is the gravitational constant, $\epsilon$ is the specific internal energy and Λ is the volumic cooling rate. The [[heat]] interchange encompasses both [[heat|heating]] and cooling, though our focus is solely on situations where cooling surpasses [[heat|heating]]. As a result, the combined effect of these two is negative here. The behavior of the gas adheres to the principles of the ideal gas law.
 
 $$
 \dfrac{k_B}{\mu m_p}T = \dfrac{P}{\rho} = (\gamma - 1)\epsilon
 $$
-where $k_B$ is the Boltzmann constant, µ is the mean particle (molecular) weight, $m_P$ is the proton mass, $\gamma$ is the specific heat ratio, and T is the temperature.
+where $k_B$ is the Boltzmann constant, µ is the mean particle (molecular) weight, $m_P$ is the proton mass, $\gamma$ is the specific [[heat]] ratio, and T is the temperature.
 
 We parameterize the cooling function as:
 
@@ -150,7 +150,7 @@ $$
 $$
 
 
-# Self-similar equations
+## Self-similar equations
 
 We will use the above equations and the ideal gas law, along with the following group transformation:
 
@@ -235,14 +235,14 @@ $$
 \sigma = \dfrac{g(\xi\mp\nu)}{1-2a}
 \tag{17}
 $$
-# Asymptotic behaviors
+## Asymptotic behaviors
 
 
 An analytical solution is not available for this nonlinear system, except for a single trivial solution when t < 0. However, we can deduce asymptotic solutions under specific constraints and utilize numerical integration to acquire full solutions. We use the terminology introduced by Whitworth & Summers (1985) and identify three regimes: the early interior path (t < 0 and ξ is small), the exterior path (ξ is large), and the late path (t > 0 and ξ is small).
 
 For now, I've only managed to investigate the first regime - the early interior path (t<0, ξ <<1).
 
-## Early interior path
+### Early interior path
 
 The time interval t < 0 corresponds to the period preceding the formation of a mass singularity at the core of the collapsing area. During this phase, the central region exhibits a homologous collapse with a flat density and temperature profile. We assume the following polynomial series:
 
@@ -323,7 +323,7 @@ $$
 $$
 Apparently, $\Gamma_i$ is a weighted mean between $\gamma$ and $(n-m)/(n-1)$.
 
-## Sonic point
+### Sonic point
 
 Studying a singular point is of utmost importance as it provides significant insights into the behavior of the system. However, with the complexity due to the energy conservation equation within our system, analyzing them analytically is challenging.
 
@@ -361,8 +361,8 @@ Two distinct types of solutions can smoothly pass through the sonic point.
 - The first type is a trivial case with $K_1=K_0=-\dfrac{\nu_1^2}{2}$,  resulting in constant density and temperature. This leads to a linear velocity profile.
 - The second valid value of $K_1$ needs to be determined through numerical integration, using the shooting method towards the sonic point. Essentially, we solve the above problem by reducing it to an initial value problem. We find solutions for different initial values of $K_1$ until we find the solution that also satisfies the sonic surface conditions mentioned above.
 
-# Results
-## Trivial solution
+## Results
+### Trivial solution
 
 When $K_1=K_0=-\dfrac{\nu_1^2}{2}$, a trivial solution is pretty easy to find:
 
@@ -372,7 +372,7 @@ g(\xi) = 1, \nu(\xi) = d\xi, \tau(\xi) = 1.
 $$
 This solution characterizes the homologous collapse of a flat structure that stretches infinitely and is applicable solely for t < 0.
 
-## Physical solution
+### Physical solution
 
 We employ numerical methods to solve the system, initializing integration at ξ values considerably small and at times t < 0. By utilizing the shooting method, we determine the appropriate value of K1 that permits the existence of a continuous solution. Subsequently, the negative solution is extrapolated to very large ξ values. In the below figure, we present illustrative profiles for two chosen pairs of m and n.
 

@@ -9,11 +9,11 @@ tags:
 
 %% $CO_2$   $H_2O$    $CH_4$   $\epsilon$ $NO_2$ %%
 
-The Earth's climate is a complex system influenced by various factors, and one of the most important pieces is greenhouse gases. These little guys—carbon dioxide (CO₂), water vapor (H₂O), methane (CH₄), and a few others—have a special talent: they trap heat from the sun, keeping our planet warm and cozy. But what makes some gases great at this job while others just float around doing nothing? Time to dive into the physics of greenhouse gases!
+The Earth's climate is a complex system influenced by various factors, and one of the most important pieces is greenhouse gases. These little guys—carbon dioxide (CO₂), water vapor (H₂O), methane (CH₄), and a few others—have a special talent: they trap [[heat]] from the sun, keeping our planet warm and cozy. But what makes some gases great at this job while others just float around doing nothing? Time to dive into the physics of greenhouse gases!
 
 # Mechanism
 
-In our [[naked planet climate model|other discussions]], we often referred to objects as "black bodies." These are entities that efficiently absorb and emit various frequencies of infrared light. In most cases, we simplified our calculations by assuming an emissivity ($\epsilon$) value close to one. But gases? Oh no, they play by totally different rules.
+In our [[naked planet climate model|other discussions]], we often referred to objects as "[[blackbody|black bodies]]." These are entities that efficiently absorb and emit various frequencies of infrared light. In most cases, we simplified our calculations by assuming an emissivity (ε) value close to one. But gases? Oh no, they play by totally different rules.
 
 %% Gases are composed of molecules with limited modes of vibration, making them distinct from condensed matter. Consider carbon dioxide ($CO_2$), for example. In its condensed form, as dry ice, it behaves like a complex structure with multiple vibrational frequencies. However, when $CO_2$ exists in isolation, it can only vibrate in highly specific ways. This selectivity makes gases discerning in terms of the types of light they can absorb and emit.
 
@@ -45,7 +45,7 @@ Now let’s talk about the real MVPs. CO₂ is a great example. In its resting s
 
 Its most important dance move? The **bending motion**—this one breaks its symmetry and creates an oscillating dipole, making CO₂ a champion at absorbing infrared light from the Earth's surface.
 
-CO₂ also has two other ways it can vibrate: **symmetric stretching** (where everything moves in sync) and **asymmetric stretching** (where the oxygens move in opposite directions). The asymmetric stretch is "infrared active" (meaning it absorbs heat), but it’s not as important for climate science because it doesn’t line up with the most abundant heat wavelengths.
+CO₂ also has two other ways it can vibrate: **symmetric stretching** (where everything moves in sync) and **asymmetric stretching** (where the oxygens move in opposite directions). The asymmetric stretch is "infrared active" (meaning it absorbs [[heat]]), but it’s not as important for climate science because it doesn’t line up with the most abundant [[heat]] wavelengths.
 
 ![[co2.png]]
 
@@ -58,7 +58,7 @@ In general, any molecule with more than two atoms can potentially act as a green
 CO₂ isn’t alone in this game—water vapor (H₂O) and methane (CH₄) are also major players.
 
 - **Water vapor** is naturally asymmetrical, thanks to the way its oxygen atom hogs electrons, pushing the hydrogen atoms to one side. This lopsided shape makes it ridiculously good at absorbing a wide range of infrared light, making it a powerhouse greenhouse gas.
-- **Methane (CH₄)** looks symmetrical at first glance (with its neat tetrahedral shape), but it has enough funky vibrational modes to break symmetry, allowing it to absorb and trap heat effectively.
+- **Methane (CH₄)** looks symmetrical at first glance (with its neat tetrahedral shape), but it has enough funky vibrational modes to break symmetry, allowing it to absorb and trap [[heat]] effectively.
 
 In fact, **any molecule with more than two atoms** has at least some potential to be a greenhouse gas! The physics behind it all is complex, but the impact is crystal clear: these gases help shape our planet’s climate. Understanding how they work is key to tackling climate change and figuring out how to keep our world livable for future generations.
 

@@ -1,5 +1,4 @@
 // from https://quartz.eilleeenz.com/Quartz-customization-log#scroll-to-top--random-page
-
 import { FullSlug, getFullSlug, pathToRoot, simplifySlug } from "../../util/path"
 
 function getRandomInt(max: number) {

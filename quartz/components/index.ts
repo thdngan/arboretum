@@ -6,12 +6,12 @@ import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
 import Head from "./Head"
 import PageTitle from "./PageTitle"
-// import PageTitleMobile from "./PageTitleMobile"
 import ContentMeta from "./ContentMeta"
 import Spacer from "./Spacer"
 import TableOfContents from "./TableOfContents"
 import Explorer from "./Explorer"
 import TagList from "./TagList"
+import TagList_noheading from "./TagList_noheading"
 import Graph from "./Graph"
 import Backlinks from "./Backlinks"
 import Search from "./Search"
@@ -21,8 +21,8 @@ import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
-import ScrollToTop from "./_ScrollToTop"
 import FloatingButtons from "./_FloatingButtons"
+import Row from "./_Row"
 
 export {
   ArticleTitle,
@@ -32,12 +32,12 @@ export {
   Darkmode,
   Head,
   PageTitle,
-  // PageTitleMobile,
   ContentMeta,
   Spacer,
   TableOfContents,
   Explorer,
   TagList,
+  TagList_noheading,
   Graph,
   Backlinks,
   Search,
@@ -48,6 +48,6 @@ export {
   NotFound,
   Breadcrumbs,
   Comments,
-  ScrollToTop,
   FloatingButtons,
+  Row,
 }

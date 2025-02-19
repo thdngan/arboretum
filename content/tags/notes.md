@@ -1,1 +1,4 @@
+---
+comments: false
+---
 Short explanations of some of the terms and concepts I mentioned in [[posts/index|posts]].

@@ -12,7 +12,7 @@ So far, we’ve looked at the **[[ebm0d|zero-dimensional energy balance model]] 
 
 Instead of treating Earth as a single lump, we break it into **latitudinal bands**—like slicing an orange into horizontal rings. This allows us to model how energy moves **between different regions** rather than just considering a global average.
 
-In this particular version, we divide the **Northern Hemisphere** into **nine bands**, each spanning **10 degrees of latitude**. By doing so, we can study how different parts of the planet gain and lose heat, as well as how they exchange energy with their neighbors.
+In this particular version, we divide the **Northern Hemisphere** into **nine bands**, each spanning **10 degrees of latitude**. By doing so, we can study how different parts of the planet gain and lose [[heat]], as well as how they exchange energy with their neighbors.
 
 
 ![[ebm2.png]]
@@ -20,7 +20,7 @@ In this particular version, we divide the **Northern Hemisphere** into **nine ba
 
 # Heat flows: what's going in, what's going out
 
-In an energy balance model, the main goal is to account for all heat flows in and out of the system. In the model we are examining, both the solar flux and albedo vary with latitude. The solar flux is denoted by $S_i$ and the albedo is denoted by $\alpha_i$, where i ranges from 1 to 9 representing different latitude bands. The incoming heat flow for our system would be:
+In an energy balance model, the main goal is to account for all [[heat]] flows in and out of the system. In the model we are examining, both the solar flux and albedo vary with latitude. The solar flux is denoted by $S_i$ and the albedo is denoted by $\alpha_i$, where i ranges from 1 to 9 representing different latitude bands. The incoming [[heat]] flow for our system would be:
 
 $$
 P_{gain} = \frac{S_i(1-\alpha_i)}{4}
@@ -32,7 +32,7 @@ R_i = \sigma T^4_i = A + BT_i
 $$
 where A and B are experiment parameters.
 
-Furthermore, if a particular latitude band is colder or warmer than the average global temperature, there will be a heat flow into or out of that region. We make the assumption that this heat flow is linearly dependent on the temperature difference between the specific region and the global temperature. In other words, the heat flow can be represented as $k_t$ multiplied by the temperature difference $(T_i - T_{avg})$, where $k_t$ represents the diffusivity. The energy exchange among latitudinal bands is thus:
+Furthermore, if a particular latitude band is colder or warmer than the average global temperature, there will be a [[heat]] flow into or out of that region. We make the assumption that this [[heat]] flow is linearly dependent on the temperature difference between the specific region and the global temperature. In other words, the [[heat]] flow can be represented as $k_t$ multiplied by the temperature difference $(T_i - T_{avg})$, where $k_t$ represents the diffusivity. The energy exchange among latitudinal bands is thus:
 
 $$
 F_i = k_t(T_i - T{avg})

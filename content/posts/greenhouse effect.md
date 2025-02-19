@@ -31,7 +31,7 @@ We can then obtain some formulae for the various types of energy in the model:
 <br></br>
 - $\epsilon \sigma T^4_{g}$ represents energy emitted by the ground.
 <br></br>
-- $\epsilon \sigma T^4_a$ represents energy absorbed and emitted by the pane of glass (assuming that the glass has good [[notes/blackbody|blackbody]] properties, ε ≈ 1)
+- $\epsilon \sigma T^4_a$ represents energy absorbed and emitted by the pane of glass (assuming that the glass has good [[blackbody|blackbody]] properties, ε ≈ 1)
 
 Then we get the following table for the energy budgets that enter and exit the system:
 
@@ -57,7 +57,7 @@ This is still not close to reality, of course. It turns out that the atmosphere 
 ## Problems:
 
 ### How hot is The Moon?
-The layer model assumes that the temperature of the body in space is all the same. This isn't really very accurate, as you know that it's colder at the poles than it is at the equator. For a bare rock with no atmosphere or ocean, like the moon, the situation is even worse, because fluids like air and water are how heat is carried around on the planet. So let's make the other extreme assumption, that there is no heat transport on a bare rock like the moon. Assume for comparability that the albedo of this world is 0.33, and the solar constant is 1350 Watts/m2, same as for Earth.
+The layer model assumes that the temperature of the body in space is all the same. This isn't really very accurate, as you know that it's colder at the poles than it is at the equator. For a bare rock with no atmosphere or ocean, like the moon, the situation is even worse, because fluids like air and water are how [[heat]] is carried around on the planet. So let's make the other extreme assumption, that there is no [[heat]] transport on a bare rock like the moon. Assume for comparability that the albedo of this world is 0.33, and the solar constant is 1350 Watts/m2, same as for Earth.
 
 a) What would be the equilibrium temperature of the surface of the moon, where influx equals outflux, on the equator, at local noon, when the sun is directly overhead, in Kelvins?
 

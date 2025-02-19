@@ -2,26 +2,30 @@
 
 .search {
   min-width: fit-content;
-  max-width: 14rem;
-  flex-grow: 0.3;
+  // max-width: 14rem;
+  @media all and ($mobile) {
+    flex-grow: 0.3;
+  }
 
-  & > #search-icon {
+  & > .search-button {
     background-color: var(--lightgray);
+    border: none;
     border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
     height: 2rem;
+    padding: 0;
     display: flex;
     align-items: center;
+    text-align: inherit;
     cursor: pointer;
     white-space: nowrap;
-
-    & > div {
-      flex-grow: 1;
-    }
+    width: 90%;
+    justify-content: space-between;
 
     & > p {
       display: inline;
       padding: 0 1rem;
-      color: var(--dark) !important;
     }
 
     & svg {
@@ -31,7 +35,7 @@
       margin: 0 0.5rem;
 
       .search-path {
-        stroke: var(--dark);
+        stroke: var(--darkgray);
         stroke-width: 2px;
         transition: stroke 0.5s ease;
       }
@@ -45,7 +49,7 @@
     left: 0;
     top: 0;
     width: 100vw;
-    // height: 100vh;
+    height: 100vh;
     overflow-y: auto;
     display: none;
     backdrop-filter: blur(4px);
@@ -60,7 +64,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      @media all and (max-width: $fullPageWidth) {
+      @media all and not ($desktop) {
         width: 90%;
       }
 
@@ -80,7 +84,7 @@
         font-family: var(--bodyFont);
         color: var(--dark);
         font-size: 1.1em;
-        border: 3px solid var(--lightgray);
+        border: 1px solid var(--lightgray);
 
         &:focus {
           outline: none;
@@ -102,7 +106,7 @@
           flex: 0 0 min(30%, 450px);
         }
 
-        @media all and (min-width: $tabletBreakpoint) {
+        @media all and not ($mobile) {
           &[data-preview] {
             & .result-card > p.preview {
               display: none;
@@ -128,7 +132,7 @@
           border-radius: 5px;
         }
 
-        @media all and (max-width: $tabletBreakpoint) {
+        @media all and ($mobile) {
           & > #preview-container {
             display: none !important;
           }
@@ -147,6 +151,7 @@
         }
 
         & > #preview-container {
+          flex-grow: 1;
           display: block;
           overflow: hidden;
           font-family: inherit;
@@ -188,6 +193,7 @@
             text-align: left;
             outline: none;
             font-weight: inherit;
+            text-decoration: none;
 
             &:hover,
             &:focus,
