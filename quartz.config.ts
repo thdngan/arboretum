@@ -28,6 +28,7 @@ const config: QuartzConfig = {
         // body: "Roboto Slab", /**Source Sans Pro, Roboto Serif */
         // body: "Inter", /**Source Sans Pro, Roboto Serif */
         body: "Atkinson Hyperlegible",
+        // body: "Source Sans 3 ",
         code: "JetBrains Mono", /**IBM Plex Mono */
       },
       colors: {
