@@ -26,8 +26,8 @@ const config: QuartzConfig = {
         header: "JetBrains", /** Schibsted Grotesk, Chelsea Market,Libre Baskerville*/
         // body: "Noto Sans", /**Source Sans Pro, Roboto Serif */
         // body: "Roboto Slab", /**Source Sans Pro, Roboto Serif */
-        body: "Inter", /**Source Sans Pro, Roboto Serif */
-        // body: "Atkinson Hyperlegible",
+        // body: "Inter", /**Source Sans Pro, Roboto Serif */
+        body: "Atkinson Hyperlegible",
         code: "JetBrains Mono", /**IBM Plex Mono */
       },
       colors: {

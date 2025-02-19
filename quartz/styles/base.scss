@@ -16,8 +16,9 @@ section {
   margin: 0;
   box-sizing: border-box;
   background-color: var(--light);
-  font-family: InterDisam; //var(--bodyFont);
-  font-feature-settings: "ss02" 1;
+  font-family: var(--bodyFont);
+  // font-family: InterDisam;
+  // font-feature-settings: "ss02" 1;
   color: var(--darkgray);
 }
 
@@ -475,7 +476,7 @@ code {
 tbody,
 li,
 p {
-  line-height: 1.65rem;
+  line-height: 1.6rem;
 }
 
 .table-container {
