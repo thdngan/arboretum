@@ -39,7 +39,7 @@ const config: QuartzConfig = {
           dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
           secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37*/
           tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
-          highlight: "rgba(171, 196, 193, 0.4)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
+          highlight: "rgba(171, 196, 193, 0.3)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
           textHighlight: "#fff23688",
 
           nodefirst: "#E06C75", /**35827d */
