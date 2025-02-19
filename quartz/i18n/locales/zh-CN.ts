@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "无题",
     description: "无描述",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "反向链接",
       noBacklinksFound: "无法找到反向链接",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "亮色模式",
@@ -69,6 +65,7 @@ export default {
     error: {
       title: "无法找到",
       notFound: "私有笔记或笔记不存在。",
+      home: "返回首页",
     },
     folderContent: {
       folder: "文件夹",

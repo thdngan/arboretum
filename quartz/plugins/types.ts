@@ -12,7 +12,7 @@ export interface PluginTypes {
   emitters: QuartzEmitterPluginInstance[]
 }
 
-export type OptionType = object | undefined
+type OptionType = object | undefined
 export type QuartzTransformerPlugin<Options extends OptionType = undefined> = (
   opts?: Options,
 ) => QuartzTransformerPluginInstance

@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "제목 없음",
     description: "설명 없음",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "백링크",
       noBacklinksFound: "백링크가 없습니다.",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "라이트 모드",
@@ -69,6 +65,7 @@ export default {
     error: {
       title: "Not Found",
       notFound: "페이지가 존재하지 않거나 비공개 설정이 되어 있습니다.",
+      home: "홈페이지로 돌아가기",
     },
     folderContent: {
       folder: "폴더",

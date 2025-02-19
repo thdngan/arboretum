@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "Névtelen",
     description: "Nincs leírás",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "Visszautalások",
       noBacklinksFound: "Nincs visszautalás",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "Világos mód",
@@ -69,6 +65,7 @@ export default {
     error: {
       title: "Nem található",
       notFound: "Ez a lap vagy privát vagy nem létezik.",
+      home: "Vissza a kezdőlapra",
     },
     folderContent: {
       folder: "Mappa",

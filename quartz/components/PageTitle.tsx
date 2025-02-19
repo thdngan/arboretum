@@ -3,12 +3,12 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 
-
 const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzComponentProps) => {
   const title = cfg?.pageTitle ?? i18n(cfg.locale).propertyDefaults.title
   const baseDir = pathToRoot(fileData.slug!)
   return (
     <h1 class={classNames(displayClass, "page-title")}>
+      {/* <a href={baseDir}>{title}</a> */}
       <a href={baseDir}><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="15%" viewBox="0 0 100 112" enable-background="new 0 0 112 112" xml:space="preserve">
 <path fill="currentColor" opacity="1.000000" stroke="none" 
@@ -95,7 +95,8 @@ z"/>
 
 PageTitle.css = `
 .page-title {
-  margin: 0px;
+  font-size: 1.75rem;
+  margin: 0;
 }
 `
 

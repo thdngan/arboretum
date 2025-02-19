@@ -1,25 +1,21 @@
-import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { OptionType } from "../plugins/types"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import style from "./styles/footer.scss"
 import { version } from "../../package.json"
 import { i18n } from "../i18n"
-
+// @ts-ignore
 import script from "./scripts/_randomPage.inline"
 
-interface Optionss {
+interface Options {
   links: Record<string, string>
 }
 
-export default ((opts?: Optionss) => {
-  function Footer({ displayClass,cfg }: QuartzComponentProps) {
+export default ((opts?: Options) => {
+  const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
     const links = opts?.links ?? []
     return (
-    <footer class={`${displayClass ?? ""} footer`}>
-        {/* <hr /> */}
-        <div class="giscus"></div>
-        {/* <hr /> */}
-        {/* <div id="remark42"></div> */}
+      // Added a class to the footer so that I can query it for pageup/down
+      <footer class={`${displayClass ?? ""} footer`}>
         <p>
           {i18n(cfg.locale).components.footer.createdWith}{" "}
           <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a> © {year}
@@ -36,6 +32,5 @@ export default ((opts?: Optionss) => {
   }
 
   Footer.css = style
-  Footer.afterDOMLoaded = script
   return Footer
 }) satisfies QuartzComponentConstructor

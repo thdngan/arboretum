@@ -2,7 +2,7 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "L'arboretum",
+    title: "無題",
     description: "説明なし",
   },
   components: {
@@ -24,10 +24,6 @@ export default {
     backlinks: {
       title: "バックリンク",
       noBacklinksFound: "バックリンクはありません",
-    },
-    taglist: {
-      title: "Tags",
-      noTagsFound: "No tags found",
     },
     themeToggle: {
       lightMode: "ライトモード",
@@ -69,6 +65,7 @@ export default {
     error: {
       title: "Not Found",
       notFound: "ページが存在しないか、非公開設定になっています。",
+      home: "ホームページに戻る",
     },
     folderContent: {
       folder: "フォルダ",
