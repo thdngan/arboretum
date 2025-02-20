@@ -124,7 +124,7 @@ export default (() => {
     const iconPath = joinSegments(baseDir, "static/icon.png")
     const fontStylePath = joinSegments(baseDir, "static/font/font-style.css")
 
-    const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
+    const ogImageDefaultPath = `https://${cfg.baseUrl}/static/banner.png`
     // "static/social-images/slug-filename.md.webp"
     const ogImageGeneratedPath = `https://${cfg.baseUrl}/${fileDir.replace(
       `${ctx.argv.output}/`,
