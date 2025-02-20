@@ -1,4 +1,3 @@
-// from https://quartz.eilleeenz.com/Quartz-customization-log#scroll-to-top--random-page
 // original source: 2/2/25
 // https://github.com/CatCodeMe/catcodeme.github.io/blob/770f3f8d1f6849ef40bc06b4300a52b3aecfb551/quartz/components/styles/floatingButtons.scss
 @use "../../styles/variables.scss" as *;
@@ -27,7 +26,7 @@
       width: 36px;
       height: 36px;
       background: var(--light);
-      border: 1px solid var(--gray);
+      border: 1px solid var(--lightgray);
       color: var(--dark);
       display: flex;
       align-items: center;

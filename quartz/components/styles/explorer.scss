@@ -1,32 +1,5 @@
 @use "../../styles/variables.scss" as *;
 
-@media all and ($mobile) {
-  .page > #quartz-body {
-    // Shift page position when toggling Explorer on mobile.
-    & > :not(.sidebar.left:has(.explorer)) {
-      transform: translateX(0);
-      transition: transform 300ms ease-in-out;
-    }
-    &.lock-scroll > :not(.sidebar.left:has(.explorer)) {
-      transform: translateX(100dvw);
-      transition: transform 300ms ease-in-out;
-    }
-
-    // Sticky top bar (stays in place when scrolling down on mobile).
-    .sidebar.left:has(.explorer) {
-      box-sizing: border-box;
-      position: sticky;
-      background-color: var(--light);
-    }
-
-    // Hide Explorer on mobile until done loading.
-    // Prevents ugly animation on page load.
-    .hide-until-loaded ~ #explorer-content {
-      display: none;
-    }
-  }
-}
-
 .explorer {
   display: flex;
   // height: 100%;
