@@ -1,5 +1,5 @@
 ---
-title: Clathrate Hydrate
+title: Clathrate Hydrates
 date: 2024-05-15
 tags:
   - chemistry
