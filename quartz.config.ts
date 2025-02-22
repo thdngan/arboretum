@@ -52,7 +52,7 @@ const config: QuartzConfig = {
           // nodethird: "#c678dd",
           // nodevisited: "#61afef", 
           border: "rgba(105, 137, 150,0.5)",
-          link: "rgba(105, 137, 150,0.2)",
+          link: "rgba(105, 137, 150,0.1)",
 
           wikiheading: "#c8d0ca",
           wikibackground: "#ebebeb",
