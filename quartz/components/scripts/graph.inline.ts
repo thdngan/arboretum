@@ -98,7 +98,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       v,
     ]),
   )
-
+  // Take out files that have the tags in excludeTags
   const data: Map<SimpleSlug, ContentDetails> = new Map(
     [...originalData.entries()].filter(([key, value]) => {
     return !value.tags?.some(tag => excludeTags.includes(tag))
@@ -136,6 +136,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   const neighbourhood = new Set<SimpleSlug>()
   const wl: (SimpleSlug | "__SENTINEL")[] = [slug, "__SENTINEL"]
   if (depth >= 0) {
+    // Compute the neighbourhood as before
     while (depth >= 0 && wl.length > 0) {
       // compute neighbours
       const cur = wl.shift()!
@@ -150,12 +151,14 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       }
     }
   } else {
+    // Fall back to the global graph (display all nodes)
     validLinks.forEach((id) => neighbourhood.add(id))
     if (showTags) tags.forEach((tag) => neighbourhood.add(tag))
-  }
+  }  
 
   const nodes = [...neighbourhood].map((url) => {
-    const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
+    // const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
+    const text = url.startsWith("tags/") ? "🏷️" + url.substring(5) : (data.get(url)?.title ?? url)
     return {
       id: url,
       text,
@@ -177,7 +180,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
 
   // we virtualize the simulation and use pixi to actually render it
   // Calculate the radius of the container circle
-  const radius = Math.min(width, height) / 2 - 40 // 40px padding
+  // const radius = Math.min(width, height) / 2 - 40 // 40px padding
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
     .force("charge", forceManyBody().strength(-100 * repelForce))
     .force("center", forceCenter().strength(centerForce))
@@ -185,7 +188,14 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
 
   if (enableRadial)
-    simulation.force("radial", forceRadial(radius * 0.8, width / 2, height / 2).strength(0.3))
+    simulation.force("radial", forceRadial(0, 0, 0).strength(0.3))
+
+  // We want a fluid simulation so we keep the alpha target low at all times.
+  // simulation.alphaTarget(0.4)
+  setTimeout(() => {
+    simulation.alphaTarget(0.4);
+  }, 800);   
+
 
   // precompute style prop strings as pixi doesn't support css variables
   const cssVars = [
@@ -226,12 +236,16 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       return computedStyleMap["--nodethird"]
     }
   }
-
+  
   function nodeRadius(d: NodeData) {
     const numLinks = graphData.links.filter(
       (l) => l.source.id === d.id || l.target.id === d.id,
     ).length
-    return 2 + Math.sqrt(numLinks)
+    if (/^\/$/.test(d.id)) { // this regex is making the index node bigger
+      return (1.5 + Math.sqrt(numLinks)) * 1.25
+    } else {
+      return 1.5 + Math.sqrt(numLinks * 0.75)
+    }
   }
 
   let hoveredNodeId: string | null = null
@@ -284,7 +298,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
         alpha = l.active ? 1 : 0.2
       }
 
-      l.color = l.active ? computedStyleMap["--gray"] : computedStyleMap["--lightgray"]
+      l.color = l.active ? computedStyleMap["--border"] : computedStyleMap["--link"]
       tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 200))
     }
 
@@ -408,11 +422,15 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
         fontFamily: computedStyleMap["--bodyFont"],
       },
       resolution: window.devicePixelRatio * 4,
-    })
-    label.scale.set(1 / scale)
-
+      visible: false, // Initially hide all labels
+    });
+    label.scale.set(1 / scale);
+    (label as any).originalText = n.text;
+    (label as any).nodeId = n.id; //Store node id
+  
     let oldLabelOpacity = 0
     const isTagNode = nodeId.startsWith("tags/")
+    label.visible = (nodeId === slug || isTagNode);
     const gfx = new Graphics({
       interactive: true,
       label: nodeId,
@@ -425,14 +443,22 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       .stroke({ width: isTagNode ? 2 : 0, color: color(n) })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
-        oldLabelOpacity = label.alpha
+        // Only show the label for the hovered node
+        nodeRenderData.forEach(rd => rd.label.visible = false); // Hide all labels first
+        const hoveredNode = nodeRenderData.find(rd => rd.simulationData.id === (gfx as any).label);
+        if(hoveredNode) {
+            hoveredNode.label.visible = true; // Show current label
+        }
         if (!dragging) {
           renderPixiFromD3()
         }
       })
       .on("pointerleave", () => {
-        updateHoverInfo(null)
-        label.alpha = oldLabelOpacity
+        updateHoverInfo(null);
+        // Hide non-current node label
+        nodeRenderData.forEach(rd => {
+          rd.label.visible = (rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/"));
+        });
         if (!dragging) {
           renderPixiFromD3()
         }
@@ -475,7 +501,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
         .container(() => app.canvas)
         .subject(() => graphData.nodes.find((n) => n.id === hoveredNodeId))
         .on("start", function dragstarted(event) {
-          if (!event.active) simulation.alphaTarget(1).restart()
+          if (!event.active) simulation.alphaTarget(0.4).restart()
           event.subject.fx = event.subject.x
           event.subject.fy = event.subject.y
           event.subject.__initialDragPos = {
@@ -499,7 +525,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
           dragging = false
 
           // if the time between mousedown and mouseup is short, we consider it a click
-          if (Date.now() - dragStartTime < 500) {
+          if (Date.now() - dragStartTime < 300) {
             const node = graphData.nodes.find((n) => n.id === event.subject.id) as NodeData
             const targ = resolveRelative(fullSlug, node.id)
             window.spaNavigate(new URL(targ, window.location.toString()))
@@ -516,31 +542,41 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   }
 
   if (enableZoom) {
-    select<HTMLCanvasElement, NodeData>(app.canvas).call(
-      zoom<HTMLCanvasElement, NodeData>()
-        .extent([
-          [0, 0],
-          [width, height],
-        ])
-        .scaleExtent([0.25, 4])
-        .on("zoom", ({ transform }) => {
-          currentTransform = transform
-          stage.scale.set(transform.k, transform.k)
-          stage.position.set(transform.x, transform.y)
-
-          // zoom adjusts opacity of labels too
-          const scale = transform.k * opacityScale
-          let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
-          const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
-
-          for (const label of labelsContainer.children) {
-            if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
+    select<HTMLCanvasElement, NodeData>(app.canvas)
+      .call(
+        zoom<HTMLCanvasElement, NodeData>()
+          .extent([
+            [0, 0],
+            [width, height],
+          ])
+          .scaleExtent([0.25, 4])
+          .on("zoom", ({ transform }) => {
+            currentTransform = transform
+            stage.scale.set(transform.k, transform.k)
+            stage.position.set(transform.x, transform.y)
+  
+            // Set default label visibility
+            nodeRenderData.forEach(rd => rd.label.visible = (rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/")));
+  
+            // Show the label for the current node
+            const current = nodeRenderData.find(rd => rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/"));
+            if(current) {
+              current.label.visible = true;
             }
-          }
-        }),
-    )
-  }
+  
+            // zoom adjusts opacity of labels too
+            const scale = transform.k * opacityScale
+            let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
+            const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+  
+            for (const label of labelsContainer.children) {
+              if (!activeNodes.includes(label)) {
+                label.alpha = scaleOpacity
+              }
+            }
+          }),
+      )
+  }  
 
   function animate(time: number) {
     for (const n of nodeRenderData) {
