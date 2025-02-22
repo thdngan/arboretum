@@ -298,7 +298,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
         alpha = l.active ? 1 : 0.2
       }
 
-      l.color = l.active ? computedStyleMap["--border"] : computedStyleMap["--link"]
+      l.color = l.active ? computedStyleMap["--border"] : computedStyleMap["--lightgray"]
       tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 200))
     }
 
