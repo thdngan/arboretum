@@ -44,7 +44,7 @@ export default ((opts?: FloatingButtonsOptions) => {
           {/* GRAPH BUTTON */}
           <button
             class="floating-button"
-            title="graph"
+            title="Graph"
             data-action="graph"
           >
             <span class="floating-button-tooltip">Graph</span>
@@ -88,7 +88,7 @@ export default ((opts?: FloatingButtonsOptions) => {
           {/* RANDOM PAGE */}
           <button
             class="floating-button"
-            title="Random page floating button"
+            title="Random page"
             data-action="randomPgFloating"
           >
             <span class="floating-button-tooltip">Random page</span>
@@ -100,7 +100,7 @@ export default ((opts?: FloatingButtonsOptions) => {
               <path fill-rule="evenodd" clip-rule="evenodd" d="M21.3536 6.64648L18.3536 3.64648L17.6464 4.35359L19.7929 6.50004H18.2202H18.1963C17.1406 6.50003 16.3153 6.50003 15.6464 6.55901C14.964 6.61918 14.405 6.74317 13.8889 7.01339C13.4698 7.2328 13.0879 7.51691 12.7574 7.85526C12.7386 7.87444 12.7202 7.8938 12.7019 7.91335C12.8289 8.16228 12.9399 8.41464 13.0406 8.66741C13.0782 8.7617 13.1154 8.85879 13.1523 8.95851C13.2519 8.80434 13.3571 8.6724 13.4727 8.5541C13.7298 8.29094 14.0268 8.06996 14.3527 7.89931C14.7081 7.71321 15.1228 7.60905 15.7343 7.55514C16.3542 7.50049 17.1355 7.50004 18.2202 7.50004H19.7929L17.6464 9.64648L18.3536 10.3536L21.3536 7.35359L21.7071 7.00004L21.3536 6.64648ZM10.2981 16.0867C10.1711 15.8378 10.0601 15.5854 9.95935 15.3327C9.92175 15.2384 9.88456 15.1413 9.84766 15.0416C9.74807 15.1957 9.64293 15.3277 9.52735 15.446C9.27024 15.7091 8.97324 15.9301 8.6473 16.1008C8.29185 16.2869 7.87716 16.391 7.26574 16.4449C6.64583 16.4996 5.86454 16.5 4.77985 16.5H3V17.5H4.77985H4.80369C5.85944 17.5 6.68467 17.5 7.35357 17.4411C8.03597 17.3809 8.59502 17.2569 9.11113 16.9867C9.5302 16.7673 9.91205 16.4832 10.2426 16.1448C10.2614 16.1256 10.2798 16.1063 10.2981 16.0867Z" fill="currentColor"></path> 
             </g></svg> */}
 
-            <svg width="40" height="40" viewBox="0 0 61 61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">
+            <svg width="62" height="62" viewBox="0 0 62 62" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">
             <path d="M43.3 19.355c-.894-.524-1.767-.789-2.457-.789c-.686 0-1.188.265-1.34.789c-.31 1.049.896 2.749 2.686 3.798c.896.526 1.768.788 2.456.788c.686 0 1.188-.262 1.344-.788c.307-1.049-.897-2.749-2.689-3.798" fill="currentColor"></path>
             <path d="M29.13 48.144c-.645-.231-1.554-.277-2.576-.084c-2.04.391-3.744 1.591-3.807 2.682c-.032.545.354.962 1.002 1.191c.647.231 1.557.275 2.576.081c2.041-.388 3.746-1.587 3.809-2.681c.032-.545-.354-.961-1.004-1.189" fill="currentColor"></path>
             <path d="M39.002 45.923c-.646-.229-1.558-.277-2.576-.082c-2.039.389-3.742 1.586-3.805 2.68c-.03.546.355.961 1.002 1.191s1.558.275 2.576.083c2.043-.39 3.742-1.588 3.807-2.681c.028-.546-.356-.96-1.004-1.191" fill="currentColor"></path>
