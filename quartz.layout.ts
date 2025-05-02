@@ -71,21 +71,21 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
-        limit: 2,
+        limit: 4,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
         linkToMore: "posts/" as SimpleSlug,
       }),
     ),
 
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Recent Notes",
-        limit: 2,
-        filter: (f) =>
-          f.slug!.startsWith("notes_folder/") && f.slug! !== "notes_folder/index" && !f.frontmatter?.noindex,
-        linkToMore: "notes_folder/" as SimpleSlug,
-      })),
+    // Component.DesktopOnly(
+    //   Component.RecentNotes({
+    //     title: "Recent Notes",
+    //     limit: 2,
+    //     filter: (f) =>
+    //       f.slug!.startsWith("notes_folder/") && f.slug! !== "notes_folder/index" && !f.frontmatter?.noindex,
+    //     linkToMore: "notes_folder/" as SimpleSlug,
+    //   })),
 
       Component.DesktopOnly(Component.TableOfContents()),
 

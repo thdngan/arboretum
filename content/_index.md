@@ -30,14 +30,14 @@ You can hop between posts and notes by clicking on **[[daisyworld|links like thi
 
 Feeling extra lost? There's a **search tool** 🔍 at the top (or just hit `Ctrl+K`) to dig through the archives.
 
-Or if you just wanna see what kind of rabbit holes I’ve fallen into, here are some of my main topics:
+Or if you just wanna see what kind of rabbit holes I’ve fallen into, here are some of my main topics: 
 
-- 🪐 **#planetary-science** & **#climate** (mostly modeling),
-- 🌌 **#astrophysics**,
-- ⚛️ **#particle** **#physics**,
-- 🧪 **#chemistry** (more like _physical_ chemistry, really),
-- ❓ or completely random topics I’ll probably never revisit (_lol_), like **#image-processing,  #seismology,  #earthquakes**
-- and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!
+🪐 **#planetary-science** & **#climate** (mostly modeling),  
+🌌 **#astrophysics**,  **#cosmology**,  
+⚛️ **#particle** **#physics**,  
+🧪 **#chemistry** (more like _physical_ chemistry, really),  
+❓ or completely random topics I’ll probably never revisit (_lol_), like **#image-processing,  #seismology,  #earthquakes**,  
+and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!   
 
 Go ahead, click around - I promise no black holes 🕳️🐧.
 

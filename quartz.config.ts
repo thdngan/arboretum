@@ -27,9 +27,10 @@ const config: QuartzConfig = {
         // body: "Noto Sans", /**Source Sans Pro, Roboto Serif */
         // body: "Roboto Slab", /**Source Sans Pro, Roboto Serif */
         // body: "Inter", /**Source Sans Pro, Roboto Serif */
-        body: "Atkinson Hyperlegible",
+        body: "Atkinson Hyperlegible Next",
         // body: "Source Sans 3 ",
         code: "JetBrains Mono", /**IBM Plex Mono */
+        // code: "Atkinson Hyperlegible Mono",
       },
       colors: {
         lightMode: {
