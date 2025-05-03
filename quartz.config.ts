@@ -35,11 +35,11 @@ const config: QuartzConfig = {
       colors: {
         lightMode: {
           light: "#f5f5f5", /**faf8f8 for background                                             ; #FFFFFF, f5f5f5*/
-          lightgray: "rgba(105, 137, 150,0.2)", /**e5e5e5 for background of search             ;rgba(117, 129, 107,0.4)*/
+          lightgray: "rgba(105, 137, 150,0.2)", /**e5e5e5 for background of search             ;rgba(117, 129, 107,0.4), rgba(105, 137, 150,0.2)*/
           gray: "#d43542", /**b8b8b8 for date and reading time, graph links, heavier borders     ; #7C8B95*/
-          darkgray: "#1F1F1F", /**4e4e4e for text                                                ; #000000*/
-          dark: "#000000", /**2b2b2b for headings and icons                                      ; #1F4172*/
-          secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37*/
+          darkgray: "#3d3d3d", /**4e4e4e for text                                                ; #000000*/
+          dark: "#292929", /**2b2b2b for headings and icons                                      ; #1F4172*/
+          secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37; #8bbf9f*/
           tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
           highlight: "rgba(171, 196, 193, 0.3)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
           textHighlight: "#fff23688",
@@ -52,7 +52,7 @@ const config: QuartzConfig = {
           // nodesecond: "#98c379",
           // nodethird: "#c678dd",
           // nodevisited: "#61afef", 
-          border: "rgba(105, 137, 150,0.5)",
+          border: "rgba(105, 137, 150,0.3)",
           link: "rgba(105, 137, 150,0.1)",
 
           wikiheading: "#c8d0ca",
@@ -75,21 +75,35 @@ const config: QuartzConfig = {
           // #E06C75: redish?
           // #4Dff0000
         darkMode: {
-          light: "#1b1d23", /**background: 161618 ,#0d1210, 1A2421, #141716, #2F3037, #282c34*/
-          lightgray: "rgba(224, 224, 224,0.2)", /*background of search, inline code and borders: rgba(224, 224, 224,0.25),rgba(175, 62, 77,0.5) */
-          gray: "#c678dd", /* date and reading time, graph links, heavier borders: b8b8b8 */
-          darkgray: "#abb2bf",/*text: EAEAEA  */
-          dark: "#d6d6d6",     /* headings and icons, search text: ECBC55, ECB159, F5B700, C2C2C2, FFFFFF*/
-          secondary: "#7d9a69", /*titles and links, current graph node: 85CFCB, dda169, 86b8b5 */
-          tertiary: "#E06C75",/*for when hovering above link: 709997*/
-          highlight: "rgba(171, 196, 193, 0.12)", /*background of internal link */
-          textHighlight: "#b3aa0288",
+          // light: "#1b1d23", /**background: 161618 ,#0d1210, 1A2421, #141716, #2F3037, #282c34*/
+          // lightgray: "rgba(224, 224, 224,0.2)", /*background of search, inline code and borders: rgba(224, 224, 224,0.25),rgba(175, 62, 77,0.5) */
+          // gray: "#c678dd", /* date and reading time, graph links, heavier borders: b8b8b8 */
+          // darkgray: "#abb2bf",/*text: EAEAEA  */
+          // dark: "#d6d6d6",     /* headings and icons, search text: ECBC55, ECB159, F5B700, C2C2C2, FFFFFF*/
+          // secondary: "#8ab86b", /*titles and links, current graph node: 85CFCB, dda169, 86b8b5 */
+          // tertiary: "#E06C75",/*for when hovering above link: 709997*/
+          // highlight: "rgba(61, 80, 50, 0.8)", /*background of internal link */
+          // textHighlight: "#b3aa0288",
 
+          // nodefirst: "#E06C75",
+          // nodesecond: "#98c379",
+          // nodethird: "#c678dd",
+          // nodevisited: "#61afef", 
+          light: "#1b1d23",          // background (light → dark equivalent)
+          lightgray: "rgba(224, 224, 224,0.2)", // background of search, inline code and borders
+          gray: "#c678dd",           // date and reading time, graph links, heavier borders
+          darkgray: "#abb2bf",       // text (dark → light)
+          dark: "#cccccc",           // headings and icons, search text (strong contrast)
+          secondary: "#6d9c9a",      // titles and links, current graph node
+          tertiary: "#E06C75",       // for when hovering above link
+          highlight: "rgba(149, 164, 163, 0.15)", // background for internal links
+          textHighlight: "#b3aa0288", // keep or slightly lighten if needed for legibility
+        
           nodefirst: "#E06C75",
           nodesecond: "#98c379",
           nodethird: "#c678dd",
-          nodevisited: "#61afef", 
-          border: "rgba(224, 224, 224,0.5)",
+          nodevisited: "#61afef",
+          border: "rgba(224, 224, 224,0.2)",
           link: "rgba(224, 224, 224,0.25)",
 
           wikiheading: "#67796b",

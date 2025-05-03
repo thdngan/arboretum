@@ -15,7 +15,7 @@ Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:
 
 Hey, I’m Ngân (Ryan), an aspiring researcher with a habit of collecting thoughts and sometimes leaving them half-baked like an unripe avocado. This is my little corner of the internet where I stash ideas,  #notes,  #notebooks ,  #discussions, personal  #projects, and whatever else pops into my orbit. Some notes are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to figure things out. Consider this a living, evolving brain-dump.
 
-Now, if you’re wondering why there are penguins 🐧 waddling around an arboretum… honestly, same. I just rolled with it.
+Now, if you’re wondering why there are penguins waddling around an arboretum… honestly, I don't know either 🐧.
 
 <!-- And why is it *L'arboretum*? Claire, it's French ✨! -->
 
@@ -23,7 +23,7 @@ Now, if you’re wondering why there are penguins 🐧 waddling around an arbore
 # Lost in the trees? Don't worry, I've got a map 
 
 
-You can hop between posts and notes by clicking on **[[daisyworld|links like this]]** inside each page or by using the **interactive map**. If you're on a desktop, you’ll find it on the **right side** of the page. On mobile? Scroll down, it’s waiting at the **bottom**. There are also handy buttons on the bottom right to:  
+You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map**. If you're on a desktop, you’ll find it on the **right side** of the page. On mobile? Scroll down, it’s waiting at the **bottom**. There are also handy buttons on the bottom right to:  
 🧭 **Open the global map** (for the adventurous)  
 🎲 **Pick a random post** (for the chaotic)  
 ↑↓ **Jump to the top/bottom** (for the efficient)

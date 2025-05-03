@@ -23,6 +23,8 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import FloatingButtons from "./_FloatingButtons"
 import Row from "./_Row"
+import ConditionalRender from "./ConditionalRender"
+import Flex from "./Flex"
 
 export {
   ArticleTitle,
@@ -50,4 +52,6 @@ export {
   Comments,
   FloatingButtons,
   Row,
+  Flex,
+  ConditionalRender,
 }
