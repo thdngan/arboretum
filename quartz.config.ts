@@ -61,7 +61,7 @@ const config: QuartzConfig = {
 
           gradient1: "#310979",
           gradient2: "#00d4ff",
-          italic: "#1F1F1F",
+          italic: "#3d3d3d",
         },
           ////////////   ATOME ONE DARK THEME /////////////
           // #abb2bf: light grey (normal text)
@@ -112,7 +112,7 @@ const config: QuartzConfig = {
 
           gradient1: "#00e2ff",
           gradient2: "#f5b0ff",
-          italic: "#abb2bf", /*EAEAEA */
+          italic: "#d4d4d4", /*EAEAEA */
         },
       },
     },
