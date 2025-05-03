@@ -92,8 +92,8 @@ const config: QuartzConfig = {
           light: "#1b1d23",          // background (light → dark equivalent)
           lightgray: "rgba(224, 224, 224,0.2)", // background of search, inline code and borders
           gray: "#86acaa",           // date and reading time, graph links, heavier borders, c678dd
-          darkgray: "#abb2bf",       // text (dark → light)
-          dark: "#cccccc",           // headings and icons, search text (strong contrast)
+          darkgray: "#d4d4d4",       // text (dark → light)
+          dark: "#ebebec",           // headings and icons, search text (strong contrast)
           secondary: "#6d9c9a",      // titles and links, current graph node
           tertiary: "#E06C75",       // for when hovering above link
           highlight: "rgba(149, 164, 163, 0.15)", // background for internal links
