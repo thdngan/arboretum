@@ -67,7 +67,7 @@ Researchers have explored all sorts of explanations: maybe lithium is being depl
 
 %% And that, dear reader, is why astrophysicists are still scratching their heads over this cosmic whodunit. Stay tuned as we dive into the possible solutions and what they might reveal about the hidden secrets of the universe! %%
 
-## A game of Hide and Seek
+## Suspect #1: A game of Hide and Seek
 
 >[!caption_left]
 >![[likelihood.webp]]
@@ -85,7 +85,7 @@ Then there’s the big question: is the lithium we see today the same lithium th
 So, does the astrophysical explanation solve the lithium problem? Well... not really. While some stellar effects might contribute to the discrepancy, they don’t seem to fully account for the missing lithium. This means we need to dig deeper—maybe into the realm of nuclear physics or even completely new physics beyond the Standard Model.
 
 
-## Did we mess up the math?
+## Suspect #2: Did we mess up the math?
 
 What if we’re actually right about how much lithium should be there, and our measurements are spot on, but our theoretical predictions are just... wrong? Maybe the problem isn’t in what we see, but in how we calculate Big Bang Nucleosynthesis (BBN) (Fields, 2011[^1]).
 
@@ -98,7 +98,7 @@ Other nuclear processes, like [[weak interactions|weak interaction]] rates, have
 One last hope? Resonances! These are energy states in nuclear reactions that could have been overlooked. Some proposed resonances, like ⁷Be + d → ⁹B* (16.71 MeV) and ⁷Be + t → ¹⁰B*, could theoretically help balance the lithium discrepancy—if their reaction widths are large enough (Cyburt & Pospelov, 2012[^14]). But recent studies suggest that while they might help, they don’t fully solve the problem. In fact, Iliadis and Coc (2020)[^15] concluded that nuclear physics alone is unlikely to fix this mystery.
 
 
-## Time to break the rules?
+## Suspect #3: Time to break the rules?
 
 Alright, if standard astrophysics and nuclear physics aren’t solving the lithium crisis, maybe it’s time to get wild and rethink some fundamental assumptions about the universe. This brings us to the most dramatic possibilities—new physics beyond the Standard Model (Pospelov & Pradler, 2010[^6]).
 
