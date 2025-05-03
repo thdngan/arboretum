@@ -440,7 +440,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     })
       .circle(0, 0, nodeRadius(n))
       .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
-      .stroke({ width: isTagNode ? 2 : 0, color: color(n) })
+      .stroke({ width: isTagNode ? 2 : 0, color: computedStyleMap["--nodesecond"] })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
         // Only show the label for the hovered node
