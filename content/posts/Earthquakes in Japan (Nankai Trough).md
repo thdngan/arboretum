@@ -12,7 +12,7 @@ tags:
 ## Japan's active seismic landscape
 >[!caption_right]
 >![[japan_plates.png]]
->Shaded relief map of the East Asia – Pacific region, labeled with geographic (italicized) and tectonic features discussed in this paper. Red lines show the block boundaries used in a reference model of the greater Japan region, referred to as JB1. Reprinted from Loveless and Meade (2010) [^1].
+>Shaded relief map of the East Asia – Pacific region, labeled with geographic (italicized) and tectonic features discussed in this paper. Red lines show the block boundaries used in a reference model of the greater Japan region, referred to as JB1. From Loveless and Meade (2010) [^1].
 
 Japan is renowned for its high seismic activity, a consequence of its unique position at the convergence of four tectonic plates: the Pacific, Philippine Sea, North American, and Eurasian plates  [^2]$^,$ [^1]. These dynamic interactions have shaped the islands’ geography and culture but have also exposed the nation to frequent earthquakes, some of which have been devastating. Central to understanding Japan’s seismic activity is the subduction of the Pacific Plate beneath the North American Plate along the Japan Trench in the northeast and the Philippine Sea Plate beneath the Eurasian Plate along the Nankai Trough and Sagami Trough in the southwest [^2]$^,$ [^3].
 
@@ -23,7 +23,7 @@ Japan’s seismicity is also influenced by the complex fault systems across the 
 
 >[!caption_left]
 >![[nankai_Flores.png]]
->Yellow dots indicate epicenters of very low frequency earthquakes [^10]$^,$ [^11]$^,$ [^12]$^,$ [^13]$^,$ [^14] and green dots represent tremors [^15]$^,$ [^16]. Blue and red stars indicate the epicenters of the 1944 Tonankai and 1946 Nankai earthquakes, respectively. The rupture areas of these earthquakes are represented by the red and blue dashed lines [^17]$^,$ [^18]. Reprinted from Flores et al. (2024)[^19].
+>Yellow dots indicate epicenters of very low frequency earthquakes [^10]$^,$ [^11]$^,$ [^12]$^,$ [^13]$^,$ [^14] and green dots represent tremors [^15]$^,$ [^16]. Blue and red stars indicate the epicenters of the 1944 Tonankai and 1946 Nankai earthquakes, respectively. The rupture areas of these earthquakes are represented by the red and blue dashed lines [^17]$^,$ [^18]. From Flores et al. (2024)[^19].
 
 
 Among the various subduction zones, the Nankai Trough stands out due to its regular seismicity and significant societal risks. Historical records dating back to 684 AD document cycles of great earthquakes along the trough, typically occurring in pairs or sequences separated by intervals of approximately 90 to 150 years [^3]. For example, the Hoei Earthquake of 1707 ruptured all segments of the Nankai Trough, generating a massive tsunami that devastated coastal communities [^3]. More recent events, such as the 1944 Tonankai and 1946 Nankaido earthquakes, ruptured the eastern and western segments, respectively, providing modern research with valuable data on fault mechanics and tsunami generation [^6]$^,$[^3].
@@ -34,7 +34,7 @@ Research on the Nankai Trough has revealed that the seismic cycle is driven by e
 
 >[!caption_right]
 >![[nankai_Fukushima.png]]
->Tectonic setting of the Nankai Trough megathrust. The grey area indicates the Philippine Sea Plate. The thick arrow indicates the plate convergence direction. The grey arrows indicate ground displacements. The light orange area corresponds to the maximum-possible fault area published by the Japanese Government. Reprinted from Fukushima et al. (2023)[^20].
+>Tectonic setting of the Nankai Trough megathrust. The grey area indicates the Philippine Sea Plate. The thick arrow indicates the plate convergence direction. The grey arrows indicate ground displacements. The light orange area corresponds to the maximum-possible fault area published by the Japanese Government. From Fukushima et al. (2023)[^20].
 
 Currently, the Nankai Trough is the subject of intense monitoring and research due to warnings of a potential once-in-a-century earthquake. Studies have identified a high probability of a megathrust event occurring within the next few decades, with simulations predicting that such an earthquake could reach a magnitude of 8.0 to 9.0 and cause widespread damage across western Japan [^3]$^,$ [^8]. The likelihood of successive M8 twin ruptures within a short time frame has been estimated at 4.3–96\% [^20]. Mechanical coupling studies suggest that stress accumulation in specific regions may determine the rupture behavior of future megathrust earthquakes [^21]. The anticipated rupture could involve multiple segments of the trough, similar to the Hoei Earthquake, and generate tsunamis capable of flooding densely populated coastal areas [^3].
 

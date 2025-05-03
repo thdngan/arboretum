@@ -19,7 +19,7 @@ draft: false
 
 >[!caption_left]
 >![[abundance.png]]
->Time evolution of the light element abundances during BBN. Time (upper axis) increases to the right, and so the temperature is shown to decrease to the right. Reprinted from Yeh et al. (2023)[^20].
+>Time evolution of the light element abundances during BBN. Time (upper axis) increases to the right, and so the temperature is shown to decrease to the right. From Yeh et al. (2023)[^20].
 
 The cosmological lithium problem is one of the biggest unsolved puzzles in #astrophysics. Imagine this: you’ve got a universe fresh out of the Big Bang, filled with a scorching soup of [[protons]], [[neutrons]], and all sorts of cosmic particles. As everything cools down, atoms start forming—mostly hydrogen and helium, but also a pinch of lithium (Fields, 2011[^1]).
 
@@ -28,7 +28,7 @@ Now, fast forward billions of years, and we take a look at old, metal-poor stars
 ## Cooking up the universe
 >[!caption_right]
 >![[nuclear_network.webp]]
->Simplified BBN nuclear network, showing the 12 reactions important for determining light-element abundances. Reprinted from Fields (2023)[^19].
+>Simplified BBN nuclear network, showing the 12 reactions important for determining light-element abundances. From Fields (2023)[^19].
 
 Let’s rewind to the first few minutes after the Big Bang. The universe was a sizzling hot, dense plasma—a cosmic kitchen where nuclear reactions were whipping up the light elements that make up everything we see today. [[Protons]] and [[neutrons]] collided at breakneck speeds, forming deuterium, helium-4 (⁴He), a smidge of lithium-7, and even tinier amounts of beryllium (Fields, 2011[^1]). The standard BBN model, our best recipe for this cosmic cook-off, predicts these element abundances with impressive accuracy. In fact, observations of deuterium and helium-4 match up perfectly with what BBN tells us (Serpico et al., 2004[^3]).
 
@@ -36,7 +36,7 @@ But then lithium-7 comes along and throws a wrench in the works. Instead of matc
 
 >[!caption_left]
 >![[light_elements.webp]]
-BBN theory predictions for light nuclide abundances versus the cosmic baryon-to-photon ratio $\eta$. Curve widths: 1$\sigma$ theoretical uncertainties. Cyan vertical band: _Planck_ CMB determination of $\eta^{CMB}$ (Aghanim et al., 2020)[^21]. Yellow boxes: light-element observations and corresponding $\eta$ ranges. Hatched vertical band: D/H+$Y_p$ concordant range for $\eta^{BBN}$. (From BBN review in Particle Data Group et al., 2020)[^22]. Reprinted from Fields (2023)[^19].
+BBN theory predictions for light nuclide abundances versus the cosmic baryon-to-photon ratio $\eta$. Curve widths: 1$\sigma$ theoretical uncertainties. Cyan vertical band: _Planck_ CMB determination of $\eta^{CMB}$ (Aghanim et al., 2020)[^21]. Yellow boxes: light-element observations and corresponding $\eta$ ranges. Hatched vertical band: D/H+$Y_p$ concordant range for $\eta^{BBN}$. (From BBN review in Particle Data Group et al., 2020)[^22]. From Fields (2023)[^19].
 
 It’s like baking a cake and realizing a key ingredient has mysteriously vanished but the cake is still somehow edible... only this isn’t a baking mishap; it’s astrophysics!
 
@@ -71,7 +71,7 @@ Researchers have explored all sorts of explanations: maybe lithium is being depl
 
 >[!caption_left]
 >![[likelihood.webp]]
->Comparison of BBN light-element abundance predictions and observations. Likelihood curves (normalized to peak at unity) for BBN+CMB predictions are shown in magenta. Primordial abundances inferred from astronomical observations are shown in yellow. The CMB determination of $^4$He is shown in cyan. Reprinted from Fields et al. (2020)[^23].
+>Comparison of BBN light-element abundance predictions and observations. Likelihood curves (normalized to peak at unity) for BBN+CMB predictions are shown in magenta. Primordial abundances inferred from astronomical observations are shown in yellow. The CMB determination of $^4$He is shown in cyan. From Fields et al. (2020)[^23].
 
 
 Alright, let’s assume for a moment that standard cosmology and #particle #physics are totally on point, and our nuclear physics calculations of mass-7 production are rock solid. If that’s the case, then why the heck are we seeing way less lithium-7 than expected? Theoretically, there should be about three to four times more lithium than what we observe (Fields, 2011[^1]). So what’s going on?
@@ -104,13 +104,13 @@ Alright, if standard astrophysics and nuclear physics aren’t solving the lithi
 
 >[!caption]
 >![[abundance-vs-lifetime.png]]
->Abundance contours vs decay lifetime. The colored areas indicate parameter regions in which the predicted light-element abundances disagree with observations, and the remaining, white regions are allowed. Reprinted from Cyburt et al. (2010)[^16].
+>Abundance contours vs decay lifetime. The colored areas indicate parameter regions in which the predicted light-element abundances disagree with observations, and the remaining, white regions are allowed. From Cyburt et al. (2010)[^16].
 
 One idea is that dark matter could be playing a role. Dark matter is still a huge mystery, but we know it must exist. Some theoretical models propose that dark matter particles—perhaps Weakly Interacting Massive Particles (WIMPs)—could decay into high-energy particles that mess with primordial element abundances (Cyburt et al., 2010[^16]). If these decays happened during or just after BBN, they could have influenced lithium levels. In fact, certain decay lifetimes (~10²–10³ seconds) seem to line up with observed lithium-7 levels. But, as always, there’s a catch: while this explanation helps with lithium, it messes up deuterium predictions, making the solution a bit too convenient.
 
 >[!caption_right]
 >![[gravitino-abundance-vs-mass.png]]
->Contours of $\chi^2$ in the (mass, abundance) plane. Reprinted from Cyburt et al. (2010)[^16].
+>Contours of $\chi^2$ in the (mass, abundance) plane. From Cyburt et al. (2010)[^16].
 
 Another idea comes from supersymmetry (SUSY). If a spin-3/2 gravitino was once a heavier particle that decayed into dark matter, it could create an optimal trade-off between lithium destruction and deuterium production (Jedamzik et al., 2006[^17]). The problem? Supersymmetry hasn’t been confirmed by experiments like those at the Large Hadron Collider (LHC), so this remains speculative.
 

@@ -77,7 +77,7 @@ Since we’re keeping things simple, let’s consider only a **single guest spec
 
 > [!caption_left]
 > ![[lunine_stevenson1985_fig2.png]]
->Here’s a schematic of clathrate stability fields for a guest molecule (like methane). The solid line shows where clathrate is thermodynamically preferred over water ice or liquid, while the dashed line is the ice-liquid phase boundary. Dotted lines represent vapor-liquid (A) and liquid-solid (B) phase boundaries of the guest species. Note how the slope of the clathrate stability field changes when crossing the ice-liquid boundary! Reprinted from Lunine & Stevenson (1985)[^1].
+>Here’s a schematic of clathrate stability fields for a guest molecule (like methane). The solid line shows where clathrate is thermodynamically preferred over water ice or liquid, while the dashed line is the ice-liquid phase boundary. Dotted lines represent vapor-liquid (A) and liquid-solid (B) phase boundaries of the guest species. Note how the slope of the clathrate stability field changes when crossing the ice-liquid boundary! From Lunine & Stevenson (1985)[^1].
 
 ## Breaking Down the Phase Boundary
 
