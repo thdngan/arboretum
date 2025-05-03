@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug } from "./quartz/util/path"
 
 // Constants for config
 const tagsToRemove = ["graph-exclude", "explorer-exclude", "backlinks-exclude", "recents-exclude"]
@@ -54,8 +55,14 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
+    Component.ConditionalRender({
+      component: Component.ArticleTitle(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.MobileOnly(Component.TagList_noheading()),
 
   ],
@@ -68,6 +75,17 @@ export const defaultContentPageLayout: PageLayout = {
       Component.Search(),
       Component.Darkmode(),
     ]),
+    // Component.Flex({
+    //   components: [
+    //     {
+    //       Component: Component.Search(),
+    //       grow: true, // Search will grow to fill available space
+    //     },
+    //     { Component: Component.Darkmode() }, // Darkmode keeps its natural size
+    //   ],
+    //   direction: "row",
+    //   gap: "1rem",
+    // }),
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
@@ -87,10 +105,10 @@ export const defaultContentPageLayout: PageLayout = {
     //     linkToMore: "notes_folder/" as SimpleSlug,
     //   })),
 
-      Component.DesktopOnly(Component.TableOfContents()),
-
+    Component.DesktopOnly(Component.TableOfContents()),
+    
     Component.FloatingButtons({ position: 'right' }),
-
+    Component.MobileOnly(Component.Explorer()),
 
   ],
   right: [
@@ -115,7 +133,7 @@ export const defaultListPageLayout: PageLayout = {
     ]),
     // Component.Search(),
     // Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.Explorer(),
     Component.FloatingButtons({position: 'right'}),
   ],
   right: [],

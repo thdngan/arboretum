@@ -120,7 +120,7 @@ hr {
 // Underline links
 a {
     font-weight: bold;
-    text-decoration: underline;
+    // text-decoration: underline;
     color: var(--secondary);
     transition: color 0.2s ease;
     &:hover {
