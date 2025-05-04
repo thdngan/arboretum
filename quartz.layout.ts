@@ -76,21 +76,21 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     // Component.Search(),
     // Component.Darkmode(),\
-    Component.Row([
-      Component.Search(),
-      Component.Darkmode(),
-    ]),
-    // Component.Flex({
-    //   components: [
-    //     {
-    //       Component: Component.Search(),
-    //       grow: true, // Search will grow to fill available space
-    //     },
-    //     { Component: Component.Darkmode() }, // Darkmode keeps its natural size
-    //   ],
-    //   direction: "row",
-    //   gap: "1rem",
-    // }),
+    // Component.Row([
+    //   Component.Search(),
+    //   Component.Darkmode(),
+    // ]),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true, // Search will grow to fill available space
+        },
+        { Component: Component.Darkmode() }, // Darkmode keeps its natural size
+      ],
+      direction: "row",
+      gap: "1rem",
+    }),
     Component.MobileOnly(Component.Explorer()),
     // Component.Explorer(),
     Component.DesktopOnly(
@@ -135,10 +135,21 @@ export const defaultListPageLayout: PageLayout = {
     Component.PageTitle(),
     // Component.MobileOnly(Component.PageTitleMobile()),
     Component.MobileOnly(Component.Spacer()),
-    Component.Row([
-      Component.Search(),
-      Component.Darkmode(),
-    ]),
+    // Component.Row([
+    //   Component.Search(),
+    //   Component.Darkmode(),
+    // ]),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true, // Search will grow to fill available space
+        },
+        { Component: Component.Darkmode() }, // Darkmode keeps its natural size
+      ],
+      direction: "row",
+      gap: "1rem",
+    }),
     // Component.Search(),
     // Component.Darkmode(),
     Component.Explorer(),
