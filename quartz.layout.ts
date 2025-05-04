@@ -63,10 +63,15 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.ContentMeta(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.MobileOnly(Component.TagList_noheading()),
+    Component.ConditionalRender({
+      component: Component.MobileOnly(Component.TagList_noheading()),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    // Component.MobileOnly(Component.TagList_noheading()),
 
   ],
   left: [
+    
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     // Component.Search(),
@@ -86,6 +91,8 @@ export const defaultContentPageLayout: PageLayout = {
     //   direction: "row",
     //   gap: "1rem",
     // }),
+    Component.MobileOnly(Component.Explorer()),
+    // Component.Explorer(),
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent Posts",
@@ -104,11 +111,12 @@ export const defaultContentPageLayout: PageLayout = {
     //       f.slug!.startsWith("notes_folder/") && f.slug! !== "notes_folder/index" && !f.frontmatter?.noindex,
     //     linkToMore: "notes_folder/" as SimpleSlug,
     //   })),
-
+    
     Component.DesktopOnly(Component.TableOfContents()),
     
     Component.FloatingButtons({ position: 'right' }),
-    Component.MobileOnly(Component.Explorer()),
+    // Component.Explorer(),
+    
 
   ],
   right: [
