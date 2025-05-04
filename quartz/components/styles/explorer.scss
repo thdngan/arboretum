@@ -255,6 +255,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       margin: 0;
       padding: 5px;
       z-index: 101;
+      position: relative;
 
       .lucide-menu {
         stroke: var(--darkgray);

@@ -29,7 +29,8 @@ span.caption {
       filter: invert(100%);
     }
   }
-  #index {
+
+#index {
     & > .bio {
       display: flex;
       gap: 1.5em;
