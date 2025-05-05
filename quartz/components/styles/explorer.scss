@@ -228,8 +228,8 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       flex: 0 0 34px;
 
       .explorer-content {
-        max-height: 1000px;
-        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
       }
     }
 
@@ -243,6 +243,8 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       background-color: var(--light);
       max-width: 100vw;
       width: 100%;
+      transform: translateX(-100%);
+      visibility: hidden;
       transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       overflow: hidden;
       padding: 4rem 0 2rem 0;
