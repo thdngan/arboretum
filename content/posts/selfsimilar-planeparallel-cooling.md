@@ -5,6 +5,7 @@ tags:
   - discussions
   - incomplete
   - physics
+  - writing
 date: 2023-09-05
 ---
 
@@ -23,14 +24,14 @@ date: 2023-09-05
 
 %% The gravitational collapse of a gas cloud has gained significant theoretical attention, especially concerning star formation. Given that stars take shape within molecular clouds, many fundamental aspects of star formation likely stem from the physics governing the evolution of these molecular clouds. These clouds might consist of diffuse gas assembled together through dynamic forces like gravity or more broadly, compressive motions often referred to as colliding flows. Essentially, since molecular clouds have higher density compared to their surroundings, compression becomes inevitable. The true question then centers on the mechanism driving this compression. %%
 
-The birth of stars is one of the most captivating processes in astrophysics, yet the journey from a vast, diffuse gas cloud to a brilliant new star is anything but simple. At the heart of this transformation lies the **gravitational collapse of molecular clouds**—cold, dense pockets of interstellar gas that serve as stellar nurseries. But what sets this collapse in motion? The answer probably lies in **colliding flows**, where turbulent gas streams crash into one another, compressing the material and setting the stage for star formation. Since molecular clouds are significantly denser than their surroundings, compression is inevitable. However, the real puzzle is identifying the forces that drive this compression and understanding how they shape the evolution of these structures.
+The birth of stars is one of the most captivating processes in astrophysics, yet the journey from a vast, diffuse gas cloud to a brilliant new star is anything but simple. At the heart of this transformation lies the gravitational collapse of molecular clouds—cold, dense pockets of interstellar gas that serve as stellar nurseries. But what sets this collapse in motion? The answer probably lies in colliding flows, where turbulent gas streams crash into one another, compressing the material and setting the stage for star formation. Since molecular clouds are significantly denser than their surroundings, compression is inevitable. However, the real puzzle is identifying the forces that drive this compression and understanding how they shape the evolution of these structures.
 
 
 ### The power of shock waves
 
-Within molecular clouds, which are cold and compact parts of interstellar space, multiple processes can trigger the creation of **shock waves**. These processes could be the collision of diverse gas streams or the movement of the cloud itself through the interstellar medium. When these shock waves travel through the gas in a molecular cloud, they condense the gas, increasing its density. The condensation brought about by shock waves can be a key factor for setting in motion the process of **gravitational collapse**, ultimately leading to the formation of stars. Through this gas compression, shock waves enhance the density of specific regions within the cloud. These denser areas are more apt to overcome the internal gas pressure and start collapsing under the influence of gravity. 
+Within molecular clouds, which are cold and compact parts of interstellar space, multiple processes can trigger the creation of shock waves. These processes could be the collision of diverse gas streams or the movement of the cloud itself through the interstellar medium. When these shock waves travel through the gas in a molecular cloud, they condense the gas, increasing its density. The condensation brought about by shock waves can be a key factor for setting in motion the process of gravitational collapse, ultimately leading to the formation of stars. Through this gas compression, shock waves enhance the density of specific regions within the cloud. These denser areas are more apt to overcome the internal gas pressure and start collapsing under the influence of gravity. 
 
-%% When two streams of interstellar gas collide, they generate **shock waves**—powerful disturbances that ripple through the molecular cloud, dramatically increasing its density. These shock waves can be caused by anything from **supernova explosions** to the motion of clouds through the galaxy. As the gas is compressed, regions of high density begin to form. This is a crucial moment: if these dense pockets become massive enough, their own gravity takes over, pulling in more material and initiating the **collapse that leads to star formation**. Without these shock-induced density enhancements, most gas clouds would remain too diffuse to ever form stars. %%
+%% When two streams of interstellar gas collide, they generate shock waves—powerful disturbances that ripple through the molecular cloud, dramatically increasing its density. These shock waves can be caused by anything from supernova explosions to the motion of clouds through the galaxy. As the gas is compressed, regions of high density begin to form. This is a crucial moment: if these dense pockets become massive enough, their own gravity takes over, pulling in more material and initiating the collapse that leads to star formation. Without these shock-induced density enhancements, most gas clouds would remain too diffuse to ever form stars. %%
 
 ### Self-similarity: patterns in the chaos
 
@@ -38,7 +39,7 @@ Within molecular clouds, which are cold and compact parts of interstellar space,
 >![[self-simi-murakami.png]]
 >Murakami et al. (2004)
 
-%% Self-similar solutions play a crucial role in many branches of physics, in particular, for such fields as hydrodynamic phenomena in astrophysics. %%Despite the seemingly chaotic nature of collapsing clouds, a fascinating pattern emerges—one rooted in **self-similarity**. In physics, self-similarity means that a system looks the same at different scales, following a predictable mathematical pattern. For example, you would probably be familiar with the Larson-Penston (LP) solution (Larson 1969; Penston 1969) which utilizes the continuity and momentum conservation equation to give a self-similar solution for the gravitational collapse of an isothermal gaseous sphere.
+%% Self-similar solutions play a crucial role in many branches of physics, in particular, for such fields as hydrodynamic phenomena in astrophysics. %%Despite the seemingly chaotic nature of collapsing clouds, a fascinating pattern emerges—one rooted in self-similarity. In physics, self-similarity means that a system looks the same at different scales, following a predictable mathematical pattern. For example, you would probably be familiar with the Larson-Penston (LP) solution (Larson 1969; Penston 1969) which utilizes the continuity and momentum conservation equation to give a self-similar solution for the gravitational collapse of an isothermal gaseous sphere.
 
 The behavior of x (distance or radius) and t (time) in these self-similar solutions could be such that the radius and density are related by a power-law expression that remains constant as the collapse progresses. This means that if you were to plot the density profile of the cloud at different times, the shape of the profile would remain the same, but the scale would change according to a power-law relationship with time.
 
@@ -66,7 +67,7 @@ A key assumption that we made for this particular problem is that radiative loss
 
 The objective here is to present a self-similar solution that considers two physical phenomena: self-gravity and radiative cooling.
 - We address the complete set of hydrodynamic equations,
-- Introduce a **cooling term** into the energy equation to account for [[heat]] loss, and search for self-similar solutions.
+- Introduce a cooling term into the energy equation to account for [[heat]] loss, and search for self-similar solutions.
 
 ## The physical system
 

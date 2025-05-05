@@ -1,5 +1,5 @@
 ---
-title: Blackbody and Blackbody radiation
+title: blackbody and blackbody radiation
 date: 2022-09-05
 tags:
   - notes
@@ -10,7 +10,7 @@ tags:
 
 A blackbody absorbs all incident electromagnetic radiation, independent of frequency or angle of incidence. The term "black body" refers to how it absorbs all colors of light (you know, black objects absorb all colors in the visible spectrum and reflects none to the eyes).
 
-So in other words, _**Blackbody**_ is a   #hypothetical body consisting of a sufficient number of molecules absorbing and emitting electromagnetic radiation in all parts of the electromagnetic spectrum so that:
+So in other words, _Blackbody_ is a   #hypothetical body consisting of a sufficient number of molecules absorbing and emitting electromagnetic radiation in all parts of the electromagnetic spectrum so that:
 
 1.  all incident radiation is completely absorbed; and
 2.  in all wavelengths bands and in all directions (isotropically), maximum possible emission is realized.

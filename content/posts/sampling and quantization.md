@@ -4,6 +4,7 @@ date: 2021-04-15
 tags:
   - image-processing
   - notebooks
+  - writing
 draft: true
 ---
 %% *Images mentioned in this post are from Digital Image Processing (3rd edition), by Rafael C. Gonzalez, Richard E. Woods. I don't have the permission to use them here :')* %%
@@ -20,56 +21,56 @@ Basically, we begin with a continuous object and end up with a discrete object t
 
 ## Grayscale images
 
-Grayscale images store information using **intensity values** rather than color. Each pixel represents a shade from black (0) to white (255) when using **8-bit depth**. If we increase the bit depth to **16-bit**, we get an even finer range, from 0 to 65,535, resulting in smoother transitions and better image quality.
+Grayscale images store information using intensity values rather than color. Each pixel represents a shade from black (0) to white (255) when using 8-bit depth. If we increase the bit depth to 16-bit, we get an even finer range, from 0 to 65,535, resulting in smoother transitions and better image quality.
 
-For example, a **256x256 image** contains **65,536 pixels**, while a **1024x1280 image** has over **1.3 million pixels**. A higher pixel count improves clarity but also increases storage size.
+For example, a 256x256 image contains 65,536 pixels, while a 1024x1280 image has over 1.3 million pixels. A higher pixel count improves clarity but also increases storage size.
 
 ## RGB images
 
-Unlike grayscale images, **RGB images** use three channels—**red, green, and blue**—to create full-color visuals. Each pixel consists of three intensity values, one for each primary color, blending together to form a final color.
+Unlike grayscale images, RGB images use three channels—red, green, and blue—to create full-color visuals. Each pixel consists of three intensity values, one for each primary color, blending together to form a final color.
 
-For example, an RGB image with **6 rows and 5 columns** is represented as **6x5x3** (height × width × channels). When each pixel's intensity is stored in **8 bits**, the total color depth is **24 bits per pixel** (8 bits per channel × 3 channels).
+For example, an RGB image with 6 rows and 5 columns is represented as 6x5x3 (height × width × channels). When each pixel's intensity is stored in 8 bits, the total color depth is 24 bits per pixel (8 bits per channel × 3 channels).
 
 High-end cameras capture full detail for each color channel, while many consumer cameras use a technique called [[mosaic]] imaging, which captures colors in an interleaved way and reconstructs them digitally.
 
 ## Videos
 
-So the next question is, what happens in a video? A video is nothing more than a rapid series of images displayed in succession. For example, if a video runs at **30 frames per second (fps)** and each frame is an **RGB image**, then in just one second, we process **30 × 3 = 90 images** (since each frame has three channels). The higher the resolution and frame rate, the more data we need to store and process.
+So the next question is, what happens in a video? A video is nothing more than a rapid series of images displayed in succession. For example, if a video runs at 30 frames per second (fps) and each frame is an RGB image, then in just one second, we process 30 × 3 = 90 images (since each frame has three channels). The higher the resolution and frame rate, the more data we need to store and process.
 
 ## Resolution & Gray Value Depth: Why It Matters
 
 
 Two important questions in image processing are:
 
-1. **How many pixels do we need?** (spatial resolution)
-2. **How many gray values should each pixel store?** (intensity resolution)
+1. How many pixels do we need? (spatial resolution)
+2. How many gray values should each pixel store? (intensity resolution)
 
-With **8-bit grayscale images**, black is **0**, white is **255**, and shades of gray fall in between. Computers don’t see images like we do; they interpret them as numeric values, where **0 = black**, **128 = medium gray**, and **255 = white**.
+With 8-bit grayscale images, black is 0, white is 255, and shades of gray fall in between. Computers don’t see images like we do; they interpret them as numeric values, where 0 = black, 128 = medium gray, and 255 = white.
 
-But there’s a catch: if an image is too **bright**, details in the highlights may be lost (saturation). If it’s too **dark**, shadow details may disappear. While our eyes adapt well to varying brightness levels, digital images are limited by the **number of levels they can represent**.
+But there’s a catch: if an image is too bright, details in the highlights may be lost (saturation). If it’s too dark, shadow details may disappear. While our eyes adapt well to varying brightness levels, digital images are limited by the number of levels they can represent.
 
-### **How Resolution Affects Image Quality**
+### How Resolution Affects Image Quality
 
-- **High resolution** (lots of pixels) captures fine details clearly.
-- **Low resolution** (fewer pixels) makes images look blocky or blurry.
+- High resolution (lots of pixels) captures fine details clearly.
+- Low resolution (fewer pixels) makes images look blocky or blurry.
 
 For example, if two images have the same number of grayscale levels but one has a higher resolution, small details like numbers and textures will be much clearer in the high-resolution image.
 
-### **What Happens When We Reduce Gray Levels?**
+### What Happens When We Reduce Gray Levels?
 
-Now, let’s fix the number of pixels and instead **reduce the number of grayscale values**:
+Now, let’s fix the number of pixels and instead reduce the number of grayscale values:
 
-- **8-bit (256 levels)** → smooth grayscale transitions.
-- **7-bit (128 levels)** → small loss in quality, but still decent.
-- **6-bit (64 levels)** → noticeable loss of detail.
-- **5-bit (32 levels)** → visible "false contours" where smooth transitions become harsh steps.
-- **1-bit (black & white only)** → extreme loss of detail—everything is either **black or white**, no shades of gray.
+- 8-bit (256 levels) → smooth grayscale transitions.
+- 7-bit (128 levels) → small loss in quality, but still decent.
+- 6-bit (64 levels) → noticeable loss of detail.
+- 5-bit (32 levels) → visible "false contours" where smooth transitions become harsh steps.
+- 1-bit (black & white only) → extreme loss of detail—everything is either black or white, no shades of gray.
 
-By reducing the number of gray values, we introduce a **"posterization" effect**, where smooth gradients turn into harsh, blocky transitions. This is why low-bit-depth images often look unnatural, as fine details and subtle shades are lost.
+By reducing the number of gray values, we introduce a "posterization" effect, where smooth gradients turn into harsh, blocky transitions. This is why low-bit-depth images often look unnatural, as fine details and subtle shades are lost.
 
 *Final thoughs?*
 
-**Digital images are all about trade-offs.**
+Digital images are all about trade-offs.
 
 %% _How many pixels should we have? And what are the gray values we're going to use for them?_
 

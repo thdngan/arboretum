@@ -20,22 +20,45 @@ type FolderState = {
 }
 
 let currentExplorerState: Array<FolderState>
+// function toggleExplorer(this: HTMLElement) {
+//   const nearestExplorer = this.closest(".explorer") as HTMLElement
+//   if (!nearestExplorer) return
+//   const explorerCollapsed = nearestExplorer.classList.toggle("collapsed")
+//   nearestExplorer.setAttribute(
+//     "aria-expanded",
+//     nearestExplorer.getAttribute("aria-expanded") === "true" ? "false" : "true",
+//   )
+
+//   if (!explorerCollapsed) {
+//     // Stop <html> from being scrollable when mobile explorer is open
+//     document.documentElement.classList.add("mobile-no-scroll")
+//   } else {
+//     document.documentElement.classList.remove("mobile-no-scroll")
+//   }
+// }
+
 function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
+
   const explorerCollapsed = nearestExplorer.classList.toggle("collapsed")
   nearestExplorer.setAttribute(
     "aria-expanded",
     nearestExplorer.getAttribute("aria-expanded") === "true" ? "false" : "true",
   )
 
+  const content = nearestExplorer.querySelector(".explorer-content")
+  if (content) {
+    content.classList.toggle("open", !explorerCollapsed)
+  }
+
   if (!explorerCollapsed) {
-    // Stop <html> from being scrollable when mobile explorer is open
     document.documentElement.classList.add("mobile-no-scroll")
   } else {
     document.documentElement.classList.remove("mobile-no-scroll")
   }
 }
+
 
 function toggleFolder(evt: MouseEvent) {
   evt.stopPropagation()
@@ -87,6 +110,7 @@ function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElemen
   a.href = resolveRelative(currentSlug, node.slug)
   a.dataset.for = node.slug
   a.textContent = node.displayName
+  a.classList.add("file-link");
 
   if (currentSlug === node.slug) {
     a.classList.add("active")
@@ -119,7 +143,9 @@ function createFolderNode(
     a.dataset.for = folderPath
     a.className = "folder-title"
     a.textContent = node.displayName
+    a.className = "folder-title";
     button.replaceWith(a)
+
   } else {
     const span = titleContainer.querySelector(".folder-title") as HTMLElement
     span.textContent = node.displayName
@@ -269,6 +295,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
   await setupExplorer(currentSlug)
 
+
   // if mobile hamburger is visible, collapse by default
   for (const explorer of document.getElementsByClassName("explorer")) {
     const mobileExplorer = explorer.querySelector(".mobile-explorer")
@@ -283,6 +310,12 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     }
 
     mobileExplorer.classList.remove("hide-until-loaded")
+
+    const explorerContent = explorer.querySelector(".explorer-content")
+    if (explorerContent && !explorer.classList.contains("collapsed")) {
+      explorerContent.classList.add("open")
+    }
+
   }
 })
 

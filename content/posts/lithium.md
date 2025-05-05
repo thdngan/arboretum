@@ -6,6 +6,7 @@ tags:
   - astrophysics
   - notebooks
   - incomplete
+  - writing
 draft: false
 ---
 

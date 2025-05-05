@@ -225,6 +225,36 @@ em strong {
     }
   }
 
+
+.explorer {
+  a {
+    display: block;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+    padding-inline-start: 0.5rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: normal;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  li {
+    margin-bottom: 0.5rem; // space between entries
+  }
+
+  a.file-link:hover {
+    background-color: rgba(253, 241, 216,0.1);
+  }
+
+  a.folder-title {
+    font-weight: bold;
+    color: var(--secondary);
+    // optional: add folder-specific styles here
+  }
+}
+
+
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 // wikipedia style//////////////////////////////////////////////

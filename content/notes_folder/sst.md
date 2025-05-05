@@ -1,11 +1,11 @@
 ---
-title: Sea Surface Temperature
+title: sea surface temperature
 date: 2023-01-28
 tags:
   - climate
   - notebooks
 ---
-Just a one of the  #notebooks, aka what I did in classes :)
+Just one of the  #notebooks, aka what I did in classes :)
 
 Data used in the code section below can be downloaded [here](https://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.html).
 

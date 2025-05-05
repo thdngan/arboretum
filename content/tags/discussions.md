@@ -1,4 +1,4 @@
 ---
 comments: false
 ---
-(Usually long) writings to discuss topics I'm interested in.
+(Usually long) writing to discuss topics I'm interested in.

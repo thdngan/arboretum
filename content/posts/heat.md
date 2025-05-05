@@ -5,6 +5,7 @@ tags:
   - notebooks
   - physics
   - astrophysics
+  - writing
 ---
 
 

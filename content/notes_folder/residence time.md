@@ -1,5 +1,5 @@
 ---
-title: Residence Time
+title: residence time
 date: 2024-05-12
 tags:
   - notes

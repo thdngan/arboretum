@@ -95,7 +95,7 @@ const config: QuartzConfig = {
           darkgray: "#d4d4d4",       // text (dark → light)
           dark: "#ebebec",           // headings and icons, search text (strong contrast)
           secondary: "#6d9c9a",      // titles and links, current graph node
-          tertiary: "#E06C75",       // for when hovering above link
+          tertiary: "#f0b32d",       // for when hovering above link
           highlight: "rgba(149, 164, 163, 0.15)", // background for internal links
           textHighlight: "#b3aa0288", // keep or slightly lighten if needed for legibility
         

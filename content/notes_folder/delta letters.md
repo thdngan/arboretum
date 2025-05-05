@@ -1,15 +1,28 @@
 ---
-title: Difference between ∂, δ, d and Δ
+title: difference between ∂, δ, d and Δ
 date: 2022-09-11
 tags:
   - notes
-draft: true
+draft: false
 ---
 
-'_Δ_' -- means a change in some variable. This makes it a difference operation: _Δt = t2 - t1_.
+**`Δ` (capital delta)**
+This one’s all about change — like how your coffee level changes from “full” to “oops it’s gone.” Mathematically, it's a difference between two values _Δt = t2 - t1_.
 
-'_d_' -- means an 'infinitesimal' change, or a "[differential form](http://en.wikipedia.org/wiki/Differential_form)." It's kind of like a limit as _Δt_ -> 0, but it is compatible with relative rates or different kinds of limits, so that the notion of a derivative is preserved (in the form dy/dx, for example.)
+**`d` (lowercase d)**
+This little guy means an 'infinitesimal' change — like, _really_ tiny. It shows up in derivatives like _dy/dx_ and plays well with limits. It’s the math version of zooming in so far you can’t even see the change, but you know it’s there. More formally, it's tied to [differential forms](http://en.wikipedia.org/wiki/Differential_form), but let's not get lost in that forest just yet 🌲.
 
-'_∂_' -- means a _partial_ differential. It's basically the same as _d_, except it also tells you that there are other related variables that are being held constant. In other words, it is never a complete picture. It's typically used in [partial derivatives](http://en.wikipedia.org/wiki/Partial_derivative) -- derivatives that are only in one dimension of a larger dimensional space.
+**`∂` (curly d, aka partial derivative)**  
+Ah, the fancy cousin of `d`. You’ll usually see this in multivariable calculus, where life gets complicated and you have to hold some variables constant while you poke at others. Basically:  
 
-'_δ_' is just a lowercase _Δ_, and its meaning depends on context. Usually it means an 'infinitesimal' change like _d_, but when you don't want to talk about differential forms or derivatives using the other notations.
+    *"What happens if I nudge just this one thing and freeze everything else?"*
+
+
+%% Perfect for modeling chaotic systems... or your morning routine. %%
+
+**`δ` (lowercase delta)**  
+This one wears many hats. In the calculus of variations, it's used to represent a _variation_ — a tiny tweak in a function’s form, not just its value. So essentially:
+
+    *"What happens if I tweak the whole path slightly?"*
+
+You’ll also see it in **Dirac’s delta function** (δ(x)), which is not a function in the traditional sense but a mathematical object that’s zero everywhere except at one point and integrates to 1. So yeah, it’s not just a smaller version of `Δ` — it’s its own weird and wonderful thing.

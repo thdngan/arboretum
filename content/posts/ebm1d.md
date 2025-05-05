@@ -5,6 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
+  - writing
 ---
 So far, we’ve looked at the **[[ebm0d|zero-dimensional energy balance model]] (EBM)**, which treats Earth as a single, uniform entity. But the real climate system isn’t that simple—especially when it comes to **latitude**. Solar radiation varies significantly from the equator to the poles, and factors like **ice feedbacks** play a major role in shaping regional climates. To capture these variations, we need to **add a spatial dimension** to our model.
 

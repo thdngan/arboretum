@@ -11,11 +11,20 @@ enableToc: false
 >
 >&mdash; Lemony Snicket, The End
 
-Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)!
+Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)!  
 
-Hey, I’m Ngân (Ryan), an aspiring researcher with a habit of collecting thoughts and sometimes leaving them half-baked like an unripe avocado. This is my little corner of the internet where I stash ideas,  #notes,  #notebooks ,  #discussions, personal  #projects, and whatever else pops into my orbit. Some notes are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to figure things out. Consider this a living, evolving brain-dump.
+Hey, I’m Ngân (Ryan), an aspiring researcher who jots down thoughts here before they vanish into some dusty corner of my brain. 
 
-Now, if you’re wondering why there are penguins waddling around an arboretum… honestly, I don't know either 🐧.
+This is a little nook of the internet where I stash my  
+📝 #notes — quick dives into concepts,  
+👓 #writing — longer pieces where I _pretend_ I know what I’m doing,  
+📚 class  #notebooks,  
+🧵 (mostly unfinished)  #discussions,  
+and whatever else pops into my orbit. 
+
+Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to figure things out. Consider this a living, evolving brain-dump.
+
+As for the penguins waddling around the arboretum... some questions are better left unanswered 🐧.
 
 <!-- And why is it *L'arboretum*? Claire, it's French ✨! -->
 
@@ -23,23 +32,24 @@ Now, if you’re wondering why there are penguins waddling around an arboretum�
 # Lost in the trees? Don't worry, I've got a map 
 
 
-You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map**. If you're on a desktop, you’ll find it on the **right side** of the page. On mobile? Scroll down, it’s waiting at the **bottom**. There are also handy buttons on the bottom right to:  
-🧭 **Open the global map** (for the adventurous)  
-🎲 **Pick a random post** (for the chaotic)  
-↑↓ **Jump to the top/bottom** (for the efficient)
+You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map**. If you're on a desktop, you’ll find it on the right side of the page. On mobile? Scroll down, it’s waiting at the bottom. There are also handy buttons on the bottom right to:  
 
-Feeling extra lost? There's a **search tool** 🔍 at the top (or just hit `Ctrl+K`) to dig through the archives.
+🧭 Open the global map (for the adventurous)  
+🎲 Pick a random post (for the chaotic)  
+↑↓ Jump to the top/bottom (for the efficient)
+
+Feeling extra lost? There's a **search tool** at the top (or just hit `Ctrl+K`) to dig through the archives.
 
 Or if you just wanna see what kind of rabbit holes I’ve fallen into, here are some of my main topics: 
 
 🪐 **#planetary-science** & **#climate** (mostly modeling),  
-🌌 **#astrophysics**,  **#cosmology**,  
+✨ **#astrophysics**,  **#cosmology**,  
 ⚛️ **#particle** **#physics**,  
 🧪 **#chemistry** (more like _physical_ chemistry, really),  
-❓ or completely random topics I’ll probably never revisit (_lol_), like **#image-processing,  #seismology,  #earthquakes**,  
+❓ or completely random topics I’ll probably never revisit _lol_, like **#image-processing,  #seismology,  #earthquakes**,  
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!   
 
-Go ahead, click around - I promise no black holes 🕳️🐧.
+%% Go ahead, click around - I promise no black holes 🕳️🐧. %%
 
 
 
@@ -53,7 +63,7 @@ I stumbled upon an older version of [Quartz](https://quartz.jzhao.xyz/) while tr
 
 That said, the struggle was so worth it! I picked up a ton of new knowledge along the way, and this little blog wouldn’t exist without [Jacky Zhao](https://github.com/jackyzha0)'s incredible work. Huge thanks for making this possible!
 
-Also, big shout-out to [Eilleen](https://quartz.eilleeenz.com/) for their ridiculously helpful Quartz [customization log](https://quartz.eilleeenz.com/Quartz-customization-log)—those floating buttons are absolute lifesavers 😉.
+Also, big shout-out to [Eilleen](https://quartz.eilleeenz.com/) for their ridiculously helpful Quartz [customization log](https://quartz.eilleeenz.com/Quartz-customization-log)—those floating buttons are absolute lifesavers!
 
 
 

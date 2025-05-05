@@ -5,6 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
+  - writing
 ---
 Think of the zero-dimensional energy balance model as the ultimate back-of-the-napkin sketch for understanding Earth’s climate. It’s called "zero-dimensional" because it treats the planet as if it were a perfectly mixed, uniform sphere—no poles, no tropics, just one big average temperature. No fancy maps or complex weather patterns, just a straightforward look at how energy moves in and out.
 
