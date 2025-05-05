@@ -199,19 +199,19 @@
   },
   "/subjects/climatenweather": {
     "title": "Climate \u0026 Weather",
-    "content": "\n## [[posts/predict weather ML|(PROJECT) Predict the weather using Machine Learning]]\n\n## [[posts/naked planet climate model|Naked Planet Climate Model]]\n\n## [[posts/greenhouse effect|Greenhouse Effect]]\n\n## [[posts/greenhouse gases|The physics of greenhouse gases]]\n\n## [[notes/Legacy Mars GCM|Legacy Mars Global Climate Model]]\n\n## [[posts/heat|What is heat and how can you warm up something in space]]\n\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writings, click \u003ca href=\"/quartz/tags/climate\"\u003ehere →\u003c/a\u003e to see all posts and notes on Climate, and \u003ca href=\"/quartz/tags/weather\"\u003ehere →\u003c/a\u003e to see all posts and notes on Weather.\n\n\n",
+    "content": "\n## [[posts/predict weather ML|(PROJECT) Predict the weather using Machine Learning]]\n\n## [[posts/naked planet climate model|Naked Planet Climate Model]]\n\n## [[posts/greenhouse effect|Greenhouse Effect]]\n\n## [[posts/greenhouse gases|The physics of greenhouse gases]]\n\n## [[notes/Legacy Mars GCM|Legacy Mars Global Climate Model]]\n\n## [[posts/heat|What is heat and how can you warm up something in space]]\n\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writing, click \u003ca href=\"/quartz/tags/climate\"\u003ehere →\u003c/a\u003e to see all posts and notes on Climate, and \u003ca href=\"/quartz/tags/weather\"\u003ehere →\u003c/a\u003e to see all posts and notes on Weather.\n\n\n",
     "lastmodified": "2022-11-05T13:01:40.098445257+07:00",
     "tags": null
   },
   "/subjects/image-processing": {
     "title": "Signal/Image Processing",
-    "content": "## [[posts/sampling and quantization|Sampling and Quantization in Image Processing]]\n\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writings, click \u003ca href=\"/quartz/tags/image-processing\"\u003ehere →\u003c/a\u003e to see all posts and notes.\n",
+    "content": "## [[posts/sampling and quantization|Sampling and Quantization in Image Processing]]\n\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writing, click \u003ca href=\"/quartz/tags/image-processing\"\u003ehere →\u003c/a\u003e to see all posts and notes.\n",
     "lastmodified": "2022-11-27T21:07:35.563644114+07:00",
     "tags": null
   },
   "/subjects/particle-physics": {
     "title": "Particle Physics",
-    "content": "\n## [[posts/neutrino communication|Neutrino-based Communication]]\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writings, click \u003ca href=\"/quartz/tags/particle-physics\"\u003ehere →\u003c/a\u003e to see all posts and notes.\n",
+    "content": "\n## [[posts/neutrino communication|Neutrino-based Communication]]\n\n\u003cbr\u003e\u003c/br\u003e\nThe above are important writing, click \u003ca href=\"/quartz/tags/particle-physics\"\u003ehere →\u003c/a\u003e to see all posts and notes.\n",
     "lastmodified": "2022-09-03T22:01:59.401650352+07:00",
     "tags": null
   }
