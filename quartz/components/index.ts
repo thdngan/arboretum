@@ -25,6 +25,7 @@ import FloatingButtons from "./_FloatingButtons"
 import Row from "./_Row"
 import ConditionalRender from "./ConditionalRender"
 import Flex from "./Flex"
+import ReaderMode from "./ReaderMode"
 
 export {
   ArticleTitle,
@@ -54,4 +55,5 @@ export {
   Row,
   Flex,
   ConditionalRender,
+  ReaderMode,
 }
