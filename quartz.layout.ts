@@ -87,7 +87,7 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true, // Search will grow to fill available space
         },
         { Component: Component.Darkmode() }, // Darkmode keeps its natural size
-        { Component: Component.ReaderMode() },
+        { Component: Component.DesktopOnly(Component.ReaderMode()) },
       ],
       direction: "row",
       gap: "1rem",
