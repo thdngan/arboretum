@@ -13,7 +13,7 @@ enableToc: false
 
 Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)!  
 
-Hey, I’m Ngân (Ryan), an aspiring researcher who jots down thoughts here before they vanish into some dusty corner of my brain. 
+Hey, I’m Ngân, an aspiring researcher who jots down thoughts here before they vanish into some dusty corner of my brain. 
 
 This is a little nook of the internet where I stash my  
 📝 #notes — quick dives into concepts,  
