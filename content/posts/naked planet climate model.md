@@ -1,5 +1,5 @@
 ---
-title: Naked Planet Climate Model
+title: Naked planet climate model
 date: 2022-08-30
 tags:
   - climate
@@ -12,7 +12,7 @@ tags:
 ![[images/climate modeling/naked planet climate model.svg]]
 
 
-The figure above depicts the most basic types of energy for a simple climate model. We have sunlight coming from the Sun in one direction, towards the Earth. This sunlight would represent the energy entering the climate model of Earth. The energy emitted would be infrared radiation from the Earth. Our planet is assumed to have a naked rock surface, with no consideration given to the effects of atmospheric layers and greenhouse gases, convection, and latent [[heat]] (yet).
+The sketch above depicts the most basic types of energy for a simple climate model. We have sunlight coming from the Sun in one direction, towards the Earth. This sunlight would represent the energy entering the climate model of Earth. The energy emitted would be infrared radiation from the Earth. Our planet is assumed to have a naked rock surface, with no consideration given to the effects of atmospheric layers and greenhouse gases, convection, and latent [[heat]] (yet).
 
 Based on this model, we wish to determine the temperature of the Earth. So, where do we proceed from here? We always want our model to be in equilibrium, which means that the total energy going out equals the total energy coming in!
 $$
@@ -51,7 +51,7 @@ $$
 $$
 Tada! The above equation is the formula for bare-rock layer model.
 
-Of course this is just a very basic model. When we use this method to calculate the temperatures of the planets in our solar system and compare the results to the actual numbers, we find something fascinating. That is, Venus, for example, is far hotter than calculations predicted, as are Earth and Mars. Our current climate model is significantly too cold in comparison to reality. So, what's missing here? What can we add to the model to make it more realistic? One option would be to increase the temperature of the globe by adding greenhouse gases.
+Of course this is just a very basic model. When we use this method to calculate the temperatures of the planets in our solar system and compare the results to the actual numbers, we find something fascinating. That is, Venus, for example, is far hotter than calculations predicted, as are Earth and Mars. Our current climate model is significantly too cold in comparison to reality. So what's missing here? What can we add to the model to make it more realistic? One option would be to increase the temperature of the globe by adding greenhouse gases.
 
 Take a look at the next models with greenhouse gases [[posts/greenhouse effect|here]].
 

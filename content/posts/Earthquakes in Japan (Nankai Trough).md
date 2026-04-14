@@ -1,5 +1,5 @@
 ---
-title: The Seismology of Japan
+title: The seismology of Japan
 date: 2025-02-07
 tags:
   - seismology

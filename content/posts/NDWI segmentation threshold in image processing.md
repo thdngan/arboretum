@@ -1,5 +1,5 @@
 ---
-title: NDWI Segmentation Threshold in Image Processing
+title: NDWI segmentation threshold in image processing
 date: 2022-11-01
 tags:
   - image-processing
@@ -126,7 +126,7 @@ Using the NDVI tool on a layerstacked image (for example, layerstacking band 3 a
 
 And now we're almost done with the processes using ENVI! For further processing in MATLAB, we need to convert the map projection from UTM to **Geographic Lat/Lon**, using **Map| Convert Map Projection**, and then save the file as TIFF/GeoTIFF.
 
-I will write another post for detailed explanation on the MATLAB scripts for extracting water bodies from the NDWI image obtained, and also removing cloud-covered pixels using the BQA file.
+I will write another post for detailed explanation on the MATLAB scripts for extracting water bodies from the NDWI image obtained, and also removing cloud-covered pixels using the BQA file. (*Hey this is future me: I still haven't written this*)
 
 ![[images/image processing/Histogram_NDWI.jpg]]
 

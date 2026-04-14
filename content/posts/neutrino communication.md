@@ -1,5 +1,5 @@
 ---
-title: Neutrino-based Communication
+title: Neutrino-based communication
 date: 2022-08-05
 tags:
   - particle
@@ -21,9 +21,9 @@ Of course in order to discuss all that, we need to grasp the basic concepts. The
 
 Basically they are elementary particles that have neutral charge and very VERY small mass (thought to be massless for a long time). They are [[fermions|fermions]] that interact only via the [[weak interactions|weak interactions]] and [[gravity|gravity]].
 
-*I know, I know...The explanation above is still kind of vague, especially if you're not deep into particle physics (honestly, same). Like, cool, they're [[fermions]], but... what even are [[fermions]]? What exactly counts as an [[elementary particles|elementary particle]]? Where do they hang out inside atoms? And how do they connect to the particles we actually recognize—[[electrons]], [[protons]], [[neutrons]]?*
+*I know, I know...The explanation above is still kind of vague, especially if you're not deep into particle physics (honestly, same). Like, cool, they're [[fermions]], but... what even are [[fermions]]? What exactly counts as an [[elementary particles|elementary particle]]? Where do they hang out inside atoms? And how do they connect to the particles we actually recognize like [[electrons]], [[protons]], [[neutrons]]?*
 
-*That’s exactly why I set up this site (though the topics kind of strayed far from* just *particle physics)—to take full advantage of bidirectional links and make sense of all this. Instead of aimlessly Googling definitions, you can jump between individual notes by clicking the [[fermions|internal links]], or explore how everything connects in the interactive map.*
+*That’s exactly why I set up this site (though the topics kind of strayed far from* just *particle physics), to take full advantage of bidirectional links and make sense of all this. Instead of aimlessly Googling definitions, you can jump between individual notes by clicking the [[fermions|internal links]], or explore how everything connects in the interactive map.*
 
 ## Why neutrinos for communication?
 

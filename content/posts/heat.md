@@ -9,25 +9,23 @@ tags:
 ---
 
 
-## What is Heat?
+In thermodynamics, heat is basically energy moving in or out of a system, _but_ not in the form of work or matter transfer. Instead, it moves around through radiation, conduction, or convection.
 
-Alright, let’s break it down. In thermodynamics, heat is basically energy moving in or out of a system—_but_ not in the form of work or matter transfer. Instead, it moves around through radiation, conduction, or convection.
+It's essentially all about motion. Specifically, the motion of atoms. When atoms are zooming around like crazy, we experience heat. When they’re sluggish, we feel cold. You don’t actually _feel_ individual atoms moving, but when a whole bunch of them jiggle against your skin, your own atoms start jiggling faster too. If they go _way_ too fast, they can even break the chemical bonds in your skin, aka, you burn yourself. So, in a way, your fingers are like tiny atomic speedometers, constantly sensing how fast atoms are wiggling.
 
-At its core, heat is all about motion. Specifically, the motion of atoms. When atoms are zooming around like crazy, we experience heat. When they’re sluggish, we feel cold. You don’t actually _feel_ individual atoms moving, but when a whole bunch of them jiggle against your skin, your own atoms start jiggling faster too. If they go _way_ too fast, they can even break the chemical bonds in your skin—aka, you burn yourself. So, in a way, your fingers are like tiny atomic speedometers, constantly sensing how fast atoms are wiggling.
+Now, here’s where things get nerdy. Each "mode" of atomic movement holds about **1/2 kT** of energy. Here, **T** is temperature, and **k** is Boltzmann’s constant (the conversion factor between energy and temperature).
 
-Now, here’s where things get nerdy. Each "mode" of atomic movement holds about **1/2 kT** of energy. Here, **T** is temperature, and **k** is Boltzmann’s constant (basically the conversion factor between energy and temperature).
+If you’ve got a gas made of single atoms, those atoms are free to move in three dimensions, so their total energy is **3/2 kT**. But molecules like oxygen (**O₂**) add an extra twist, literally. Since they’re made of two atoms, they can vibrate relative to each other, adding a whole new way to store energy. Also, because they’re shaped like tiny dumbbells rather than single points, they can rotate in space. That gives them two more energy modes. When you tally it up, an **O₂** molecule carries around **6/2 kT** of energy. More movement, more heat storage!
 
-If you’ve got a gas made of single atoms, those atoms are free to move in three dimensions, so their total energy is **3/2 kT**. But molecules like oxygen (**O₂**) add an extra twist—literally. Since they’re made of two atoms, they can vibrate relative to each other, adding a whole new way to store energy. Also, because they’re shaped like tiny dumbbells rather than single points, they can rotate in space. That gives them two more energy modes. When you tally it up, an **O₂** molecule carries around **6/2 kT** of energy. More movement, more heat storage!
-
-## How Do You Warm Things Up in Space?
+## How do you warm things up in space?
 
 We’ve got three main ways to move heat around:
 
 - **Conduction**: Atoms bump into each other and transfer energy, like when you touch a hot metal pan and immediately regret your choices. This mostly happens in solids or between objects in direct contact.
-- **Convection**: Heat gets carried around by flowing liquids or gases. Think of how a pot of water heats up on a stove or how warm air rises in your room. Technically, this is a mix of conduction and [[advection]] (aka heat transfer by bulk fluid motion).
-- **Radiation**: Heat gets turned into electromagnetic waves—aka infrared radiation—which then travel through space. That warm feeling on your face when you’re near a fire? That’s thermal radiation in action.
+- **Convection**: Heat gets carried around by flowing liquids or gases: how a pot of water heats up on a stove or how warm air rises in a room. Technically, this is a mix of conduction and [[advection]] (aka heat transfer by bulk fluid motion).
+- **Radiation**: Heat gets turned into electromagnetic waves, aka infrared radiation, which then travel through space (that warm feeling on your face when you’re near a fire is thermal radiation in action).
 
-But here’s the problem: _space is a vacuum_. No air, no fluids—so **convection is out of the picture**. That leaves conduction and radiation. You can either stick a hot object directly onto something to warm it up (**conduction**) or blast it with electromagnetic waves (**radiation**). If you want to warm up a spacecraft, for example, you either need to turn it toward the Sun or use onboard heaters that radiate infrared energy. That’s why space stations have heaters, why the Moon’s surface can get scorching hot in direct sunlight but bitterly cold in shadow, and why astronauts' spacesuits have built-in temperature control systems.
+But here’s the thing: _space is a vacuum_. **Convection is out of the picture**. That leaves conduction and radiation. You can either stick a hot object directly onto something to warm it up (**conduction**) or blast it with electromagnetic waves (**radiation**). If you want to warm up a spacecraft, for example, you either need to turn it toward the Sun or use onboard heaters that radiate infrared energy. That’s why space stations have heaters, why the Moon’s surface can get scorching hot in direct sunlight but bitterly cold in shadow, and why astronauts' spacesuits have built-in temperature control systems.
 
 %% Basically, in space, heat transfer gets _weird_. No air, no convection—just conduction (if you’re touching something) and radiation (if you’re absorbing or emitting energy). %%
 

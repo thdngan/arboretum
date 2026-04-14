@@ -1,5 +1,5 @@
 ---
-title: "The Planet that regulates itself: Daisy World"
+title: "The planet that regulates itself: Daisy world"
 date: 2023-05-14
 tags:
   - climate
@@ -7,12 +7,12 @@ tags:
   - planetary-science
   - writing
 ---
-Earth is kind of like one giant, living organism. At least, that’s what the **Gaia Hypothesis** suggests—it views the planet as a self-regulating system where the atmosphere, oceans, land, and life all work together to maintain conditions that sustain life itself. Everything is interconnected, and living organisms don’t just adapt to their environment—they actively shape it in ways that keep the system stable.
+Earth is kind of like one giant, living organism. At least, that’s what the **Gaia Hypothesis** suggests, it views the planet as a self-regulating system where the atmosphere, oceans, land, and life all work together to maintain conditions that sustain life itself. Everything is interconnected, and living organisms don’t just adapt to their environment, they actively shape it in ways that keep the system stable.
 
 To explore this idea, James Lovelock and Andrew Watson introduced **Daisyworld** in 1983. It’s a super simplified, fictional planet designed to demonstrate how biological feedback can help regulate climate. Instead of dealing with complicated atmospheric chemistry or plate tectonics, Daisyworld just has… **daisies**. Two types, to be exact:
 
 - **Black daisies**: These little guys have a low **albedo** (aka reflectivity), meaning they absorb more sunlight and warm up their surroundings.
-- **White daisies**: These are the opposite—they have a high albedo and reflect sunlight, helping to cool things down.
+- **White daisies**: These are the opposite, they have a high albedo and reflect sunlight, helping to cool things down.
 
 # The never-ending Daisy Dance
 
@@ -27,14 +27,14 @@ This back-and-forth keeps the planet’s temperature within a **narrow, life-fri
 
 # Earth’s own feedback loops
 
-Obviously, Earth is way more complicated than Daisyworld. There’s rotation, seasons, geography, diseases, humans—the whole chaotic mix. But the same feedback principles apply.
+Obviously, Earth is way more complicated than Daisyworld. There’s rotation, seasons, geography, diseases, humans, the whole chaotic mix. But the same feedback principles apply.
 
-For example, consider **clouds**. When temperatures rise, more water evaporates, forming clouds. And since clouds, like white daisies, have a high albedo, they reflect sunlight and **help cool the planet**—a natural negative feedback loop.
+For example, consider **clouds**. When temperatures rise, more water evaporates, forming clouds. And since clouds, like white daisies, have a high albedo, they reflect sunlight and **help cool the planet** (a natural negative feedback loop).
 
-But not all feedback loops are stabilizing. Take **polar ice and snow**. They reflect a ton of sunlight, keeping the poles cool. But when global temperatures rise, ice melts, revealing darker ocean or land underneath—which absorbs more [[heat]], **melting even more ice**. This is a **positive feedback loop**, where warming triggers more warming. And with climate change accelerating, the natural reflectivity of our icy poles is disappearing fast.
+But not all feedback loops are stabilizing. Take **polar ice and snow**. They reflect a ton of sunlight, keeping the poles cool. But when global temperatures rise, ice melts, revealing darker ocean or land underneath, which absorbs more [[heat]], **melting even more ice**. This is a **positive feedback loop**, where warming triggers more warming. And with climate change accelerating, the natural reflectivity of our icy poles is disappearing fast.
 
 
-Daisyworld may be an imaginary planet, but it highlights something crucial: maintaining life on Earth depends on a delicate balance. Too much change—whether from natural cycles or human activities—can disrupt the system in ways that are hard to predict. If we want to keep our real-world **Daisyworld** livable, we have to understand and respect the feedback loops that keep our planet in check.
+Daisyworld may be an imaginary planet, but it highlights something crucial: maintaining life on Earth depends on a delicate balance. Too much change, whether from natural cycles or human activities, can disrupt the system in ways that are hard to predict. If we want to keep our real-world **Daisyworld** livable, we have to understand and respect the feedback loops that keep our planet in check.
 
 # The model
 

@@ -1,5 +1,5 @@
 ---
-title: Sampling and Quantization in Image Processing
+title: Sampling and quantization in image processing
 date: 2021-04-15
 tags:
   - image-processing
@@ -27,7 +27,7 @@ For example, a 256x256 image contains 65,536 pixels, while a 1024x1280 image has
 
 ## RGB images
 
-Unlike grayscale images, RGB images use three channels—red, green, and blue—to create full-color visuals. Each pixel consists of three intensity values, one for each primary color, blending together to form a final color.
+Unlike grayscale images, RGB images use three channels (red, green, and blue) to create full-color visuals. Each pixel consists of three intensity values, one for each primary color, blending together to form a final color.
 
 For example, an RGB image with 6 rows and 5 columns is represented as 6x5x3 (height × width × channels). When each pixel's intensity is stored in 8 bits, the total color depth is 24 bits per pixel (8 bits per channel × 3 channels).
 
@@ -64,7 +64,7 @@ Now, let’s fix the number of pixels and instead reduce the number of grayscale
 - 7-bit (128 levels) → small loss in quality, but still decent.
 - 6-bit (64 levels) → noticeable loss of detail.
 - 5-bit (32 levels) → visible "false contours" where smooth transitions become harsh steps.
-- 1-bit (black & white only) → extreme loss of detail—everything is either black or white, no shades of gray.
+- 1-bit (black & white only) → extreme loss of detail, everything is either black or white, no shades of gray.
 
 By reducing the number of gray values, we introduce a "posterization" effect, where smooth gradients turn into harsh, blocky transitions. This is why low-bit-depth images often look unnatural, as fine details and subtle shades are lost.
 

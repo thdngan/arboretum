@@ -19,7 +19,7 @@ A blackbody emits blackbody radiation as well. The spectrum of light emitted by 
 
 Although a blackbody does not exist in reality, we shall treat the planets and stars (including the Earth and Sun) as if they were. Even though they are not ideal blackbodies by definition, we may apply the features of blackbodies to them for clarity and simplicity.
 
-According to the above definition, a blackbody will emit radiation in all parts of the EM spectrum, but by intuition, we know that one will not radiate in all wavelengths equally. So the first thing we would like to know about blackbody radiation is in what wavelengths is radiation emited primarily. Secondly, we know that all blackbodies do not radiate energy at the same rate, certainly shown by the sun's power compared to that of the earth. Therefore, it would be beneficial to know something about the rate of blackbody emission. Fortunately for us, we can answer both questions knowing only one characteristic of an object -- temperature.
+According to the above definition, a blackbody will emit radiation in all parts of the EM spectrum, but by intuition, we know that one will not radiate in all wavelengths equally. So the first thing we would like to know about blackbody radiation is in what wavelengths is radiation emited primarily. Secondly, we know that all blackbodies do not radiate energy at the same rate, certainly shown by the sun's power compared to that of the earth. Therefore, it would be beneficial to know something about the rate of blackbody emission. Fortunately for us, we can answer both questions knowing only one characteristic of an object: temperature.
 
 Wien's Displacement Law:
 

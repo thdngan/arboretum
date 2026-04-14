@@ -1,5 +1,5 @@
 ---
-title: Clathrate Hydrates
+title: Clathrate hydrates
 date: 2024-05-15
 tags:
   - chemistry
@@ -14,24 +14,24 @@ draft: false
 >![[methane-clathrate.jpg]]
 >Methane clathrate block (Oregon, USA)
 
-Clathrate hydrates are like nature’s tiny molecular cages—water molecules form complex crystalline structures that trap gas molecules inside. Think of it as an icy prison for gases like methane, carbon dioxide, and even hydrogen sulfide. The most common version of this involves water ice lattices with methane tucked away inside, but under the right conditions, plenty of other gases can get in on the action.
+Clathrate hydrates are like nature’s tiny molecular cages, water molecules forming complex crystalline structures that trap gas molecules inside. Think of it as an icy prison for gases like methane, carbon dioxide, and even hydrogen sulfide. The most common version of this involves water ice lattices with methane tucked away inside, but under the right conditions, plenty of other gases can get in on the action.
 
-Now, throughout this post, we're mostly talking about clathrate compounds where water ice acts as the structural backbone—the "host"—so when we say "clathrate," we mean clathrate hydrate. The gas molecules trapped in these cages are called "guest" molecules, and if the main guest is methane, we call it methane clathrate. %% Occasionally, we’ll bring up other hosts, like quinol, in which case we’ll refer to them as quinol clathrates. But if a compound involves water molecules chemically bonding rather than forming a clathrate structure, we'll simply call it a hydrate—like ammonia hydrate, for example. %%
+Now, throughout this post, we're mostly talking about clathrate compounds where water ice acts as the structural backbone (the "host") so when we say "clathrate," we mean clathrate hydrate. The gas molecules trapped in these cages are called "guest" molecules, and if the main guest is methane, we call it methane clathrate. %% Occasionally, we’ll bring up other hosts, like quinol, in which case we’ll refer to them as quinol clathrates. But if a compound involves water molecules chemically bonding rather than forming a clathrate structure, we'll simply call it a hydrate (like ammonia hydrate, for example). %%
 
 
 
 
 ## Why Do Clathrates Matter in the Outer Solar System?
 
-When you look at places like Titan, Triton, or maybe even Pluto, you’ve got to wonder how they ended up with the volatiles they have. Clathrates might have played a major role in their formation, acting like time capsules that stored and later released important gases. Plus, thanks to new observational techniques, we might finally get some direct evidence of clathrates existing on other celestial bodies—a game-changer for planetary science!
+When you look at places like Titan, Triton, or maybe even Pluto, you’ve got to wonder how they ended up with the volatiles they have. Clathrates might have played a major role in their formation, acting like time capsules that stored and later released important gases. Plus, thanks to new observational techniques, we might finally get some direct evidence of clathrates existing on other celestial bodies, a game-changer for planetary science!
 
-Lunine & Stevenson (1985)[^1] extended a statistical mechanical model of clathrate formation, originally developed by Platteeuw and van der Waals (1959)[^2], to predict how and when clathrates form across a huge range of cosmic conditions. These conditions span from ultra-low pressures—like the ones found in gaseous nebulae where planets and moons may have formed—to intermediate pressures like Titan’s atmosphere, and even to super-high pressures deep inside icy moons.
+Lunine & Stevenson (1985)[^1] extended a statistical mechanical model of clathrate formation, originally developed by Platteeuw and van der Waals (1959)[^2], to predict how and when clathrates form across a huge range of cosmic conditions. These conditions span from ultra-low pressures, like the ones found in gaseous nebulae where planets and moons may have formed, to intermediate pressures like Titan’s atmosphere, and even to super-high pressures deep inside icy moons.
 
 ## Clathrate Structures & What We Know So Far
 
 Clathrate hydrates have an open, cage-like design built from 20 to 28 hydrogen-bonded water molecules. They come in two main structural types: Structure I and Structure II. The size of the guest molecule determines which type forms. Structure I, for example, has a mix of small and large cages and can host molecules like CO2 and CH4. Meanwhile, Structure II has even bigger cages and can accommodate gases like O2, Kr, and Ar.
 
-For a long time, we thought that if a molecule was smaller than 5.8 angstroms, it would automatically form Structure I. But Davidson et al. (1984)[^3] turned that idea on its head when they showed that argon and krypton actually prefer Structure II—even though they’re small enough for Structure I!
+For a long time, we thought that if a molecule was smaller than 5.8 angstroms, it would automatically form Structure I. But Davidson et al. (1984)[^3] turned that idea on its head when they showed that argon and krypton actually prefer Structure II, even though they’re small enough for Structure I!
 
 We also differentiate between pure and mixed clathrates. Pure clathrates have only one type of guest molecule, while mixed clathrates can host multiple. Each type has a specific [[dissociation]] pressure (the minimum gas pressure needed for stability) and occupancy fraction (how many cages are actually filled).
 
@@ -41,12 +41,12 @@ There’s been a lot of work done to figure out how guest molecules interact wit
 
 - How much a guest molecule can rotate inside its cage and how strong the electric fields inside the structure are (Davidson, 1971[^4]; Bertie & Jacobs, 1982[^5]).
 - Simulations of how guest and cage molecules move (Tester et al., 1972[^6]; Plummer & Chen, 1983[^7]).
-- The frustratingly slow kinetics of clathrate formation—Barrer & Edge (1967)[^8] found that clathrates form much more efficiently when you shake things up, exposing fresh ice to the gas.
+- The frustratingly slow kinetics of clathrate formation, Barrer & Edge (1967)[^8] found that clathrates form much more efficiently when you shake things up, exposing fresh ice to the gas.
 - The physical properties of clathrates, such as their thermal conductivity (Cook & Leaist, 1983[^9]; Stoll & Bryan, 1979[^10]) and density (Kvenvolden & McDonald, 1982[^11]), or the time-dependent [[rheology]] of a clathrate hydrate [[slurry]] (Pinder, 1964[^18]).
 
 ## Clathrates in Nature & the Solar System
 
-Clathrates exist in permafrost and ocean sediments here on Earth—evidence includes methane clathrate deposits in Siberia, Canada, and Alaska. There’s also a possibility that nitrogen-oxygen clathrate exists in Antarctic ice (Miller, 1969[^12]). The strongest evidence for naturally occurring methane clathrate comes from [[bottom-simulating reflectors]] in ocean sediments, which show a sudden drop in sound velocity due to trapped methane gas (Shipley et al., 1979[^13]).
+Clathrates exist in permafrost and ocean sediments here on Earth, evidence includes methane clathrate deposits in Siberia, Canada, and Alaska. There’s also a possibility that nitrogen-oxygen clathrate exists in Antarctic ice (Miller, 1969[^12]). The strongest evidence for naturally occurring methane clathrate comes from [[bottom-simulating reflectors]] in ocean sediments, which show a sudden drop in sound velocity due to trapped methane gas (Shipley et al., 1979[^13]).
 
 In the solar system, clathrates have been proposed to explain:
 
@@ -55,11 +55,11 @@ In the solar system, clathrates have been proposed to explain:
 - The stability of carbon dioxide clathrate in Mars’s polar caps (Miller & Smythe, 1970[^16]).
 - Possible methane and CO2 clathrate frosts on outer planet moons (Smythe, 1975[^17]).
 
-Despite all this, **we still don’t have direct evidence of clathrates beyond Earth**—but that doesn’t mean they’re not out there. They could just be masquerading as ordinary water ice, making them tricky to spot in reflection spectra. Luckily, new advancements in ground-based spectroscopy might finally let us tell the difference between regular ice and clathrate hydrates, which could unlock a whole new understanding of planetary formation and evolution. So, stay tuned!
+Despite all this, **we still don’t have direct evidence of clathrates beyond Earth**, but that doesn’t mean they’re not out there. They could just be masquerading as ordinary water ice, making them tricky to spot in reflection spectra. Luckily, new advancements in ground-based spectroscopy might finally let us tell the difference between regular ice and clathrate hydrates, which could unlock a whole new understanding of planetary formation and evolution. So, stay tuned!
 
 ## Thermodynamics and Structure: The Basics
 
-Clathrate hydrate is this unique phase in a **multicomponent system** made up of **water** and a bunch of different chemical species, ranging from **nonpolar and weakly polar** to the occasional **strongly polar** ones. It's [[nonstoichiometric]]—so while the number of cages is fixed, their **fractional occupancy** depends on temperature, pressure, and the relative abundance of species.
+Clathrate hydrate is this unique phase in a **multicomponent system** made up of **water** and a bunch of different chemical species, ranging from **nonpolar and weakly polar** to the occasional **strongly polar** ones. It's [[nonstoichiometric]], so while the number of cages is fixed, their **fractional occupancy** depends on temperature, pressure, and the relative abundance of species.
 
 Even though the structure is different from normal ice phases (hello, big open cages!), the bonding mechanism still relies on good old **hydrogen bonding** (Jeffrey & McMullan, 1967[^19]). The **guest molecule-cage interaction**? Well, it's a mix of a **repulsive core overlap effect** (possibly strong) and a **van der Waals-type attraction** (induced dipole-induced dipole interactions). The guest needs to stabilize the cage structure because empty cages are just _not_ energetically favorable compared to regular, more compact water ice forms.
 

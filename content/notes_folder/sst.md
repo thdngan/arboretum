@@ -124,7 +124,7 @@ plt.title('SSTA over Nino3 and Nino3.4')
 
 On the other hand, **Nino 3.4 Region**, which covers **5°S to 5°N latitude** and **190° to 240° longitude**, sits slightly farther east but still overlaps with the central Pacific. It straddles the boundary where warm waters from El Niño start to fade and where the eastern Pacific’s cooler upwelling processes begin.
 
-The big reason Nino 3 experiences more extreme fluctuations than Nino 3.4 is because Nino 3 sits in a region where ENSO-related [[heat]] exchanges between the ocean and atmosphere are stronger, creating higher temperature anomalies. Meanwhile, Nino 3.4, positioned closer to the eastern Pacific, has a **shallower thermocline**—meaning warm surface waters don’t mix as deeply with the colder layers below.%%  As a result, temperature changes in Nino 3.4 tend to be more moderate compared to the wilder fluctuations seen in Nino 3.
+The big reason Nino 3 experiences more extreme fluctuations than Nino 3.4 is because Nino 3 sits in a region where ENSO-related [[heat]] exchanges between the ocean and atmosphere are stronger, creating higher temperature anomalies. Meanwhile, Nino 3.4, positioned closer to the eastern Pacific, has a **shallower thermocline**, meaning warm surface waters don’t mix as deeply with the colder layers below.%%  As a result, temperature changes in Nino 3.4 tend to be more moderate compared to the wilder fluctuations seen in Nino 3.
  
 In short, while both regions play an important role in ENSO, Nino 3 is the more volatile sibling, while Nino 3.4 is a bit more stable thanks to its eastern Pacific positioning and oceanic structure. 
  %%
@@ -156,11 +156,9 @@ plt.show()
 
 ![[08_average_SST.png]]
 
-%% If you take a look at the figure, you’ll notice a clear trend: sea surface temperatures (SST) are toasty near the equator and much cooler as you move toward the poles. This pattern isn’t random—it’s all about **radiative heating**, the process where the Sun’s energy gets absorbed by the Earth’s surface, including the ocean, and turned into heat. %%
 
-In the tropics, especially in places like the equatorial Pacific, the Sun’s rays hit more directly, delivering a concentrated dose of energy. This means the ocean absorbs more [[heat]], keeping SSTs warm year-round. But up near the poles, the Sun’s rays strike at a lower angle, spreading out that energy over a larger area. That, combined with long, dark winters, results in much lower radiative [[heat|heating]]—hence, colder ocean temperatures.
-%% 
-So, in short, **the closer to the equator, the hotter the ocean; the closer to the poles, the chillier it gets**—all thanks to the way sunlight interacts with our planet! %%
+
+In the tropics, especially in places like the equatorial Pacific, the Sun’s rays hit more directly, delivering a concentrated dose of energy. This means the ocean absorbs more [[heat]], keeping SSTs warm year-round. But up near the poles, the Sun’s rays strike at a lower angle, spreading out that energy over a larger area. That, combined with long, dark winters, results in much lower radiative [[heat|heating]], hence, colder ocean temperatures.
 
 # Plotting SST departures
 
@@ -201,12 +199,10 @@ plt.show()
 
 ![[08_SST_departure.png]]
 
-SST departure is just a fancy way of saying how much the local sea surface temperature (SST) differs from the average temperature across a given latitude. These deviations aren’t random—they’re shaped by a mix of atmospheric and oceanic circulations that move [[heat]] around in complex ways.
+SST departure is just a fancy way of saying how much the local sea surface temperature (SST) differs from the average temperature across a given latitude. These deviations are shaped by a mix of atmospheric and oceanic circulations that move [[heat]] around in complex ways.
 
 In the **subtropics**, the eastern parts of ocean basins tend to be cooler. That’s because air flowing along the eastern edges of high-pressure systems (anticyclones) moves toward the equator, bringing cooler temperatures along with it. This cooling effect is especially noticeable in the eastern Pacific. On the flip side, the western edges of these high-pressure systems push warm, moist air toward the poles, leading to warmer SST departures in the **western Pacific**.
 
 Up in the **higher latitudes**, things get chillier due to sub-polar cyclones. These weather systems create a poleward flow of cool air, reinforcing lower SST departures in these regions.
  
 Meanwhile, along the **equator**, there’s another big player: **wind-driven upwelling**. The trade winds sweep warm surface waters away from the equator, allowing deeper, colder, nutrient-rich water to rise up and replace it. This process is why the **equatorial eastern Pacific and Atlantic** tend to have lower SST departures.
-
-%% These dynamical factors influence the spatial variations in SST departures, highlighting regions where the local SST significantly deviates from the zonal average. The combination of equatorward/ poleward air flows, wind-driven upwelling, and atmospheric circulations shape the observed SST departure patterns across different latitudes. %%

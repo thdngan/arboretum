@@ -1,5 +1,5 @@
 ---
-title: "The Cosmological Lithium Mystery: A Big Bang Whodunit"
+title: "The cosmological Lithium mystery: a Big Bang whodunit"
 date: 2023-09-13
 tags:
   - cosmology
@@ -22,16 +22,16 @@ draft: false
 >![[abundance.png]]
 >Time evolution of the light element abundances during BBN. Time (upper axis) increases to the right, and so the temperature is shown to decrease to the right. From Yeh et al. (2023)[^20].
 
-The cosmological lithium problem is one of the biggest unsolved puzzles in #astrophysics. Imagine this: you’ve got a universe fresh out of the Big Bang, filled with a scorching soup of [[protons]], [[neutrons]], and all sorts of cosmic particles. As everything cools down, atoms start forming—mostly hydrogen and helium, but also a pinch of lithium (Fields, 2011[^1]).
+The cosmological lithium problem is one of the biggest unsolved puzzles in #astrophysics. Imagine this: you’ve got a universe fresh out of the Big Bang, filled with a scorching soup of [[protons]], [[neutrons]], and all sorts of cosmic particles. As everything cools down, atoms start forming, mostly hydrogen and helium, but also a pinch of lithium (Fields, 2011[^1]).
 
-Now, fast forward billions of years, and we take a look at old, metal-poor stars, which should have held onto that lithium like a cherished relic of the past. But here’s the twist—there’s way less lithium-7 (⁷Li) than expected! According to our well-trusted Big Bang Nucleosynthesis (BBN) calculations, we should be seeing about three times more lithium than what we actually observe (Cyburt et al., 2008[^2]). So where did it go? That’s the million-dollar question!
+Now, fast forward billions of years, and we take a look at old, metal-poor stars, which should have held onto that lithium like a cherished relic of the past. But there’s way less lithium-7 (⁷Li) than expected! According to our well-trusted Big Bang Nucleosynthesis (BBN) calculations, we should be seeing about three times more lithium than what we actually observe (Cyburt et al., 2008[^2]). So where did it go? That’s the million-dollar question!
 
 ## Cooking up the universe
 >[!caption_right]
 >![[nuclear_network.webp]]
 >Simplified BBN nuclear network, showing the 12 reactions important for determining light-element abundances. From Fields (2023)[^19].
 
-Let’s rewind to the first few minutes after the Big Bang. The universe was a sizzling hot, dense plasma—a cosmic kitchen where nuclear reactions were whipping up the light elements that make up everything we see today. [[Protons]] and [[neutrons]] collided at breakneck speeds, forming deuterium, helium-4 (⁴He), a smidge of lithium-7, and even tinier amounts of beryllium (Fields, 2011[^1]). The standard BBN model, our best recipe for this cosmic cook-off, predicts these element abundances with impressive accuracy. In fact, observations of deuterium and helium-4 match up perfectly with what BBN tells us (Serpico et al., 2004[^3]).
+Let’s rewind to the first few minutes after the Big Bang. The universe was a sizzling hot, dense plasma, like a space kitchen where nuclear reactions were whipping up the light elements that make up everything we see today. [[Protons]] and [[neutrons]] collided at breakneck speeds, forming deuterium, helium-4 (⁴He), a smidge of lithium-7, and even tinier amounts of beryllium (Fields, 2011[^1]). The standard BBN model, our best recipe for this cosmic cook-off, predicts these element abundances with impressive accuracy. In fact, observations of deuterium and helium-4 match up perfectly with what BBN tells us (Serpico et al., 2004[^3]).
 
 But then lithium-7 comes along and throws a wrench in the works. Instead of matching the theoretical predictions, the amount we actually see in ancient stars is dramatically lower (Spite & Spite, 1982[^4]).
 
@@ -39,7 +39,7 @@ But then lithium-7 comes along and throws a wrench in the works. Instead of matc
 >![[light_elements.webp]]
 BBN theory predictions for light nuclide abundances versus the cosmic baryon-to-photon ratio $\eta$. Curve widths: 1$\sigma$ theoretical uncertainties. Cyan vertical band: _Planck_ CMB determination of $\eta^{CMB}$ (Aghanim et al., 2020)[^21]. Yellow boxes: light-element observations and corresponding $\eta$ ranges. Hatched vertical band: D/H+$Y_p$ concordant range for $\eta^{BBN}$. (From BBN review in Particle Data Group et al., 2020)[^22]. From Fields (2023)[^19].
 
-It’s like baking a cake and realizing a key ingredient has mysteriously vanished but the cake is still somehow edible... only this isn’t a baking mishap; it’s astrophysics!
+It’s like baking a cake and realizing a key ingredient has mysteriously vanished but the cake is still somehow edible... only this isn’t a baking mishap, it’s astrophysics!
 
 %% >[!info]
 >ff %%
@@ -52,10 +52,10 @@ It’s like baking a cake and realizing a key ingredient has mysteriously vanish
 
 
 
-So, how do we actually measure this elusive lithium? We turn to some of the oldest stars in the universe—ancient, metal-poor stars that have been around since the early days of cosmic history. These stars act like fossilized time capsules, preserving the original chemical makeup of the early universe. By analyzing their light and studying absorption lines—specifically the lithium absorption line at 670.8 nm—we can determine just how much lithium-7 is present (Meléndez & Ramírez, 2004[^5]). 
+So, how do we actually measure this elusive lithium? We turn to some of the oldest stars in the universe, ancient, metal-poor stars that have been around since the early days of cosmic history. These stars act like fossilized time capsules, preserving the original chemical makeup of the early universe. By analyzing their light and studying absorption lines, specifically the lithium absorption line at 670.8 nm, we can determine just how much lithium-7 is present (Meléndez & Ramírez, 2004[^5]). 
 
 
-What they find is the so-called Spite plateau, a nearly constant level of lithium abundance across different low-metallicity stars (Spite & Spite, 1982[^4]). The problem? That plateau is far below what BBN predicts! It’s like a conspiracy—either lithium is being secretly destroyed, hidden away, or our understanding of nuclear physics and cosmology needs a serious update.
+What they find is the so-called Spite plateau, a nearly constant level of lithium abundance across different low-metallicity stars (Spite & Spite, 1982[^4]). But that plateau is far below what BBN predicts! It’s like a conspiracy, either lithium is being secretly destroyed, hidden away, or our understanding of nuclear physics and cosmology needs a serious update.
 
 Researchers have explored all sorts of explanations: maybe lithium is being depleted inside stars, maybe cosmic rays are breaking it down, or maybe there’s some brand-new physics at play that we haven’t discovered yet (Pospelov & Pradler, 2010[^6]). 
 
@@ -77,13 +77,13 @@ Researchers have explored all sorts of explanations: maybe lithium is being depl
 
 Alright, let’s assume for a moment that standard cosmology and #particle #physics are totally on point, and our nuclear physics calculations of mass-7 production are rock solid. If that’s the case, then why the heck are we seeing way less lithium-7 than expected? Theoretically, there should be about three to four times more lithium than what we observe (Fields, 2011[^1]). So what’s going on?
 
-Lithium abundance is usually determined by studying absorption lines in the photospheres of super-old, low-metallicity stars—essentially, the grandparent stars of the galaxy. The Spite plateau, a flat trend in lithium abundance across these stars, suggests that lithium is primordial and hasn’t been significantly affected by later galactic processes (Spite & Spite, 1982[^4]). But what if we’ve made a mistake somewhere in our assumptions?
+Lithium abundance is usually determined by studying absorption lines in the photospheres of super-old, low-metallicity stars, essentially, the grandparent stars of the galaxy. The Spite plateau, a flat trend in lithium abundance across these stars, suggests that lithium is primordial and hasn’t been significantly affected by later galactic processes (Spite & Spite, 1982[^4]). But what if we’ve made a mistake somewhere in our assumptions?
 
-One possible error comes from the fact that we measure lithium’s 670.8 nm absorption line, which is sensitive to neutral lithium (Li⁰). However, most lithium in these ancient stars is actually ionized (Li⁺). That means we need to introduce an ionization correction factor, which is super sensitive to the stellar temperature (Richard et al., 2005[^7]). If we systematically underestimated how hot these stars are, then lithium levels could actually be higher than we thought. Some studies suggest that tweaking the temperature scale upwards by around 500–600 K might help—but so far, that fix hasn’t fully solved the problem (Meléndez & Ramírez, 2004[^5]).
+One possible error comes from the fact that we measure lithium’s 670.8 nm absorption line, which is sensitive to neutral lithium (Li⁰). However, most lithium in these ancient stars is actually ionized (Li⁺). That means we need to introduce an ionization correction factor, which is super sensitive to the stellar temperature (Richard et al., 2005[^7]). If we systematically underestimated how hot these stars are, then lithium levels could actually be higher than we thought. Some studies suggest that tweaking the temperature scale upwards by around 500–600 K might help, but so far, that fix hasn’t fully solved the problem (Meléndez & Ramírez, 2004[^5]).
 
-Then there’s the big question: is the lithium we see today the same lithium that was originally there? Over billions of years, these stars might have depleted some of their lithium due to high-temperature effects. Processes like convection, turbulence, and [[diffusion]] can mess with lithium abundance, but modeling these effects precisely is tricky (Pinsonneault, 1997[^8]). Some studies argue that if lithium was being destroyed inside stars, we should see variations in lithium levels across different stars, which we don’t—at least not much. However, newer models suggest that even after depleting lithium by a factor of three, we could still see a narrow Spite plateau due to turbulent [[diffusion]] and convective overshoot (Fu et al., 2015[^9]).
+Then there’s the big question: is the lithium we see today the same lithium that was originally there? Over billions of years, these stars might have depleted some of their lithium due to high-temperature effects. Processes like convection, turbulence, and [[diffusion]] can mess with lithium abundance, but modeling these effects precisely is tricky (Pinsonneault, 1997[^8]). Some studies argue that if lithium was being destroyed inside stars, we should see variations in lithium levels across different stars, which we don’t, at least not much. However, newer models suggest that even after depleting lithium by a factor of three, we could still see a narrow Spite plateau due to turbulent [[diffusion]] and convective overshoot (Fu et al., 2015[^9]).
 
-So, does the astrophysical explanation solve the lithium problem? Well... not really. While some stellar effects might contribute to the discrepancy, they don’t seem to fully account for the missing lithium. This means we need to dig deeper—maybe into the realm of nuclear physics or even completely new physics beyond the Standard Model.
+So, does the astrophysical explanation solve the lithium problem? Well... not really. While some stellar effects might contribute to the discrepancy, they don’t seem to fully account for the missing lithium. This means we need to dig deeper, maybe into the realm of nuclear physics or even completely new physics beyond the Standard Model.
 
 
 ## Suspect #2: Did we mess up the math?
@@ -92,22 +92,22 @@ What if we’re actually right about how much lithium should be there, and our m
 
 BBN is based on solid physics: General Relativity governs the cosmic expansion, and nuclear reactions follow the Standard Model. But nuclear networks are super complex, and mistakes in reaction rates could throw off our lithium predictions (Cyburt et al., 2008[^2]). Could there be errors lurking in the way we calculate these reactions?
 
-One idea is that we might have underestimated or overlooked certain nuclear reactions that influence lithium-7 production. The most important reaction for making mass-7 nuclides is ³He(α, γ)⁷Be. While its cross-section has been measured with high precision, absolute values are notoriously difficult to pin down (Coc et al., 2004[^10]). But here’s the kicker: this reaction is also responsible for solar [[neutrinos|neutrino]] production, and solar [[neutrinos|neutrino]] measurements match predictions almost perfectly. That means tweaking this reaction to solve the lithium problem would mess up our understanding of the Sun—so that’s probably not the answer.
+One idea is that we might have underestimated or overlooked certain nuclear reactions that influence lithium-7 production. The most important reaction for making mass-7 nuclides is ³He(α, γ)⁷Be. While its cross-section has been measured with high precision, absolute values are notoriously difficult to pin down (Coc et al., 2004[^10]). But here’s the kicker: this reaction is also responsible for solar [[neutrinos|neutrino]] production, and solar [[neutrinos|neutrino]] measurements match predictions almost perfectly. That means tweaking this reaction to solve the lithium problem would mess up our understanding of the Sun, so that’s probably not the answer.
 
 Other nuclear processes, like [[weak interactions|weak interaction]] rates, have been extensively tested and don’t seem to be the issue either (Serpico et al., 2004[^3]). Researchers also looked into alternative thermonuclear rates, plasma effects, and electron screening, but none of these offered a viable solution (Voronchev et al., 2010[^11]; Itoh et al., 1997[^12];  Boyd et al., 2010[^13]). Even reactions involving beryllium-7, like ⁷Be(d, α)αp, turned out to be way less significant than hoped (Boyd et al., 2010[^13]).
 
-One last hope? Resonances! These are energy states in nuclear reactions that could have been overlooked. Some proposed resonances, like ⁷Be + d → ⁹B* (16.71 MeV) and ⁷Be + t → ¹⁰B*, could theoretically help balance the lithium discrepancy—if their reaction widths are large enough (Cyburt & Pospelov, 2012[^14]). But recent studies suggest that while they might help, they don’t fully solve the problem. In fact, Iliadis and Coc (2020)[^15] concluded that nuclear physics alone is unlikely to fix this mystery.
+One last hope? Resonances! These are energy states in nuclear reactions that could have been overlooked. Some proposed resonances, like ⁷Be + d → ⁹B* (16.71 MeV) and ⁷Be + t → ¹⁰B*, could theoretically help balance the lithium discrepancy, if their reaction widths are large enough (Cyburt & Pospelov, 2012[^14]). But recent studies suggest that while they might help, they don’t fully solve the problem. In fact, Iliadis and Coc (2020)[^15] concluded that nuclear physics alone is unlikely to fix this mystery.
 
 
 ## Suspect #3: Time to break the rules?
 
-Alright, if standard astrophysics and nuclear physics aren’t solving the lithium crisis, maybe it’s time to get wild and rethink some fundamental assumptions about the universe. This brings us to the most dramatic possibilities—new physics beyond the Standard Model (Pospelov & Pradler, 2010[^6]).
+Alright, if standard astrophysics and nuclear physics aren’t solving the lithium crisis, maybe it’s time to get wild and rethink some fundamental assumptions about the universe. This brings us to the most dramatic possibilities: new physics beyond the Standard Model (Pospelov & Pradler, 2010[^6]).
 
 >[!caption]
 >![[abundance-vs-lifetime.png]]
 >Abundance contours vs decay lifetime. The colored areas indicate parameter regions in which the predicted light-element abundances disagree with observations, and the remaining, white regions are allowed. From Cyburt et al. (2010)[^16].
 
-One idea is that dark matter could be playing a role. Dark matter is still a huge mystery, but we know it must exist. Some theoretical models propose that dark matter particles—perhaps Weakly Interacting Massive Particles (WIMPs)—could decay into high-energy particles that mess with primordial element abundances (Cyburt et al., 2010[^16]). If these decays happened during or just after BBN, they could have influenced lithium levels. In fact, certain decay lifetimes (~10²–10³ seconds) seem to line up with observed lithium-7 levels. But, as always, there’s a catch: while this explanation helps with lithium, it messes up deuterium predictions, making the solution a bit too convenient.
+One idea is that dark matter could be playing a role. Dark matter is still a huge mystery, but we know it must exist. Some theoretical models propose that dark matter particles, perhaps Weakly Interacting Massive Particles (WIMPs), could decay into high-energy particles that mess with primordial element abundances (Cyburt et al., 2010[^16]). If these decays happened during or just after BBN, they could have influenced lithium levels. In fact, certain decay lifetimes (~10²–10³ seconds) seem to line up with observed lithium-7 levels. But, as always, there’s a catch: while this explanation helps with lithium, it messes up deuterium predictions, making the solution a bit too convenient.
 
 >[!caption_right]
 >![[gravitino-abundance-vs-mass.png]]
@@ -120,10 +120,6 @@ There’s also the possibility that fundamental constants aren’t actually cons
 Lastly, some have suggested nonstandard cosmologies, like variations in the baryon-to-photon ratio across different regions of the universe. Maybe lithium-7 measurements reflect a local underdensity rather than a true overall abundance. It’s a cool idea, but current constraints make it tricky to justify.
 
 
-
-%% So... What Now?
-
-The lithium problem remains one of the biggest unsolved mysteries in cosmology. We’ve thrown astrophysics, nuclear physics, dark matter, supersymmetry, and even fundamental constants at it, but no single explanation fully solves the discrepancy. Future experiments—whether in stellar modeling, nuclear physics, or particle physics—might hold the key. Until then, the missing lithium-7 remains an unsolved cosmic whodunit, waiting for its big break! %%
 
 [^1]: Fields, B. D. (2011). The primordial lithium problem. _Annual Review of Nuclear and Particle Science, 61_(1), 47–68.
 [^2]: Cyburt, R. H., & Davids, B. (2008). Evaluation of modern He³(α, γ)Be⁷ data. _Physical Review C, 78_(6), 064614.

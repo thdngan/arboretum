@@ -1,5 +1,5 @@
 ---
-title: Layer Model with Greenhouse Effect
+title: Layer model with greenhouse effect
 date: 2022-09-10
 tags:
   - climate

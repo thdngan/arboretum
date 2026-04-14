@@ -7,11 +7,11 @@ tags:
   - planetary-science
   - writing
 ---
-So far, we’ve looked at the **[[ebm0d|zero-dimensional energy balance model]] (EBM)**, which treats Earth as a single, uniform entity. But the real climate system isn’t that simple—especially when it comes to **latitude**. Solar radiation varies significantly from the equator to the poles, and factors like **ice feedbacks** play a major role in shaping regional climates. To capture these variations, we need to **add a spatial dimension** to our model.
+So far, we’ve looked at the **[[ebm0d|zero-dimensional energy balance model]] (EBM)**, which treats Earth as a single, uniform entity. But the real climate system isn’t that simple, especially when it comes to **latitude**. Solar radiation varies significantly from the equator to the poles, and factors like **ice feedbacks** play a major role in shaping regional climates. To capture these variations, we need to **add a spatial dimension** to our model.
 
 # The One-Dimensional Energy Balance Model
 
-Instead of treating Earth as a single lump, we break it into **latitudinal bands**—like slicing an orange into horizontal rings. This allows us to model how energy moves **between different regions** rather than just considering a global average.
+Instead of treating Earth as a single lump, we break it into **latitudinal bands**, like slicing an orange into horizontal rings. This allows us to model how energy moves **between different regions** rather than just considering a global average.
 
 In this particular version, we divide the **Northern Hemisphere** into **nine bands**, each spanning **10 degrees of latitude**. By doing so, we can study how different parts of the planet gain and lose [[heat]], as well as how they exchange energy with their neighbors.
 
