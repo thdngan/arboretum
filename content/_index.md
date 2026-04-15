@@ -15,16 +15,16 @@ Hey, I’m Ngân. Welcome to my [digital arboretum](https://jzhao.xyz/posts/netw
 
 This is a little nook of the internet where I stash my  #notes,  #writings  (longer pieces where I _pretend_ I know what I’m doing),  class  #notebooks,  (mostly unfinished)  #discussions,  and whatever else pops into my orbit.  Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to deal with. A living, evolving brain-dump basically.
 
-Also I have no idea why there are penguins in an arboretum 🐧 They seem to have migrated here from my [main hub](https://thdngan.github.io/).
+Also I have no idea why there are penguins in an arboretum... They seem to have migrated here from my [main hub](https://thdngan.github.io/).
 
 # Lost? Here's a map 
 
 
 You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). There are also handy buttons on the bottom right to:  
 
-🧭 Open the global map (for the adventurous)  
-🎲 Pick a random post (for the chaotic)  
-↑↓ Jump to the top/bottom (for the efficient)
+<span class="shimmer-symbol">&ensp;<i class="fas fa-compass">&ensp;</i></span> Open the global map (for the adventurous)  
+<span class="shimmer-symbol">&nbsp;<i class="fas fa-dice">&ensp;</i></span> Pick a random post (for the chaotic)  
+<span class="shimmer-symbol">&nbsp;&nbsp;↑↓&nbsp;&thinsp;</span>   Jump to the top/bottom (for the efficient)
 
 There's also a **search tool** at the top (or just hit `Ctrl+K`) to dig through the archives.
 

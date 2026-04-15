@@ -472,3 +472,29 @@ em strong {
       max-width: 50%;
     }
   }
+
+  // The animation for the shimmer (emojis)
+@keyframes shimmer {
+    0% { background-position: -200%; }
+    100% { background-position: 200%; }
+}
+
+.shimmer-symbol {
+    display: inline-block;
+    font-family: inherit;
+    
+    // This forces the browser to use the "Text" version of the emoji
+    font-variant-emoji: text; 
+    
+    // Now standard color works perfectly
+    color: var(--secondary); 
+    
+    // If we want to keep the shimmer effect from before:
+    /*
+    background: linear-gradient(90deg, var(--light), var(--secondary), var(--light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    */
+}

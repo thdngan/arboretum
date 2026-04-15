@@ -15,7 +15,7 @@ const TagList: QuartzComponent = ({
   if (tags && tags.length > 0) {
     return (
         <div class={classNames(displayClass, "taglist")}>
-        <h3 style="font-size: 1rem;">🏷️ Tags</h3>
+        <h3 style="font-size: 1rem;"><span class="shimmer-symbol"><i class="fas fa-tags">&nbsp;</i></span> Tags</h3>
 
         <ul class={`tags ${displayClass ?? ""}`}>
         {tags.map((tag) => {
