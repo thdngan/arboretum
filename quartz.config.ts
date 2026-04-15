@@ -148,6 +148,10 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
       // Plugin.ImageToolkit(),
+      Plugin.CrawlLinks({
+        openLinksInNewTab: true,
+        externalLinkIcon: false,     
+      }),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
