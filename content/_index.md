@@ -15,7 +15,7 @@ Hey, I’m Ngân. Welcome to my [digital arboretum](https://nesslabs.com/digital
 
 This is a little nook of the internet where I stash my  #notes,  #writings  (longer pieces where I _pretend_ I know what I’m doing),  class  #notebooks,  (mostly unfinished)  #discussions,  and whatever else pops into my orbit.  Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to deal with. A living, evolving brain-dump basically.
 
-Also I have no idea why there are penguins in an arboretum 🐧 They seem to have migrated here from my **[main hub](https://thdngan.github.io/)**.
+Also I have no idea why there are penguins in an arboretum 🐧 They seem to have migrated here from my [main hub](https://thdngan.github.io.).
 
 # Lost? Here's a map 
 
