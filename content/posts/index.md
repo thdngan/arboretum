@@ -1,5 +1,5 @@
 ---
-title: Writing
+title: Writings
 tags:
   - graph-exclude
 comments: false
