@@ -36,7 +36,7 @@ For a long time, we thought that if a molecule was smaller than 5.8 angstroms, i
 
 We also differentiate between pure and mixed clathrates. Pure clathrates have only one type of guest molecule, while mixed clathrates can host multiple. Each type has a specific [[dissociation]] pressure (the minimum gas pressure needed for stability) and occupancy fraction (how many cages are actually filled).
 
-## What Have Past Studies Told Us?
+## What have past studies told us?
 
 There’s been a lot of work done to figure out how guest molecules interact with their icy cages. Some key research has focused on:
 
@@ -45,7 +45,7 @@ There’s been a lot of work done to figure out how guest molecules interact wit
 - The frustratingly slow kinetics of clathrate formation, Barrer & Edge (1967)[^8] found that clathrates form much more efficiently when you shake things up, exposing fresh ice to the gas.
 - The physical properties of clathrates, such as their thermal conductivity (Cook & Leaist, 1983[^9]; Stoll & Bryan, 1979[^10]) and density (Kvenvolden & McDonald, 1982[^11]), or the time-dependent [[rheology]] of a clathrate hydrate [[slurry]] (Pinder, 1964[^18]).
 
-## Clathrates in sature & the Solar System
+## Clathrates in nature & the Solar System
 
 Clathrates exist in permafrost and ocean sediments here on Earth, evidence includes methane clathrate deposits in Siberia, Canada, and Alaska. There’s also a possibility that nitrogen-oxygen clathrate exists in Antarctic ice (Miller, 1969[^12]). The strongest evidence for naturally occurring methane clathrate comes from [[bottom-simulating reflectors]] in ocean sediments, which show a sudden drop in sound velocity due to trapped methane gas (Shipley et al., 1979[^13]).
 
