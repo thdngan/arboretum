@@ -43,8 +43,9 @@ export const sharedPageComponents: SharedLayout = {
   ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/thdngan",
-      Email: "mailto:trinhhoangdieungan@gmail.com",
+      // GitHub: "https://github.com/thdngan",
+      MainHub: "https://thdngan.github.io/",
+      Email: "mailto:ngan.trinh@ens.psl.eu",
     },
 
   }),
