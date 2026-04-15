@@ -42,15 +42,15 @@ export default ((opts: Options) => {
       <h2>💬 Logbook</h2>
       <br />
       <p-code-font>
-      <strong>Captain’s Log, Day 120103 </strong> 
+      <strong>Day 120103 </strong> 
       <br />
       The icy shores are quiet, the stars twinkle ✨ above, and the trees... well, they don’t talk back (yet). But you can!
       <br />
       <br />
-      This logbook is the place to share your thoughts, challenge my ideas, or drop some cosmic wisdom. Did I get something wrong? Set me straight! Got a cool fact about space, trees, or penguins 🐧? I’m all ears (or flippers)!
+      This logbook is the place to share your thoughts, challenge my ideas, or drop some wisdom. Did I get something wrong? Set me straight! Got a cool fact about space, trees, or penguins 🐧? I’m all ears!
       <br />
       <br />
-      <em>- Ryan</em> 
+      {/* <em></em>  */}
       </p-code-font>
       <div
         class={classNames(displayClass, "giscus")}
