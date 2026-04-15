@@ -7,7 +7,7 @@ tags:
   - planetary-science
   - thermodynamics
   - incomplete
-  - writing
+  - writings
 draft: false
 ---
 >[!caption_right]

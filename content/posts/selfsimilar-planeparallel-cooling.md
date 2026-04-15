@@ -5,7 +5,7 @@ tags:
   - discussions
   - incomplete
   - physics
-  - writing
+  - writings
 date: 2023-09-05
 ---
 

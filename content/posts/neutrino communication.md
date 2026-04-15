@@ -6,7 +6,7 @@ tags:
   - physics
   - discussions
   - incomplete
-  - writing
+  - writings
 ---
 
 *This is one of those ancient posts that is still incomplete and I just don't know if I'll ever find the motivation to finish it lol. BUT. It did set the foundation for this little blog, so I'll leave it here, and hope that someday I'll be able to delete the annoying  #incomplete tag :)*

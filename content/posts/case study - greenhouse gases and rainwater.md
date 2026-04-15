@@ -4,7 +4,7 @@ date: 2022-09-27
 tags:
   - climate
   - case-studies
-  - writing
+  - writings
 draft: true
 ---
 Github link: https://github.com/thdngan/case-studies

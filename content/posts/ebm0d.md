@@ -5,7 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
-  - writing
+  - writings
 ---
 Think of this as the ultimate back-of-the-napkin sketch for understanding Earth’s climate. It’s called "zero-dimensional" because it treats the planet as if it were a perfectly mixed, uniform sphere: no poles, no tropics, one big average temperature, no fancy maps or complex weather patterns, essentially just a straightforward look at how energy moves in and out.
 

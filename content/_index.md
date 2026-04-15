@@ -11,16 +11,11 @@ enableToc: false
 >
 >&mdash; Lemony Snicket, The End
 
-Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)!  
+Hey, I’m Ngân. Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)! 
 
-Hey, I’m Ngân. This is a little nook of the internet where I stash my  #notes,  longer #writing (pieces where I _pretend_ I know what I’m doing),  class  #notebooks,  (mostly unfinished)  #discussions,  and whatever else pops into my orbit.  Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to deal with. A living, evolving brain-dump basically.
+This is a little nook of the internet where I stash my  #notes,  #writings  (longer pieces where I _pretend_ I know what I’m doing),  class  #notebooks,  (mostly unfinished)  #discussions,  and whatever else pops into my orbit.  Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to deal with. A living, evolving brain-dump basically.
 
-Also I have no idea why there are penguins in an arboretum 🐧
-
-<!-- They look cute, their behaviour is considerably less cute, and they're funny! And *l'arboretum* is really just my way of avoiding the word "garden" in digital garden \[\*inserts "Just making sure I don't fit in" meme\*\]. !-->
-
-<!-- And why is it *L'arboretum*? Claire, it's French ✨! -->
-
+Also I have no idea why there are penguins in an arboretum 🐧 They seem to have migrated here from my **[main hub](https://thdngan.github.io/)**.
 
 # Lost? Here's a map 
 
@@ -55,14 +50,5 @@ That said, the struggle was so worth it! I picked up a ton of new knowledge alon
 
 Also, big shout-out to [Eilleen](https://quartz.eilleeenz.com/) for their ridiculously helpful Quartz [customization log](https://quartz.eilleeenz.com/Quartz-customization-log), those floating buttons are absolute lifesavers!
 
-
-
-<!-- <hr />  -->
-
-<!---
-https://thdngan.github.io/quartz/subjects
-
-I wrote blogs across a variety of platforms for a while, but I couldn't settle on one to use consistently. I once decided to write about a [[posts/neutrino communication|neutrino application]] and soon realized that it would be way more effective and intriguing to explain the intricate world of Particle Physics by linking bi-directionally to all the other concepts it's tangled up with. This led me to the idea of publishing my notes using [Obsidian](https://obsidian.md/), and during my search, I discovered [Quartz](https://quartz.jzhao.xyz/).
--->
 
 

@@ -4,7 +4,7 @@ date: 2022-11-02
 tags:
   - planetary-science
   - case-studies
-  - writing
+  - writings
 draft: true
 ---
 

@@ -5,7 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
-  - writing
+  - writings
 ---
 Earth is kind of like one giant, living organism. At least, that’s what the **Gaia Hypothesis** suggests, it views the planet as a self-regulating system where the atmosphere, oceans, land, and life all work together to maintain conditions that sustain life itself. Everything is interconnected, and living organisms don’t just adapt to their environment, they actively shape it in ways that keep the system stable.
 

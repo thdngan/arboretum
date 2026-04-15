@@ -4,7 +4,7 @@ date: 2021-04-15
 tags:
   - image-processing
   - notebooks
-  - writing
+  - writings
 draft: true
 ---
 %% *Images mentioned in this post are from Digital Image Processing (3rd edition), by Rafael C. Gonzalez, Richard E. Woods. I don't have the permission to use them here :')* %%

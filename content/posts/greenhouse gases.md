@@ -5,7 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
-  - writing
+  - writings
 ---
 
 %% $CO_2$   $H_2O$    $CH_4$   $\epsilon$ $NO_2$ %%

@@ -5,7 +5,7 @@ tags:
   - climate
   - notebooks
   - planetary-science
-  - writing
+  - writings
 ---
 
 
@@ -13,7 +13,7 @@ tags:
 ## The model
 
 ![[images/climate modeling/greenhouseeffect1.svg]]
-The figure above depicts the previously described [[posts/naked planet climate model|first basic climate model with bare-rock surface]]. The incoming energy budget is represented by $L(1 - \alpha)/4$ in the figure, where L is the solar constant, α is the albedo of Earth, and number 4 represents the geometry of the system (we're considering the entire planet, so it's a sphere, keep this in mind because we'll deal with different problems that consider different conditions). This energy would be balanced by the energy that leaves the system, as indicated by $\epsilon \sigma T^4_{ground}$, where ε, σ and T are the emissivity of Earth, the [[Stefan-Boltzmann law|Stefan-Boltzmann]] constant, and the Earth's ground temperature, respectively.
+The sketch above depicts the previously described [[posts/naked planet climate model|first basic climate model with bare-rock surface]]. The incoming energy budget is represented by $L(1 - \alpha)/4$ in the figure, where L is the solar constant, α is the albedo of Earth, and number 4 represents the geometry of the system (we're considering the entire planet, so it's a sphere, keep this in mind because we'll deal with different problems that consider different conditions). This energy would be balanced by the energy that leaves the system, as indicated by $\epsilon \sigma T^4_{ground}$, where ε, σ and T are the emissivity of Earth, the [[Stefan-Boltzmann law|Stefan-Boltzmann]] constant, and the Earth's ground temperature, respectively.
 
 However, we discovered that the given model is rather cold in comparison to real-world values. This is due mostly to the presence of [[posts/greenhouse gases|greenhouse gases]] in the atmosphere, which absorb and emit radiation as well.
 
