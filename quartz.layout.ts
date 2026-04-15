@@ -97,7 +97,7 @@ export const defaultContentPageLayout: PageLayout = {
     // Component.Explorer(),
     Component.DesktopOnly(
       Component.RecentNotes({
-        title: "Recent writing",
+        title: "Recent writings",
         limit: 4,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
