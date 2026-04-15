@@ -68,7 +68,7 @@ export default ((opts?: Partial<GraphOptions>) => {
     const globalGraph = { ...defaultOptions.globalGraph, ...opts?.globalGraph }
     return (
       <div class={classNames(displayClass, "graph")}>
-        <h3>🧭 Interactive Map</h3>
+        <h3><span class="shimmer-symbol"><i class="fas fa-compass">&nbsp;</i></span> Interactive Map</h3>
         <div class="graph-outer">
           <div id="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
           <button id="global-graph-icon" aria-label="Global Graph">
