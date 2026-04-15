@@ -8,6 +8,7 @@ tags:
   - thermodynamics
   - incomplete
   - writings
+  - notebooks
 draft: false
 ---
 >[!caption_right]
@@ -21,13 +22,13 @@ Now, throughout this post, we're mostly talking about clathrate compounds where 
 
 
 
-## Why Do Clathrates Matter in the Outer Solar System?
+## Why do clathrates matter in the outer Solar System?
 
 When you look at places like Titan, Triton, or maybe even Pluto, you’ve got to wonder how they ended up with the volatiles they have. Clathrates might have played a major role in their formation, acting like time capsules that stored and later released important gases. Plus, thanks to new observational techniques, we might finally get some direct evidence of clathrates existing on other celestial bodies, a game-changer for planetary science!
 
 Lunine & Stevenson (1985)[^1] extended a statistical mechanical model of clathrate formation, originally developed by Platteeuw and van der Waals (1959)[^2], to predict how and when clathrates form across a huge range of cosmic conditions. These conditions span from ultra-low pressures, like the ones found in gaseous nebulae where planets and moons may have formed, to intermediate pressures like Titan’s atmosphere, and even to super-high pressures deep inside icy moons.
 
-## Clathrate Structures & What We Know So Far
+## Clathrate structures & what we know so far
 
 Clathrate hydrates have an open, cage-like design built from 20 to 28 hydrogen-bonded water molecules. They come in two main structural types: Structure I and Structure II. The size of the guest molecule determines which type forms. Structure I, for example, has a mix of small and large cages and can host molecules like CO2 and CH4. Meanwhile, Structure II has even bigger cages and can accommodate gases like O2, Kr, and Ar.
 
@@ -44,7 +45,7 @@ There’s been a lot of work done to figure out how guest molecules interact wit
 - The frustratingly slow kinetics of clathrate formation, Barrer & Edge (1967)[^8] found that clathrates form much more efficiently when you shake things up, exposing fresh ice to the gas.
 - The physical properties of clathrates, such as their thermal conductivity (Cook & Leaist, 1983[^9]; Stoll & Bryan, 1979[^10]) and density (Kvenvolden & McDonald, 1982[^11]), or the time-dependent [[rheology]] of a clathrate hydrate [[slurry]] (Pinder, 1964[^18]).
 
-## Clathrates in Nature & the Solar System
+## Clathrates in sature & the Solar System
 
 Clathrates exist in permafrost and ocean sediments here on Earth, evidence includes methane clathrate deposits in Siberia, Canada, and Alaska. There’s also a possibility that nitrogen-oxygen clathrate exists in Antarctic ice (Miller, 1969[^12]). The strongest evidence for naturally occurring methane clathrate comes from [[bottom-simulating reflectors]] in ocean sediments, which show a sudden drop in sound velocity due to trapped methane gas (Shipley et al., 1979[^13]).
 
@@ -57,7 +58,7 @@ In the solar system, clathrates have been proposed to explain:
 
 Despite all this, **we still don’t have direct evidence of clathrates beyond Earth**, but that doesn’t mean they’re not out there. They could just be masquerading as ordinary water ice, making them tricky to spot in reflection spectra. Luckily, new advancements in ground-based spectroscopy might finally let us tell the difference between regular ice and clathrate hydrates, which could unlock a whole new understanding of planetary formation and evolution. So, stay tuned!
 
-## Thermodynamics and Structure: The Basics
+## Thermodynamics and structure (basics)
 
 Clathrate hydrate is this unique phase in a **multicomponent system** made up of **water** and a bunch of different chemical species, ranging from **nonpolar and weakly polar** to the occasional **strongly polar** ones. It's [[nonstoichiometric]], so while the number of cages is fixed, their **fractional occupancy** depends on temperature, pressure, and the relative abundance of species.
 
@@ -80,7 +81,7 @@ Since we’re keeping things simple, let’s consider only a **single guest spec
 > ![[lunine_stevenson1985_fig2.png]]
 >Here’s a schematic of clathrate stability fields for a guest molecule (like methane). The solid line shows where clathrate is thermodynamically preferred over water ice or liquid, while the dashed line is the ice-liquid phase boundary. Dotted lines represent vapor-liquid (A) and liquid-solid (B) phase boundaries of the guest species. Note how the slope of the clathrate stability field changes when crossing the ice-liquid boundary! From Lunine & Stevenson (1985)[^1].
 
-## Breaking Down the Phase Boundary
+## Breaking down the phase boundary
 
 Looking at the figure, let’s start with the **low-pressure regime** where system pressure is roughly the guest molecule’s vapor pressure (since water’s vapor pressure is usually much lower). As pressure increases at constant temperature, the **Gibbs energy of the gas phase increases** due to decreasing entropy, while the Gibbs energy of the clathrate remains relatively unchanged. The result? _**Higher pressures favor clathrate formation!**_
 
@@ -94,7 +95,7 @@ At **higher pressures**, compressive effects on the guest molecule (and a little
 
 Each species has a unique $T_c$, and below it, both a **minimum and maximum pressure** define the stability range. The **minimum pressure** exists because gas entropy is huge at low pressures, while the **maximum pressure** occurs when the pure guest phase gets so dense that the **volume change (clathrate → guest + $H_2O$) becomes energetically favorable**.
 
-## Guest-Host Interaction: It's More Than Just Occupying Space
+## Guest-host interaction (it's more than just occupying space)
 
 It’s a mistake to think of guest molecules as impurities randomly filling in gaps in the water lattice. X-ray diffraction (Jeffrey & McMullan, 1967[^19]) shows a well-defined cage structure with ~10 Å diameters. Davidson (1971)[^4] suggests that water dipolar fields **mostly cancel out inside the cage**, meaning guest-host interactions are pretty weak.
 
@@ -102,7 +103,7 @@ Various studies (infrared spectra, sound velocity, and thermal conductivity expe
 
 Most of the guest-host attraction comes from **London dispersion forces** (Fowler & Guggenheim, 1960[^21]), with minor contributions from **dipole-induced dipole and dipole-dipole interactions**. Even noble gases get trapped in clathrate cages (van der Waals & Platteeuw, 1959[^2]), showing how weak but essential these forces are. Strongly dipolar molecules can also fit inside, but that’s a discussion for another section (_cough_ ammonia incorporation _cough_).
 
-## Modeling Clathrate Formation: Adsorption, But in 3D (Lunine & Stevenson, 1985)
+## Modeling clathrate formation: Adsorption, but in 3D (Lunine & Stevenson, 1985)
 
 Think of guest molecule incorporation like ideal [[gas adsorption|adsorption]] onto fixed sites, just **extended into three dimensions**. Lunine & Stevenson (1985)[^1] made the following assumptions:
 
