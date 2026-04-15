@@ -11,7 +11,7 @@ enableToc: false
 >
 >&mdash; Lemony Snicket, The End
 
-Hey, I’m Ngân. Welcome to my [digital arboretum](https://nesslabs.com/digital-garden-set-up#:~:text=A%20digital%20garden%20is%20an,to%20be%20cultivated%20in%20public.)! 
+Hey, I’m Ngân. Welcome to my [digital arboretum](https://jzhao.xyz/posts/networked-thought)! 
 
 This is a little nook of the internet where I stash my  #notes,  #writings  (longer pieces where I _pretend_ I know what I’m doing),  class  #notebooks,  (mostly unfinished)  #discussions,  and whatever else pops into my orbit.  Some of them are polished, some are  #incomplete  scribbles, and a few might just be  #empty placeholders waiting for future me to deal with. A living, evolving brain-dump basically.
 
