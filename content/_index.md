@@ -17,14 +17,14 @@ This is a little nook of the internet where I stash my  #notes,  #writings  (lon
 
 Also I have no idea why there are penguins in an arboretum... They seem to have migrated here from my [main hub](https://thdngan.github.io/).
 
-# Lost? Here's a map 
+# Directions for the Disoriented
 
 
 You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). There are also handy buttons on the bottom right to:  
 
 <span class="shimmer-symbol">&ensp;<i class="fas fa-compass">&ensp;</i></span> Open the global map (for the adventurous)  
 <span class="shimmer-symbol">&nbsp;<i class="fas fa-dice">&ensp;</i></span> Pick a random post (for the chaotic)  
-<span class="shimmer-symbol">&nbsp;&nbsp;↑↓&nbsp;&thinsp;</span>   Jump to the top/bottom (for the efficient)
+<span class="shimmer-symbol">&nbsp;&nbsp;<i class="fas fa-sort"></i>&nbsp;&ensp;</span>   Jump to the top/bottom (for the efficient)
 
 There's also a **search tool** at the top (or just hit `Ctrl+K`) to dig through the archives.
 
@@ -33,7 +33,7 @@ Or if you just wanna see what kind of topics I’ve dabbled in, here are some of
 › **#planetary-science** & **#climate** (mostly modeling),  
 › **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
 › **#chemistry** (more like _physical_ chemistry, really),  
-› or completely random topics I’ll probably never revisit like **#image-processing,  #seismology,  #earthquakes**,   
+› or completely random topics I’ll probably never revisit like **#image-processing,  #hydrology,  #earthquakes**,   
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!   
 
 %% Go ahead, click around - I promise no black holes 🕳️🐧. %%

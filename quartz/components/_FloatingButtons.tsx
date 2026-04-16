@@ -44,10 +44,10 @@ export default ((opts?: FloatingButtonsOptions) => {
           {/* GRAPH BUTTON */}
           <button
             class="floating-button"
-            title="Graph"
+            title="Global map"
             data-action="graph"
           >
-            <span class="floating-button-tooltip">Graph</span>
+            <span class="floating-button-tooltip">Global map</span>
             <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
