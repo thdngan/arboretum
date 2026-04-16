@@ -9,6 +9,5 @@ tags:
   - hydrology
   - physics
   - empty
-draft: false
 ---
 Collecting photos and notes to fill this post...
