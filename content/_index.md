@@ -33,7 +33,7 @@ Or if you just wanna see what kind of topics I’ve dabbled in, here are some of
 › **#planetary-science** & **#climate** (mostly modeling),  
 › **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
 › **#chemistry** (more like _physical_ chemistry, really),  
-› or completely random topics I’ll probably never revisit like **#image-processing,  #hydrology,  #earthquakes**,   
+› or completely random topics I’ll probably never revisit like **#hydrology, #geology, #image-processing**,   
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!   
 
 %% Go ahead, click around - I promise no black holes 🕳️🐧. %%
