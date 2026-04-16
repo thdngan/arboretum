@@ -24,7 +24,7 @@ You can hop between posts and notes by clicking on **[[lithium|links like this]]
 
 <span class="shimmer-symbol">&ensp;<i class="fas fa-compass">&ensp;</i></span> Open the global map (for the adventurous)  
 <span class="shimmer-symbol">&nbsp;<i class="fas fa-dice">&ensp;</i></span> Pick a random post (for the chaotic)  
-<span class="shimmer-symbol">&nbsp;&nbsp;<i class="fas fa-sort"></i>&nbsp;&ensp;</span>   Jump to the top/bottom (for the efficient)
+<span class="shimmer-symbol">&nbsp;&nbsp;<i class="fas fa-sort">&nbsp;&ensp;</i></span>   Jump to the top/bottom (for the efficient)
 
 There's also a **search tool** at the top (or just hit `Ctrl+K`) to dig through the archives.
 
