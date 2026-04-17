@@ -76,7 +76,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     // Component.Search(),
-    // Component.Darkmode(),\
+    // Component.Darkmode(),
     // Component.Row([
     //   Component.Search(),
     //   Component.Darkmode(),
