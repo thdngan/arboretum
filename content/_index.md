@@ -30,7 +30,7 @@ There's also a **search tool** at the top (or just hit `Ctrl+K`) to dig through 
 
 Or if you just wanna see what kind of topics I’ve dabbled in, here are some of the main ones: 
 
-› **#planetary-science** & **#climate** (mostly modeling),  
+› **#planetary-science** & **#climate** (mostly **#modelling**),  
 › **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
 › **#chemistry** (more like _physical_ chemistry, really),  
 › or completely random topics I’ll probably never revisit like **#hydrology, #geology, #image-processing**,   
