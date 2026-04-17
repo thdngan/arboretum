@@ -9,7 +9,17 @@ tags:
   - climate
   - incomplete
 ---
-**Temporary placeholder waiting for our manuscript to be published, since I wanna reference some of the figures here**
+**Temporary placeholder waiting for our manuscript to be published, since I wanna reference some of the figures here. IT'S VERY HALF-BAKED. SKIP THIS.**
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 Mars is basically a freezing, arid desert right now. But look at any topographic map of the planet and you will clearly see dried-up riverbeds and ancient lake basins. Billions of years ago, Mars had a lot of water. It might have even been a habitable world. So where did it all go? 
 
