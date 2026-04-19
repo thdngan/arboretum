@@ -36,9 +36,6 @@ Or if you just wanna see what kind of topics I’ve dabbled in, here are some of
 › or completely random topics I’ll probably never revisit like **#hydrology, #geology, #image-processing**,   
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!   
 
-%% Go ahead, click around - I promise no black holes 🕳️🐧. %%
-
-
 
 # Acknowledgements
 

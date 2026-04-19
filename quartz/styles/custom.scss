@@ -477,6 +477,56 @@ em strong {
     }
   }
 
+
+  /*----caption row callout (multiple images side-by-side)----*/
+  .callout[data-callout="caption_row"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    padding: 6px;
+    max-width: 90%; /* Made slightly wider to fit multiple images nicely */
+    margin: auto;
+  }
+  
+  .callout[data-callout="caption_row"] > .callout-title {
+    display: none;
+  }
+
+  /* Turn the callout content area into a Flexbox row */
+  .callout[data-callout="caption_row"] .callout-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* Space between the image columns */
+  }
+  
+  /* Target the paragraphs inside the content to act as equal-width columns */
+  .callout[data-callout="caption_row"] .callout-content > p {
+    flex: 1; /* Makes 2 or 3 or 4 columns exactly equal width */
+    text-align: center;
+    margin: 0;
+    padding: 2px;
+    font-size: $calloutBoxFontsize;
+  }
+  
+  .callout[data-callout="caption_row"] img {
+    display: block;
+    margin: 0 auto 8px auto; /* Centers the image and adds space above the caption */
+    max-width: 100%;
+  }
+  
+  /* mobile breakpoint - stacks the images vertically on small screens */
+  @media (max-width: 767px) {
+    .callout[data-callout="caption_row"] .callout-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .callout[data-callout="caption_row"] {
+      max-width: 80%; /* Shrink back down for mobile */
+    }
+  }
+
   // The animation for the shimmer (emojis)
 @keyframes shimmer {
     0% { background-position: -200%; }
