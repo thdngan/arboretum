@@ -527,6 +527,10 @@ em strong {
     }
   }
 
+  ///////////////////////////////////////////////////
+  ///////////////// EMOJIS / ICONS //////////////////
+  ///////////////////////////////////////////////////
+
   // The animation for the shimmer (emojis)
 @keyframes shimmer {
     0% { background-position: -200%; }
@@ -551,4 +555,47 @@ em strong {
     -webkit-text-fill-color: transparent;
     animation: shimmer 3s linear infinite;
     */
+}
+
+  ///////////////////////////////////////////////////
+  /////////////////// HOME BUTTON ///////////////////
+  ///////////////////////////////////////////////////
+
+/* Container to center the button */
+.blog-home-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 3rem 0 2rem 0;
+}
+
+/* The button itself, matching Linktree links */
+.blog-home-button {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1); 
+  color: var(--secondary);
+  border: solid var(--secondary) 2px;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 12px 25px;
+  text-decoration: none !important; /* Force remove underline */
+  transition: all .05s ease;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* Hover effects from Linktree */
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--light) !important; /* var(--light) is the blog background */
+    // transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    /* Ensures the icon and text both change color on hover */
+    .shimmer-symbol {
+        color: var(--light);
+        -webkit-text-fill-color: var(--light);
+    }
+  }
 }
