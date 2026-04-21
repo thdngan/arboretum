@@ -26,6 +26,7 @@ import Row from "./_Row"
 import ConditionalRender from "./ConditionalRender"
 import Flex from "./Flex"
 import ReaderMode from "./ReaderMode"
+import BlogHome from "./BlogHome"
 
 export {
   ArticleTitle,
@@ -56,4 +57,5 @@ export {
   Flex,
   ConditionalRender,
   ReaderMode,
+  BlogHome,
 }

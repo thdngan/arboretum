@@ -21,6 +21,7 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   // afterBody: Explorer[],
   afterBody: [
+    Component.BlogHome(),
     Component.Comments({
       provider: 'giscus',
       options: {
@@ -44,8 +45,8 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       // GitHub: "https://github.com/thdngan",
-      MainHub: "https://thdngan.github.io/",
-      Email: "mailto:ngan.trinh@ens.psl.eu",
+      "About": "https://thdngan.github.io/",
+      "Contact": "mailto:ngan.trinh@ens.psl.eu",
     },
 
   }),

@@ -37,7 +37,7 @@ export default ((opts: Options) => {
 
     return (
       <>
-      <hr/>
+      {/* <hr/> */}
       {/* <br /> */}
       <h2>💬 Logbook</h2>
       <br />
