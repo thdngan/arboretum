@@ -25,7 +25,7 @@ export const sharedPageComponents: SharedLayout = {
     Component.MobileOnly(
       Component.RecentNotes({
         title: "Recent writings",
-        limit: 4,
+        limit: 5,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
         linkToMore: "posts/" as SimpleSlug,
