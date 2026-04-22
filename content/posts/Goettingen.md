@@ -5,6 +5,8 @@ tags:
   - writings
   - thoughts
 ---
+There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
+
 >[!caption_row]
 >
 >![[field.jpg]]
@@ -12,11 +14,6 @@ tags:
 >
 >![[cat.jpg]]
 >pspspspspsss
-
-
-
-
-There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
 
 I'm going to try something different with this post. My older writing here is mostly about specific topics ([[clathrate|clathrates]], [[lithium]], whatever I was reading that month). Impersonal. Safely behind the science. This one is going to be more about what it actually felt like to be doing any of it.
 
