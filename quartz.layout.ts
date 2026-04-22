@@ -22,6 +22,15 @@ export const sharedPageComponents: SharedLayout = {
   // afterBody: Explorer[],
   afterBody: [
     Component.BlogHome(),
+    Component.MobileOnly(
+      Component.RecentNotes({
+        title: "Recent writings",
+        limit: 4,
+        filter: (f) =>
+          f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+        linkToMore: "posts/" as SimpleSlug,
+      }),
+    ),
     Component.Comments({
       provider: 'giscus',
       options: {
