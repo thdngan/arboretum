@@ -29,7 +29,7 @@ Göttingen is a beautiful, quiet university town. It has a famous tradition: stu
 
 I went there knowing no one, which I thought I was fine with. I am, after all, an introvert. I like being alone. And for a while that was true. The first few weeks have a honeymoon quality, everything is new, even a grocery run is a small adventure in a foreign language.
 
-But solitude and isolation are different things, and I came to understand the difference that semester more clearly than I had before. Solitude is what you choose. Isolation is what accumulates when you realize you haven't had a real conversation in longer than you'd like to admit. There were people to have lunch with, to chat to in the corridor, to share a coffee with after seminars, but no one to call when you didn't feel like going home to an empty room. I was just sitting in my little studio eating fried eggs with soy sauce over pasta (no rice cooker, this is what we do now) and the feeling suddenly hits all at once like a delayed bus.
+But solitude and isolation are different things, and I came to understand the difference that semester more clearly than I had before. Solitude is what you choose. Isolation is what accumulates when you realize you haven't had a real conversation in longer than you'd like to admit. There were people to have lunch with, to chat to in the corridor, to share a coffee with after seminars, but no one to call when you didn't feel like going home to an empty room. I was just sitting in my little studio eating fried eggs with Buldak hot sauce over pasta (an insult to at least two cuisines at once, three if I replace the pasta with *udon*) when the feeling suddenly hit me like a delayed bus.
 
 >[!caption_left]
 >![[Hamburg.jpeg]]
