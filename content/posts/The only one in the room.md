@@ -15,7 +15,7 @@ I knew, rationally, that this would happen sometimes. The program is based in Pa
 
 But that day, in that room, I was the only one who couldn't follow. And there isn't really a graceful way to exist in a room where everyone else is having a conversation and you can't hear it. You can smile. You can look out the window. You can pretend to be interested in your notebook. I wrote a long passage in Vietnamese in my margins that day: something like, _nobody can read this, which is the one advantage of being the only one here who knows this language_.
 
-I kept that notebook. Reading it back now, it's pretty dramatic. 21-year-old me was trying really hard to look busy.
+I kept that notebook. Reading it back now, it's pretty dramatic. 21-year-old me was trying really hard to look busy and unbothered.
 
 ---
 
