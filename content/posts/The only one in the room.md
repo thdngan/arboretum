@@ -37,7 +37,7 @@ I told myself a lot of stories about this, most of them unfair to everyone invol
 
 What I actually needed, I think, and only realized much later, was one other person in the same situation. Another student who also couldn't follow the French. Someone to exchange a look with across the room when a lecture switched languages. Someone whose presence would mean I wasn't the entire weight of the problem. I didn't need the program to solve anything. I just needed not to be the only one. Well.. ain't that a cruel thought, to wish that someone could go through the same thing I went through. But then again, if there were two of us, we wouldn't go through the same thing *I myself* went through.
 
-Just a thought anyway. The fact is, I was the only one.
+Just a what-if anyway. The fact is, I was the only one.
 
 ---
 
