@@ -298,7 +298,7 @@ export default (() => {
         )}
 
         <link rel="icon" href={iconPath} />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></link>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"></link>
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />

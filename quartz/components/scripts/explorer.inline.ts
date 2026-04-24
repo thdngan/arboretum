@@ -109,7 +109,15 @@ function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElemen
   const a = li.querySelector("a") as HTMLAnchorElement
   a.href = resolveRelative(currentSlug, node.slug)
   a.dataset.for = node.slug
-  a.textContent = node.displayName
+  // a.textContent = node.displayName
+  // Check if the file data exists AND has our custom icon field
+  if (node.data && node.data.icon) {
+    // Written on ONE single line so no invisible spaces or tabs are created!
+    a.innerHTML = `<span class="shimmer-symbol" style="margin-right: 6px;"><i class="${node.data.icon}"></i></span>${node.displayName}`
+  } else {
+    // Standard text
+    a.textContent = node.displayName
+  }
   a.classList.add("file-link");
 
   if (currentSlug === node.slug) {
@@ -143,7 +151,6 @@ function createFolderNode(
     a.dataset.for = folderPath
     a.className = "folder-title"
     a.textContent = node.displayName
-    a.className = "folder-title";
     button.replaceWith(a)
 
   } else {

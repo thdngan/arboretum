@@ -19,6 +19,7 @@ export type ContentDetails = {
   richContent?: string
   date?: Date
   description?: string
+  icon?: string
 }
 
 interface Options {
@@ -115,6 +116,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
               : undefined,
             date: date,
             description: file.data.description ?? "",
+            icon: file.data.frontmatter?.icon as string | undefined,
           })
         }
       }
@@ -143,8 +145,8 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
           // remove description and from content index as nothing downstream
           // actually uses it. we only keep it in the index as we need it
           // for the RSS feed
-          delete content.description
-          delete content.date
+          // delete content.description
+          // delete content.date
           return [slug, content]
         }),
       )
