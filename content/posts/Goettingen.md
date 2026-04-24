@@ -3,7 +3,7 @@ title: A transit in Göttingen
 date: 2025-08-01
 tags:
   - writings
-  - thoughts
+  - personal
 ---
 There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
 
@@ -15,7 +15,7 @@ There's a specific kind of freedom that comes with being completely unknown some
 >![[cat.jpg]]
 >pspspspspsss
 
-I'm going to try something different with this post. My older writing here is mostly about specific topics ([[clathrate|clathrates]], [[lithium]], whatever I was reading that month). Impersonal. Safely behind the science. This one is going to be more about what it actually felt like to be doing any of it.
+%% I'm going to try something different with this post. My older writing here is mostly about specific topics ([[clathrate|clathrates]], [[lithium]], whatever I was reading that month). Impersonal. Safely behind the science. This one is going to be more about what it actually felt like to be doing any of it. %%
 
 So: Göttingen, Germany. March to July 2025, more or less. A small university city in Lower Saxony that I had never heard of before I started searching for a researcher working on gravity waves on other planets for my internship. I ended up modelling hydrogen escape from Mars, which I've written about [[Mars hydrogen escape|elsewhere]]. This post is about the other part of the story.
 
@@ -55,7 +55,7 @@ If I do a PhD, and I still want to, I think it needs to be somewhere where I hav
 >![[hike.jpg]]
 >Great place to have a crisis by the way.
 
-The time spent musing like that has definitely clarified some things I'd been vaguely aware of but hadn't looked at directly. The visa paperwork that treats you as a suspect until proven otherwise (got me thinking about the concept of [[geographical luck|geographical luck]] a lot more often than before), the cost of living in cities on a stipend that wasn't designed to cover it, the exhaustion of navigating institutions that weren't built with people like you in mind, and the racial slurs ("fuck you China girl") thrown at you on a busy Parisian street in broad daylight. There's also the guilt that eats you up every time you go back home and notice your parents have aged another year.
+The time spent musing like that has definitely clarified some things I'd been vaguely aware of but hadn't looked at directly. The visa paperwork that treats you as a suspect until proven otherwise (got me thinking about the concept of [[geographical luck|geographical luck]] a lot more often than before), the cost of living in cities on a stipend that wasn't designed to cover it, the exhaustion of navigating institutions that weren't built with people like you in mind, and the racial slurs ("fuck you China girl") thrown at you on a busy Parisian street in broad daylight. There's also the [[posts/guilt]] that eats you up every time you go back home and notice your parents have aged another year.
 
 I'm not sure what to do with most of it. Some of it is systemic and I can't fix it. Some of it I can navigate more wisely now that I know the terrain. Some of it I just have to carry.
 

@@ -1,6 +1,6 @@
 ---
 title: How Mars loses its water
-date: 2025-07-31
+date: 2025-12-20
 tags:
   - planetary-science
   - writings
@@ -11,7 +11,7 @@ tags:
 ---
 
 
-**Temporary placeholder waiting for our manuscript to be published, since I wanna reference some of the figures here. IT'S VERY HALF-BAKED. SKIP THIS.**  
+**I still wanna reference some of the figures from our manuscript when it's finally published here. IT'S VERY HALF-BAKED FOR NOW. SKIP THIS.**  
 .  
 .  
 .  
@@ -28,13 +28,13 @@ tags:
 .  
 .  
 .    
-Mars is dry. Brutally, almost completely dry. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form in the presence of liquid water. Somewhere between then and now, Mars lost most of it. And it is still losing more, right now, through a process so slow and so high up in the atmosphere that you would never notice it from the ground.
+Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form in the presence of liquid water. Somewhere between then and now, Mars lost most of it. And it is still losing more, right now, through a process very slow and very high up in the atmosphere.
 
-This post is about that process, and about the modeling work I spent a semester working on in Göttingen, trying to understand it a little better. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. That doesn't sound like much, but over billions of years, it adds up.
+This post is about that process, and about the modeling work I spent a semester working on in Göttingen, trying to understand it a little better. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. Doesn't sound like much, but over billions of years, it adds up.
 
 ## Why hydrogen?
 
-Water is H₂O. When water vapor drifts high enough into the Martian atmosphere, above roughly 40 to 60 km, the Sun's ultraviolet radiation (specifically Lyman-alpha photons) breaks it apart:
+Water is H₂O (duh). When water vapor drifts high enough into the Martian atmosphere, above roughly 40 to 60 km, the Sun's ultraviolet radiation (specifically Lyman-alpha photons) breaks it apart:
 
 $$
 \text{H}_2\text{O} + h\nu \rightarrow \text{H} + \text{OH}

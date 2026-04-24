@@ -24,7 +24,7 @@ Now, throughout this post, we're mostly talking about clathrate compounds where 
 
 ## Why do clathrates matter in the outer Solar System?
 
-When you look at places like Titan, Triton, or maybe even Pluto, you’ve got to wonder how they ended up with the volatiles they have. Clathrates might have played a major role in their formation, acting like time capsules that stored and later released important gases. Plus, thanks to new observational techniques, we might finally get some direct evidence of clathrates existing on other celestial bodies, a game-changer for planetary science!
+When you look at [[ocean worlds|places]] like Titan, Triton, or maybe even Pluto, you’ve got to wonder how they ended up with the volatiles they have. Clathrates might have played a major role in their formation, acting like time capsules that stored and later released important gases. Plus, thanks to new observational techniques, we might finally get some direct evidence of clathrates existing on other celestial bodies, a game-changer for planetary science!
 
 Lunine & Stevenson (1985)[^1] extended a statistical mechanical model of clathrate formation, originally developed by Platteeuw and van der Waals (1959)[^2], to predict how and when clathrates form across a huge range of cosmic conditions. These conditions span from ultra-low pressures, like the ones found in gaseous nebulae where planets and moons may have formed, to intermediate pressures like Titan’s atmosphere, and even to super-high pressures deep inside icy moons.
 
