@@ -3,6 +3,7 @@ import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import { GlobalConfiguration } from "../cfg"
+import { classNames } from "../util/lang"
 
 export type SortFn = (f1: QuartzPluginData, f2: QuartzPluginData) => number
 
@@ -42,6 +43,7 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
       {list.map((page) => {
         const title = page.frontmatter?.title
         const tags = page.frontmatter?.tags ?? []
+        const icon = page.frontmatter?.icon as string | undefined
 
         return (
           <li class="section-li">
@@ -52,6 +54,11 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
               <div class="desc">
                 <h3>
                   <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
+                    {icon && (
+                      <span class="shimmer-symbol" style={{ marginRight: "8px" }}>
+                        <i class={icon}></i>
+                      </span>
+                    )}
                     {title}
                   </a>
                 </h3>

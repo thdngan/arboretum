@@ -243,6 +243,12 @@ em strong {
     transition: background 0.2s ease;
   }
 
+  a .shimmer-symbol {
+    text-indent: 0;     /* Stops the icon from double-shifting to the left */
+    display: inline;    /* Forces it to act exactly like a standard text character */
+    color: inherit;
+  }
+
   li {
     margin-bottom: 0.5rem; // space between entries
   }
@@ -461,6 +467,7 @@ em strong {
     display: block;
     margin: auto;
     max-width: 100%;
+    // aspect-ratio: 4 / 3;
   }
   
   .callout[data-callout="caption_right"] p {
@@ -497,23 +504,36 @@ em strong {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
-    gap: 20px; /* Space between the image columns */
+    align-items: stretch;
+    gap: 5px; /* Space between the image columns */
   }
   
   /* Target the paragraphs inside the content to act as equal-width columns */
   .callout[data-callout="caption_row"] .callout-content > p {
     flex: 1; /* Makes 2 or 3 or 4 columns exactly equal width */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+
     text-align: center;
     margin: 0;
     padding: 2px;
     font-size: $calloutBoxFontsize;
   }
+
+  .callout[data-callout="caption_row"] .callout-content > p br {
+    display: none;
+  }
   
   .callout[data-callout="caption_row"] img {
     display: block;
     margin: 0 auto 8px auto; /* Centers the image and adds space above the caption */
-    max-width: 100%;
+    // max-width: 100%;
+    width: 100%;            /* Force image to fill the column width */
+    aspect-ratio: 4 / 3;    /* Force all images to be the exact same shape */
+    object-fit: cover;      /* Crop beautifully without squishing or stretching */
+    border-radius: 6px;     /* Optional: adds a nice soft edge */
   }
   
   /* mobile breakpoint - stacks the images vertically on small screens */
@@ -598,4 +618,8 @@ em strong {
         -webkit-text-fill-color: var(--light);
     }
   }
+}
+
+.article-title .shimmer-symbol {
+  color: inherit;
 }
