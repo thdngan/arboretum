@@ -95,7 +95,7 @@ Another came from a French territory in the South Pacific. He taught me how to s
 >![[Nice_coastal-path.jpg]]
 >Along the coast in Nice
 
-There's one classmate who is basically a superwoman. She's on her country's national water polo team. She speaks at least 4 languages fluently: her native language, French, English, and Spanish. She's extremely good at what she studies. And she's one of the kindest people I've ever met. During the M1 field trip in Nice, I got seriously motion-sick on a boat and ended up throwing up (a memory I would love to lock away forever, but I'll tell it anyway). She came over to me right away, tied my hair back, and patted my back while I was still heaving. She wasn't fazed at all. I've had a soft spot for her ever since.
+There's one classmate who is basically a supergirl. She's on her country's national water polo team. She speaks at least 4 languages fluently: her native language, French, English, and Spanish. She's extremely good at what she studies. And she's one of the kindest people I've ever met. During the M1 field trip in Nice, I got seriously motion-sick on a boat and ended up throwing up (a memory I would love to lock away forever, but I'll tell it anyway). She came over to me right away, tied my hair back, and patted my back while I was still heaving. She wasn't fazed at all. I've had a soft spot for her ever since.
 
 When we got back to land, another classmate slowed his pace to walk beside me and quietly asked how I was doing. The next day, on a walk along the coast, he stayed next to me the whole way, chatting about random things. I'm fairly sure it was his way of letting me know that the day before hadn't mattered at all.
 
