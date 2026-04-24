@@ -89,7 +89,7 @@ I actually have a lot to say about _M_, who's probably one of my favorite people
 
 To be fair, I adore everyone in this class in different ways! I've had my own small moments with each of them and picked up their little quirks over time. A lot of them are very athletic, or very musical (French people seem to love wind instruments). One is a film nerd, much more serious about it than I am. She says "like" a lot, shrugs her shoulders all the time, and complains (very validly) about a lot of things, which, honestly, has been good for me. She's the reason I've started being a bit more outspoken, and a bit less quick to decide that something is fine when it isn't.
 
-Another came from a French territory in the South Pacific. He taught me how to sing _Spider-Cochon_ and the meanings of various diabolical French terms like _bobo gaucho_ and _droitard_. He also gets off at Place Monge instead of Censier-Daubenton on the way to school, specifically to avoid the uphill walk, which makes him my kind of person.
+Another came from a French territory in the South Pacific. He taught me how to sing _Spider-Cochon_ and the meanings of various diabolical French terms like _bobo gaucho_ and _droitard_. He also gets off at Place Monge instead of Censier-Daubenton on the way to school, specifically to avoid the uphill walk (he's just like me!).
 
 >[!caption_right]
 >![[Nice_coastal-path.jpg]]
