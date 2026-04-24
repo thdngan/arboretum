@@ -21,9 +21,9 @@ Then one day, a lecture started in French.
 
 I knew, rationally, that this would happen sometimes. The program is based in Paris. Of course some of the teaching happens in French. And most of the time, instructors would switch to English the moment I walked in, which was its own kind of uncomfortable: I was the reason an entire room was operating in its second language, and I could feel the effort of it.
 
-But that day, in that room, I was the only one who couldn't follow. And there isn't really a graceful way to exist in a room where everyone else is having a conversation and you can't hear it. You can smile. You can look out the window. You can pretend to be interested in your notebook. I wrote a long passage in Vietnamese in my margins that day, something like, _nobody can read this, which is the one advantage of being the only one here who knows this language_.
+But that day, in that room, I was the only one who couldn't follow. And there isn't really a graceful way to exist in a room where everyone else is having a conversation and you can't hear it. You can smile. You can look out the window. You can pretend to be interested in your notebook. I wrote a long journal in Vietnamese in my margins that day, which ended with something like, _nobody can read this, which is the one advantage of being the only one here who knows this language_.
 
-I kept that notebook. Reading it back now, it's pretty dramatic. 21-year-old me was trying really hard to look busy and unbothered.
+Reading it back now, it's pretty dramatic *lol*. 21-year-old me was trying really hard to look unbothered.
 
 ---
 
@@ -109,7 +109,7 @@ Another classmate from my M1 year did his internship in Cambodia and Vietnam, an
 
 There's a tradition the M2 class started that I love: a baking rotation. We call it the Gâtoscope. People bring cakes and cookies. _M_ and I once spent an hour and a half making a cake that was supposed to take 20 minutes. We talked about politics, our families, and what we each wanted from the next few years. It was the first time I'd actually baked anything in France, and (thanks to *M*) it turned out completely fine. A little too moist because we were impatient with the oven, but still good.
 
-I know, intellectually, that most of my problems here are systemic. They aren't about me. But it still became one of the best adventures of my life so far, and the reason is these people.
+Most of my problems here are systemic. I know that deep down. And none of it has stopped this from being one of the best chapters of my life so far, because of these people.
 
 ---
 
