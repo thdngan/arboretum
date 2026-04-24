@@ -103,7 +103,54 @@ export const defaultContentPageLayout: PageLayout = {
       direction: "row",
       gap: "1rem",
     }),
-    Component.MobileOnly(Component.Explorer()),
+    Component.MobileOnly(
+      Component.Explorer({
+        sortFn: (a, b) => {
+          // 1. Folders above files
+          if (a.isFolder && !b.isFolder) return -1;
+          if (!a.isFolder && b.isFolder) return 1;
+
+          // 2. Custom folder order
+          if (a.isFolder && b.isFolder) {
+            var order =["empty", "posts", "notes_folder"];
+            var indexA = order.indexOf(a.slugSegment);
+            var indexB = order.indexOf(b.slugSegment);
+
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+
+            return a.displayName.localeCompare(b.displayName, undefined, {
+              numeric: true,
+              sensitivity: "base",
+            });
+          }
+
+          // 3. File sorting by Date (Newest first)
+          if (!a.isFolder && !b.isFolder) {
+            // Ultra-safe check for the data payload
+            var fileA = (a as any).file || (a as any).data;
+            var fileB = (b as any).file || (b as any).data;
+
+            var dateA = fileA && fileA.date ? new Date(fileA.date).getTime() : 0;
+            var dateB = fileB && fileB.date ? new Date(fileB.date).getTime() : 0;
+
+            // If both have valid dates, sort newest to oldest
+            if (dateA > 0 && dateB > 0 && dateA !== dateB) {
+              return dateB - dateA; 
+            }
+
+            // Fallback to alphabetical if dates are missing
+            return a.displayName.localeCompare(b.displayName, undefined, {
+              numeric: true,
+              sensitivity: "base",
+            });
+          }
+
+          return 0;
+        }
+      }),
+    ),
     Component.DesktopOnly(
       Component.RecentNotes({
         title: "Recent writings",
