@@ -72,7 +72,7 @@ Then, somehow, I got lucky. A second chance came not long after: another summer 
 >![[taiwan.jpg]]
 >Somewhere... in Taipei, or near Taipei
 
-Those 2 months are still the happiest stretch I've had since starting university. My roommate was from Myanmar and was one of the kindest people I've ever met. She shared snacks with me and suggested places to go. My Taiwanese friends and my supervisor were gentle and warm, they took me and other interns from Taipei all the way down to Kenting, at the southern tip of the island.
+Those 2 months are still the happiest period I've had since starting university. My roommate was from Myanmar and was one of the kindest people I've ever met. She shared snacks with me and suggested places to go. My Taiwanese friends and my supervisor were gentle and warm, they took me and other interns from Taipei all the way down to Kenting, at the southern tip of the island.
 
 >[!caption_row]
 >![[dumplings.jpg]]
