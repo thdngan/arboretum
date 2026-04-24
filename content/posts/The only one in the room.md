@@ -62,7 +62,7 @@ There was the first snow of the year, when I ran outside in my pyjamas with just
 
 ---
 
-The second year was easier. Not because the French-speaking situation had changed (it hadn't, structurally) but because I had stopped taking it quite so personally. Also, M2 brought a fresh wave of new classmates, many of them more openly aware of what I was navigating.  One night during our field trip in the Pyrénées, a new classmate, *M*, asked me how I actually felt when people switched to French and I got lost. I almost cried. I hadn't realized how much I'd needed someone to just ask.
+The second year was easier. Not because the French-speaking situation had changed (it hadn't, structurally) but because I had stopped taking it quite so personally. Also, M2 brought a fresh wave of new classmates, many of them more openly aware of what I was navigating.  One night during our field trip in the Pyrénées, a new classmate, *M*, asked me how I actually felt when people switched to French and I got lost. I almost teared up. I hadn't realized how much I'd needed someone to just ask.
 
 >[!caption_row]
 >![[Pyrenees.jpg]]
