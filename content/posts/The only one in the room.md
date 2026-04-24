@@ -45,7 +45,7 @@ Just a what-if anyway. The fact is, I was the only one.
 >![[banhmi.jpg]]
 >Bánh mì in Paris (very different from the real thing though)
 
-There were other things, of course. Paris itself, which I loved and still love. The specific small pleasures of being a foreign student on a scholarship in an expensive city: a bánh mì as a reward on Friday, a boba with *N* (a Vietnamese friend in the Maths department) on Saturday afternoons at the place near Opéra, the small joy of a croissant from the good bakery versus a croissant from the mediocre one closer to school. The way the metro smells completely different in different seasons (worst in summer, obviously).
+There were other things, of course. Paris itself, which I loved and still love. The little pleasures of being a foreign student discovering life in a highly romanticized city on a budget: a bánh mì as a reward on Friday, a boba with *N* (a Vietnamese friend in the Maths department) on Saturday afternoons at the place near Opéra, the small joy of a croissant from the good bakery versus a croissant from the mediocre one closer to school. The way the metro smells completely different in different seasons (worst in summer, obviously).
 
 There was a whole period when I was obsessed with trying to cook Japanese curry, but I never had all the ingredients: no onions, no carrots, no potatoes, so I made it with chicken and mushrooms and a lot of butter. I was convinced it was excellent. It was probably just okay. I still make it that way sometimes. The refrigerator of a Parisian shared apartment during exam season is not a place of culinary ambition.
 
