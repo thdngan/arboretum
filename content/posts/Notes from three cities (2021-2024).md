@@ -10,7 +10,7 @@ tags:
 > 
 > — Pascal Mercier, *Night Train to Lisbon*
 
-Over two years in Hà Nội. Two months in Taipei. Four months in Marseille. The length of each stay was different, but each one mattered to me, because in each place I met people and landscapes I ended up carrying with me across the world.
+%% Over two years in Hà Nội. Two months in Taipei. Four months in Marseille. The length of each stay was different, but each one mattered to me, because in each place I met people and landscapes I ended up carrying with me across the world. %%
 
 # Hà Nội
 
@@ -108,9 +108,9 @@ I was taken care of, kind of embarrassingly well, by an older master's student w
 
 That was also the period when I was waiting for results from 3 graduate applications. I got rejected from 2. The last one to reply was the only one that took me. That meant asking my Marseille supervisor for September off to start school, finishing my internship online in August while I was back in Vietnam doing visa paperwork. My planned six months in Marseille shrank to four. And just like that, I was saying goodbye to another place full of memories.
 
-People keep saying the French are difficult, but honestly, if you make the effort to say a few words in French first, most people are warm back (OK in retrospect, this was just a Southern France experience LMAO), they'll even switch to English to help you. You just have to show that you're trying to meet them halfway. It took me a while to get used to the culture of cheerfully saying _bonjour_ to every stranger you pass (again, Southern France), but I came around.
+People keep saying the French are difficult, but honestly, if you make the effort to say a few words in French first, most people are warm back (OK in retrospect, this was just a Southern France experience LMAO). You just have to show that you're trying to meet them halfway. It took me a while to get used to the culture of cheerfully saying _bonjour_ to every stranger you pass (again, Southern France), but I came around.
 
-What I remember most clearly is the weekend afternoons at Vieux-Port, watching the sun set over the Mediterranean, eating chocolate, listening to people making music and talking loudly around me. The internship also helped me keep building connections with people working in planetary science, which is the direction I want to go, and I learned a lot, heavy on [[clathrate|chemistry and thermodynamics]], which wasn't necessarily what I'd signed up for, but turned out to be kind of fun.
+What I remember most clearly is the weekend afternoons at Vieux-Port, watching the sun set over the Mediterranean, eating chocolate, listening to bands playing music (my favorite was *Just the Two of Us*) and people chatting loudly around me. The internship also helped me keep building connections with people working in planetary science, which is the direction I want to go, and I learned a lot, heavy on [[clathrate|chemistry and thermodynamics]], which wasn't necessarily what I'd signed up for, but turned out to be kind of fun.
 
 >[!caption_row]
 >![[sunset_marseille.jpg]]
