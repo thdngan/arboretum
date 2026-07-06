@@ -38,7 +38,7 @@ But solitude and isolation are different things, and I came to understand the di
 
 I went to Hamburg alone and liked it. I got stranded near Schlüchtern alone and liked it less. I planned a whole trip to Berlin on a Saturday, stayed up too late the night before, and missed my train. I sat with the missed departure time on my phone for a while and noticed I wasn't particularly devastated, and then I wasn't sure if that was equanimity or just the gradual blunting of wanting things. In the end, I never made it to Berlin. It was fine.
 
-What I learned, or started to learn, is that I am more social than I had accounted for. This was genuinely surprising to me. I had always understood myself as someone who finds people draining, who needs significant alone time to function, who prefers a quiet room to a crowded one. All of that is still true. But there is a version of aloneness that is chosen and energizing, and a version that is circumstantial and quietly corrosive, and I had only really experienced the first kind before.
+What I learned, or started to learn, is that I am more social than I had accounted for. This was genuinely surprising to me. I had always understood myself as someone who finds people draining, who needs significant alone time to function, who prefers a quiet room to a crowded one. All of that is still true. But there is a version of aloneness that is chosen and energizing, and a version that is circumstantial and corrosive, and I had only really experienced the first kind before.
 
 I guess it's the kind of thing that's hard to know about yourself until the conditions force it.
 
