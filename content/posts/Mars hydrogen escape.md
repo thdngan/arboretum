@@ -10,24 +10,9 @@ tags:
   - incomplete
 ---
 
+[The manuscript was recently accepted in *JGR: Planets*](https://doi.org/10.1029/2026JE009747).
+This is a summary of the paper.
 
-**I still wanna reference some of the figures from our manuscript when it's finally published here. IT'S VERY HALF-BAKED FOR NOW. SKIP THIS.**  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.   
-.  
-.  
-.  
-.  
-.  
-.    
 Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form in the presence of liquid water. Somewhere between then and now, Mars lost most of it. And it is still losing more, right now, through a process very slow and very high up in the atmosphere.
 
 This post is about that process, and about the modeling work I spent a semester working on in Göttingen, trying to understand it a little better. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. Doesn't sound like much, but over billions of years, it adds up.
@@ -48,7 +33,7 @@ So hydrogen escape is, in the long run, equivalent to water loss. Quantifying it
 
 ## The problem of the gap
 
-The model we use at the institute, the Mars Atmosphere Observations and Modeling General Circulation Model (MAOAM-MGCM, or just MGCM), solves the three-dimensional thermo- and hydrodynamic equations of the Martian atmosphere from the surface up to a pressure level of $3.6 \times 10^{-6}$ Pa, corresponding to roughly 130 to 150 km altitude (Hartogh et al., 2005; Medvedev et al., 2011). But the exobase, where escape actually happens, sits somewhere around 200 to 250 km. There is a gap between the top of our model and the place we need to compute escape.
+The model we use at the institute, the Mars Atmosphere Observations and Modeling General Circulation Model (MAOAM-MGCM, or just MGCM), solves the three-dimensional thermo- and hydrodynamic equations of the Martian atmosphere from the surface up to a pressure level of $3.6 \times 10^{-6}$ Pa, corresponding to roughly 130 to 160 km altitude (Hartogh et al., 2005; Medvedev et al., 2011). But the exobase, where escape actually happens, sits somewhere around 200 to 250 km. There is a gap between the top of our model and the place we need to compute escape.
 
 Fortunately, Shaposhnikov et al. (2022) showed that above roughly 130 km, molecular diffusion dominates the vertical transport of tracers, such that large-scale wind-driven advection can be neglected. This means that above the model top, we can describe hydrogen transport with a 1D diffusion equation rather than needing the full 3D model, which makes the problem tractable.
 
@@ -82,6 +67,11 @@ This system, solved numerically using a [[crank-nicolson|Crank-Nicolson scheme]]
 
 ## Bridging the gap: extrapolating to the exobase
 
+
+>[!caption_right]
+>![[extrapolation.jpg]]
+>The black dots are the actual temperatures calculated by the 3D model, and the red line is the mathematical fit projecting all the way up to the exobase where escape happens.
+
 To apply the diffusion scheme, we need to know the temperature profile between the MGCM top and the exobase, and we need to know where the exobase is. Neither is given directly by the model.
 
 We handle this with an extrapolation. For each horizontal grid point, we fit the uppermost MGCM temperature levels to a four-parameter inverted Gaussian profile (Krasnopolsky, 2002):
@@ -108,11 +98,20 @@ The important finding here is that **production rate alone does not determine es
 
 ### The seasonal water pump
 
+>[!caption_left]
+>![[circulation.png]]
+>The colors show the concentration of atomic hydrogen, while the gray contour lines map the atmospheric circulation. During the southern summer solstices (bottom panels), a strong upward current at the south pole carries hydrogen into the upper atmosphere.
+
 The most important pathway for hydrogen to reach the exobase is the **meridional circulation** during the southern summer solstice. When Mars is closest to the Sun (perihelion falls near the southern summer solstice), strong upward circulation in the southern hemisphere lifts both water vapor and atomic hydrogen from the middle atmosphere up to roughly 90 to 100 km. Above that, molecular diffusion carries them the rest of the way to the exobase. This is the same "seasonal water pump" mechanism identified by Shaposhnikov et al. (2019) for water vapor: hydrogen rides the same elevator.
 
 The result is that **escape peaks during the southern summer solstice**, with globally averaged rates reaching **$2.5 \times 10^{26}$ H atoms per second** (about 400 g/s). Outside this season, escape is typically an order of magnitude lower.
 
 ### The dust storm
+
+
+>[!caption_right]
+>![[escape_rates.png]]
+>Hydrogen escape rates over the course of a Martian year ($L_s$ is the solar longitude, essentially the Martian calendar). The red line shows global escape rates. Notice the massive spike around $L_s = 270^\circ$ (the southern summer solstice). The smaller bump in MY34 around $L_s = 200^\circ$ is the effect of the Global Dust Storm.
 
 The MY34 GDS, which began around $L_s = 185°$, produced a roughly tenfold increase in hydrogen production by lofting water vapor to altitudes where it could be photolyzed. It also intensified the circulation, shortening the pathway from production to escape, and shifted the circulation pattern toward the solstitial type that would occur naturally later in the season (Medvedev et al., 2013).
 
@@ -142,13 +141,17 @@ There is also a second source of overestimation: in the lower ionosphere (110 to
 
 The practical work was building a **1D diffusion module** that takes outputs from the MGCM at each horizontal grid point, runs the diffusion equation up to the extrapolated exobase, and outputs hydrogen density profiles and escape fluxes across the globe and through time.
 
-The solver has two modes: a time-dependent [[crank-nicolson|Crank-Nicolson scheme]] and a direct steady-state solver (setting $\partial n / \partial t = 0$ and solving the resulting linear system with the [[empty/thomas-algo|Thomas algorithm]]). One useful early result was that the time-dependent solver converges to the steady state within about 0.3 Martian sols, validating the use of the computationally cheaper steady-state solver for global diagnostics.
+>[!caption_right]
+>![[convergence.png]]
+>The colored lines show the hydrogen density profile evolving over time until it converges to the steady-state mathematical solution (dashed black line) in less than a third of a Martian day.
+
+The solver has two modes: a time-dependent [[crank-nicolson|Crank-Nicolson scheme]] and a direct steady-state solver (setting $\partial n / \partial t = 0$ and solving the resulting linear system with the [[empty/thomas-algo|Thomas algorithm]]). One useful early result was that the time-dependent solver converges to the steady state within about 0.3 Martian sols, which validates the use of the computationally cheaper steady-state solver for global diagnostics.
 
 The temperature extrapolation described above was a significant chunk of work. Getting the Levenberg-Marquardt fitter to behave robustly across thousands of atmospheric columns with varying thermal structure required a two-tier fallback: when the direct fit to a given column had poor quality (low $R^2$), a spatially smoothed profile (Gaussian-weighted average with neighboring columns) was used instead, with the smoothing width iteratively increased until a satisfactory fit was achieved.
 
-The code is [available on GitHub](https://github.com/thdngan/Hydrogen_diffusion_Mars). The manuscript is currently under review at _JGR: Planets_.
+The code is [available on GitHub](https://github.com/thdngan/Hydrogen_diffusion_Mars).
 
-_This post is connected to [[Goettingen|a Göttingen logbook]], written around the same time. That one is less about the science._
+_This post is connected to [[Goettingen|a Göttingen logbook]], written around the same time (less about the science and more nonsense yapping...)._
 ### References
 
 Alday, J. et al. (2021). Isotopic fractionation of water and its photolytic products in the atmosphere of Mars. _Nature Astronomy_, 5, 943–950.
