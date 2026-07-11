@@ -531,7 +531,7 @@ em strong {
     margin: 0 auto 8px auto; /* Centers the image and adds space above the caption */
     // max-width: 100%;
     width: 100%;            /* Force image to fill the column width */
-    aspect-ratio: 4 / 3;    /* Force all images to be the exact same shape */
+    aspect-ratio: 1 / 1;    /* Force all images to be the exact same shape */
     object-fit: cover;      /* Crop beautifully without squishing or stretching */
     border-radius: 6px;     /* Optional: adds a nice soft edge */
   }

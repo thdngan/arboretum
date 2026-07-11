@@ -9,13 +9,18 @@ tags:
   - climate
   - incomplete
 ---
+[This is my attempt to use more accessible language to summarize the content of the manuscript recently published in *JGR: Planets*](https://doi.org/10.1029/2026JE009747).
 
-[The manuscript was recently accepted in *JGR: Planets*](https://doi.org/10.1029/2026JE009747).
-This is a summary of the paper.
+>[!caption_row]
+>![[early_mars.png]]
+>Artist illustration of early Mars
+>
+>![[current_mars.png]]
+>Current Mars (by OSIRIS camera on Rosetta)
 
 Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form in the presence of liquid water. Somewhere between then and now, Mars lost most of it. And it is still losing more, right now, through a process very slow and very high up in the atmosphere.
 
-This post is about that process, and about the modeling work I spent a semester working on in Göttingen, trying to understand it a little better. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. Doesn't sound like much, but over billions of years, it adds up.
+This post is about that process, and about the modeling work I spent a semester working on in Göttingen. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. Doesn't sound like much, but over billions of years, it adds up.
 
 ## Why hydrogen?
 
@@ -32,6 +37,10 @@ The oxygen left behind mostly gets locked up in the surface through oxidation. M
 So hydrogen escape is, in the long run, equivalent to water loss. Quantifying it tells us how fast Mars is drying out.
 
 ## The problem of the gap
+
+>[!caption_left]
+>![[mars_atmos_layers.png]]
+>Mars atmospheric layers by Emirates Mars Mission (EMM)
 
 The model we use at the institute, the Mars Atmosphere Observations and Modeling General Circulation Model (MAOAM-MGCM, or just MGCM), solves the three-dimensional thermo- and hydrodynamic equations of the Martian atmosphere from the surface up to a pressure level of $3.6 \times 10^{-6}$ Pa, corresponding to roughly 130 to 160 km altitude (Hartogh et al., 2005; Medvedev et al., 2011). But the exobase, where escape actually happens, sits somewhere around 200 to 250 km. There is a gap between the top of our model and the place we need to compute escape.
 
@@ -92,15 +101,16 @@ The simulations cover **Martian Years 34 and 35** (MY34 and MY35), chosen becaus
 
 ### Where hydrogen comes from
 
+>[!caption_left]
+>![[circulation.png]]
+>The colors show the concentration of atomic hydrogen, while the gray contour lines map the atmospheric circulation. During the southern summer solstices (bottom panels), a strong upward current at the south pole carries hydrogen into the upper atmosphere.
+
 Atomic hydrogen production peaks between **40 and 60 km** throughout both years, following the Sun: it is strongest in the summer hemisphere at high latitudes during solstices, and in low to mid-latitudes during equinoxes. These results are consistent with observational estimates from the Atmospheric Chemistry Suite instrument on the Trace Gas Orbiter (Alday et al., 2021) and with the photochemical modeling of Kleinböhl et al. (2024).
 
 The important finding here is that **production rate alone does not determine escape**. You also need the circulation to deliver hydrogen upward. Most produced hydrogen gets trapped in the lower atmosphere by the circulation and accumulates at the poles. Only a small fraction reaches the thermosphere.
 
 ### The seasonal water pump
 
->[!caption_left]
->![[circulation.png]]
->The colors show the concentration of atomic hydrogen, while the gray contour lines map the atmospheric circulation. During the southern summer solstices (bottom panels), a strong upward current at the south pole carries hydrogen into the upper atmosphere.
 
 The most important pathway for hydrogen to reach the exobase is the **meridional circulation** during the southern summer solstice. When Mars is closest to the Sun (perihelion falls near the southern summer solstice), strong upward circulation in the southern hemisphere lifts both water vapor and atomic hydrogen from the middle atmosphere up to roughly 90 to 100 km. Above that, molecular diffusion carries them the rest of the way to the exobase. This is the same "seasonal water pump" mechanism identified by Shaposhnikov et al. (2019) for water vapor: hydrogen rides the same elevator.
 
