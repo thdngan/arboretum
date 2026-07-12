@@ -132,6 +132,10 @@ const config: QuartzConfig = {
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "filesystem"],
       }),
+      Plugin.Citations({
+        bibliographyFile: "./content/bibliography.bib", // Point this to wherever your .bib file lives!
+        linkCitations: true,
+      }),
       // Plugin.Remark42({ host: "https://thdngan.github.io/arboretum/", site_id: "remark", no_footer: true }),
       // Plugin.Quoting(),
       Plugin.Latex({ renderEngine: "katex" }),

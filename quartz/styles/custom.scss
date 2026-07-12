@@ -623,3 +623,28 @@ em strong {
 .article-title .shimmer-symbol {
   color: inherit;
 }
+
+
+  ///////////////////////////////////////////////////
+  /////////////////// CITATIONS /////////////////////
+  ///////////////////////////////////////////////////
+
+
+/* Add spacing between bibliography entries */
+#refs .csl-entry {
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Style the return arrows to look like Obsidian footnotes */
+#refs .csl-entry .footnote-backref {
+  text-decoration: none;
+  color: var(--tertiary);
+  font-family: var(--codeFont);
+  font-size: 0.95em;
+  margin-left: 0.2rem;
+  
+  &:hover {
+    color: var(--secondary);
+  }
+}

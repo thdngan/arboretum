@@ -51,13 +51,21 @@ const TableOfContents: QuartzComponent = ({
       </button>
       <div id="toc-content" class={fileData.collapseToc ? "collapsed" : ""}>
         <ul class="overflow">
-          {fileData.toc.map((tocEntry) => (
-            <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
-              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                {tocEntry.text}
-              </a>
-            </li>
-          ))}
+          {fileData.toc.map((tocEntry) => {
+            // Check if this is the references/bibliography section
+            const isReference = tocEntry.slug === "references" || tocEntry.slug === "bibliography";
+            
+            // Strip out any hardcoded numbers (e.g. "5. References" -> "References")
+            const displayText = isReference ? tocEntry.text.replace(/^[\d.]+\s*/, '') : tocEntry.text;
+
+            return (
+              <li key={tocEntry.slug} class={`depth-${tocEntry.depth} ${isReference ? "no-number" : ""}`}>
+                <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
+                  {displayText}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </div>
@@ -76,13 +84,18 @@ const LegacyTableOfContents: QuartzComponent = ({ fileData, cfg }: QuartzCompone
         <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
       </summary>
       <ul>
-        {fileData.toc.map((tocEntry) => (
-          <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
-            <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-              {tocEntry.text}
-            </a>
-          </li>
-        ))}
+        {fileData.toc.map((tocEntry) => {
+          const isReference = tocEntry.slug === "references" || tocEntry.slug === "bibliography";
+          const displayText = isReference ? tocEntry.text.replace(/^[\d.]+\s*/, '') : tocEntry.text;
+
+          return (
+            <li key={tocEntry.slug} class={`depth-${tocEntry.depth} ${isReference ? "no-number" : ""}`}>
+              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
+                {displayText}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </details>
   )

@@ -8,6 +8,7 @@ async function mouseEnterHandler(
   { clientX, clientY }: { clientX: number; clientY: number },
 ) {
   const link = this
+  const href = link.getAttribute("href") ?? ""
   // if (link.dataset.noPopover === "true"|| 
   //   link.id.includes("#user-content-fn-")) {
   //   return
@@ -15,7 +16,10 @@ async function mouseEnterHandler(
 
   if (link.dataset.noPopover === "true" || 
     link.id.includes("user-content-fnref-") ||
-    link.id.includes("permalink")
+    link.id.includes("permalink") ||
+    href.startsWith("#ref-") ||      // Ignores clicks down to the bibliography
+    // href.startsWith("#citeref-") ||  // Ignores clicks back up to the paragraph
+    href.startsWith("#bib")          // Fallback for some citation styles
     // link.classList.contains('broken-link')
   ) {
     return
