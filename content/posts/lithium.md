@@ -95,13 +95,13 @@ Alright, if standard astrophysics and nuclear physics aren’t solving the lithi
 
 >[!caption]
 >![[abundance-vs-lifetime.png]]
->Abundance contours vs decay lifetime. The colored areas indicate parameter regions in which the predicted light-element abundances disagree with observations, and the remaining, white regions are allowed. From Cyburt et al. (2010)[^16].
+>Abundance contours vs decay lifetime. The colored areas indicate parameter regions in which the predicted light-element abundances disagree with observations, and the remaining, white regions are allowed. From Cyburt et al. [-@Cyburt2010].
 
 One idea is that dark matter could be playing a role. Dark matter is still a huge mystery, but we know it must exist. Some theoretical models propose that dark matter particles, perhaps Weakly Interacting Massive Particles (WIMPs), could decay into high-energy particles that mess with primordial element abundances [@Cyburt2010]. If these decays happened during or just after BBN, they could have influenced lithium levels. In fact, certain decay lifetimes (~10²–10³ seconds) seem to line up with observed lithium-7 levels. But, as always, there’s a catch: while this explanation helps with lithium, it messes up deuterium predictions, making the solution a bit too convenient.
 
 >[!caption_right]
 >![[gravitino-abundance-vs-mass.png]]
->Contours of $\chi^2$ in the (mass, abundance) plane. From Cyburt et al. (2010)[^16].
+>Contours of $\chi^2$ in the (mass, abundance) plane. From Cyburt et al. [-@Cyburt2010].
 
 Another idea comes from supersymmetry (SUSY). If a spin-3/2 gravitino was once a heavier particle that decayed into dark matter, it could create an optimal trade-off between lithium destruction and deuterium production [@Jedamzik2006]. The problem? Supersymmetry hasn’t been confirmed by experiments like those at the Large Hadron Collider (LHC), so this remains speculative.
 
