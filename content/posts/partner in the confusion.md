@@ -1,5 +1,5 @@
 ---
-title: space between languages
+title: a partner in the confusion
 date: 2026-01-05
 icon: fa-regular fa-envelope
 tags:
