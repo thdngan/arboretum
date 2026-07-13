@@ -1,5 +1,5 @@
 ---
-title: a partner in the confusion
+title: Company (or lack thereof)
 date: 2026-01-05
 icon: fa-regular fa-envelope
 tags:
