@@ -1,10 +1,11 @@
 ---
-title: "A transit in Göttingen"
-icon: "fa-regular fa-envelope"
+title: A transit in Göttingen
+icon: fa-regular fa-envelope
 date: 2025-08-01
 tags:
   - writings
   - personal
+draft: true
 ---
 There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
 

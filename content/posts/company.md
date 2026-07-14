@@ -5,6 +5,7 @@ icon: fa-regular fa-envelope
 tags:
   - writings
   - personal
+draft: true
 ---
 
 

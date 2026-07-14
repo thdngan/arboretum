@@ -5,4 +5,5 @@ tags:
   - empty
   - personal
 date: 2025-12-01
+draft: true
 ---

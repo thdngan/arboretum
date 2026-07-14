@@ -1,10 +1,11 @@
 ---
-title: "Milk tea, hotpot, Vieux-Port"
+title: Milk tea, hotpot, Vieux-Port
 date: 2024-06-29
-icon: "fa-regular fa-envelope"
+icon: fa-regular fa-envelope
 tags:
   - writings
   - personal
+draft: true
 ---
 > "We leave something of ourselves behind when we leave a place, we stay there, even though we go away. And there are things in us that we can find again only by going back there."
 > 
