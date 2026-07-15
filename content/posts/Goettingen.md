@@ -5,7 +5,7 @@ date: 2025-08-01
 tags:
   - writings
   - personal
-draft: true
+draft: false
 ---
 There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
 
@@ -31,13 +31,13 @@ Göttingen is a beautiful, quiet university town. It has a famous tradition: stu
 
 I went there knowing no one, which I thought I was fine with. I am, after all, an introvert. I like being alone. And for a while that was true. The first few weeks have a honeymoon quality, everything is new, even a grocery run is a small adventure in a foreign language.
 
-But solitude and isolation are different things, and I came to understand the difference that semester more clearly than I had before. Solitude is what you choose. Isolation is what accumulates when you realize you haven't had a real conversation in longer than you'd like to admit. There were people to have lunch with, to chat to in the corridor, to share a coffee with after seminars, but no one to call when you didn't feel like going home to an empty room. I was just sitting in my little studio eating fried eggs with Buldak hot sauce over pasta (an insult to at least two cuisines at once, maybe three on average because I alternate between pasta and *udon*) when the feeling suddenly hit me like a delayed bus.
+But solitude and isolation are different things, and I came to understand the difference that semester more clearly than I had before. Solitude is what you choose. Isolation is what accumulates in the gap between company and closeness. I wasn't short on conversation. Some of it was genuinely deep, especially with my supervisor. But a deep conversation with your supervisor is still a conversation with your supervisor. What I craved was the register I only get with close friends, the soulful, unhurried kind of talking where nothing needs explaining first. And all of those friends were in Paris or back in Vietnam. There were people to have lunch with, to chat to in the corridor, to share a coffee with after seminars, but no one to call when you didn't feel like going home to an empty room. I was just sitting in my little studio eating fried eggs with Buldak hot sauce over pasta (an insult to at least two cuisines at once, maybe three on average because I alternate between pasta and *udon*) when the feeling suddenly hit me like a delayed bus.
 
 >[!caption_left]
 >![[Hamburg.jpeg]]
 >Somewhere in Hamburg
 
-I went to Hamburg alone and liked it. I got stranded near Schlüchtern alone and liked it less. I planned a whole trip to Berlin on a Saturday, stayed up too late the night before, and missed my train. I sat with the missed departure time on my phone for a while and noticed I wasn't particularly devastated, and then I wasn't sure if that was equanimity or just the gradual blunting of wanting things. In the end, I never made it to Berlin. It was fine.
+I went to Hamburg alone and liked it. I got stranded near Schlüchtern alone and liked it less. That one was a trip to Regensburg to see a friend, a visit long enough to remind me how much I'd been missing my people and nowhere near long enough to fix it. Berlin was supposed to be next, a whole Saturday planned around catching up with another friend. I stayed up too late the night before and missed my train. I sat with the missed departure time on my phone for a while and noticed I wasn't particularly devastated, and then I wasn't sure if that was equanimity or just the gradual blunting of wanting things. In the end, I never made it to Berlin.
 
 What I learned, or started to learn, is that I am more social than I had accounted for. This was genuinely surprising to me. I had always understood myself as someone who finds people draining, who needs significant alone time to function, who prefers a quiet room to a crowded one. All of that is still true. But there is a version of aloneness that is chosen and energizing, and a version that is circumstantial and corrosive, and I had only really experienced the first kind before.
 
@@ -61,7 +61,7 @@ The time spent musing like that has definitely clarified some things I'd been va
 
 I'm not sure what to do with most of it. Some of it is systemic and I can't fix it. Some of it I can navigate more wisely now that I know the terrain. Some of it I just have to carry.
 
-Sometimes I feel really, really desperate for a global revolution because *what the hell is this system*.
+Sometimes I feel really, really desperate for a global revolution because *what the fuck is this system we're living in*.
 
 But well, right now I'm still here, still doing the research, still excited about planets. And the paper we worked on that semester is currently under review at a journal. At least some things are moving forward :)
 
