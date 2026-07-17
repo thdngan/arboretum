@@ -5,7 +5,7 @@ icon: fa-regular fa-envelope
 tags:
   - writings
   - personal
-draft: false
+draft: true
 ---
 
 
@@ -24,7 +24,7 @@ Before arriving, I had made it explicitly clear that I could only take courses i
 
 Because of this, most lecturers would usually switch to English the moment I walked in. That brought its own kind of uncomfortable weight: my mere presence was the sole reason an entire room was operating in its second language, and I could feel the collective effort it took.
 
-So when a lecturer didn't switch and the academic conversation flowed entirely without me, it hit differently. It didn't just feel like missing out on a chat, it made me feel like I was forcefully inserting myself into a room that hadn't actually planned for me to be there. And there isn't really a graceful way to exist in a room where everyone else is engaged and you can't tune in. You smile. You look out the window. You pretend to be intensely focused on your notebook. I ended up filling my margins with random journaling in Vietnamese that day. It was a stupid sort of rebellion: finding small comfort in having a language of my own when I couldn't participate in anyone else's. Looking back, 21-year-old me was just trying desperately to look unbothered. But I'm not a nonchalant person at all! I was *very* bothered. I guess I was just too used to suppressing my own discomfort.
+So when a lecturer didn't switch and the academic conversation flowed entirely without me, it hit differently. It didn't just feel like missing out on a chat, it made me feel like I was forcefully inserting myself into a room that hadn't actually planned for me to be there. And there isn't really a graceful way to exist in a room where everyone else is engaged and you can't tune in. You smile. You look out the window. You pretend to be intensely focused on your notebook. I ended up filling my margins with random journaling in Vietnamese that day. It was a stupid sort of rebellion: finding small comfort in having a language of my own when I couldn't participate in anyone else's. Looking back, 21-year-old me was just trying desperately to look unbothered. But the truth is I'm not a nonchalant person at all! I was (and still am) just too used to suppressing and hiding my own discomfort.
 
 ---
 
