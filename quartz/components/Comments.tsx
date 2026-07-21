@@ -47,9 +47,6 @@ export default ((opts: Options) => {
       The icy shores are quiet, the stars twinkle above, and the trees... well, they don’t talk back (yet). But you can!
       <br />
       <br />
-      This logbook is the place to share your thoughts, challenge my ideas, or drop some wisdom. Did I get something wrong? Set me straight! Got a cool fact about space, trees, or penguins? I’m all ears!
-      <br />
-      <br />
       {/* <em></em>  */}
       </p-code-font>
       <div
