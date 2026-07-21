@@ -160,7 +160,7 @@ The temperature extrapolation described above was a significant chunk of work. G
 
 The code is available [@TrinhSoft].
 
-_This post is connected to [[Goettingen|a Göttingen logbook]], written around the same time (less about the science and more nonsense yapping...)._
+%% _This post is connected to [[Goettingen|a Göttingen logbook]], written around the same time (less about the science and more nonsense yapping...)._ %%
 ## References
 
 

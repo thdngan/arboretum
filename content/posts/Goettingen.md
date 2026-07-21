@@ -5,7 +5,7 @@ date: 2025-08-01
 tags:
   - writings
   - personal
-draft: false
+draft: true
 ---
 There's a specific kind of freedom that comes with being completely unknown somewhere, alone, and not as a tourist (well, sort of, but not entirely). No social obligations, no history, no one who knew you before. You can reinvent yourself, in theory. In practice, what mostly happens is that you eat the same 3 meals on rotation and develop strong opinions about which supermarket has the better Quarkbällchen.
 
@@ -17,7 +17,6 @@ There's a specific kind of freedom that comes with being completely unknown some
 >![[cat.jpg]]
 >pspspspspsss
 
-%% I'm going to try something different with this post. My older writing here is mostly about specific topics ([[clathrate|clathrates]], [[lithium]], whatever I was reading that month). Impersonal. Safely behind the science. This one is going to be more about what it actually felt like to be doing any of it. %%
 
 So: Göttingen, Germany. March to July 2025, more or less. A small university city in Lower Saxony that I had never heard of before I started searching for a researcher working on gravity waves on other planets for my internship. I ended up modelling hydrogen escape from Mars, which I've written about [[Mars hydrogen escape|elsewhere]]. This post is about the other part of the story.
 

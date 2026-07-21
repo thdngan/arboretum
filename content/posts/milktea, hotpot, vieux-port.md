@@ -5,7 +5,7 @@ icon: fa-regular fa-envelope
 tags:
   - writings
   - personal
-draft: false
+draft: true
 ---
 > "We leave something of ourselves behind when we leave a place, we stay there, even though we go away. And there are things in us that we can find again only by going back there."
 > 
