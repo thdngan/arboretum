@@ -20,9 +20,9 @@ tags:
 >![[current_mars.png]]
 >Current Mars (by OSIRIS camera on Rosetta)
 
-Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form in the presence of liquid water. Somewhere between then and now, Mars lost most of it. And it is still losing more, right now, through a process very slow and very high up in the atmosphere.
+Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form when there's liquid water around. Mars lost most of that somewhere between then and now, and it's still losing what's left, very slowly, very high up in the atmosphere.
 
-This post is about that process, and about the modeling work I spent a semester working on in Göttingen. The short version: Mars loses about **400 grams of hydrogen into space every second** during its most active season. Doesn't sound like much, but over billions of years, it adds up.
+This post is about that process, and about the modelling work I spent a semester on in Göttingen. Mars loses roughly 400 grams of hydrogen to space every second during its most active season, and has been doing that for billions of years.
 
 ## Why hydrogen?
 
@@ -32,11 +32,11 @@ $$
 \text{H}_2\text{O} + h\nu \rightarrow \text{H} + \text{OH}
 $$
 
-The resulting atomic hydrogen is light. Very light. So light that some of these H atoms, rattling around in the upper thermosphere, are moving fast enough to simply leave. If an atom reaches the **exobase** (the altitude, around 200 to 250 km, where the atmosphere is so thin that collisions are rare) and it is going fast enough, it escapes Mars's gravity forever. This is called **Jeans escape**, or thermal escape, and it is the dominant mechanism by which Mars loses hydrogen today [@Jakosky.etal2018].
+Atomic hydrogen is the lightest thing in the atmosphere, so at a given temperature it's also the fastest, and some of the H atoms rattling around in the upper thermosphere are moving fast enough to leave. If an atom reaches the exobase (the altitude, around 200 to 250 km, where the atmosphere is so thin that collisions are rare) and it is going fast enough, it escapes Mars's gravity for good. This is Jeans escape, or thermal escape, and it is the dominant mechanism by which Mars loses hydrogen today [@Jakosky.etal2018].
 
-The oxygen left behind mostly gets locked up in the surface through oxidation. Mars's famously red color is partly a consequence of this: rust, on a planetary scale.
+The oxygen left behind mostly gets locked into the surface through oxidation, which is part of why Mars is red.
 
-So hydrogen escape is, in the long run, equivalent to water loss. Quantifying it tells us how fast Mars is drying out.
+So over long enough timescales hydrogen escape is water loss, which is why quantifying it is worth the trouble.
 
 ## The problem of the gap
 
@@ -46,7 +46,7 @@ So hydrogen escape is, in the long run, equivalent to water loss. Quantifying it
 
 The model we use at the institute, the Mars Atmosphere Observations and Modeling General Circulation Model (MAOAM-MGCM, or just MGCM), solves the three-dimensional thermo- and hydrodynamic equations of the Martian atmosphere from the surface up to a pressure level of $3.6 \times 10^{-6}$ Pa, corresponding to roughly 130 to 160 km altitude [@Hartogh2005; @Medvedev.etal2011_InfluenceGravity]. But the exobase, where escape actually happens, sits somewhere around 200 to 250 km. There is a gap between the top of our model and the place we need to compute escape.
 
-Fortunately, Shaposhnikov et al. [-@Shaposhnikov2022] showed that above roughly 130 km, molecular diffusion dominates the vertical transport of tracers, such that large-scale wind-driven advection can be neglected. This means that above the model top, we can describe hydrogen transport with a 1D diffusion equation rather than needing the full 3D model, which makes the problem tractable.
+Shaposhnikov et al. [-@Shaposhnikov2022] showed that above roughly 130 km, molecular diffusion dominates the vertical transport of tracers, such that large-scale wind-driven advection can be neglected. So the region above the model top can be handled with a 1D diffusion equation instead of the full 3D model.
 
 The diffusion equation for atomic hydrogen number density $n$ is:
 
@@ -99,13 +99,13 @@ This procedure works well most of the time, with fits achieving $R^2 \approx 1.0
 
 ## Results: what the simulations show
 
-The simulations cover **Martian Years 34 and 35** (MY34 and MY35), chosen because they coincide with a period of low solar activity, which lets us isolate the effects of season and dust without the confounding influence of the solar cycle. MY34 also featured a **Global Dust Storm (GDS)**, allowing a direct comparison with the relatively quiet MY35.
+The simulations cover Martian Years 34 and 35 (MY34 and MY35), chosen because they fall in a period of low solar activity, which lets us isolate the effects of season and dust without the confounding influence of the solar cycle. MY34 also had a Global Dust Storm (GDS) in it, so we get a direct comparison with the relatively quiet MY35.
 
 ### Where hydrogen comes from
 
-Atomic hydrogen production peaks between **40 and 60 km** throughout both years, following the Sun: it is strongest in the summer hemisphere at high latitudes during solstices, and in low to mid-latitudes during equinoxes. These results are consistent with observational estimates from the Atmospheric Chemistry Suite instrument on the Trace Gas Orbiter [@Alday_etal2021_Isotopic] and with the photochemical modeling of Kleinböhl et al. [-@Kleinboehl_etal2024HydrogenEscape].
+Atomic hydrogen production peaks between 40 and 60 km throughout both years, following the Sun: it is strongest in the summer hemisphere at high latitudes during solstices, and in low to mid-latitudes during equinoxes. These results are consistent with observational estimates from the Atmospheric Chemistry Suite instrument on the Trace Gas Orbiter [@Alday_etal2021_Isotopic] and with the photochemical modeling of Kleinböhl et al. [-@Kleinboehl_etal2024HydrogenEscape].
 
-The important finding here is that **production rate alone does not determine escape**. You also need the circulation to deliver hydrogen upward. Most produced hydrogen gets trapped in the lower atmosphere by the circulation and accumulates at the poles. Only a small fraction reaches the thermosphere.
+Production alone doesn't determine escape though. The circulation also has to carry the hydrogen upward, and mostly it doesn't. Most of what gets produced stays trapped in the lower atmosphere and accumulates at the poles, and only a small fraction reaches the thermosphere.
 
 ### The seasonal water pump
 
@@ -113,9 +113,9 @@ The important finding here is that **production rate alone does not determine es
 >![[circulation.png]]
 >The colors show the concentration of atomic hydrogen, while the gray contour lines map the atmospheric circulation. During the southern summer solstices (bottom panels), a strong upward current at the south pole carries hydrogen into the upper atmosphere.
 
-The most important pathway for hydrogen to reach the exobase is the **meridional circulation** during the southern summer solstice. When Mars is closest to the Sun (perihelion falls near the southern summer solstice), strong upward circulation in the southern hemisphere lifts both water vapor and atomic hydrogen from the middle atmosphere up to roughly 90 to 100 km. Above that, molecular diffusion carries them the rest of the way to the exobase. This is the same "seasonal water pump" mechanism identified by Shaposhnikov et al. [-@Shaposhnikov2019] for water vapor: hydrogen rides the same elevator.
+The main pathway for hydrogen to reach the exobase is the meridional circulation during the southern summer solstice. When Mars is closest to the Sun (perihelion falls near the southern summer solstice), strong upward circulation in the southern hemisphere lifts both water vapor and atomic hydrogen from the middle atmosphere up to roughly 90 to 100 km. Above that, molecular diffusion carries them the rest of the way to the exobase. This is the same "seasonal water pump" that Shaposhnikov et al. [-@Shaposhnikov2019] identified for water vapor, and hydrogen uses it too.
 
-The result is that **escape peaks during the southern summer solstice**, with globally averaged rates reaching **$2.5 \times 10^{26}$ H atoms per second** (about 400 g/s). Outside this season, escape is typically an order of magnitude lower.
+So escape peaks during the southern summer solstice, with globally averaged rates reaching $2.5 \times 10^{26}$ H atoms per second, about 400 g/s. Outside that season it's typically an order of magnitude lower.
 
 ### The dust storm
 
@@ -126,23 +126,23 @@ The result is that **escape peaks during the southern summer solstice**, with gl
 
 The MY34 GDS, which began around $L_s = 185°$, produced a roughly tenfold increase in hydrogen production by lofting water vapor to altitudes where it could be photolyzed. It also intensified the circulation, shortening the pathway from production to escape, and shifted the circulation pattern toward the solstitial type that would occur naturally later in the season [@Medvedev2013].
 
-However, the storm's contribution to the annually integrated escape is limited. The secondary peak associated with the GDS reaches about $10^{26}$ s$^{-1}$, which is 2.5 times smaller than the seasonal perihelion peak, and the late-year regional dust storms in both MY34 and MY35 produced enhancements comparable to or smaller than the aphelion solstice values. The reason is duration: the GDS was intense but short, while the perihelion season enhancement is broader and sustained.
+Its contribution to the annually integrated escape is limited though. The secondary peak associated with the GDS reaches about $10^{26}$ s$^{-1}$, which is 2.5 times smaller than the seasonal perihelion peak, and the late-year regional dust storms in both MY34 and MY35 produced enhancements comparable to or smaller than the aphelion solstice values. It comes down to duration. The GDS was intense but short, and the perihelion enhancement is broader and lasts much longer.
 
-So essentially: **seasonal variability, not episodic dust storms, is the dominant driver of the annually integrated hydrogen escape from Mars.**
+So the annually integrated hydrogen escape from Mars is driven mostly by seasonal variability rather than by episodic dust storms.
 
 ### How much water is Mars actually losing?
 
 Integrating over a full Martian year gives about 24,000 to 26,000 tonnes of water equivalent lost per year (expressed as H₂O, since 2 H atoms escaping = 1 water molecule lost). These values are consistent with, though at the lower end of, the range of 160 to 1800 g/s estimated from MAVEN observations by Jakosky et al. [-@Jakosky.etal2018].
 
-## Caveats (the honest section)
+## Caveats
 
-No model is without assumptions, and ours is no exception.
+Some assumptions worth being upfront about.
 
-**On photochemistry and overestimation.** Our model does not include photochemistry. Hydrogen in the lower and middle atmosphere participates in chemical reactions that can reform water, effectively removing it from the pool available for escape. Kleinböhl et al. [-@Kleinboehl_etal2024HydrogenEscape] argued that photolysis dominates over recombination above roughly 60 km, and Montmessin et al. [-@Montmessin2022_Reappraising] similarly showed that production increasingly dominates loss above roughly 50 km. Both results suggest the hydrogen available for escape in our model is likely overestimated, though these one-dimensional estimates cannot fully capture the three-dimensional variability in temperature, winds, and water vapor that our GCM does resolve.
+Our model does not include photochemistry. Hydrogen in the lower and middle atmosphere participates in chemical reactions that can reform water, effectively removing it from the pool available for escape. Kleinböhl et al. [-@Kleinboehl_etal2024HydrogenEscape] argued that photolysis dominates over recombination above roughly 60 km, and Montmessin et al. [-@Montmessin2022_Reappraising] similarly showed that production increasingly dominates loss above roughly 50 km. Both results suggest the hydrogen available for escape in our model is likely overestimated, though these one-dimensional estimates cannot fully capture the three-dimensional variability in temperature, winds, and water vapor that our GCM does resolve.
 
 There is also a second source of overestimation: in the lower ionosphere (110 to 200 km), hydrogen atoms encounter a different chemical environment where ion-neutral reactions act as both local sources and sinks. Our diffusion scheme does not include these processes below its lower boundary. As noted by Kleinböhl et al. [-@Kleinboehl_etal2024HydrogenEscape], these high-altitude ion-neutral reactions are also the primary drivers of non-thermal hydrogen escape. Non-thermal escape (energetic atoms produced by chemistry rather than thermal motion) can constitute a significant fraction of total H loss [@Cangi2023Fullycoupled ; @Gregory2023 ; @Gregory2023b]. Because our framework focuses on bulk transport and its contribution to thermal escape, we do not track these pathways, and neglecting the ionospheric sinks contributes to the overestimation of the thermal hydrogen population available for transport to the exobase.
 
-**On simulated values being at the lower end.** Observationally derived global escape rates span roughly 1 to $11 \times 10^{26}$ s$^{-1}$ [@Jakosky.etal2018]. Our perihelion maximum of $2.5 \times 10^{26}$ s$^{-1}$ sits at the lower end of this range, which is expected given the low solar activity during MY34 and MY35: solar activity affects escape by altering photodissociation rates, thermospheric temperatures, and the effusion velocity [@Mayyasi2023_SolarCycleSeasonInH]. Higher escape rates reported in the literature were often measured during more active periods.
+Our numbers also sit low. Observationally derived global escape rates span roughly 1 to $11 \times 10^{26}$ s$^{-1}$ [@Jakosky.etal2018], and our perihelion maximum of $2.5 \times 10^{26}$ s$^{-1}$ sits at the lower end of this range, which is expected given the low solar activity during MY34 and MY35: solar activity affects escape by altering photodissociation rates, thermospheric temperatures, and the effusion velocity [@Mayyasi2023_SolarCycleSeasonInH]. Higher escape rates reported in the literature were often measured during more active periods.
 
 
 
@@ -152,11 +152,11 @@ There is also a second source of overestimation: in the lower ionosphere (110 to
 >![[convergence.png]]
 >The colored lines show the hydrogen density profile evolving over time until it converges to the steady-state mathematical solution (dashed black line) in less than a third of a Martian day.
 
-The practical work was building a **1D diffusion module** that takes outputs from the MGCM at each horizontal grid point, runs the diffusion equation up to the extrapolated exobase, and outputs hydrogen density profiles and escape fluxes across the globe and through time.
+The practical work was building a 1D diffusion module that takes outputs from the MGCM at each horizontal grid point, runs the diffusion equation up to the extrapolated exobase, and outputs hydrogen density profiles and escape fluxes across the globe and through time.
 
-The solver has two modes: a time-dependent [[crank-nicolson|Crank-Nicolson scheme]] and a direct steady-state solver (setting $\partial n / \partial t = 0$ and solving the resulting linear system with the [[empty/thomas-algo|Thomas algorithm]]). One useful early result was that the time-dependent solver converges to the steady state within about 0.3 Martian sols, which validates the use of the computationally cheaper steady-state solver for global diagnostics.
+The solver has two modes: a time-dependent [[crank-nicolson|Crank-Nicolson scheme]] and a direct steady-state solver (setting $\partial n / \partial t = 0$ and solving the resulting linear system with the [[thomas-algo|Thomas algorithm]]). An early result was that the time-dependent solver converges to the steady state within about 0.3 Martian sols, so for the global diagnostics we could use the cheaper steady-state one.
 
-The temperature extrapolation described above was a significant chunk of work. Getting the Levenberg-Marquardt fitter to behave robustly across thousands of atmospheric columns with varying thermal structure required a two-tier fallback: when the direct fit to a given column had poor quality (low $R^2$), a spatially smoothed profile (Gaussian-weighted average with neighboring columns) was used instead, with the smoothing width iteratively increased until a satisfactory fit was achieved.
+The temperature extrapolation described above took up a lot of the time. Getting the Levenberg-Marquardt fitter to behave across thousands of atmospheric columns with varying thermal structure needed a two-tier fallback: when the direct fit to a given column came out poor (low $R^2$), a spatially smoothed profile (Gaussian-weighted average with neighboring columns) was used instead, with the smoothing width increased until the fit was acceptable.
 
 The code is available [@TrinhSoft].
 

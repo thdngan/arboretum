@@ -10,11 +10,11 @@ tags:
 
 %% $CO_2$   $H_2O$    $CH_4$   $\epsilon$ $NO_2$ %%
 
-The Earth's climate is a complex system influenced by various factors, and one of the most important pieces is greenhouse gases. Carbon dioxide (CO₂), water vapor (H₂O), methane (CH₄), and a few others have a special talent: they trap [[heat]] from the sun, keeping our planet warm and cozy. But what makes some gases great at this job while others just float around doing nothing?
+Greenhouse gases are one of the bigger pieces of the Earth's climate. Carbon dioxide (CO₂), water vapor (H₂O), methane (CH₄) and a few others trap [[heat]] from the sun and keep the planet warm. What I want to get at here is why some gases do this and others just float around doing nothing.
 
 # Mechanism
 
-In our [[naked planet climate model|other discussions]], we often referred to objects as "[[blackbody|black bodies]]." These are entities that efficiently absorb and emit various frequencies of infrared light. In most cases, we simplified our calculations by assuming an emissivity (ε) value close to one. But gases? Oh no, they play by totally different rules.
+In our [[naked planet climate model|other discussions]], we often referred to objects as "[[blackbody|black bodies]]." These are things that absorb and emit all frequencies of infrared light efficiently, and we simplified the calculations by taking emissivity (ε) close to one. Gases don't work like that at all.
 
 %% Gases are composed of molecules with limited modes of vibration, making them distinct from condensed matter. Consider carbon dioxide ($CO_2$), for example. In its condensed form, as dry ice, it behaves like a complex structure with multiple vibrational frequencies. However, when $CO_2$ exists in isolation, it can only vibrate in highly specific ways. This selectivity makes gases discerning in terms of the types of light they can absorb and emit.
 
@@ -22,7 +22,7 @@ For black bodies, $\epsilon$ close to one suffices in our simplified model. Howe
 
 It's worth noting that the colors we perceive in the natural world primarily result from interactions involving electrons transitioning between energy levels. This transition leads to the absorption and emission of energy in the visible spectrum. However, gases are relatively simple, with wide energy level gaps between their electrons, resulting in the emission of ultraviolet light, which is invisible to us. Some exceptions, such as chlorine gas (appearing green) and the brownish hue of nitrogen dioxide ($NO_2$) in urban smog, exist due to the unique electron configurations of these molecules. %%
 
-Gases are made of molecules that only vibrate in very specific ways, unlike solids or liquids, which have all kinds of jiggly motion going on. Take carbon dioxide (CO₂), for example. As dry ice (its solid form), CO₂ is a complex vibrating mess. But as a gas, it sticks to a few very specific dance moves. This pickiness means gases only absorb and emit certain types of light.
+Gases are made of molecules that only vibrate in very specific ways, unlike solids or liquids, which have all kinds of jiggly motion going on. Take carbon dioxide (CO₂). As dry ice, its solid form, CO₂ is a complex vibrating mess, but as a gas it's restricted to a few specific modes. That's why gases only absorb and emit certain kinds of light.
 
 For black bodies, ε close to one is a good assumption, but gases' ε values are much, much lower because they’re incredibly picky about which light waves they interact with.
 
@@ -42,11 +42,11 @@ Most gases in our atmosphere, like oxygen (O₂) and nitrogen (N₂), are made o
 
 There are two other modes of vibration in $CO_2$: symmetric stretching and asymmetric stretching. The asymmetric stretch is particularly relevant because it breaks symmetry, making it "Infrared active." However, it is less important for climate considerations because there's just less light associated with its frequency. %%
 
-Now let’s talk about the real MVPs (ok maybe wrong choice of word here). CO₂ is a great example. In its resting state, it looks nice and symmetrical, with a carbon atom in the middle and two oxygens on either side. But when it starts vibrating, things get interesting.
+Now for the ones that do work (the real MVPs, ok maybe wrong choice of word here). CO₂ in its resting state looks nice and symmetrical, a carbon atom in the middle and two oxygens on either side. It's the vibrating that changes things.
 
-Its most important dance move is probably the **bending motion**. This one breaks its symmetry and creates an oscillating dipole, making CO₂ a champion at absorbing infrared light from the Earth's surface.
+The important one is the bending motion. It breaks the symmetry and creates an oscillating dipole, which is what makes CO₂ so good at absorbing infrared light from the Earth's surface.
 
-CO₂ also has two other ways it can vibrate: **symmetric stretching** (where everything moves in sync) and **asymmetric stretching** (where the oxygens move in opposite directions). The asymmetric stretch is "infrared active" (meaning it absorbs [[heat]]), but it’s not as important for climate science because it doesn’t line up with the most abundant [[heat]] wavelengths.
+CO₂ has two other ways it can vibrate: symmetric stretching, where everything moves in sync, and asymmetric stretching, where the oxygens move in opposite directions. The asymmetric stretch is "infrared active", meaning it absorbs [[heat]], but it matters less for climate because it doesn’t line up with the most abundant [[heat]] wavelengths.
 
 ![[co2.png]]
 
@@ -56,12 +56,12 @@ Methane, with its tetrahedral arrangement of carbon and hydrogen atoms, initiall
 
 In general, any molecule with more than 2 atoms can potentially act as a greenhouse gas to some degree. The physics behind these gases' behavior is intricate, yet their effects on our planet's climate are undeniable. Understanding the unique properties of greenhouse gases is crucial for comprehending climate change and finding ways to mitigate its impacts. %%
 
-CO₂ isn’t alone in this game, water vapor (H₂O) and methane (CH₄) are also major players.
+CO₂ isn’t the only one. Water vapor (H₂O) and methane (CH₄) matter too.
 
-- **Water vapor** is naturally asymmetrical, thanks to the way its oxygen atom hogs electrons, pushing the hydrogen atoms to one side. This lopsided shape makes it ridiculously good at absorbing a wide range of infrared light, making it a powerhouse greenhouse gas.
-- **Methane (CH₄)** looks symmetrical at first glance (with its neat tetrahedral shape), but it has enough funky vibrational modes to break symmetry, allowing it to absorb and trap [[heat]] effectively.
+- **Water vapor** is naturally asymmetrical, because its oxygen atom hogs electrons and pushes the hydrogen atoms to one side. That lopsided shape lets it absorb a wide range of infrared light, which makes it a very strong greenhouse gas.
+- **Methane (CH₄)** looks symmetrical at first glance, with its neat tetrahedral shape, but it has enough vibrational modes that break symmetry to absorb and trap [[heat]] effectively.
 
-In fact, **any molecule with more than 2 atoms** has at least some potential to be a greenhouse gas! The physics behind it all is complex, but the impact on our planet’s climate is pretty clear. Understanding how they work is key to tackling climate change and figuring out how to keep our world livable for future generations.
+Any molecule with more than 2 atoms has at least some potential to be a greenhouse gas. The physics gets complicated, but the effect on our planet’s climate is clear enough.
 
 Pretty cool, right? Or should I say... pretty hot? 🔥🌍
 

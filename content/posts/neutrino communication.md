@@ -27,7 +27,7 @@ Basically they are elementary particles that have neutral charge and very VERY s
 
 ## Why neutrinos for communication?
 
-Neutrinos can essentially travel through anything and everything. They can propagate through vast cosmic distances without significant attenuation or deflection. This is because they have relatively weak interactions and can't be caught by other particles. This capability makes neutrino a potential messenger for future global point-to-point communication, communication with submarines, interstellar communication or even planetary exploration! Isn't that exciting?
+Neutrinos can essentially travel through anything and everything, propagating over vast cosmic distances without much attenuation or deflection, because their interactions are weak and other particles can't catch them. That makes them a candidate messenger for global point-to-point communication, for talking to submarines, for interstellar communication, even for planetary exploration.
 
 *Neutrinos are often described as tiny particles or as having weak interactions. These phrases might a little bit confusing, though. "Probability of interaction is small" or "neutrino interaction is rare" are more suitable expressions to explain their penetrating characteristic.*
 

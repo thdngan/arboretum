@@ -47,13 +47,13 @@ $$
 \dfrac{L(1 - \alpha)}{4} = \epsilon \sigma T^4_a
 $$
 
-However, there is a simpler, much less complicated solution: create a general budget that depicts the whole system. We may draw a line above the atmosphere representing the border to space (as depicted in the figu  re). And the results would be the same as what we obtained previously.
+There is a simpler way though: build one general budget for the whole system. We draw a line above the atmosphere representing the border to space (as depicted in the figure), and the results come out the same as what we got before.
 
 |Energy budget|IN|OUT|
 |------|:----:|:----:|
 |Overall System|$\dfrac{L(1 - \alpha)}{4}$|$\epsilon \sigma T^4_a$|
 
-This is still not close to reality, of course. It turns out that the atmosphere cannot be assumed as a blackbody in the infrared that absorbs and emits all frequencies of infrared light. In fact, gases absorbs infrared light selectively, and most gases in the atmosphere doesn't interact with IR light at all.
+This is still not close to reality, of course. The atmosphere can't be treated as a blackbody in the infrared that absorbs and emits every frequency. Gases absorb infrared light selectively, and most gases in the atmosphere don't interact with IR light at all.
 
 ## Problems:
 

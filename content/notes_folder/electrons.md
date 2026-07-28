@@ -8,6 +8,6 @@ tags:
 ---
 Small but mighty.
 
-Electrons belong to a special group of particles called [[leptons]], which are fundamental, meaning they’re not made of anything smaller. Leptons are like the free-spirited, independent crowd of the particle zoo, and electrons are the most famous of them all. Unlike [[quarks]], which stick together to form protons and neutrons, electrons do their own thing, orbiting atomic nuclei and refusing to be tied down.
+Electrons belong to a special group of particles called [[leptons]], which are fundamental, meaning they’re not made of anything smaller. Electrons are the most familiar of them. Unlike [[quarks]], which stick together to form protons and neutrons, electrons do their own thing, orbiting atomic nuclei and refusing to be tied down.
 
-What makes electrons so special? For one, they carry a negative electric charge, which means they interact with *photons* (the [[bosons]] of electromagnetism), making electricity, magnetism, and all sorts of tech magic happen. They are also not just particles, they also behave like waves. In the quantum world, they can be in multiple places at once, interfere with themselves, and even teleport (sort of) through quantum tunneling.
+They carry a negative electric charge, so they interact with *photons* (the [[bosons]] of electromagnetism), which is where electricity, magnetism and most of our technology comes from. They're also not only particles, they behave like waves. In the quantum world, they can be in multiple places at once, interfere with themselves, and even teleport (sort of) through quantum tunneling.

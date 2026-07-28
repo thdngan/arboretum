@@ -22,9 +22,9 @@ Then one day, a lecture started in French.
 
 Before arriving, I had made it explicitly clear that I could only take courses in English. I fully expected hallway chatter and cafeteria gossip to be in French. I mean, we are in France, after all! I certainly didn't feel entitled to having every social interaction bend to accommodate me, and I genuinely wanted to listen in and improve my comprehension. But I was still pretty surprised (and a bit intimidated) to discover that I was, in fact, the *only* non-French speaker in the entire cohort. 
 
-Because of this, most lecturers would usually switch to English the moment I walked in. That brought its own kind of uncomfortable weight: my mere presence was the sole reason an entire room was operating in its second language, and I could feel the collective effort it took.
+Because of this, most lecturers would usually switch to English the moment I walked in. That was uncomfortable in its own way: my presence was the only reason an entire room was operating in its second language, and I could feel the effort it took.
 
-So when a lecturer didn't switch and the academic conversation flowed entirely without me, it hit differently. It didn't just feel like missing out on a chat, it made me feel like I was forcefully inserting myself into a room that hadn't actually planned for me to be there. And there isn't really a graceful way to exist in a room where everyone else is engaged and you can't tune in. You smile. You look out the window. You pretend to be intensely focused on your notebook. I ended up filling my margins with random journaling in Vietnamese that day. It was a stupid sort of rebellion: finding small comfort in having a language of my own when I couldn't participate in anyone else's. Looking back, 21-year-old me was just trying desperately to look unbothered. But the truth is I'm not a nonchalant person at all! I was (and still am) just too used to suppressing and hiding my own discomfort.
+So when a lecturer didn't switch and the academic conversation flowed entirely without me, it hit differently. It didn't just feel like missing out on a chat, it made me feel like I was forcefully inserting myself into a room that hadn't actually planned for me to be there. And there isn't really a graceful way to exist in a room where everyone else is engaged and you can't tune in. You smile, you look out the window, you pretend to be intensely focused on your notebook. I ended up filling my margins with random journaling in Vietnamese that day. It was a stupid sort of rebellion: finding small comfort in having a language of my own when I couldn't participate in anyone else's. Looking back, 21-year-old me was just trying desperately to look unbothered. But the truth is I'm not a nonchalant person at all! I was (and still am) just too used to suppressing and hiding my own discomfort.
 
 ---
 
@@ -32,7 +32,7 @@ So when a lecturer didn't switch and the academic conversation flowed entirely w
 >![[school_campus.jpg]]
 >The school campus
 
-The whole M1 year worked like that, in waves. I'd build up a little bit of confidence: a few friendly lunches at the cafeteria, some classmates I genuinely got along with, a group chat I was added to, and then I'd get thrown into a situation where the group naturally defaulted to French and I'd be right back to square one. Not excluded, exactly. Just out of sync. A person everyone liked well enough but no one could quite include in the running joke, because the joke was in French and by the time I'd translated it in my head the group had moved on.
+The whole M1 year worked like that, in waves. I'd build up a little bit of confidence: a few friendly lunches at the cafeteria, some classmates I genuinely got along with, a group chat I was added to, and then I'd get thrown into a situation where the group naturally defaulted to French and I'd be right back to square one. Not excluded exactly, just out of sync. A person everyone liked well enough but no one could quite include in the running joke, because the joke was in French and by the time I'd translated it in my head the group had moved on.
 
 I told myself a lot of stories about this, most of them unfair to everyone involved. That I should have learned more French before coming. That I was being oversensitive. That my classmates should have noticed. That I was the problem. That the program was the problem. Sometimes I get frustrated at my own painfully slow improvement in the language.
 
@@ -57,7 +57,7 @@ There was a whole period when I was obsessed with trying to cook Japanese curry,
 >Carambar
 
 
-There was the first snow of the year, when I ran outside in my pyjamas with just a raincoat and a scarf because I had decided that if I was going to be far from home, at least I was going to see the snow properly. There was the second snow a couple of months later, when I was a little more blasé but still went out. There was a field trip in the Pyrénées where I mentioned wanting to try the local cheese but having no room in my bag, and a classmate shared his with me two weeks later in Paris. Then there were the Carambar sweets that someone had bought on that same trip. They had terrible jokes printed on the wrappers and another classmate had taken the time to translate them for me. A few weeks later, when we found a pack of the same sweets, he scooched close to me to translate the new jokes too. Mundane things. The things that actually make a place into something personal and worth remembering.
+There was the first snow of the year, when I ran outside in my pyjamas with just a raincoat and a scarf because I had decided that if I was going to be far from home, at least I was going to see the snow properly. There was the second snow a couple of months later, when I was a little more blasé but still went out. There was a field trip in the Pyrénées where I mentioned wanting to try the local cheese but having no room in my bag, and a classmate shared his with me two weeks later in Paris. Then there were the Carambar sweets that someone had bought on that same trip. They had terrible jokes printed on the wrappers and another classmate had taken the time to translate them for me. A few weeks later, when we found a pack of the same sweets, he scooched close to me to translate the new jokes too. Mundane things, but they're what made the place feel like mine.
 
 >[!caption]
 >![[snow.mp4]]
@@ -86,7 +86,7 @@ I understand why programs want to stay international. It's a research program, a
 
 It was a stark contrast to my bachelor's program back in Vietnam, where our coursework was taught entirely in English despite every single one of us being Vietnamese. At first, I was surprised that a research master's program didn't default to English in the same way. But over time, I guess I began to see the reasons behind it? Aside from the general French reluctance to speak English, the two languages share enough vocabularies that switching back and forth in an academic setting isn't a massive cognitive leap for them. In Vietnamese, technical scientific terms require an entirely different set of vocabulary from English. If we want to do research and tap into the international community, it's actually easier to commit fully to one language at a time rather than mentally translating back and forth. Here, the boundary between the two languages was porous enough that the room could easily slip right back into one another.
 
-But still, a classroom is a professional space. It's an environment where everyone is supposed to be equally equipped to do the work.
+But still, a classroom is a professional space, and everyone in it is supposed to be equally equipped to do the work.
 
 ---
 

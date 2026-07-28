@@ -19,7 +19,7 @@ Github link: https://github.com/thdngan/case-studies
 
   
 
-Several greenhouse gases have shown an increase in atmospheric concentration during the past 50 years, as is widely known. Let's examine the information on carbon dioxide partial pressure ($CO_2$) that was acquired at Mauna Loa, Hawaii, from 1958 to 2003. A quadratic polynomial may be used to fit the data trend neatly,
+Several greenhouse gases have gone up in atmospheric concentration over the past 50 years. Let's look at the carbon dioxide partial pressure ($CO_2$) data collected at Mauna Loa, Hawaii, from 1958 to 2003. A quadratic polynomial fits the trend neatly,
 
   
 
@@ -37,7 +37,7 @@ where $p_{CO_2}$ is the atmospheric $CO_2$ partial pressure (ppm). According to 
 
   
 
-In addition to contributing to global warming, greenhouse gases may alter the chemistry of the atmosphere. How the rise in carbon dioxide is influencing rainwater's pH is one issue we can solve. It is generally known that carbon dioxide is the main factor of the pH of the rain outside of urban and industrial regions. The activity of hydrogen ions, and hence the acidity of a solution, are measured by pH. It may be calculated as follows for diluted aqueous solutions:
+Greenhouse gases don't only contribute to global warming, they also change the chemistry of the atmosphere. One question we can actually answer is how rising carbon dioxide affects the pH of rainwater. Outside urban and industrial regions, carbon dioxide is the main thing setting that pH. pH measures the activity of hydrogen ions and therefore the acidity of a solution, and for dilute aqueous solutions you calculate it like this:
 
 $$
 pH = -log_{10}{[H^+]}
@@ -167,19 +167,19 @@ $$
 
   
 
-It might not be instantly evident, but this result is a third-order polynomial in $[H^+]$. Its root may therefore be used to determine the pH of rainwater.
+It's not obvious at a glance, but this is a third-order polynomial in $[H^+]$, so its root gives us the pH of rainwater.
 
   
 
   
 
-Next, choose the numerical method that will be applied to find the answer. Bisection would be a wise decision for two reasons. First, the fact that the pH typically falls between 2 and 12 gives us two reliable first guesses. Second, we will accept an absolute error of $E_{a,d} = 0.005$ as the pH can only be measured to two decimal places of precision. Keep in mind that we may calculate the number of iterations a priori given an initial bracket and the desired relative error. Using $n = log_2(\dfrac{\Delta x^0}{E_{a,d}})$, the result is $n = log_2(\dfrac{12-2}{0.005}) \approx 10.9658$. Bisection will therefore give the required precision after eleven iterations.
+Next, pick a numerical method. Bisection is a good choice here for two reasons. First, pH normally falls between 2 and 12, which hands us two reliable initial guesses. Second, we'll accept an absolute error of $E_{a,d} = 0.005$, since pH can only be measured to two decimal places anyway. And with bisection you can work out the number of iterations in advance from the initial bracket and the error you want. Using $n = log_2(\dfrac{\Delta x^0}{E_{a,d}})$, the result is $n = log_2(\dfrac{12-2}{0.005}) \approx 10.9658$. Bisection will therefore give the required precision after eleven iterations.
 
   
 
   
 
-Prior to applying equation (9) to MATLAB, we must make a few adjustments in order. The left-handed side of (9) must be rewritten as a function of pH since we want to use the range from 2 to 12 with 11 iterations.
+Before putting equation (9) into MATLAB we need a couple of adjustments. The left-hand side has to be rewritten as a function of pH, since we want to use the range from 2 to 12 with 11 iterations.
 
   
 
@@ -515,7 +515,7 @@ The relative error is is 8.676037e-02 percent
 
   
 
-The answer of 5.63, when rounded, is undoubtedly accurate to two decimal places. This may be confirmed by carrying out a second test with more iterations. A result of 5.630439, for instance, is produced after 40 iterations, with a relative error of around $1.62×10^{-10}$%.
+Rounded, the answer of 5.63 is accurate to two decimal places. You can check that by running it again with more iterations: 40 iterations gives 5.630439, with a relative error of around $1.62×10^{-10}$%.
 
   
 
@@ -901,4 +901,4 @@ The relative error is is 8.736677e-02 percent
 
   
 
-It's interesting that these results show that the 19% increase in atmospheric $CO_2$ levels has only resulted in a pH decrease of 0.67%. Although this is undoubtedly true, keep in mind that equation (1) describes the pH as a logarithmic scale. As a result, a pH change of one unit corresponds to a 10-fold increase in hydrogen ions. The concentration can be determined using the formula $[H^+] = 10^{-pH}$, with a resultant percent change of 9.1%. Consequently, there has been a 9% rise in the hydrogen ion concentration.
+So a 19% increase in atmospheric $CO_2$ only drops the pH by 0.67%, which sounds small. But equation (1) puts pH on a logarithmic scale. As a result, a pH change of one unit corresponds to a 10-fold increase in hydrogen ions. The concentration can be determined using the formula $[H^+] = 10^{-pH}$, with a resultant percent change of 9.1%. Consequently, there has been a 9% rise in the hydrogen ion concentration.

@@ -45,9 +45,9 @@ Two important questions in image processing are:
 1. How many pixels do we need? (spatial resolution)
 2. How many gray values should each pixel store? (intensity resolution)
 
-With 8-bit grayscale images, black is 0, white is 255, and shades of gray fall in between. Computers don’t see images like we do; they interpret them as numeric values, where 0 = black, 128 = medium gray, and 255 = white.
+With 8-bit grayscale images, black is 0, white is 255, and shades of gray fall in between. What the computer has is just those numbers: 0 = black, 128 = medium gray, 255 = white.
 
-But there’s a catch: if an image is too bright, details in the highlights may be lost (saturation). If it’s too dark, shadow details may disappear. While our eyes adapt well to varying brightness levels, digital images are limited by the number of levels they can represent.
+The limitation is at both ends: if an image is too bright, details in the highlights get lost (saturation), and if it’s too dark, shadow details disappear. While our eyes adapt well to varying brightness levels, digital images are limited by the number of levels they can represent.
 
 ### How Resolution Affects Image Quality
 

@@ -107,7 +107,7 @@ I was taken care of, kind of embarrassingly well, by an older master's student w
 >![[Calanque_de_Morgiou.jpg]]
 >A hike to Calanque de Morgiou
 
-That was also the period when I was waiting for results from 2 graduate applications. I got rejected from 1. The last one to reply was the one that took me. That meant asking my Marseille supervisor for September off to start school, finishing my internship online in August while I was back in Vietnam doing visa paperwork. My planned six months in Marseille shrank to four. And just like that, I was saying goodbye to another place full of memories.
+That was also the period when I was waiting for results from 2 graduate applications. I got rejected from 1. The last one to reply was the one that took me. That meant asking my Marseille supervisor for September off to start school, finishing my internship online in August while I was back in Vietnam doing visa paperwork. My planned six months in Marseille shrank to four, and I was saying goodbye to another place full of memories sooner than I'd meant to.
 
 People keep saying the French are difficult, but honestly, if you make the effort to say a few words in French first, most people are warm back (OK in retrospect, this was just a Southern France experience LMAO). You just have to show that you're trying to meet them halfway. It took me a while to get used to the culture of cheerfully saying _bonjour_ to every stranger you pass (again, Southern France), but I came around.
 
@@ -129,4 +129,4 @@ I found this some months ago, and I've been thinking about it a lot these days:
 > 
 > _And someday, that feeling will be home enough."_ — Rae Pathak, _friday reminders_
 
-I don't know yet if that feeling will be home enough for me. But I'm collecting pieces. That has to count for something.
+I don't know yet if that feeling will be home enough for me. But I'm collecting the pieces.

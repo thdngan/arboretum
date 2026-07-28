@@ -6,7 +6,7 @@ tags:
   - physics
   - notes
 ---
-Mesons are made of one quark and one antiquark, held together by the [[strong interactions|strong nuclear force]]. This makes them part of the **[[hadrons|hadron family]]**, but they’re not as stable as [[baryons]] and tend to decay quickly into lighter particles.
+Mesons are made of one quark and one antiquark, held together by the [[strong interactions|strong nuclear force]]. This makes them part of the [[hadrons|hadron family]], but they’re not as stable as [[baryons]] and tend to decay quickly into lighter particles.
 
 Mesons play an important role as force carriers within atomic nuclei. Even though the strong nuclear force is technically mediated by [[gluons]], mesons act as “middlemen,” helping [[protons]] and [[neutrons]] stick together. In fact, this idea was first proposed by physicist Hideki Yukawa, who predicted mesons before they were even discovered, suggesting they were responsible for keeping atomic nuclei intact.
 

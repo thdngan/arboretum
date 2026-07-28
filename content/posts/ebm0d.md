@@ -7,13 +7,13 @@ tags:
   - planetary-science
   - writings
 ---
-Think of this as the ultimate back-of-the-napkin sketch for understanding Earth’s climate. It’s called "zero-dimensional" because it treats the planet as if it were a perfectly mixed, uniform sphere: no poles, no tropics, one big average temperature, no fancy maps or complex weather patterns, essentially just a straightforward look at how energy moves in and out.
+This is the back-of-the-napkin version of Earth’s climate. It’s called "zero-dimensional" because it treats the planet as a perfectly mixed, uniform sphere: no poles, no tropics, one big average temperature, no maps or weather patterns, just a look at how energy moves in and out.
 
-It's all about balancing the Earth's energy budget. We track the dance between the Sun, the Earth's surface, and the atmosphere, focusing on a few main processes:
+What it does is balance the Earth's energy budget, tracking the Sun, the Earth's surface and the atmosphere through a few main processes:
 
 - **Solar radiation coming in**: The Sun blasts energy our way, and this model takes that as its starting point.
 - **Absorption and reflection**: Some of that sunlight gets absorbed, warming the planet, while the rest bounces back into space, thanks to bright surfaces like ice and clouds (this is the [[albedo]] effect).
-- **Thermal radiation going out**: Like a cozy campfire at night, the Earth radiates [[heat]] away in the form of infrared energy.
-- **Finding equilibrium**: The model crunches the numbers to figure out how these energy flows balance out, ultimately estimating Earth’s temperature.
+- **Thermal radiation going out**: the Earth radiates [[heat]] away in the form of infrared energy.
+- **Finding equilibrium**: work out where those energy flows balance, which gives you Earth’s temperature.
 
-Sure, it’s a simple model, maybe too simple. It ignores things like weather patterns, ocean currents, and the many complexities of our dynamic atmosphere. But that’s kind of the point! It sets the stage for more advanced climate models that dive into the nitty-gritty of how different regions and layers of the atmosphere interact. If you want to level up with more ✨equations✨, check out the [[ebm1d|one-dimensional energy balance model]] for a bit more depth!
+It’s a simple model, maybe too simple. It ignores weather patterns, ocean currents, and most of what the atmosphere actually does. But that’s kind of the point, it's the thing you build the more advanced models on top of. If you want more ✨equations✨, the [[ebm1d|one-dimensional energy balance model]] has a bit more depth!

@@ -12,19 +12,19 @@ Github link: https://github.com/thdngan/case-studies/tree/main/spline_heattransf
 
 ## Background
 
-The grouping of something into various categories is known as stratification. When two kinds of steam that are at different temperatures come into contact, thermal stratification happens. The warmer, lighter water may float above the colder water because of the difference in temperature between them, which causes the heavier, colder water to sink to the bottom. Summertime thermal stratification is a phenomenon in temperate zone lakes. The warm, buoyant surface water is on top of the cooler, denser bottom water, as seen in the figure below. The *epilimnion* and the *hypolimnion*, which are separated by a plane known as the *thermoline*, are the two layers that are effectively separated vertically as a result of this stratification.
+Stratification just means layering. It happens thermally when bodies of water at different temperatures meet: the warmer, lighter water floats on top and the heavier, colder water sinks to the bottom. Lakes in temperate zones do this every summer, as in the figure below. The two layers you end up with are the *epilimnion* on top and the *hypolimnion* underneath, separated by a plane called the *thermocline*.
 
 ![[images/case studies/spline_heattransfer/temperaturevsdepth.jpg]]
 
-For environmental engineers researching the contamination of such systems, thermal stratification is of major importance. Particularly, mixing between the two levels is significantly reduced by the thermocline. Decomposition of organic debris can therefore cause a serious reduction in oxygen levels in the secluded bottom waters.
+This matters a lot for anyone studying contamination in these systems, because the thermocline strongly suppresses mixing between the two layers. Organic debris decomposing in the isolated bottom water can then drive the oxygen down there right down.
 
-The temperature-depth curve's inflection point can be used to determine the thermocline's position - that is, the point at which $d^2T/dx^2=0$. Additionally, it is the point where the first derivative's or gradient's absolute value is at its highest. In this case study, the thermocline depth for Platte Lake and the gradient's magnitude will be calculated using cubic splines.
+You can locate the thermocline from the inflection point of the temperature-depth curve, the point where $d^2T/dx^2=0$, which is also where the gradient has its largest absolute value. Here I'm working out the thermocline depth for Platte Lake and the size of the gradient there, using cubic splines.
 
 ## Solution
 
-Since I don't have all the data, the results are basically just approximations and not really aesthetically pleasing. However, they do approach the desired values rather closely.
+I don't have all the data, so the results are approximations and the plots aren't pretty. They land close enough to the expected values though.
 
-In order to display the spline predictions and first and second derivatives at intervals of 1 meter down into the water column, I first interpolated using the available limited data. I then plotted the second derivative, gradient, and temperature versus depth.
+I interpolated from the limited data to get the spline predictions and the first and second derivatives at 1 metre intervals down the water column, then plotted temperature, gradient and second derivative against depth.
 
 ```Matlab
 T = [11.1 11.1 11.7 13.9 20.6 22.8 22.8 22.8];
@@ -139,6 +139,6 @@ The depth is 12m and the gradient of this point is -1.46 °C/m.
    0.073369565217392
 ```
 
-The temperature-depth curve inflection point is where the thermoline is located. I searched for the thermoline based on the highest absolute value of the derivative in this case, since it appears to be unique in this particular situation and much simpler to deal with than zero second derivatives.
+The thermocline sits at the inflection point of the temperature-depth curve. I looked for it using the largest absolute derivative instead, since it's unique here and much easier to deal with than hunting for a zero in the second derivative.
  
 ![[images/case studies/spline_heattransfer/spline_heattransfer.jpg]]

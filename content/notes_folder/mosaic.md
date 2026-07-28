@@ -7,4 +7,4 @@ tags:
   - incomplete
 ---
 
-In image processing, mosaicing is a method of combining or merging multiple tiles of images into a larger image ([[tessellation]]).
+In image processing, mosaicing is a method of combining or merging multiple tiles of images into a larger image (tessellation).

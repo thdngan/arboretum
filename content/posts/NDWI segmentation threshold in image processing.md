@@ -11,7 +11,7 @@ tags:
 
 Image segmentation is frequently used in digital image processing and analysis to divide a digital image into a number of regions of pixels, usually based on the properties of the pixels in the image. For instance, picture segmentation might be used to distinguish between the foreground and background or to group together clusters of pixels that have a common color or shape.
 
-Thresholding is a method that refers to a common approach of finding similarities between regions of an image. Here, we alter an image's pixel characteristics to make it simpler to analyze. We turn a grayscale or RGB image into a binary image (only black and white, for example). Thresholding allows us to select the areas of an image that are of interest while disregarding the other parts. For instance, using a satellite image, this technique may be used to identify areas of surface water! Isn't it interesting how we can separate and highlight water regions on a planet from satellite images? In this post, I'll give a brief overview of the principles and how ENVI can be used to implement it. I never really dived deep into remote sensing subjects though so I could be wrong, do tell me!
+Thresholding is one of the common ways of finding similarities between regions of an image. You alter the pixel characteristics to make the image simpler to analyze, turning a grayscale or RGB image into a binary one (only black and white, for example). That lets you pick out the areas you care about and disregard the rest. On a satellite image you can use it to find surface water, which I think is pretty cool. In this post, I'll give a brief overview of the principles and how ENVI can be used to implement it. I never really dived deep into remote sensing subjects though so I could be wrong, do tell me!
 
 ## Principles
 
@@ -54,7 +54,7 @@ Remote sensing instruments directly measure radiance. This includes radiation re
 
 ![[images/image processing/diffuse_v_specular.png]]
 
-In other words, the travel of light in the atmosphere is influenced by a variety of elements as it goes down to the Earth through the atmosphere, diffusively reflects off the Earth's surface, and then returns up through the atmosphere, suffering from scattering effects. Thus, instead of the digital number, we would determine the Top of Atmosphere (TOA) reflectance values, which can be estimated mainly from radiance leaving the ground, transmission factors and path radiance.
+So light gets messed with at every stage: on the way down through the atmosphere, when it diffusively reflects off the surface, and on the way back up where it scatters again. Which is why we want Top of Atmosphere (TOA) reflectance rather than the digital number. TOA reflectance is estimated mainly from the radiance leaving the ground, transmission factors and path radiance.
 
 Reflectance values range from 0 to 1 and are stored in floating point data format. With ENVI, you can easily convert Landsat optical band data from the USGS in the "USGS GeoTIFF with Metadata" format to TOA reflectance values when you open the USGS file that ends with "MLT.TXT". More details can be found in Section 1 of [this page](https://yceo.yale.edu/how-convert-landsat-dns-top-atmosphere-toa-reflectance?fbclid=IwAR0UbHmDqOGd6FrrCxYh7CcCTHtwFZ7u6wJhEyMscWnD3wUHrUHSWIYjFVo).
 
