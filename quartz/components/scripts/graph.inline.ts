@@ -181,20 +181,35 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   // we virtualize the simulation and use pixi to actually render it
   // Calculate the radius of the container circle
   // const radius = Math.min(width, height) / 2 - 40 // 40px padding
+  // Obsidian-style force layout:
+  //  - repulsion falls off past `repelDistance` so a big graph breaks into
+  //    clusters instead of one giant expanding ring
+  //  - links are springs with a fixed rest length (`linkDistance`)
+  //  - a weak pull toward the origin keeps disconnected nodes in frame, the way
+  //    Obsidian's center force does
+  //  - collision uses a padded radius so nodes never sit on top of each other
+  const repelDistance = Math.max(width, height)
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
-    .force("charge", forceManyBody().strength(-100 * repelForce))
+    .force(
+      "charge",
+      forceManyBody()
+        .strength(-100 * repelForce)
+        .distanceMax(repelDistance),
+    )
     .force("center", forceCenter().strength(centerForce))
+    .force("gravity", forceRadial(0, 0, 0).strength(0.02 + 0.08 * centerForce))
     .force("link", forceLink(graphData.links).distance(linkDistance))
-    .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
+    .force("collide", forceCollide<NodeData>((n) => nodeRadius(n) * 1.5 + 6).iterations(2))
+    // slightly heavier damping than d3's 0.4 default: nodes glide into place
+    // rather than overshooting and bouncing
+    .velocityDecay(0.45)
 
-  if (enableRadial)
-    simulation.force("radial", forceRadial(0, 0, 0).strength(0.3))
+  // enableRadial tightens everything into a disc around the center
+  if (enableRadial) simulation.force("gravity", forceRadial(0, 0, 0).strength(0.3))
 
-  // We want a fluid simulation so we keep the alpha target low at all times.
-  // simulation.alphaTarget(0.4)
-  setTimeout(() => {
-    simulation.alphaTarget(0.4);
-  }, 800);   
+  // the simulation cools down and comes to rest like Obsidian's does; dragging
+  // a node reheats it (see the drag handler below).
+  // to make it drift forever instead, add: simulation.alphaTarget(0.3)
 
 
   // precompute style prop strings as pixi doesn't support css variables
@@ -248,6 +263,29 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     }
   }
 
+  // labels sit above the node: `labelGap` is the visible gap between the top of
+  // the circle and the bottom of the title.
+  const labelPadding = 6
+  const labelGap = 3
+  const labelAnchor = { x: 0.5, y: 1 }
+  // longer titles wrap into centered lines instead of running off sideways
+  const labelWrapWidth = 100
+
+  // labels fade in as you zoom in. this is the alpha a label falls back to once
+  // it is no longer part of the hovered node's neighbourhood — without it,
+  // every label a hover lit up would stay lit forever
+  let labelRestingAlpha = Math.max((opacityScale - 1) / 3.75, 0)
+
+  // pixi anchors a padded text quad by the *padded* texture size and then
+  // shifts it back by `padding` on each axis. that only lines up for anchor 0 —
+  // at any other anchor the glyphs land 2 * anchor * padding off (up and to the
+  // left for our bottom-center anchor), so add it back here. `s` is the label's
+  // live scale, which the hover tween animates.
+  const labelPaddingShift = (s: number) => ({
+    x: 2 * labelAnchor.x * labelPadding * s,
+    y: 2 * labelAnchor.y * labelPadding * s,
+  })
+
   let hoveredNodeId: string | null = null
   let hoveredNeighbours: Set<string> = new Set()
   const linkRenderData: LinkRenderData[] = []
@@ -281,6 +319,23 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       }
     }
   }
+
+  // the current page and tag nodes always keep their titles on screen
+  const alwaysLabelled = (id: string) => id === slug || id.startsWith("tags/")
+
+  // hovering a node shows its own title *and* those of its immediate
+  // neighbours (`active` is set for both in updateHoverInfo)
+  function syncLabelVisibility() {
+    for (const n of nodeRenderData) {
+      n.label.visible = n.active || alwaysLabelled(n.simulationData.id)
+    }
+  }
+
+  // alpha for a label outside the hovered neighbourhood: its zoom-derived
+  // opacity, knocked back while another node is hovered so that unrelated
+  // titles (tags especially, which stay visible) recede instead of competing
+  const inactiveLabelAlpha = () =>
+    hoveredNodeId !== null ? labelRestingAlpha * 0.2 : labelRestingAlpha
 
   let dragStartTime = 0
   let dragging = false
@@ -330,11 +385,23 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
             100,
           ),
         )
+      } else if (hoveredNodeId !== null && n.active) {
+        // a neighbour of the hovered node: full opacity, but only the hovered
+        // node itself gets the size bump
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to(
+            {
+              alpha: 1,
+              scale: { x: defaultScale, y: defaultScale },
+            },
+            100,
+          ),
+        )
       } else {
         tweenGroup.add(
           new Tweened<Text>(n.label).to(
             {
-              alpha: n.label.alpha,
+              alpha: inactiveLabelAlpha(),
               scale: { x: defaultScale, y: defaultScale },
             },
             100,
@@ -415,11 +482,20 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       eventMode: "none",
       text: n.text,
       alpha: 0,
-      anchor: { x: 0.5, y: 1.2 },
+      // bottom-center anchor so the label hangs *above* the node (Obsidian-style)
+      // and multi-line titles grow upwards; the vertical gap itself is applied
+      // in animate() from the node radius
+      anchor: labelAnchor,
       style: {
         fontSize: fontSize * 15,
         fill: computedStyleMap["--dark"],
         fontFamily: computedStyleMap["--bodyFont"],
+        align: "center",
+        wordWrap: true,
+        wordWrapWidth: labelWrapWidth,
+        // pixi sizes the text texture from font metrics and clips whatever
+        // falls outside it; without padding, descenders (g, y, p) get shaved
+        padding: labelPadding,
       },
       resolution: window.devicePixelRatio * 4,
       visible: false, // Initially hide all labels
@@ -430,7 +506,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   
     let oldLabelOpacity = 0
     const isTagNode = nodeId.startsWith("tags/")
-    label.visible = (nodeId === slug || isTagNode);
+    label.visible = alwaysLabelled(nodeId)
     const gfx = new Graphics({
       interactive: true,
       label: nodeId,
@@ -443,22 +519,14 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       .stroke({ width: isTagNode ? 2 : 0, color: computedStyleMap["--nodesecond"] })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
-        // Only show the label for the hovered node
-        nodeRenderData.forEach(rd => rd.label.visible = false); // Hide all labels first
-        const hoveredNode = nodeRenderData.find(rd => rd.simulationData.id === (gfx as any).label);
-        if(hoveredNode) {
-            hoveredNode.label.visible = true; // Show current label
-        }
+        syncLabelVisibility()
         if (!dragging) {
           renderPixiFromD3()
         }
       })
       .on("pointerleave", () => {
-        updateHoverInfo(null);
-        // Hide non-current node label
-        nodeRenderData.forEach(rd => {
-          rd.label.visible = (rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/"));
-        });
+        updateHoverInfo(null)
+        syncLabelVisibility()
         if (!dragging) {
           renderPixiFromD3()
         }
@@ -555,23 +623,17 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
             stage.scale.set(transform.k, transform.k)
             stage.position.set(transform.x, transform.y)
   
-            // Set default label visibility
-            nodeRenderData.forEach(rd => rd.label.visible = (rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/")));
-  
-            // Show the label for the current node
-            const current = nodeRenderData.find(rd => rd.simulationData.id === slug || rd.simulationData.id.startsWith("tags/"));
-            if(current) {
-              current.label.visible = true;
-            }
+            // keep whatever the hover state says should be labelled
+            syncLabelVisibility()
   
             // zoom adjusts opacity of labels too
             const scale = transform.k * opacityScale
-            let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
+            labelRestingAlpha = Math.max((scale - 1) / 3.75, 0)
             const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
   
             for (const label of labelsContainer.children) {
               if (!activeNodes.includes(label)) {
-                label.alpha = scaleOpacity
+                label.alpha = inactiveLabelAlpha()
               }
             }
           }),
@@ -584,7 +646,13 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       if (!x || !y) continue
       n.gfx.position.set(x + width / 2, y + height / 2)
       if (n.label) {
-        n.label.position.set(x + width / 2, y + height / 2)
+        // sit the label just above the node's circle, so bigger nodes push
+        // their title further up instead of overlapping it
+        const shift = labelPaddingShift(n.label.scale.x)
+        n.label.position.set(
+          x + width / 2 + shift.x,
+          y + height / 2 - nodeRadius(n.simulationData) - labelGap + shift.y,
+        )
       }
     }
 

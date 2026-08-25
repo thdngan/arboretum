@@ -88,8 +88,22 @@ export default ((userOpts?: Partial<Options>) => {
         </ul>
         {opts.linkToMore && remaining > 0 && (
           <p>
-            <a href={resolveRelative(fileData.slug!, opts.linkToMore)}>
-              {i18n(cfg.locale).components.recentNotes.seeRemainingMore({ remaining })}
+            <a class="see-more" href={resolveRelative(fileData.slug!, opts.linkToMore)}>
+              {(() => {
+                // the localised string ends in an arrow; split it off so the
+                // underline sits under the words only
+                const label = i18n(cfg.locale).components.recentNotes.seeRemainingMore({
+                  remaining,
+                })
+                const at = label.lastIndexOf("\u2192")
+                if (at < 0) return <span class="see-more-label">{label}</span>
+                return (
+                  <>
+                    <span class="see-more-label">{label.slice(0, at).trimEnd()}</span>
+                    <span class="see-more-arrow"> {label.slice(at)}</span>
+                  </>
+                )
+              })()}
             </a>
           </p>
         )}
