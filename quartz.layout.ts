@@ -4,14 +4,28 @@ import { SimpleSlug } from "./quartz/util/path"
 
 // Constants for config
 const tagsToRemove = ["graph-exclude", "explorer-exclude", "backlinks-exclude", "recents-exclude"]
+// force values tuned to feel like Obsidian's graph view.
+// obsidian slider -> quartz option:
+//   center force  -> centerForce   (how hard the layout is pulled back to the middle)
+//   repel force   -> repelForce    (node-to-node repulsion, scaled by -100 internally)
+//   link distance -> linkDistance  (rest length of each link spring, in px)
+// fontSize scales the node titles (0.45 -> ~7px, drawn below each node)
 const graphConfig = {
   localGraph: {
     removeTags: tagsToRemove,
-    excludeTags: ["graph-exclude"]
+    excludeTags: ["graph-exclude"],
+    repelForce: 1.0,
+    centerForce: 0.3,
+    linkDistance: 45,
+    fontSize: 0.45,
   },
   globalGraph: {
     removeTags: tagsToRemove,
-    excludeTags: ["graph-exclude"]
+    excludeTags: ["graph-exclude"],
+    repelForce: 1.3,
+    centerForce: 0.25,
+    linkDistance: 60,
+    fontSize: 0.45,
   }
 };
 

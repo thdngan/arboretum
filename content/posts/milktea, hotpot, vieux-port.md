@@ -113,11 +113,10 @@ People keep saying the French are difficult, but honestly, if you make the effor
 
 What I remember most clearly is the weekend afternoons at Vieux-Port, watching the sun set over the Mediterranean, eating chocolate, listening to bands playing music (my favorite was *Just the Two of Us*) and people chatting loudly around me. The internship also helped me keep building connections with people working in planetary science, which is the direction I want to go, and I learned a lot, heavy on [[clathrate|chemistry and thermodynamics]], which wasn't necessarily what I'd signed up for, but turned out to be kind of fun.
 
->[!caption]
+>[!caption_column]
 >![[sunset_marseille.jpg]]
 >Sunset in Marseille
-
->[!caption]
+>
 >![[sunset_marseille2.jpg]]
 >Another sunset
 

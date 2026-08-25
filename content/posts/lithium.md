@@ -53,6 +53,8 @@ What they find is the so-called Spite plateau, a nearly constant level of lithiu
 
 Researchers have explored all sorts of explanations: maybe lithium is being depleted inside stars, maybe cosmic rays are breaking it down, or maybe there’s some brand-new physics at play that we haven’t discovered yet [@Pospelov2010]. 
 
+
+
 >[!caption]
 >![[spite_plateau.png]]
 >Lithium abundances in selected metal-poor Galactic halo stars. For each star, elemental Li = $^6$Li + $^7$Li is plotted at the star’s metallicity \[Fe/H\] = log10\[(Fe/H)$_{obs}$/(Fe/H)$_⊙$]. The flatness of Li vs Fe is the “Spite plateau” and indicates that the bulk of the lithium is unrelated to Galactic nucleosynthesis processes and thus is primordial. The horizontal band gives the BBN+WMAP prediction; the gap between this and the plateau illustrates the $^7$Li problem. Points below the plateau show $^6$Li abundances; the apparent plateau constitutes the $^6$Li problem. From Fields [-@Fields2011].

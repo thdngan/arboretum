@@ -9,7 +9,7 @@ enableToc: false
 
 >*One could say, in fact, that no story really has a beginning, and that no story really has an end, as all of the world's stories are as jumbled as the items in the arboretum, with their details and secrets all heaped together so that the whole story, from beginning to end, depends on how you look at it.*
 >
->&mdash; Lemony Snicket, The End
+>&mdash; Lemony Snicket, *The End*
 
 Hey, I’m Ngân. Welcome to my [digital arboretum](https://jzhao.xyz/posts/networked-thought)! 
 
@@ -20,13 +20,51 @@ Also I have no idea why there are penguins in an arboretum... They seem to have 
 # Directions for the Disoriented
 
 
-You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). There are also handy buttons on the bottom right to:  
+You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page, or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). Everything else lives in the buttons at the bottom right, or on your keyboard:
 
-<span class="shimmer-symbol">&ensp;<i class="fas fa-compass">&ensp;</i></span> Open the global map (for the adventurous)  
-<span class="shimmer-symbol">&nbsp;<i class="fas fa-dice">&ensp;</i></span> Pick a random post (for the chaotic)  
-<span class="shimmer-symbol">&nbsp;&nbsp;<i class="fas fa-sort">&nbsp;&ensp;</i></span>   Jump to the top/bottom (for the efficient)
+<table class="guide-keys">
+  <thead>
+    <tr>
+      <th>Button</th>
+      <th>What it does</th>
+      <th>Shortcut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="guide-buttons"><span class="guide-icon guide-icon--search"></span></td>
+      <td>Dig through the archives</td>
+      <td class="guide-shortcut"><kbd>Ctrl</kbd> + <kbd>K</kbd></td>
+    </tr>
+    <tr>
+      <td class="guide-buttons"><span class="guide-icon guide-icon--search"></span></td>
+      <td>Search by tag instead</td>
+      <td class="guide-shortcut"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd></td>
+    </tr>
+    <tr>
+      <td class="guide-buttons"><span class="guide-icon guide-icon--map"></span></td>
+      <td>Open the global map</td>
+      <td class="guide-shortcut"><kbd>Ctrl</kbd> + <kbd>G</kbd></td>
+    </tr>
+    <tr>
+      <td class="guide-buttons"><span class="guide-icon guide-icon--dice"></span></td>
+      <td>Pick a random post</td>
+      <td class="guide-shortcut"><kbd>Shift</kbd> + <kbd>R</kbd></td>
+    </tr>
+    <tr>
+      <td class="guide-buttons"><span class="guide-icon guide-icon--up"></span><span class="guide-icon guide-icon--down"></span></td>
+      <td>Jump to the top / bottom</td>
+      <td class="guide-shortcut">&mdash;</td>
+    </tr>
+    <tr>
+      <td class="guide-buttons"></td>
+      <td>Close the search or the map</td>
+      <td class="guide-shortcut"><kbd>Esc</kbd></td>
+    </tr>
+  </tbody>
+</table>
 
-There's also a **search tool** at the top (or just hit `Ctrl+K`) to dig through the archives.
+On a Mac, press <kbd>&#8984;</kbd> wherever the table says <kbd>Ctrl</kbd>.
 
 Or if you just wanna see what kind of topics I’ve dabbled in, here are some of the main ones: 
 

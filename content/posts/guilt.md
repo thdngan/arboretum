@@ -17,6 +17,6 @@ We talked a lot about the guilt of leaving home. This is the part of studying ab
 
 My internet friend shared their own struggles with parental expectations and the realization that a conventional life wouldn't bring them fulfillment either. It was so incredibly validating to hear!
 
-I still have a lot of anger about how the world is structured. I hate the concept of [[geographical luck]]. I hate that the ability to dream about other planets is so heavily constrained by the passport you hold. I want to build a career in science. I want to discover things and not be bogged down by these nonsensical social constructs that are merely products of their time. Corporate jobs feel like the furthest thing from that kind of intellectual challenge.
+I still have a lot of anger about how the world is structured. I hate that a person's whole life hinges on an [[geographical luck|accident of birthplace]]. I hate that the ability to dream about other planets is so heavily constrained by the passport you hold. I want to build a career in science. I want to discover things and not be bogged down by these nonsensical social constructs that are merely products of their time. Corporate jobs feel like the furthest thing from that kind of intellectual challenge.
 
 I'm still trying to figure out how to carry the guilt. I think it's just a permanent fixture now. But hearing someone else articulate the exact same midnight anxieties makes the weight a little easier to manage.
