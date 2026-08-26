@@ -18,11 +18,11 @@ draft: false
 >![[remote_sensing.jpg]]
 >Remote sensing class
 
-The two-plus years I spent in Hà Nội were the hardest stretch of my life so far, and I spent most of them waiting to find out whether I had chosen right.
+Hà Nội was hard for two-plus years, and I spent most of them aching to find out whether I had chosen right.
 
-The worries kept a schedule. They came after midnight, once there was nothing left to submit or reply to, and they asked the same 2 questions in rotation: whether I was actually capable of the thing I *think* I loved, and how much longer it would take me to stand on my own. Scholarships covered my tuition. What they didn't cover was rent and food and the small daily arithmetic of living, and that part still came from my parents. Having parents who can cover it is more than most people get. It still didn't stop me wanting to close the gap myself.
+The worries kept a schedule. They came after midnight, once there was nothing left to submit or reply to, and they asked the same 2 questions in rotation: whether I was actually capable of the thing I *thought* I loved, and how much longer it would take me to stand on my own. Scholarships covered my tuition. What they didn't cover was rent and food and the small daily arithmetic of living, and that part still came from my parents. Having parents who can cover it is more than most people get, though of course it didn't stop me from wanting to close the gap myself.
 
-I couldn't picture where I would be in a few years, or whether all the effort I was putting into finding opportunities would ever be recognized, or what I would do if none of it worked. Bachelor's, then master's, then hunting for a PhD, then a postdoc, or scattering applications into industry. It sounded both very far away and very tiring, and on the worst nights I did the arithmetic on how old I would be by the end of it.
+I couldn't picture where I would be in a few years, or whether all the effort I was putting into finding opportunities would ever be recognized, or what I would do if none of it worked. Bachelor's, then master's, then hunting for a PhD, then a postdoc, or scattering applications into industry. It all sounded very far away and very tiring, and on the worst nights I did the maths in my head on how old and broke I would be by the end of it.
 
 >[!caption_row]
 >
@@ -40,11 +40,11 @@ I couldn't picture where I would be in a few years, or whether all the effort I 
 >![[hotpot.jpg]]
 >Hotpot at a friend's
 
-But in those same two years, I also slowly learned that being alone didn't have to be a punishment. That a milk tea at the end of an exam week, or a *bạc xỉu* drunk slowly on a plastic stool while the traffic went by, counted as a reason to keep going. I learned the city on foot and by motorbike, sometimes with friends and sometimes on my own, until the wandering stopped feeling like something I was doing to fill time.
+But in those same two years, I also slowly learned that being alone didn't have to be a punishment. That a milk tea at the end of an exam week, or a *bạc xỉu* drunk slowly on a plastic stool while the traffic went by, counted as a reason to keep going. I learned the city on foot and by motorbike, sometimes with friends and sometimes on my own. At first it was a duty: you are young and far from home, so you are supposed to be out seeing things, and I went out so I could not accuse myself later of having wasted it. Then somewhere along the way the accounting stopped, and I was just riding, watching people at intersections, finding cafés, going to films by myself because I wanted to see them.
 
-I made friends from all three regions of the country. We crowded around hotpot in each other's apartments until the broth went cloudy and nobody could reach the good pieces without standing up. We grilled meat on the balcony. We pulled all-nighters to finish group presentations and rode back to school all the way from Long Biên the next morning through fog thick enough to erase the bridge, which, given my motorcycle skills, should probably have frightened me more than it did.
+I made friends from all three regions of the country. We crowded around hotpot in each other's apartments until the broth went cloudy and nobody could reach the good pieces without standing up. We grilled dried squid on the balcony of an abandoned building, over a saucer of alcohol and a borrowed lighter, and it drizzled on us the whole time. We pulled all-nighters to finish group presentations and rode back to school all the way from Long Biên the next morning through fog thick enough to erase the bridge, which, given my motorcycle skills, should probably have frightened me more than it did.
 
-Those two years hurt. Yet they also taught me how to sit with the hurt until it passed, and how to stay in the day I was actually in instead of the ones I kept inventing.
+All of it was good, yet at the same time none of it made me any surer of myself. I could have a pleasant day and still lie awake afterwards, running the same scary scenarios about the abstract shape of a future career. What changed things was the summer in Taipei. I came back to Hà Nội for my third and last year of university with a lighter heart and more conviction, still working towards the future but no longer living in it at the expense of the day I was in.
 
 >[!caption_row]
 >
@@ -56,15 +56,15 @@ Those two years hurt. Yet they also taught me how to sit with the hurt until it 
 
 # Taipei
 
-The real turning point for my academic path was the 2 months in Taipei.
+So, the real turning point for my academic path was the 2 months in Taipei.
 
 It started with a summer research program I applied to with a group of friends. I got invited to interview, and then... I cancelled myself out by forgetting that Taipei was 1 hour ahead of Hà Nội.
 
 I made the interviewer wait for an entire hour!
 
-I hated myself for it, for wasting their time, for losing a rare opportunity to something so stupid. I thought: that's it. My friends are going abroad this summer and I'll be stuck at home, moping, with nothing interesting to put on my CV.
+I cursed myself for it, for wasting their time, for losing a rare opportunity to something so stupid. I thought: that's it. My friends are going abroad this summer and I'll be stuck at home, moping, with nothing interesting to put on my CV.
 
-Then a second chance came, not long after: another summer program in Taiwan, newer, more focused on theoretical research. After the first failure I wasn't letting myself hope. But if you don't try, there's no chance of succeeding at all. So I went through the 11,103 steps of applying, asking for recommendation letters, and interviewing (with an extra layer of time-zone paranoia), and eventually the supervisor I'd picked said yes. I landed in Taipei.
+Then a second chance came, not long after: another summer program in Taiwan, newer, more focused on theoretical research. After the first failure I wasn't letting myself hope. But not hoping and not trying are different things. So once again, I went through the 11,103 steps of applying, asking for recommendation letters, and interviewing (this time with an extra layer of time-zone paranoia), and eventually the supervisor I'd picked said yes. I landed in Taipei.
 
 >[!caption_row]
 >![[taipei.jpg]]
@@ -76,7 +76,7 @@ Then a second chance came, not long after: another summer program in Taiwan, new
 >![[taiwan.jpg]]
 >Somewhere... in Taipei, or near Taipei
 
-Those 2 months are still the happiest period I've had since starting university. The internship paid a stipend, the first money I ever earned from the thing I actually wanted to do, and I checked the balance far more often than there was any reason to. My roommate was from Myanmar and was one of the kindest people I've ever met, always with snacks to share and somewhere new to suggest. My Taiwanese friends and my supervisor were gentle and warm, and they took all of us interns from Taipei all the way down to Kenting, at the southern tip of the island.
+In my first 2 years of adulthood in Hà Nội, I had never managed to be relaxed and to work well at the same time. And somehow a summer in Taipei was enough to show me that wanting both wasn't greedy, and that it was possible! The internship paid a stipend, the first money I ever earned from the thing I actually wanted to do, and I checked the balance a lot, for no real reason. My roommate was from Myanmar and was one of the kindest people I've ever met, always with snacks to share and somewhere new to suggest. My Taiwanese friends and my supervisor were gentle and warm, and they took all of us interns from Taipei down to Kenting, at the southern tip of the island.
 
 >[!caption_row]
 >![[dumplings.jpg]]
@@ -102,7 +102,7 @@ That internship was also where I discovered that I'm completely obsessed with th
 >![[ratatouille.jpg]]
 >Ratatouille!
 
-Marseille has been the most peaceful place I've stayed (if you don't count the protests, or the night the building filled with shouting, or the footprints my roommate and I found the next morning, dried rust-brown, tracking down the hallway and the stairs).
+Marseille has been the most peaceful place I've stayed (if you don't count the protests, or the night the building filled with shouting, or the bloody footprints my roommate and I found the next morning, dried rust-brown, tracking down the hallway and the stairs).
 
 I think the laid-back French attitude rubbed off on me, because I got a little lazy too, and then started worrying that I wasn't being as productive as I'd been in Taipei. My friends from Taipei wrote me another long essay to tell me I was overthinking, as usual.
 
@@ -116,7 +116,7 @@ That was also the period when I was waiting for results from 2 graduate applicat
 
 People keep saying the French are difficult. My experience was that if you make the effort to say a few words in French first, most people are warm back. You just have to show you're trying to meet them halfway. It took me a while to get used to saying *bonjour* to every stranger I passed, and then it took me no time at all to miss it. (In retrospect, this may all just be a Southern France experience LMAO *\*cue the grumpy Parisians\**)
 
-What I remember most clearly is the weekend afternoons at Vieux-Port. The sun going down over the Mediterranean, chocolate melting in my hand faster than I could eat it, a band working through *Just the Two of Us* and some French songs I didn't recognize for the third time, and all around me people talking far too loudly about nothing.
+What I remember most clearly is the weekend afternoons at Vieux-Port. The sun going down over the Mediterranean, chocolate melting in my hand, a band working through some French songs I didn't recognize and *Just the Two of Us* for the third time, and all around me people talking far too loudly about nothing.
 
 >[!caption_column]
 >![[sunset_marseille.jpg]]
