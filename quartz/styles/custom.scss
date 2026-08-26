@@ -853,9 +853,23 @@ table.guide-keys {
   @media all and ($mobile) {
     font-size: 0.85em;
 
+    th,
+    td {
+      padding: 0.4rem 0.35rem;
+    }
+
+    // keep every combo on one line: with nowrap the table's auto layout has to
+    // reserve the full width for the widest shortcut (Ctrl + Shift + K) and
+    // takes the space from the description column, which wraps happily.
+    // letting it wrap instead broke combos mid-way, with the key boxes
+    // touching on the two lines.
     td.guide-shortcut {
-      text-align: left;
-      white-space: normal;
+      white-space: nowrap;
+    }
+
+    kbd {
+      font-size: 0.72em;
+      padding: 0.2em 0.35em;
     }
   }
 }
