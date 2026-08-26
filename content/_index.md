@@ -20,7 +20,7 @@ Also I have no idea why there are penguins in an arboretum... They seem to have 
 # Directions for the Disoriented
 
 
-You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page, or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). Everything else lives in the buttons at the bottom right, or on your keyboard:
+You can hop between posts and notes by clicking on **[[lithium|links like this]]** inside each page, or by using the **interactive map** (on desktop it's on the right, on mobile it's at the bottom). Everything else lives in the **search box** (up in the sidebar), the buttons at the bottom right, or on your keyboard:
 
 <table class="guide-keys">
   <thead>
