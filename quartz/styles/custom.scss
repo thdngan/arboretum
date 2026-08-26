@@ -291,6 +291,16 @@ em strong {
 //   }
 
 
+// the darkmode toggle ships as an inline-block, so it sits on a text baseline
+// and picks up a few px of descender space underneath. inside the Flex row that
+// makes its wrapper taller than the button and leaves the icon off-centre next
+// to the search box (most visible on mobile). as a block box there is no
+// baseline to sit on, so it centres properly.
+.darkmode {
+    display: block;
+    line-height: 0;
+}
+
 // force icons on same row in left sidebar
 .forced-row {
     // flex: 1;
