@@ -4,7 +4,7 @@ date: 2021-11-01
 enableToc: false
 ---
 
-<img id="banner" src="/images/banner.svg">
+<img id="banner" src="/images/banner.webp" alt="Penguins wandering along a shoreline, drawn by hand">
 
 
 >*One could say, in fact, that no story really has a beginning, and that no story really has an end, as all of the world's stories are as jumbled as the items in the arboretum, with their details and secrets all heaped together so that the whole story, from beginning to end, depends on how you look at it.*
