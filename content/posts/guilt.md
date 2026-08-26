@@ -7,16 +7,17 @@ tags:
 draft: false
 icon: fa-regular fa-envelope
 ---
-A few months ago I posted a long rant on a forum, about the bureaucracy of visas, about being an international student from a developing country trying to survive in one of the most expensive cities in the world, about racist encounters on the street. It was a massive brain dump of pure frustration, perhaps too heavy and depressing for many people. But someone actually read it. 
 
-They sent me a private message. They were a student from another South East Asian country who navigated their own studies in the Netherlands. We ended up exchanging massive, sprawling messages about everything from the 3 Body Problem to the strange nuances of Southeast Asian cultures. 
 
-It's strange how you can feel completely isolated in a crowded city and then be understood that well by a stranger on the internet. 
+A few months ago I posted a long rant on a forum. It was past midnight, which has always been when I do my worst thinking. Visas, and the folders of paper you assemble to prove you're allowed to be standing where you're standing. The arithmetic of living in one of the most expensive cities in the world. The racial slurs ("fuck you China girl") strangers have felt free to throw at me on the street. I wrote it in one sitting and posted it without rereading, which was probably the only way it was ever going to get posted at all. It was a massive brain dump of pure frustration, perhaps too heavy and depressing for many people. But someone actually read it.
 
-We talked a lot about the guilt of leaving home. This is the part of studying abroad that the shiny university brochures never mention. You miss the milestones, you go home once a year and notice your parents look older, you look at their empty fridge and compare it to the meals you used to share. And you constantly weigh your niche academic dreams against the stability of a traditional corporate job that would let you support them properly. 
+They wrote back. Another Southeast Asian student who navigated their own studies in the Netherlands. We ended up exchanging massive, sprawling messages about everything from the 3 Body Problem to the untranslatable ways our two cultures ask us to be good children. You can be invisible in a city of 2 million and completely legible to a stranger you will probably never meet.
 
-My internet friend shared their own struggles with parental expectations and the realization that a conventional life wouldn't bring them fulfillment either. It was so incredibly validating to hear!
+We talked a lot about the guilt of leaving home. This is the part of studying abroad that the shiny university brochures never mention. You miss the milestones, you go home once a year and each time your parents have aged more than a year's worth. You look at their empty fridge and compare it to the warm fulfilling meals you used to share. And then you constantly weigh your small, strange, unprofitable, niche academic dreams against the stability of a traditionial corporate job that would let you support them properly, and you do the maths again and again, and it comes out the same way it always does, and you get on the plane anyway.
 
-I still have a lot of anger about how the world is structured. I hate that a person's whole life hinges on an [[geographical luck|accident of birthplace]]. I hate that the ability to dream about other planets is so heavily constrained by the passport you hold. I want to build a career in science. I want to discover things and not be bogged down by these nonsensical social constructs that are merely products of their time. Corporate jobs feel like the furthest thing from that kind of intellectual challenge.
+I had assumed this was a private failure of gratitude, specific to me. Apparently not. My penpal is negotiating the same thing from the other direction, and has arrived at the same unhelpful conclusion: that the conventional life wouldn't have made them happy either, which removes the one clean argument for taking it.
 
-I'm still trying to figure out how to carry the guilt. I think it's just a permanent fixture now. But hearing someone else articulate the exact same midnight anxieties makes the weight a little easier to manage.
+What's left underneath the guilt is anger, and I don't think the anger is going anywhere either. A person's entire life hinges on an [[geographical luck|accident of birthplace]]. Whether you get to spend your one life dreaming about space and other planets is heavily constrained by the passport you hold. All these social constructs invented by people who are mostly dead now, and we are all still arranging our lives around them.
+
+So I don't think the guilt would ever go away. I've stopped waiting for it to. But somewhere south of here, on the other side of the planet, someone is typing the same sentiments into a different window, and that turns out to be strangely comforting.
+
