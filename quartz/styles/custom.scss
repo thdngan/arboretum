@@ -291,13 +291,15 @@ em strong {
 //   }
 
 
-// the darkmode toggle ships as an inline-block, so it sits on a text baseline
-// and picks up a few px of descender space underneath. inside the Flex row that
-// makes its wrapper taller than the button and leaves the icon off-centre next
-// to the search box (most visible on mobile). as a block box there is no
-// baseline to sit on, so it centres properly.
-.darkmode {
-    display: block;
+// the darkmode and reader-mode toggles are inline-blocks, so the Flex wrapper
+// around each one gets a text line box: its strut adds a few px of descender
+// space below the button, so the wrapper is taller than the icon and the icon
+// ends up off-centre next to the search box. zeroing the wrapper's line-height
+// makes it hug the button.
+// (setting display:block on the buttons themselves would work too, but
+// .readermode is also .desktop-only and must stay display:none on mobile.)
+div:has(> .darkmode),
+div:has(> .readermode) {
     line-height: 0;
 }
 
