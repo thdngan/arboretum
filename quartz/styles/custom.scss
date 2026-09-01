@@ -824,6 +824,38 @@ div:has(> .readermode) {
 
 
 
+// The right sidebar sets a 32px gap between blocks, but two blocks add space of
+// their own on top of it, so Backlinks -> Tags read wider than Map -> keys.
+// The graph and backlinks headings are already zeroed; the tag list's was not.
+.taglist > h3 {
+  margin: 0;
+}
+
+.backlinks > ul {
+  margin-bottom: 0;
+}
+
+// base.scss reserves 30px under the last item of a ul.overflow to clear its
+// fade-out gradient, but backlinks.scss turns that gradient off - so here it is
+// only a trailing gap, and it is what made Backlinks -> Tags read wide.
+.backlinks > ul.overflow > li:last-of-type {
+  margin-bottom: 0;
+}
+
+// Divides the comments from the page above them.
+.dinkus {
+  margin: 2.5rem 0 1.5rem;
+  font-family: var(--codeFont);
+  font-size: 1.15rem;
+  line-height: 1;
+  text-align: center;
+  color: var(--gray);
+  letter-spacing: 0.85em;
+  // the tracking trails off the last glyph; pull the group back to centre
+  text-indent: 0.85em;
+  user-select: none;
+}
+
 // Visibility helpers that only ever hide, splitting at $desktop.
 // Quartz's own .desktop-only / .mobile-only set `display` in the visible state,
 // which overrides a component's own display - a grid row collapses to block and
