@@ -26,12 +26,9 @@ export default ((opts: KeyRowOptions) => {
     const home = resolveRelative(fileData.slug!, "index" as SimpleSlug)
     const isCompact = (key: KeyName) => !!opts.stack && COMPACT_IN_SIDEBAR.includes(key)
 
-    // squares first, so the wide key that follows fills out the rest of the row
-    // rather than being stranded on a line of its own (Array.sort is stable, so
-    // the authored order survives within each group)
-    const keys = opts.stack
-      ? [...opts.keys].sort((a, b) => Number(isCompact(b)) - Number(isCompact(a)))
-      : opts.keys
+    // authored order, no reshuffling: on the home sidebar that reads
+    // [getting around][colophon square] then [main hub] on the next line
+    const keys = opts.keys
 
     const cls = (key: KeyName) =>
       isCompact(key) ? "home-modal-button home-modal-button--compact" : "home-modal-button"
@@ -120,6 +117,8 @@ export default ((opts: KeyRowOptions) => {
           displayClass,
           "home-modal-buttons",
           ...(opts.stack ? ["home-modal-buttons--stack"] : []),
+          // a pair still fits one row on a phone; three keys do not
+          ...(!opts.stack && opts.keys.length === 2 ? ["home-modal-buttons--pair"] : []),
         )}
       >
         {keys.map(render)}

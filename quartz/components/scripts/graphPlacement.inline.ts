@@ -1,34 +1,46 @@
 // Below desktop the right sidebar is a grid row that comes after the whole
-// centre column, so the map ends up under the Logbook and its comments. The
-// panel can't be re-placed with grid alone (.page-footer is nested inside
-// .center, which is a plain block), so the node itself moves.
+// centre column, so the map and backlinks end up under the Logbook and its
+// comments. The panel can't be re-placed with grid alone (.page-footer is
+// nested inside .center, which is a plain block), so the node itself moves.
+//
+// The whole sidebar moves, not just the graph: below desktop .sidebar.right is
+// already `flex-direction: row` with `& > * { flex: 1 }`, so relocating it puts
+// the map and the backlinks side by side for free.
 //
 // This runs as a beforeDOMLoaded script purely for ordering: it registers its
 // `nav` listener before graph.inline.ts registers its own, so the relocation
 // happens before the graph renders and the canvas is sized for where it lands.
 const NON_DESKTOP = "(max-width: 1200px)"
 
-function placeGraph() {
-  const graph = document.querySelector<HTMLElement>(".graph")
+function placeSidebar() {
   const sidebar = document.querySelector<HTMLElement>(".sidebar.right")
   const pageFooter = document.querySelector<HTMLElement>(".page-footer")
-  if (!graph || !pageFooter) return
+  const body = document.querySelector<HTMLElement>("#quartz-body")
+  if (!sidebar || !pageFooter || !body) return
 
   if (window.matchMedia(NON_DESKTOP).matches) {
-    if (graph.parentElement === pageFooter) return
-    // above the Logbook heading, or last if this page has comments turned off
+    if (sidebar.parentElement === pageFooter) return
+    // above the dinkus, so the divider still reads as the start of the comments
     const anchor =
-      pageFooter.querySelector(":scope > h2") ?? pageFooter.querySelector(":scope > .giscus")
+      pageFooter.querySelector(":scope > .dinkus") ??
+      pageFooter.querySelector(":scope > h2") ??
+      pageFooter.querySelector(":scope > .giscus")
     if (anchor) {
-      pageFooter.insertBefore(graph, anchor)
+      pageFooter.insertBefore(sidebar, anchor)
     } else {
-      pageFooter.appendChild(graph)
+      pageFooter.appendChild(sidebar)
     }
-  } else if (sidebar && graph.parentElement !== sidebar) {
-    // back to the top of the sidebar, above Backlinks
-    sidebar.insertBefore(graph, sidebar.firstChild)
+  } else {
+    if (sidebar.parentElement === body) return
+    // back to its grid cell, between the centre column and the site footer
+    const footer = body.querySelector(":scope > footer")
+    if (footer) {
+      body.insertBefore(sidebar, footer)
+    } else {
+      body.appendChild(sidebar)
+    }
   }
 }
 
-document.addEventListener("nav", placeGraph)
-window.matchMedia(NON_DESKTOP).addEventListener("change", placeGraph)
+document.addEventListener("nav", placeSidebar)
+window.matchMedia(NON_DESKTOP).addEventListener("change", placeSidebar)

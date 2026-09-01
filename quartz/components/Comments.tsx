@@ -37,8 +37,8 @@ export default ((opts: Options) => {
 
     return (
       <>
-      {/* <hr/> */}
-      {/* <br /> */}
+      {/* a dinkus, dividing the comments from whatever the page put above them */}
+      <div class="dinkus" aria-hidden="true">***</div>
       <h2>💬 Logbook</h2>
       <br />
       {/* <p-code-font>
