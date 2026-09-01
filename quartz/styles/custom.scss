@@ -882,6 +882,24 @@ div:has(> .readermode) {
   margin-bottom: 0;
 }
 
+// The mobile top bar measured 74px around ~34px of actual content. Besides the
+// padding (trimmed in explorer.scss), the wordmark carried baseline slack: its
+// <a> measured 39px around a 24px glyph, because an inline SVG sits on the text
+// baseline and drags the line box down with it. Laying the link out as a flex
+// row removes that phantom height without changing the size of anything drawn.
+@media all and ($mobile) {
+  .sidebar.left .page-title a {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .sidebar.left .explorer {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 // Visibility helpers that only ever hide, splitting at $desktop.
 // Quartz's own .desktop-only / .mobile-only set `display` in the visible state,
 // which overrides a component's own display - a grid row collapses to block and

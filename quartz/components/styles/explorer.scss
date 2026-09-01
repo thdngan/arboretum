@@ -16,7 +16,9 @@
       box-sizing: border-box;
       position: sticky;
       background-color: var(--light);
-      padding: 1rem 0 1rem 0;
+      // the bar is only ~34px of content; a full 1rem above and below made it
+      // read much heavier than it needed to
+      padding: 0.5rem 0;
       margin: 0;
     }
 
