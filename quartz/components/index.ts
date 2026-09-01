@@ -29,6 +29,7 @@ import ReaderMode from "./ReaderMode"
 import BlogHome from "./BlogHome"
 import WideOnly from "./WideOnly"
 import NarrowOnly from "./NarrowOnly"
+import Dinkus from "./Dinkus"
 import KeyRow from "./KeyRow"
 import KeyDialogs from "./KeyDialogs"
 
@@ -64,6 +65,7 @@ export {
   BlogHome,
   WideOnly,
   NarrowOnly,
+  Dinkus,
   KeyRow,
   KeyDialogs,
 }

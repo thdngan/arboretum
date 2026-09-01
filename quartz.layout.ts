@@ -61,6 +61,13 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) =>
         !isHome(page.fileData.slug!) && !isListPage(page.fileData.slug!),
     }),
+    // Recent writings only renders on the home page (RecentNotes returns empty
+    // elsewhere), so its dinkuses are gated the same way or they would stack up
+    // with nothing between them.
+    Component.ConditionalRender({
+      component: Component.Dinkus({ mobileOnly: true }),
+      condition: (page) => isHome(page.fileData.slug!),
+    }),
     Component.MobileOnly(
       Component.RecentNotes({
         title: "Recent writings",
@@ -70,6 +77,10 @@ export const sharedPageComponents: SharedLayout = {
         linkToMore: "posts/" as SimpleSlug,
       }),
     ),
+    Component.ConditionalRender({
+      component: Component.Dinkus({ mobileOnly: true }),
+      condition: (page) => isHome(page.fileData.slug!),
+    }),
     Component.Comments({
       provider: 'giscus',
       options: {

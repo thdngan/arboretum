@@ -154,8 +154,10 @@
 
   @media all and ($mobile) {
     padding: 0.75rem;
-    // clear of the mobile browser chrome and the floating buttons
-    align-items: flex-end;
+    // centred, like the global map. Anchoring to the bottom left the panel
+    // hugging the viewport edge with only the padding beneath it, and since the
+    // offset then depends on content height the two dialogs sat at visibly
+    // different heights.
   }
 }
 

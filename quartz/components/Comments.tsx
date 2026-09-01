@@ -40,7 +40,7 @@ export default ((opts: Options) => {
       {/* a dinkus, dividing the comments from whatever the page put above them.
           <hr> so it renders exactly like one written as `---` in a post; the
           class is only an anchor for the sidebar placement script */}
-      <hr class="dinkus" />
+      <hr class="dinkus dinkus--logbook" />
       {/* a tinted glyph in a shimmer-symbol, the same pattern the Interactive
           Map, Backlinks and Tags headings use - the colour emoji was the only
           one of the four outside that system */}
