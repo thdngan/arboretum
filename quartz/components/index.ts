@@ -27,6 +27,7 @@ import ConditionalRender from "./ConditionalRender"
 import Flex from "./Flex"
 import ReaderMode from "./ReaderMode"
 import BlogHome from "./BlogHome"
+import HomeModals from "./HomeModals"
 
 export {
   ArticleTitle,
@@ -58,4 +59,5 @@ export {
   ConditionalRender,
   ReaderMode,
   BlogHome,
+  HomeModals,
 }

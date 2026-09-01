@@ -1,0 +1,230 @@
+@use "../../styles/variables.scss" as *;
+
+// three keys on the landing page: two pop a dialog open, one leaves for the
+// main site. Built from the same ingredients as the <kbd> keys in the guide
+// table (see "SHORTCUTS / GUIDE" in styles/custom.scss) - the code font, a
+// --lightgray fill, and a heavier bottom border standing in for key depth.
+.home-modal-buttons {
+  // grid rather than flex so every key is the same width: auto-flow column with
+  // 1fr tracks gives N equal columns for N buttons, with no count hardcoded.
+  // (content-width pills centred in a row read as accidentally ragged.)
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  // wide enough that the longest label ("getting around", ~14 mono characters
+  // plus icon and padding) still fits one line in a third of the row
+  max-width: 40rem;
+  margin: 3rem auto 2rem;
+
+  // not just $mobile: through the whole tablet band the sidebars squeeze the
+  // centre column enough that three keys in a row wrap to two lines
+  @media all and not ($desktop) {
+    grid-auto-flow: row;
+  }
+}
+
+.home-modal-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-family: var(--codeFont);
+  font-size: 0.95rem;
+  // buttons don't inherit the body weight, so state it: these should read as
+  // body text on a key, not as a heading
+  font-weight: $normalWeight;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  // deliberately not `all`: transform and border-width drive the press, and a
+  // 200ms press feels mushy
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  // the "main hub" button is an <a>, which the global link rule would
+  // otherwise underline
+  text-decoration: none;
+
+  // NOT --lightgray, tempting though it is for a keycap: composited over the
+  // page that fill leaves the label at 4.24:1, under the 4.5:1 AA floor. The
+  // #tags get away with the same fill only because they are bold and larger.
+  // On --light the label measures 5.22:1 light / 8.21:1 dark at normal weight.
+  background: var(--light);
+  border: 1px solid var(--gray);
+  // key depth, same trick as <kbd> but scaled up for a button-sized key
+  border-bottom-width: 3px;
+  // same teal as the icon, so the label, glyph and border read as one object
+  color: var(--secondary);
+
+  &:hover {
+    // the label is already --secondary at rest, so the hover is carried by the
+    // fill and the border warming up to match it
+    background: var(--highlight);
+    border-color: var(--secondary);
+    // `a:hover` forces --tertiary with !important, so the anchor-flavoured
+    // button needs this to stay the same colour as its <button> siblings
+    color: var(--secondary) !important;
+  }
+
+  // the key travels: drop it by the 2px of depth it gives up
+  &:active {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  .shimmer-symbol {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  // marks the one key that leaves the site
+  .home-modal-button-external {
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.9rem;
+  }
+}
+
+.home-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  overscroll-behavior: contain;
+
+  &.active {
+    display: flex;
+  }
+
+  @media all and ($mobile) {
+    padding: 0.75rem;
+    // clear of the mobile browser chrome and the floating buttons
+    align-items: flex-end;
+  }
+}
+
+.home-modal-panel {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  max-height: 85vh;
+  // iOS: vh counts the collapsing address bar, dvh doesn't
+  max-height: 85dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 2rem 2rem 1.5rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+
+  & > h3 {
+    margin: 0 2.5rem 1.2rem 0;
+    font-size: 1.2rem;
+    color: var(--dark);
+  }
+
+  @media all and ($mobile) {
+    padding: 1.5rem 1.1rem 1.1rem;
+    max-height: 88vh;
+    max-height: 88dvh;
+  }
+}
+
+.home-modal-body {
+  color: var(--darkgray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  & > p {
+    margin: 0 0 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // the guide table already handles its own widths; don't let the modal's
+  // narrower column push it into a horizontal scroll
+  table.guide-keys {
+    max-width: 100%;
+  }
+
+  // the modals render in .page-footer, outside <article>, so they miss the
+  // rule that strips the highlight pill off body-text wikilinks. repeat it
+  // here so these links look like every other wikilink on the site (the pill's
+  // side padding also left a visible gap before trailing punctuation).
+  a.internal {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--nodefirst);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: auto;
+  }
+}
+
+.home-modal-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: var(--lightgray);
+    color: var(--dark);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+// keeps the page behind the modal from scrolling under it on touch devices
+html.home-modal-open,
+html.home-modal-open body {
+  overflow: hidden;
+}

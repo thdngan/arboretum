@@ -749,34 +749,70 @@ div:has(> .readermode) {
   margin: 3rem 0 2rem 0;
 }
 
-/* The button itself, matching Linktree links */
+/* Same look as the landing page's .home-modal-button (see
+   components/styles/homeModals.scss): a scaled-up <kbd> keycap. */
 .blog-home-button {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.1); 
-  color: var(--secondary);
-  border: solid var(--secondary) 2px;
-  border-radius: 10px;
-  font-size: 1rem;
-  padding: 12px 25px;
-  text-decoration: none !important; /* Force remove underline */
-  transition: all .05s ease;
   display: inline-flex;
   align-items: center;
-  font-weight: 600;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-family: var(--codeFont);
+  font-size: 0.95rem;
+  font-weight: $normalWeight;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none !important; /* Force remove underline */
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 
-  /* Hover effects from Linktree */
+  // NOT --lightgray, tempting though it is for a keycap: composited over the
+  // page that fill leaves the label at 4.24:1, under the 4.5:1 AA floor. The
+  // #tags get away with the same fill only because they are bold and larger.
+  // On --light the label measures 5.22:1 light / 8.21:1 dark at normal weight.
+  background: var(--light);
+  border: 1px solid var(--gray);
+  // key depth, same trick as <kbd> but scaled up for a button-sized key
+  border-bottom-width: 3px;
+  // same teal as the icon, so the label, glyph and border read as one object
+  color: var(--secondary) !important;
+
+  // the key travels: drop it by the 2px of depth it gives up
+  &:active {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+  }
+
   &:hover {
-    background-color: var(--secondary);
-    color: var(--light) !important; /* var(--light) is the blog background */
-    // transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    // the label is already --secondary at rest, so the hover is carried by the
+    // fill plus the border warming up to match it
+    background: var(--highlight);
+    border-color: var(--secondary);
+    // this is an <a>, and the global `a:hover` rule forces --tertiary with
+    // !important. that beats the resting colour above on specificity
+    // ((0,1,1) vs (0,1,0)), so it has to be restated here
+    color: var(--secondary) !important;
+  }
 
-    /* Ensures the icon and text both change color on hover */
-    .shimmer-symbol {
-        color: var(--light);
-        -webkit-text-fill-color: var(--light);
-    }
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  .shimmer-symbol {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.9rem;
   }
 }
 

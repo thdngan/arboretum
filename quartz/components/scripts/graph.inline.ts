@@ -725,6 +725,12 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   containerIcon?.addEventListener("click", renderGlobalGraph)
   window.addCleanup(() => containerIcon?.removeEventListener("click", renderGlobalGraph))
 
+  // registerEscapeHandler only dismisses on clicks that land on the backdrop
+  // itself, so the close button needs its own listener
+  const closeButton = container?.querySelector<HTMLElement>(".global-graph-close")
+  closeButton?.addEventListener("click", hideGlobalGraph)
+  window.addCleanup(() => closeButton?.removeEventListener("click", hideGlobalGraph))
+
   document.addEventListener("keydown", shortcutHandler)
   window.addCleanup(() => document.removeEventListener("keydown", shortcutHandler))
 })

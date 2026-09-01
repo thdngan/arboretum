@@ -35,6 +35,11 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   // afterBody: Explorer[],
   afterBody: [
+    // the landing page's "how to get around" / "acknowledgements" pop-ups
+    Component.ConditionalRender({
+      component: Component.HomeModals(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
     Component.BlogHome(),
     Component.MobileOnly(
       Component.RecentNotes({

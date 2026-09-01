@@ -49,6 +49,16 @@
     display: none;
     overflow: hidden;
 
+    // shared by the map panel and the close button that has to sit on its
+    // corner; both are position: fixed and centred on the viewport, so the
+    // button's offsets are derived from these rather than from the panel box
+    --global-graph-width: 80vw;
+    --global-graph-height: 80vh;
+
+    @media all and not ($desktop) {
+      --global-graph-width: 90%;
+    }
+
     &.active {
       display: inline-block;
     }
@@ -62,11 +72,41 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      height: 80vh;
-      width: 80vw;
+      height: var(--global-graph-height);
+      width: var(--global-graph-width);
+    }
 
-      @media all and not ($desktop) {
-        width: 90%;
+    // matches .home-modal-close on the landing page's pop-ups
+    & > .global-graph-close {
+      position: fixed;
+      top: calc(50% - var(--global-graph-height) / 2 + 0.6rem);
+      right: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: none;
+      border: none;
+      border-radius: 4px;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        background: var(--lightgray);
+        color: var(--dark);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
       }
     }
   }

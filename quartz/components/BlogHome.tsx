@@ -11,10 +11,10 @@ const BlogHome: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
   return (
     <div class="blog-home-container">
       <a href={baseDir} class="blog-home-button">
-        <span class="shimmer-symbol" style={{ marginRight: "12px" }}>
+        <span class="shimmer-symbol">
           <i class="fas fa-home"></i>
         </span>
-        Home
+        home
       </a>
     </div>
   )
