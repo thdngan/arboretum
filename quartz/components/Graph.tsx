@@ -1,6 +1,8 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 // @ts-ignore
 import script from "./scripts/graph.inline"
+// @ts-ignore
+import placement from "./scripts/graphPlacement.inline"
 import style from "./styles/graph.scss"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
@@ -25,6 +27,10 @@ export interface D3Config {
 interface GraphOptions {
   localGraph: Partial<D3Config> | undefined
   globalGraph: Partial<D3Config> | undefined
+  // false drops the on-page map panel and keeps only the full-screen one, for
+  // pages that should still answer the floating map button and Ctrl+G without
+  // showing a map of their own
+  localPanel?: boolean
 }
 
 const defaultOptions: GraphOptions = {
@@ -66,21 +72,35 @@ export default ((opts?: Partial<GraphOptions>) => {
   const Graph: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const localGraph = { ...defaultOptions.localGraph, ...opts?.localGraph }
     const globalGraph = { ...defaultOptions.globalGraph, ...opts?.globalGraph }
+    const localPanel = opts?.localPanel ?? true
+
+    // The expand icon has to stay in the DOM even with the panel gone: the
+    // floating map button opens the map by dispatching a click at it. Without
+    // #graph-container, renderGraph() early-returns, so no local graph is drawn.
+    const expandIcon = (
+      <button id="global-graph-icon" aria-label="Global Graph" hidden={!localPanel}>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+          <path stroke-linecap="butt" d="M2 14 L14 2"/>
+          <path stroke-linecap="square" d="M14 2 L9 2"/>
+          <path stroke-linecap="square" d="M2 14 L7 14"/>
+          <path stroke-linecap="square" d="M14 2 L14 7"/>
+          <path stroke-linecap="square" d="M2 14 L2 9"/>
+        </svg>
+      </button>
+    )
+
     return (
       <div class={classNames(displayClass, "graph")}>
-        <h3><span class="shimmer-symbol"><i class="fas fa-compass">&nbsp;</i></span> Interactive Map</h3>
-        <div class="graph-outer">
-          <div id="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
-          <button id="global-graph-icon" aria-label="Global Graph">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
-            <path stroke-linecap="butt" d="M2 14 L14 2"/>
-            <path stroke-linecap="square" d="M14 2 L9 2"/>
-            <path stroke-linecap="square" d="M2 14 L7 14"/>
-            <path stroke-linecap="square" d="M14 2 L14 7"/>
-            <path stroke-linecap="square" d="M2 14 L2 9"/>
-          </svg>
-          </button>
-        </div>
+        {localPanel && (
+          <>
+            <h3><span class="shimmer-symbol"><i class="fas fa-compass">&nbsp;</i></span> Interactive Map</h3>
+            <div class="graph-outer">
+              <div id="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
+              {expandIcon}
+            </div>
+          </>
+        )}
+        {!localPanel && expandIcon}
         <div id="global-graph-outer">
           <div id="global-graph-container" data-cfg={JSON.stringify(globalGraph)}></div>
           {/* sibling of the container, not a child: renderGraph() wipes the
@@ -108,6 +128,7 @@ export default ((opts?: Partial<GraphOptions>) => {
 
   Graph.css = style
   Graph.afterDOMLoaded = script
+  Graph.beforeDOMLoaded = placement
 
   return Graph
 }) satisfies QuartzComponentConstructor

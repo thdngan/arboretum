@@ -23,6 +23,31 @@
   @media all and not ($desktop) {
     grid-auto-flow: row;
   }
+
+  // In the right sidebar, flex rather than the equal-width grid: the iconic
+  // keys shrink to squares and the labelled ones absorb the rest of the row, so
+  // the column stops being a stack of identical full-width rectangles sitting
+  // under an equally wide map panel.
+  &--stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: none;
+    margin: 0;
+
+    > .home-modal-button {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    > .home-modal-button--compact {
+      flex: 0 0 auto;
+      width: 2.75rem;
+      padding-left: 0;
+      padding-right: 0;
+      gap: 0;
+    }
+  }
 }
 
 .home-modal-button {
@@ -52,11 +77,13 @@
   // otherwise underline
   text-decoration: none;
 
-  // NOT --lightgray, tempting though it is for a keycap: composited over the
-  // page that fill leaves the label at 4.24:1, under the 4.5:1 AA floor. The
-  // #tags get away with the same fill only because they are bold and larger.
-  // On --light the label measures 5.22:1 light / 8.21:1 dark at normal weight.
+  // A touch darker than the page so the keys read as objects sitting on it,
+  // but lighter than either --lightgray (which measures 4.24:1, under the 4.5
+  // AA floor) or --highlight (4.50, kept for hover). 40% of the way from the
+  // page toward --lightgray measures 4.81:1 light / 6.74:1 dark.
+  // The plain declaration first is the fallback for engines without color-mix.
   background: var(--light);
+  background: color-mix(in srgb, var(--lightgray) 40%, var(--light));
   border: 1px solid var(--gray);
   // key depth, same trick as <kbd> but scaled up for a button-sized key
   border-bottom-width: 3px;
