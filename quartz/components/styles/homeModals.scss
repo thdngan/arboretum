@@ -136,15 +136,28 @@
 }
 
 .home-modal {
+  // Geometry and backdrop copied from the global map (#global-graph-outer in
+  // graph.scss) so the two read identically.
+  //
+  // top/height rather than `inset: 0`: on iOS Safari a fixed element with
+  // `bottom: 0` is laid out against the small viewport (toolbars showing),
+  // while `height: 100%` resolves against the initial containing block - the
+  // large viewport. With inset the overlay stopped short of the strip behind
+  // Safari's bottom bar, leaving it unblurred.
+  //
+  // And no background tint: the map has none, and a scrim over the blur made
+  // that unblurred strip read as an obvious crisp rectangle.
   position: fixed;
-  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
   z-index: 9999;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(4px);
   overscroll-behavior: contain;
 
@@ -263,4 +276,11 @@
 html.home-modal-open,
 html.home-modal-open body {
   overflow: hidden;
+}
+
+// iOS Safari composites fixed elements onto their own layer, and backdrop-filter
+// does not capture those - the floating cluster stayed sharp and left an
+// unblurred patch by the bottom bar. It is unreachable behind a dialog anyway.
+html.home-modal-open .floating-buttons {
+  display: none;
 }
