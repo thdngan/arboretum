@@ -12,8 +12,14 @@ This is a little nook of the internet where I stash my notes, longer writings (w
 
 Some of the topics I've dabbled in:
 
-› **#planetary-science** & **#climate** (mostly **#modelling**),  
-› **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
-› **#chemistry** (more like _physical_ chemistry, really),  
-› or completely random topics I'll probably never revisit like **#hydrology, #geology, #image-processing**,  
+▸ **#planetary-science** & **#climate** (mostly **#modelling**),  
+▸ **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
+▸ **#chemistry** (more like _physical_ chemistry, really),  
+▸ or completely random topics I'll probably never revisit like **#hydrology, #geology, #image-processing**,  
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!
+
+<!-- <span class="shimmer-symbol"><i class="fas fa-earth-americas"></i></span> **#planetary-science** & **#climate** (mostly **#modelling**),  
+<span class="shimmer-symbol"><i class="fas fa-star"></i></span> **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
+<span class="shimmer-symbol"><i class="fas fa-flask"></i></span> **#chemistry** (more like _physical_ chemistry, really),  
+<span class="shimmer-symbol"><i class="fas fa-shuffle"></i></span> or completely random topics I'll probably never revisit like **#hydrology, #geology, #image-processing**,  
+and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)! -->
