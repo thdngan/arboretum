@@ -103,8 +103,30 @@ export default ((opts?: Partial<GraphOptions>) => {
         {!localPanel && expandIcon}
         <div id="global-graph-outer">
           <div id="global-graph-container" data-cfg={JSON.stringify(globalGraph)}></div>
-          {/* sibling of the container, not a child: renderGraph() wipes the
-              container's children every time the map is opened */}
+          {/* the legend and the close button are siblings of the container, not
+              children: renderGraph() wipes the container's children every time
+              the map is opened */}
+          <figure class="global-graph-legend">
+            <figcaption>Legend</figcaption>
+            <ul>
+              <li>
+                <span class="legend-swatch legend-current" aria-hidden="true"></span>
+                Current page
+              </li>
+              <li>
+                <span class="legend-swatch legend-tag" aria-hidden="true"></span>
+                Tag
+              </li>
+              <li>
+                <span class="legend-swatch legend-visited" aria-hidden="true"></span>
+                Visited note
+              </li>
+              <li>
+                <span class="legend-swatch legend-unvisited" aria-hidden="true"></span>
+                Unvisited note
+              </li>
+            </ul>
+          </figure>
           <button class="global-graph-close" type="button" aria-label="Close">
             <svg
               xmlns="http://www.w3.org/2000/svg"

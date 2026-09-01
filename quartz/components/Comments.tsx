@@ -37,9 +37,19 @@ export default ((opts: Options) => {
 
     return (
       <>
-      {/* a dinkus, dividing the comments from whatever the page put above them */}
-      <div class="dinkus" aria-hidden="true">***</div>
-      <h2>💬 Logbook</h2>
+      {/* a dinkus, dividing the comments from whatever the page put above them.
+          <hr> so it renders exactly like one written as `---` in a post; the
+          class is only an anchor for the sidebar placement script */}
+      <hr class="dinkus" />
+      {/* a tinted glyph in a shimmer-symbol, the same pattern the Interactive
+          Map, Backlinks and Tags headings use - the colour emoji was the only
+          one of the four outside that system */}
+      <h2>
+        <span class="shimmer-symbol">
+          <i class="fas fa-feather">&nbsp;</i>
+        </span>{" "}
+        Guestbook
+      </h2>
       <br />
       {/* <p-code-font>
       <strong>Day 120103 </strong> 
