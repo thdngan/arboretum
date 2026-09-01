@@ -18,9 +18,9 @@ draft: false
 >![[remote_sensing.jpg]]
 >Remote sensing class
 
-Hà Nội was hard for two-plus years, and I spent most of them aching to find out whether I had chosen right.
+Hà Nội was tough for two-plus years, and I spent most of them aching to find out whether I had chosen right.
 
-The worries kept a schedule. They came after midnight, once there was nothing left to submit or reply to, and they asked the same 2 questions in rotation: whether I was actually capable of the thing I *thought* I loved, and how much longer it would take me to stand on my own. Scholarships covered my tuition. What they didn't cover was rent and food and the small daily arithmetic of living, and that part still came from my parents. Having parents who can cover it is more than most people get, though of course it didn't stop me from wanting to close the gap myself.
+The worries kept a schedule. They came after midnight, once there was nothing left to submit or reply to, and they asked the same 2 questions in rotation: whether I was actually capable of the thing I *thought* I loved, and how much longer it would take me to stand on my own. Scholarships covered my tuition. What they didn't cover was rent and food and the small daily arithmetic of living, and that part still came from my parents. Having parents who can cover it is more than many people get, though of course it didn't (and shouldn't) stop me from wanting to close the gap myself.
 
 I couldn't picture where I would be in a few years, or whether all the effort I was putting into finding opportunities would ever be recognized, or what I would do if none of it worked. Bachelor's, then master's, then hunting for a PhD, then a postdoc, or scattering applications into industry. It all sounded very far away and very tiring, and on the worst nights I did the maths in my head on how old and broke I would be by the end of it.
 

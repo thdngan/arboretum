@@ -41,14 +41,13 @@ export default ((opts: Options) => {
       {/* <br /> */}
       <h2>💬 Logbook</h2>
       <br />
-      <p-code-font>
+      {/* <p-code-font>
       <strong>Day 120103 </strong> 
       <br />
       The icy shores are quiet, the stars twinkle above, and the trees... well, they don’t talk back (yet). But you can!
       <br />
       <br />
-      {/* <em></em>  */}
-      </p-code-font>
+      </p-code-font> */}
       <div
         class={classNames(displayClass, "giscus")}
         data-repo={opts.options.repo}
