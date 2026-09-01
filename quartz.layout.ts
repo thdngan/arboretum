@@ -29,18 +29,38 @@ const graphConfig = {
   }
 };
 
+// pages rendered with defaultListPageLayout: every tag page, plus the folder
+// index pages. The home page is slug "index", with no slash, so it is excluded.
+const isListPage = (slug: string) => slug.startsWith("tags/") || slug.endsWith("/index")
+
+const isHome = (slug: string) => slug === "index"
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   // afterBody: Explorer[],
   afterBody: [
-    // the landing page's "how to get around" / "acknowledgements" pop-ups
+    // the panels the keys open, rendered once wherever a key can appear
+    Component.KeyDialogs(),
+    // home, below desktop: the three keys stay in the content flow
     Component.ConditionalRender({
-      component: Component.HomeModals(),
-      condition: (page) => page.fileData.slug === "index",
+      component: Component.NarrowOnly(
+        Component.KeyRow({ keys: ["guide", "colophon", "hub"] }),
+      ),
+      condition: (page) => isHome(page.fileData.slug!),
     }),
-    Component.BlogHome(),
+    // list pages have no right sidebar, so their keys sit in the flow at every width
+    Component.ConditionalRender({
+      component: Component.KeyRow({ keys: ["home", "guide"] }),
+      condition: (page) => isListPage(page.fileData.slug!),
+    }),
+    // posts: the sidebar carries these on desktop, so only below it
+    Component.ConditionalRender({
+      component: Component.NarrowOnly(Component.KeyRow({ keys: ["home", "guide"] })),
+      condition: (page) =>
+        !isHome(page.fileData.slug!) && !isListPage(page.fileData.slug!),
+    }),
     Component.MobileOnly(
       Component.RecentNotes({
         title: "Recent writings",
@@ -197,9 +217,26 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(graphConfig),
+    // home: the three keys take the tag list's place
+    Component.ConditionalRender({
+      component: Component.WideOnly(
+        Component.KeyRow({ keys: ["guide", "colophon", "hub"], stack: true }),
+      ),
+      condition: (page) => isHome(page.fileData.slug!),
+    }),
+    // posts: home + getting around, directly below the map
+    Component.ConditionalRender({
+      component: Component.WideOnly(
+        Component.KeyRow({ keys: ["home", "guide"], stack: true }),
+      ),
+      condition: (page) => !isHome(page.fileData.slug!),
+    }),
     Component.Backlinks(),
-    Component.DesktopOnly(Component.TagList()),
-    // Component.TagList(),
+    // no tag list on the home page: the keys replace it
+    Component.ConditionalRender({
+      component: Component.DesktopOnly(Component.TagList()),
+      condition: (page) => !isHome(page.fileData.slug!),
+    }),
   ],
 
 }
@@ -276,5 +313,8 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.FloatingButtons({position: 'right'}),
   ],
-  right: [],
+  // the map has to exist here for the floating map button and Ctrl+G to have
+  // anything to open - #global-graph-outer lives inside .graph. These pages
+  // already reserve an empty 320px right column, so this costs no content width.
+  right: [Component.Graph({ ...graphConfig, localPanel: false })],
 }

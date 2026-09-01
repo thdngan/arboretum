@@ -56,19 +56,17 @@ function openModal(name: string, trigger: HTMLElement) {
 }
 
 function setupHomeModals() {
-  // a nav away from the home page leaves the lock class behind otherwise
+  // a nav away leaves the lock class behind otherwise
   document.documentElement.classList.remove(LOCK_CLASS)
   openPanel = null
   lastTrigger = null
 
-  const container = document.querySelector<HTMLElement>(".home-modals")
-  if (!container) return
-
+  // triggers are delegated from the document: a page can carry several rows of
+  // keys (a sidebar copy and an in-flow copy), all driving the one set of panels
   const onTriggerClick = (e: Event) => {
     const trigger = (e.target as Element).closest<HTMLElement>("[data-home-modal]")
     if (!trigger) return
     e.preventDefault()
-    // clicking the same button again toggles it shut
     const name = trigger.getAttribute("data-home-modal")!
     const alreadyOpen =
       openPanel !== null && openPanel.getAttribute("data-home-modal-panel") === name
@@ -79,13 +77,10 @@ function setupHomeModals() {
     }
   }
 
-  const buttons = container.querySelector<HTMLElement>(".home-modal-buttons")
-  buttons?.addEventListener("click", onTriggerClick)
-  if (buttons) {
-    window.addCleanup(() => buttons.removeEventListener("click", onTriggerClick))
-  }
+  document.addEventListener("click", onTriggerClick)
+  window.addCleanup(() => document.removeEventListener("click", onTriggerClick))
 
-  container.querySelectorAll<HTMLElement>(".home-modal").forEach((panel) => {
+  document.querySelectorAll<HTMLElement>(".home-modal").forEach((panel) => {
     // clicking the backdrop (but not the panel itself) dismisses
     const onBackdropClick = (e: MouseEvent) => {
       if (e.target === panel) closeModal()

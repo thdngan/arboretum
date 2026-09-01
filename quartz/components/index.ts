@@ -27,7 +27,10 @@ import ConditionalRender from "./ConditionalRender"
 import Flex from "./Flex"
 import ReaderMode from "./ReaderMode"
 import BlogHome from "./BlogHome"
-import HomeModals from "./HomeModals"
+import WideOnly from "./WideOnly"
+import NarrowOnly from "./NarrowOnly"
+import KeyRow from "./KeyRow"
+import KeyDialogs from "./KeyDialogs"
 
 export {
   ArticleTitle,
@@ -59,5 +62,8 @@ export {
   ConditionalRender,
   ReaderMode,
   BlogHome,
-  HomeModals,
+  WideOnly,
+  NarrowOnly,
+  KeyRow,
+  KeyDialogs,
 }
