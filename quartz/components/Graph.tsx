@@ -107,7 +107,7 @@ export default ((opts?: Partial<GraphOptions>) => {
               children: renderGraph() wipes the container's children every time
               the map is opened */}
           <figure class="global-graph-legend">
-            <figcaption>Legend</figcaption>
+            {/* <figcaption>Legend</figcaption> */}
             <ul>
               <li>
                 <span class="legend-swatch legend-current" aria-hidden="true"></span>
