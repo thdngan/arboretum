@@ -86,7 +86,7 @@ const HomeModals: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
           <button class="home-modal-close" type="button" aria-label="Close">
             <CloseIcon />
           </button>
-          <h3 id="home-modal-guide-title">Directions for the Disoriented</h3>
+          {/* <h3 id="home-modal-guide-title">Directions for the Disoriented</h3> */}
           <div class="home-modal-body">
             <p>
               You can hop between posts and notes by clicking on{" "}
