@@ -76,6 +76,75 @@
       width: var(--global-graph-width);
     }
 
+    // sits on the panel's top-left corner, mirroring the close button: both are
+    // position: fixed and centred on the viewport, so the offsets come from the
+    // --global-graph-* vars rather than from the panel box
+    & > .global-graph-legend {
+      position: fixed;
+      top: calc(50% - var(--global-graph-height) / 2 + 0.6rem);
+      left: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
+      margin: 0;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--lightgray);
+      border-radius: 5px;
+      background: var(--light);
+      color: var(--darkgray);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      pointer-events: none;
+      user-select: none;
+
+      & > figcaption {
+        margin: 0 0 0.4rem;
+        font-weight: 600;
+        color: var(--dark);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.75rem;
+      }
+
+      & > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        & > li {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          margin: 0;
+          padding: 0.1rem 0;
+        }
+      }
+
+      .legend-swatch {
+        flex: none;
+        width: 0.65rem;
+        height: 0.65rem;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+
+      // these mirror the fills in graph.inline.ts's color(): tag nodes are the
+      // only hollow ones, drawn as a --light disc with a --nodesecond ring
+      .legend-current {
+        background: var(--nodefirst);
+      }
+
+      .legend-tag {
+        background: var(--light);
+        border: 2px solid var(--nodesecond);
+      }
+
+      .legend-visited {
+        background: var(--nodevisited);
+      }
+
+      .legend-unvisited {
+        background: var(--nodethird);
+      }
+    }
+
     // matches .home-modal-close on the landing page's pop-ups
     & > .global-graph-close {
       position: fixed;

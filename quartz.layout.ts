@@ -83,6 +83,8 @@ export const sharedPageComponents: SharedLayout = {
         categoryId: "DIC_kwDOHxknJs4CfhAs",
         mapping: "pathname",
         strict: false,
+        // no emoji reaction bar above the comment box
+        reactionsEnabled: false,
         themeUrl: "https://thdngan.github.io/arboretum/static/giscus", // corresponds to quartz/static/giscus/
         lightTheme: "light", // corresponds to light-theme.css in quartz/static/giscus/
         darkTheme: "dark", // corresponds to dark-theme.css quartz/static/giscus/

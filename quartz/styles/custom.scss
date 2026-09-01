@@ -1,6 +1,11 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
+:root {
+  // shared by the body-text wikilink underline and every dinkus
+  --accent: #BB63B6;
+}
+
 // put your custom CSS here!
 
 
@@ -96,7 +101,8 @@ hr {
     padding: 0;
     margin: 3em auto;
     border: none;
-    color: var(--gray);
+    // the "* * *" comes from &:after, which inherits this
+    color: var(--accent);
     text-align: center;
     width: 40%;
     // border-color: var(--gray);
@@ -141,7 +147,7 @@ a {
 }
 
 // Body-content wikilinks only: no highlight background, just bold text with an
-// underline in the graph's current-node color (--nodefirst).
+// underline in --accent.
 // Excluded on purpose: tag links, same-page anchors (citations, footnotes and
 // their backrefs, heading anchors), page/folder/tag listings, Recent writings,
 // backlinks, breadcrumbs, explorer and the table of contents.
@@ -150,7 +156,7 @@ article a.internal:not(.tag-link):not(.transclude-src):not([href^="#"]) {
     padding: 0;
     border-radius: 0;
     text-decoration: underline;
-    text-decoration-color: var(--nodefirst);
+    text-decoration-color: var(--accent);
     text-decoration-thickness: 1.5px;
     text-underline-offset: 2px;
     // descenders (g, y, p...) cut a gap out of the rule where they cross it
@@ -250,6 +256,15 @@ border-bottom: 1px solid #aaa;
 margin: 1;
 padding-bottom: 0.3em;
 padding-top: 0.5em;
+}
+
+// The Logbook heading is preceded by a dinkus, which already marks the break
+// between the page and its comments. The rule under the heading repeats that
+// 52px later, so this one heading goes without. Article h2s keep theirs, where
+// it reads as section structure rather than repetition.
+.page-footer > h2 {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 p-code-font {
@@ -824,11 +839,36 @@ div:has(> .readermode) {
 
 
 
+// The right sidebar is a 100vh sticky flex column with overflow visible, so on a
+// short viewport its last block (Tags) lands past the bottom edge with no way to
+// scroll to it, and the backlinks list gets flex-squeezed to zero height before
+// anything else gives. Let the column scroll, and stop the list collapsing.
+@media all and ($desktop) {
+  .sidebar.right {
+    overflow-y: auto;
+  }
+
+  // The floor is gated on the list actually being long. Applied unconditionally
+  // it pads a one-item list out to 8rem, which reopens the Backlinks -> Tags gap
+  // this file just closed. With four or more items the natural height already
+  // exceeds 8rem, so this only ever binds when flex tries to squeeze the list.
+  // (base.scss already relies on :has, in `div:has(> .overflow)`.)
+  .backlinks > ul.overflow:has(> li:nth-child(4)) {
+    min-height: 8rem;
+  }
+}
+
 // The right sidebar sets a 32px gap between blocks, but two blocks add space of
 // their own on top of it, so Backlinks -> Tags read wider than Map -> keys.
 // The graph and backlinks headings are already zeroed; the tag list's was not.
 .taglist > h3 {
-  margin: 0;
+  // top margin zeroed to match the graph and backlinks headings, which is what
+  // made Backlinks -> Tags read wider than the other gaps. The bottom margin has
+  // to stay, though: the tags <ul> is display:inline, so its own margin-top is
+  // ignored (vertical margins do not apply to inline boxes) and this heading is
+  // the only thing holding the pills off the title. 0.5rem matches the gap
+  // .backlinks > ul gives its own list.
+  margin: 0 0 0.5rem;
 }
 
 .backlinks > ul {
@@ -840,20 +880,6 @@ div:has(> .readermode) {
 // only a trailing gap, and it is what made Backlinks -> Tags read wide.
 .backlinks > ul.overflow > li:last-of-type {
   margin-bottom: 0;
-}
-
-// Divides the comments from the page above them.
-.dinkus {
-  margin: 2.5rem 0 1.5rem;
-  font-family: var(--codeFont);
-  font-size: 1.15rem;
-  line-height: 1;
-  text-align: center;
-  color: var(--gray);
-  letter-spacing: 0.85em;
-  // the tracking trails off the last glyph; pull the group back to centre
-  text-indent: 0.85em;
-  user-select: none;
 }
 
 // Visibility helpers that only ever hide, splitting at $desktop.

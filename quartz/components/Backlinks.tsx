@@ -28,7 +28,12 @@ export default ((opts?: Partial<BacklinksOptions>) => {
     }
     return (
       <div class={classNames(displayClass, "backlinks")}>
-        <h3>{i18n(cfg.locale).components.backlinks.title}</h3>
+        <h3>
+          <span class="shimmer-symbol">
+            <i class="fas fa-link">&nbsp;</i>
+          </span>{" "}
+          {i18n(cfg.locale).components.backlinks.title}
+        </h3>
         <ul class="overflow">
           {backlinkFiles.length > 0 ? (
             backlinkFiles.map((f) => (

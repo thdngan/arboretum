@@ -100,9 +100,9 @@ const config: QuartzConfig = {
           textHighlight: "#b3aa0288", // keep or slightly lighten if needed for legibility
         
           nodefirst: "#E06C75",
-          nodesecond: "#98c379",
-          nodethird: "#c678dd",
-          nodevisited: "#61afef",
+          nodesecond: "#20E9A9",
+          nodethird: "#B34BD2",
+          nodevisited: "#61afef",  // 61afef: blue
           border: "rgba(224, 224, 224,0.2)",
           link: "rgba(224, 224, 224,0.25)",
 
