@@ -20,9 +20,10 @@ function placeSidebar() {
 
   if (window.matchMedia(NON_DESKTOP).matches) {
     if (sidebar.parentElement === pageFooter) return
-    // above the dinkus, so the divider still reads as the start of the comments
+    // above the Logbook's own dinkus specifically - the home page has further
+    // dinkuses earlier in the footer, and the sidebar belongs after those
     const anchor =
-      pageFooter.querySelector(":scope > .dinkus") ??
+      pageFooter.querySelector(":scope > .dinkus--logbook") ??
       pageFooter.querySelector(":scope > h2") ??
       pageFooter.querySelector(":scope > .giscus")
     if (anchor) {
