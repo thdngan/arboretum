@@ -40,9 +40,10 @@ document.addEventListener("nav", () => {
 
     if (!isPeeking()) {
       setPeek(true)
-    } else if (!target?.closest(".sidebar")) {
-      // taps inside the revealed sidebars are aimed at their controls, so only
-      // a tap back in the article hides them again
+    } else if (!target?.closest(".sidebar.left")) {
+      // taps inside the revealed bar are aimed at its controls, so only a tap
+      // back in the page hides it again. the right sidebar is page content on
+      // mobile, so it counts as the page here.
       setPeek(false)
     }
   }

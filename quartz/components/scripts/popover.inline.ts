@@ -27,7 +27,13 @@ async function mouseEnterHandler(
 
 
   async function setPosition(popoverElement: HTMLElement) {
+    // viewport-relative, to match the `position: fixed` in popover.scss. as an
+    // absolutely positioned child of the link, the popover was laid out inside
+    // whichever ancestor was positioned - in the sidebars that is .sidebar
+    // itself (position: sticky), whose `overflow-y: auto` then made a 30rem
+    // preview part of a 320px column's scroll region, and clipped it.
     const { x, y } = await computePosition(link, popoverElement, {
+      strategy: "fixed",
       middleware: [inline({ x: clientX, y: clientY }), shift(), flip()],
     })
     Object.assign(popoverElement.style, {

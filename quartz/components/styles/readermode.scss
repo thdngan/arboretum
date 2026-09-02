@@ -48,32 +48,57 @@
       }
     }
 
-    & .sidebar.left,
-    & .sidebar.right {
-      opacity: 0;
-      transition: opacity 0.2s ease;
+    // the floating buttons are fixed-position overlay controls that only
+    // happen to live in this column (quartz.layout.ts puts them in `left`), so
+    // the fade is applied per child and skips them. it cannot be applied to
+    // the column and then undone here: opacity forms a group, and a child
+    // cannot opt out of an ancestor's transparency.
+    @media all and not ($mobile) {
+      & .sidebar.left > *:not(.floating-buttons) {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
 
-      @media all and not ($mobile) {
+      // :hover reaches ancestors through the DOM, not the screen, so without
+      // the guard reaching for a floating button in the bottom-right corner
+      // would fade the whole bar back in on the far side of the page.
+      & .sidebar.left:hover:not(:has(.floating-buttons:hover)) > *:not(.floating-buttons) {
+        opacity: 1;
+      }
+    }
+
+    // on mobile the buttons are chrome like the rest of the bar, and go with it
+    @media all and ($mobile) {
+      & .sidebar.left {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+
+        // touch layouts have no hover, so a tap anywhere reveals the bar and a
+        // tap back in the article hides it (see readermode.inline.ts). while
+        // hidden it must not swallow that first tap.
+        pointer-events: none;
+      }
+    }
+
+    // only off mobile is the right sidebar chrome sitting beside the article.
+    // the mobile grid lays it out inline below the article ($mobileGrid in
+    // variables.scss), so the map, backlinks and tags read as part of the page
+    // there and stay put; reader mode only takes away the top bar.
+    @media all and not ($mobile) {
+      & .sidebar.right {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+
         &:hover {
           opacity: 1;
         }
-      }
-
-      // touch layouts have no hover, so a tap anywhere reveals the sidebars
-      // and a tap back in the article hides them (see readermode.inline.ts).
-      // while hidden they must not swallow that first tap: the floating
-      // buttons live inside .sidebar.left and would otherwise catch taps
-      // aimed at nothing.
-      @media all and ($mobile) {
-        pointer-events: none;
       }
     }
   }
 
   @media all and ($mobile) {
     :root[reader-mode="on"][reader-peek="on"] {
-      & .sidebar.left,
-      & .sidebar.right {
+      & .sidebar.left {
         opacity: 1;
         pointer-events: auto;
       }
