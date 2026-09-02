@@ -40,6 +40,29 @@
         transition: stroke 0.5s ease;
       }
     }
+
+    // on mobile, collapse to a bare magnifying glass — no background,
+    // border or label, matching jackyzha0.github.io
+    @media all and ($mobile) {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      width: auto;
+      height: 20px;
+      padding: 0;
+
+      & > p {
+        display: none;
+      }
+
+      // sized to match the darkmode toggle sitting next to it
+      & svg {
+        margin: 0;
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+      }
+    }
   }
 
   & > .search-container {

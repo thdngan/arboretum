@@ -157,8 +157,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   }  
 
   const nodes = [...neighbourhood].map((url) => {
-    // const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
-    const text = url.startsWith("tags/") ? "🏷️" + url.substring(5) : (data.get(url)?.title ?? url)
+    const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
     return {
       id: url,
       text,
@@ -506,6 +505,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   
     let oldLabelOpacity = 0
     const isTagNode = nodeId.startsWith("tags/")
+    const isCurrentNode = nodeId === slug
     label.visible = alwaysLabelled(nodeId)
     const gfx = new Graphics({
       interactive: true,
@@ -516,7 +516,10 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     })
       .circle(0, 0, nodeRadius(n))
       .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
-      .stroke({ width: isTagNode ? 2 : 0, color: computedStyleMap["--nodesecond"] })
+      .stroke({
+        width: isTagNode ? 2 : 0,
+        color: isCurrentNode ? computedStyleMap["--nodefirst"] : computedStyleMap["--nodesecond"],
+      })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
         syncLabelVisibility()
