@@ -16,7 +16,10 @@
 
 .popover {
   z-index: 999;
-  position: absolute;
+  // fixed, not absolute: keeps the preview out of the scroll region of any
+  // ancestor it happens to sit in, and lets shift()/flip() hold it on screen.
+  // computePosition in popover.inline.ts passes a matching strategy.
+  position: fixed;
   overflow: visible;
   padding: 1rem;
 

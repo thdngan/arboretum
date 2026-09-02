@@ -136,9 +136,9 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
 
           <p>
             <strong>Reader mode</strong> dims everything around the page so only the writing is
-            left. The sidebars are still there: on desktop they fade back in when you move the
-            cursor over them, and on mobile a tap anywhere brings them back (tap the page
-            again to send them away).
+            left. Nothing is gone: on desktop the side panels fade back in when you move the
+            cursor over them, and on mobile a tap anywhere brings the top bar back (tap the page
+            again to send it away). The map, backlinks and tags below a post stay put either way.
           </p>
 
           <p>
