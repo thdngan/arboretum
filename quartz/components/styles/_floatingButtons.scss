@@ -45,6 +45,14 @@
         width: 18px;
         height: 18px;
       }
+
+      // the die is drawn inside a tilted square, so its ink sits well in from
+      // the corners of its box and it reads smaller than the other glyphs at
+      // the same 18px. give it a little more room to even them out.
+      &[data-action="randomPgFloating"] svg {
+        width: 20px;
+        height: 20px;
+      }
   
       .floating-button-tooltip {
         position: absolute;

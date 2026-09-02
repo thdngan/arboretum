@@ -52,8 +52,8 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
             </a>{" "}
             inside each page, or by using the <strong>interactive map</strong> (on desktop it's on
             the right, on mobile it's at the bottom). Everything else lives in the{" "}
-            <strong>search box</strong> (up in the sidebar), the buttons at the bottom right, or
-            on your keyboard:
+            <strong>search box</strong> and the two toggles beside it (up in the sidebar), the
+            buttons at the bottom right, or on your keyboard:
           </p>
 
           <table class="guide-keys">
@@ -69,7 +69,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
                 <td class="guide-buttons">
                   <span class="guide-icon guide-icon--search"></span>
                 </td>
-                <td>Dig through the archives</td>
+                <td>Search the archives</td>
                 <td class="guide-shortcut">
                   <kbd>Ctrl</kbd> + <kbd>K</kbd>
                 </td>
@@ -110,6 +110,21 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
                 <td class="guide-shortcut">&mdash;</td>
               </tr>
               <tr>
+                <td class="guide-buttons">
+                  <span class="guide-icon guide-icon--plain guide-icon--sun"></span>
+                  <span class="guide-icon guide-icon--plain guide-icon--moon"></span>
+                </td>
+                <td>Flip between light and dark</td>
+                <td class="guide-shortcut">&mdash;</td>
+              </tr>
+              <tr>
+                <td class="guide-buttons">
+                  <span class="guide-icon guide-icon--plain guide-icon--reader"></span>
+                </td>
+                <td>Reader mode</td>
+                <td class="guide-shortcut">&mdash;</td>
+              </tr>
+              <tr>
                 <td class="guide-buttons"></td>
                 <td>Close the search or the map</td>
                 <td class="guide-shortcut">
@@ -118,6 +133,13 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               </tr>
             </tbody>
           </table>
+
+          <p>
+            <strong>Reader mode</strong> dims everything around the page so only the writing is
+            left. The sidebars are still there: on desktop they fade back in when you move the
+            cursor over them, and on mobile a tap anywhere brings them back (tap the page
+            again to send them away).
+          </p>
 
           <p>
             On a Mac, press <kbd>&#8984;</kbd> wherever the table says <kbd>Ctrl</kbd>.
