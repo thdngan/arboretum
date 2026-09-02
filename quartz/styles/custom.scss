@@ -311,8 +311,8 @@ em strong {
 // space below the button, so the wrapper is taller than the icon and the icon
 // ends up off-centre next to the search box. zeroing the wrapper's line-height
 // makes it hug the button.
-// (setting display:block on the buttons themselves would work too, but
-// .readermode is also .desktop-only and must stay display:none on mobile.)
+// (setting display:block on the buttons themselves would work too, but the
+// wrapper is the safer place to fix it — the buttons carry displayClass.)
 div:has(> .darkmode),
 div:has(> .readermode) {
     line-height: 0;

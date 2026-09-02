@@ -1,3 +1,5 @@
+@use "../../styles/variables.scss" as *;
+
 .readermode {
     cursor: pointer;
     padding: 0;
@@ -51,8 +53,29 @@
       opacity: 0;
       transition: opacity 0.2s ease;
 
-      &:hover {
+      @media all and not ($mobile) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      // touch layouts have no hover, so a tap anywhere reveals the sidebars
+      // and a tap back in the article hides them (see readermode.inline.ts).
+      // while hidden they must not swallow that first tap: the floating
+      // buttons live inside .sidebar.left and would otherwise catch taps
+      // aimed at nothing.
+      @media all and ($mobile) {
+        pointer-events: none;
+      }
+    }
+  }
+
+  @media all and ($mobile) {
+    :root[reader-mode="on"][reader-peek="on"] {
+      & .sidebar.left,
+      & .sidebar.right {
         opacity: 1;
+        pointer-events: auto;
       }
     }
   }

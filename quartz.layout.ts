@@ -272,6 +272,7 @@ export const defaultListPageLayout: PageLayout = {
           grow: true, // Search will grow to fill available space
         },
         { Component: Component.Darkmode() }, // Darkmode keeps its natural size
+        { Component: Component.ReaderMode() },
       ],
       direction: "row",
       gap: "1rem",
