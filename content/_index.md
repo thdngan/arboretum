@@ -8,7 +8,7 @@ enableToc: false
 
 Hey, I'm Ngân. Welcome to my [digital arboretum](https://jzhao.xyz/posts/networked-thought)!
 
-This is a little nook of the internet where I stash my notes, longer writings (where I _pretend_ I know what I'm doing), class notebooks, unfinished discusisons, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
+This is a little nook of the internet where I stash my notes, longer writings (where I _pretend_ I know what I'm doing), class notebooks, unfinished discussions, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
 
 Some of the topics I've dabbled in:
 
@@ -18,8 +18,4 @@ Some of the topics I've dabbled in:
 ▸ or completely random topics I'll probably never revisit like **#geology, #image-processing**,  
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!
 
-<!-- <span class="shimmer-symbol"><i class="fas fa-earth-americas"></i></span> **#planetary-science** & **#climate** (mostly **#modelling**),  
-<span class="shimmer-symbol"><i class="fas fa-star"></i></span> **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
-<span class="shimmer-symbol"><i class="fas fa-flask"></i></span> **#chemistry** (more like _physical_ chemistry, really),  
-<span class="shimmer-symbol"><i class="fas fa-shuffle"></i></span> or completely random topics I'll probably never revisit like **#hydrology, #geology, #image-processing**,  
-and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)! -->
+No particular order to any of it. Follow whatever looks interesting!
