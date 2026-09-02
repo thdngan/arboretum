@@ -136,6 +136,27 @@
         border: 2px solid var(--nodesecond);
       }
 
+      // hollow like any tag, but ringed in the current-node colour
+      .legend-current-tag {
+        background: var(--light);
+        border: 2px solid var(--nodefirst);
+      }
+
+      // there is no "current tag" anywhere but a tag page
+      & > ul > .legend-current-tag-item {
+        display: none;
+      }
+
+      body[data-slug^="tags/"] & > ul > .legend-current-tag-item {
+        display: flex;
+      }
+
+      // ...and on a tag page there is no separately coloured "current page"
+      // node to explain - the current page is the tag
+      body[data-slug^="tags/"] & > ul > .legend-current-page-item {
+        display: none;
+      }
+
       .legend-visited {
         background: var(--nodevisited);
       }

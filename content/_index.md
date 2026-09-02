@@ -15,7 +15,7 @@ Some of the topics I've dabbled in:
 ▸ **#planetary-science** & **#climate** (mostly **#modelling**),  
 ▸ **#astrophysics**,  **#cosmology**,  **#particle** **#physics**,  
 ▸ **#chemistry** (more like _physical_ chemistry, really),  
-▸ or completely random topics I'll probably never revisit like **#hydrology, #geology, #image-processing**,  
+▸ or completely random topics I'll probably never revisit like **#geology, #image-processing**,  
 and [**even more stuff**](https://thdngan.github.io/arboretum/tags/)!
 
 <!-- <span class="shimmer-symbol"><i class="fas fa-earth-americas"></i></span> **#planetary-science** & **#climate** (mostly **#modelling**),  

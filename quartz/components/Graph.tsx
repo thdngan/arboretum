@@ -109,9 +109,16 @@ export default ((opts?: Partial<GraphOptions>) => {
           <figure class="global-graph-legend">
             {/* <figcaption>Legend</figcaption> */}
             <ul>
-              <li>
+              {/* on a tag page the current page IS the tag, so this row and
+                  "Current tag" below are mutually exclusive */}
+              <li class="legend-current-page-item">
                 <span class="legend-swatch legend-current" aria-hidden="true"></span>
                 Current page
+              </li>
+              {/* only meaningful on a tag page; hidden elsewhere via body[data-slug] */}
+              <li class="legend-current-tag-item">
+                <span class="legend-swatch legend-current-tag" aria-hidden="true"></span>
+                Current tag
               </li>
               <li>
                 <span class="legend-swatch legend-tag" aria-hidden="true"></span>

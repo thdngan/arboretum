@@ -12,10 +12,14 @@ document.addEventListener("nav", () => {
     isReaderMode = !isReaderMode
     const newMode = isReaderMode ? "on" : "off"
     document.documentElement.setAttribute("reader-mode", newMode)
+    for (const button of document.getElementsByClassName("readermode")) {
+      button.setAttribute("aria-pressed", String(isReaderMode))
+    }
     emitReaderModeChangeEvent(newMode)
   }
 
   for (const readerModeButton of document.getElementsByClassName("readermode")) {
+    readerModeButton.setAttribute("aria-pressed", String(isReaderMode))
     readerModeButton.addEventListener("click", switchReaderMode)
     window.addCleanup(() => readerModeButton.removeEventListener("click", switchReaderMode))
   }
