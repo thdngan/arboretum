@@ -78,7 +78,7 @@ export default ((opts?: Partial<GraphOptions>) => {
     // floating map button opens the map by dispatching a click at it. Without
     // #graph-container, renderGraph() early-returns, so no local graph is drawn.
     const expandIcon = (
-      <button id="global-graph-icon" aria-label="Global Graph" hidden={!localPanel}>
+      <button id="global-graph-icon" aria-label="Global graph" hidden={!localPanel}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
           <path stroke-linecap="butt" d="M2 14 L14 2"/>
           <path stroke-linecap="square" d="M14 2 L9 2"/>
@@ -93,7 +93,7 @@ export default ((opts?: Partial<GraphOptions>) => {
       <div class={classNames(displayClass, "graph")}>
         {localPanel && (
           <>
-            <h3><span class="shimmer-symbol"><i class="fas fa-compass">&nbsp;</i></span> Interactive Map</h3>
+            <h3><span class="shimmer-symbol"><i class="far fa-map">&nbsp;</i></span> Interactive Map</h3>
             <div class="graph-outer">
               <div id="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
               {expandIcon}
