@@ -150,11 +150,13 @@
   // Geometry and backdrop copied from the global map (#global-graph-outer in
   // graph.scss) so the two read identically.
   //
-  // top/height rather than `inset: 0`: on iOS Safari a fixed element with
-  // `bottom: 0` is laid out against the small viewport (toolbars showing),
-  // while `height: 100%` resolves against the initial containing block - the
-  // large viewport. With inset the overlay stopped short of the strip behind
-  // Safari's bottom bar, leaving it unblurred.
+  // top/height rather than `inset: 0`, and lvh rather than `height: 100%`: on
+  // iOS Safari a fixed element sized either of those ways comes out at the small
+  // viewport - the height with the toolbars showing - so once Safari collapses
+  // its bottom bar into the floating pill, the visible page is taller than this
+  // and a strip of unblurred article is left along the bottom edge, reading as a
+  // solid band of theme colour. lvh is the large viewport, the height with the
+  // chrome retracted, so it covers the page in either state.
   //
   // And no background tint: the map has none, and a scrim over the blur made
   // that unblurred strip read as an obvious crisp rectangle.
@@ -163,11 +165,17 @@
   top: 0;
   width: 100vw;
   height: 100%;
+  height: 100lvh;
   z-index: 9999;
   display: none;
   align-items: center;
   justify-content: center;
+  // The box now runs behind the toolbar, but the dialog inside it should still
+  // be centred on the part you can see, or it sits low and its last lines hide
+  // under the bar. dvh does track the toolbar, so their difference is exactly
+  // how much chrome is currently in the way - and zero once it retracts.
   padding: 1.5rem;
+  padding-bottom: calc(1.5rem + 100lvh - 100dvh);
   box-sizing: border-box;
   backdrop-filter: blur(4px);
   overscroll-behavior: contain;
@@ -178,6 +186,7 @@
 
   @media all and ($mobile) {
     padding: 0.75rem;
+    padding-bottom: calc(0.75rem + 100lvh - 100dvh);
     // centred, like the global map. Anchoring to the bottom left the panel
     // hugging the viewport edge with only the padding beneath it, and since the
     // offset then depends on content height the two dialogs sat at visibly
