@@ -38,6 +38,11 @@ document.addEventListener("nav", () => {
     // letting this handler run too would re-reveal what it just hid
     if (target?.closest(".readermode")) return
 
+    // the table of contents is chrome of its own, reachable in reader mode
+    // without peeking at the bar. Taps on its tab, panel or scrim are aimed at
+    // it, so they should not drag the bar in or out on the way past.
+    if (target?.closest(".toc-drawer")) return
+
     if (!isPeeking()) {
       setPeek(true)
     } else if (!target?.closest(".sidebar.left")) {

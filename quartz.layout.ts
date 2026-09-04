@@ -52,12 +52,12 @@ export const sharedPageComponents: SharedLayout = {
     }),
     // list pages have no right sidebar, so their keys sit in the flow at every width
     Component.ConditionalRender({
-      component: Component.KeyRow({ keys: ["home", "guide"] }),
+      component: Component.KeyRow({ keys: ["guide","home"] }),
       condition: (page) => isListPage(page.fileData.slug!),
     }),
     // posts: the sidebar carries these on desktop, so only below it
     Component.ConditionalRender({
-      component: Component.NarrowOnly(Component.KeyRow({ keys: ["home", "guide"] })),
+      component: Component.NarrowOnly(Component.KeyRow({ keys: ["guide", "home"] })),
       condition: (page) =>
         !isHome(page.fileData.slug!) && !isListPage(page.fileData.slug!),
     }),
@@ -223,15 +223,20 @@ export const defaultContentPageLayout: PageLayout = {
     //   })),
     
     Component.DesktopOnly(Component.TableOfContents()),
-    // the same contents below the sidebar breakpoint, in a panel that swipes in
-    // from the right edge. Renders nothing on a page without headings.
-    Component.TocDrawer(),
     
     Component.FloatingButtons({ position: 'right' }),
     
 
   ],
   right: [
+    // The same contents as the sidebar list above, below the sidebar breakpoint,
+    // in a panel that swipes in from the right edge (renders nothing on a page
+    // without headings). It is a fixed overlay, so where it sits in the layout
+    // only decides what styling it inherits - and it has to be here rather than
+    // in `left`, which reader mode fades to opacity 0 and makes click-through
+    // on mobile, or in `beforeBody`, whose .popover-hint content is what link
+    // previews and search results are built from.
+    Component.TocDrawer(),
     Component.Graph(graphConfig),
     // home: the three keys take the tag list's place
     Component.ConditionalRender({
@@ -243,7 +248,7 @@ export const defaultContentPageLayout: PageLayout = {
     // posts: home + getting around, directly below the map
     Component.ConditionalRender({
       component: Component.WideOnly(
-        Component.KeyRow({ keys: ["home", "guide"], stack: true }),
+        Component.KeyRow({ keys: ["home","guide"], stack: true }),
       ),
       condition: (page) => !isHome(page.fileData.slug!),
     }),

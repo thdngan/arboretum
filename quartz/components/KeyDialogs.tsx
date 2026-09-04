@@ -51,7 +51,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               links like this
             </a>{" "}
             inside each page, or by using the <strong>interactive map</strong> (on desktop it's on
-            the right, on mobile it's at the bottom). Everything else (buttons, toggles, search box, keyboard shortcuts, etc.) is explained below:
+            the right, on mobile it's at the bottom). Everything else (buttons, keyboard shortcuts, etc.) is explained below:
           </p>
 
           <table class="guide-keys">

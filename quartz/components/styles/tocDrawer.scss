@@ -12,10 +12,15 @@
 // The .is-open class supplies the resting values; the drag writes them inline
 // on the wrapper, which wins over the class and is removed again on release so
 // the transition can take the panel the rest of the way.
-.toc-drawer {
+// on :root rather than on .toc-drawer because the top bar reads it too, to lift
+// itself out of the scrim (see the bottom of this file)
+:root {
   // above the floating buttons (100), below search and the dialogs (999+),
   // which take the whole screen and should never have this sliding over them
   --toc-drawer-z: 500;
+}
+
+.toc-drawer {
   --toc-drawer-width: min(20rem, 78vw);
   --toc-drawer-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --toc-drawer-offset: 100%;
@@ -63,6 +68,8 @@
   border-radius: 5px 0 0 5px;
   color: var(--secondary);
 
+  touch-action: none;
+
   transition:
     opacity 0.2s ease,
     background 0.2s ease;
@@ -100,6 +107,13 @@
   // no pointer target until there is something to dismiss, otherwise it would
   // swallow every tap on the page
   pointer-events: none;
+  // This, rather than overflow:hidden on <html>, is what holds the article still
+  // behind the panel. The root going overflow:hidden stops being a scroll
+  // container, and the sticky top bar - which is above this scrim while the
+  // panel is out, see below - drops out of the sky back to its place in the
+  // flow. Blocking the gesture where it lands costs no reflow and no restoring
+  // of the scroll offset afterwards.
+  touch-action: none;
   // and not painted at all: a full-screen backdrop-filter costs compositing on
   // every scroll frame even at opacity 0, which is most of a phone's life here
   visibility: hidden;
@@ -125,7 +139,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: calc(var(--toc-drawer-z) + 1);
+  z-index: calc(var(--toc-drawer-z) + 2);
 
   display: flex;
   flex-direction: column;
@@ -140,6 +154,11 @@
   background: var(--light);
   border-left: 1px solid var(--lightgray);
   box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+
+  // the list scrolls, the browser does not pan sideways: that axis is the
+  // close gesture. .toc-drawer-list has overscroll-behavior:contain, so its
+  // scrolling stops at its own ends rather than chaining out to the article.
+  touch-action: pan-y;
 
   transform: translateX(var(--toc-drawer-offset));
   // hidden rather than merely off-screen: a screen reader would otherwise walk
@@ -250,10 +269,24 @@
   }
 }
 
-// keeps the article from scrolling under the open panel on touch
-html.toc-drawer-open,
-html.toc-drawer-open body {
-  overflow: hidden;
+// The mobile top bar is sticky (explorer.scss), so it is on screen whatever the
+// article is scrolled to. It is chrome, like this panel, and dimming it behind
+// the scrim the instant the panel appears reads as the bar being snatched away,
+// so while the drawer is out the bar sits above the scrim and keeps its colour.
+// It is not a target while it sits there, though: a tap up there should dismiss
+// the drawer like a tap anywhere else outside it, and pointer-events:none lets
+// the hit fall through to the scrim underneath.
+@media all and ($mobile) {
+  // #quartz-body is not for nesting's sake: the bar's own z-index comes from a
+  // rule carrying that id, and reader mode's peek sets pointer-events from a
+  // five-class selector. Matching the id is what lets this override both.
+  // Deliberately no `position` here: the bar is already sticky, and swapping a
+  // stuck element to `relative` would snap it back down to where it sits in the
+  // flow - off the top of the screen on anything but an unscrolled page.
+  html.toc-drawer-open #quartz-body .sidebar.left {
+    z-index: calc(var(--toc-drawer-z) + 1);
+    pointer-events: none;
+  }
 }
 
 // the floating cluster is pinned to the same corner the panel slides over, and

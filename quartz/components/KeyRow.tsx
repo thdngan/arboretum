@@ -10,10 +10,12 @@ import style from "./styles/homeModals.scss"
 // a mobile in-flow copy, say) without duplicating panel markup or ids.
 export type KeyName = "home" | "guide" | "colophon" | "hub"
 
-// In the sidebar these two shrink to icon-only squares. Their glyphs carry the
-// meaning on their own, and mixing a square with a wide key stops the column
-// being a stack of identical full-width rectangles under the map panel.
-const COMPACT_IN_SIDEBAR: KeyName[] = ["home", "colophon"]
+// The one-word keys. In the sidebar these shrink to icon-only squares - their
+// glyphs carry the meaning on their own, and mixing a square with a wide key
+// stops the column being a stack of identical full-width rectangles under the
+// map panel. In an in-flow pair they keep their label but take only their
+// content width, leaving the rest of the row to the long key.
+const SHORT_KEYS: KeyName[] = ["home", "colophon"]
 
 interface KeyRowOptions {
   keys: KeyName[]
@@ -24,14 +26,19 @@ interface KeyRowOptions {
 export default ((opts: KeyRowOptions) => {
   const KeyRow: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
     const home = resolveRelative(fileData.slug!, "index" as SimpleSlug)
-    const isCompact = (key: KeyName) => !!opts.stack && COMPACT_IN_SIDEBAR.includes(key)
+    const isCompact = (key: KeyName) => !!opts.stack && SHORT_KEYS.includes(key)
 
     // authored order, no reshuffling: on the home sidebar that reads
     // [getting around][colophon square] then [main hub] on the next line
     const keys = opts.keys
 
-    const cls = (key: KeyName) =>
-      isCompact(key) ? "home-modal-button home-modal-button--compact" : "home-modal-button"
+    const cls = (key: KeyName) => {
+      if (isCompact(key)) return "home-modal-button home-modal-button--compact"
+      // the modifier only bites in a pair (see homeModals.scss); elsewhere the
+      // keys are grid children and it is inert
+      if (SHORT_KEYS.includes(key)) return "home-modal-button home-modal-button--short"
+      return "home-modal-button"
+    }
 
     const render = (key: KeyName) => {
       switch (key) {
