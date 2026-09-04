@@ -94,8 +94,20 @@
 }
 
 .toc-drawer-scrim {
+  // Not `inset: 0`, and not `height: 100%` either. On iOS Safari a fixed
+  // element sized either way comes out at the small viewport - the height with
+  // the toolbars showing - so the moment Safari collapses its bottom bar into
+  // the floating pill, the visible page is taller than this scrim and a strip
+  // of unblurred, untinted article is left along the bottom edge, reading as a
+  // solid band of theme colour under the dialog. lvh is the large viewport: the
+  // height with the browser chrome retracted, which is the tallest the page can
+  // ever be, so this covers it in either state and simply runs behind the bar.
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  height: 100lvh;
   z-index: var(--toc-drawer-z);
   // a plain black wash rather than a theme colour: --dark inverts with the
   // theme, and a light scrim over a dark page reads as a flash, not a dimming.
@@ -146,8 +158,9 @@
   box-sizing: border-box;
   width: var(--toc-drawer-width);
   height: 100%;
-  // the browser chrome on a phone overlaps 100% viewport height; dvh tracks the
-  // visible part where it is supported, and the height above is the fallback
+  // dvh, not the scrim's lvh: this one holds content you have to be able to
+  // reach and tap, so it ends where the visible page ends rather than running on
+  // behind Safari's toolbar. The scrim covers the strip below it.
   height: 100dvh;
   padding: max(1.25rem, env(safe-area-inset-top)) 0 max(1.25rem, env(safe-area-inset-bottom));
 
