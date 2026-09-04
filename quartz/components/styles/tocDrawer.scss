@@ -1,0 +1,276 @@
+@use "sass:map";
+@use "../../styles/variables.scss" as *;
+
+// The mobile table of contents: a panel parked off the right edge of the
+// viewport that a swipe (or the tab pinned to that edge) pulls into view.
+//
+// Two custom properties drive it, both set on this wrapper:
+//   --toc-drawer-offset   how far the panel is pushed off-screen, 100% closed,
+//                         0 open. The drag writes it in px so the panel tracks
+//                         the finger instead of snapping.
+//   --toc-drawer-progress 0..1, the same value inverted, for the scrim.
+// The .is-open class supplies the resting values; the drag writes them inline
+// on the wrapper, which wins over the class and is removed again on release so
+// the transition can take the panel the rest of the way.
+.toc-drawer {
+  // above the floating buttons (100), below search and the dialogs (999+),
+  // which take the whole screen and should never have this sliding over them
+  --toc-drawer-z: 500;
+  --toc-drawer-width: min(20rem, 78vw);
+  --toc-drawer-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --toc-drawer-offset: 100%;
+  --toc-drawer-progress: 0;
+
+  // the sidebar list covers every width where a sidebar exists, so this only
+  // exists below it. `contents` rather than `block`: the wrapper sits in the
+  // left sidebar's flex row on mobile and should not be a flex item of its own
+  // (its children are all fixed and out of flow anyway).
+  display: none;
+  @media all and ($mobile) {
+    display: contents;
+  }
+
+  &.is-open {
+    --toc-drawer-offset: 0px;
+    --toc-drawer-progress: 1;
+  }
+}
+
+// the affordance. A gesture nobody can see is a gesture nobody finds, so the
+// swipe gets a handle: slim enough to sit over the text column without taking
+// a bite out of it, wide enough to be a 44px-tall tap target.
+.toc-drawer-tab {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: calc(var(--toc-drawer-z) - 1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 64px;
+  padding: 0;
+  cursor: pointer;
+
+  // same recipe as the keys in homeModals.scss: a fill 40% of the way from the
+  // page toward --lightgray, a --gray hairline, --secondary ink
+  background: var(--light);
+  background: color-mix(in srgb, var(--lightgray) 40%, var(--light));
+  border: 1px solid var(--gray);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  color: var(--secondary);
+
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  // while the panel is out the tab has nothing left to do, and it would sit
+  // under the sliding edge
+  .toc-drawer.is-open &,
+  .toc-drawer.is-dragging & {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.toc-drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--toc-drawer-z);
+  // a plain black wash rather than a theme colour: --dark inverts with the
+  // theme, and a light scrim over a dark page reads as a flash, not a dimming.
+  // The blur is the house backdrop (see .home-modal); the tint is what keeps
+  // the article legibly *behind* the panel rather than beside it.
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(2px);
+  opacity: var(--toc-drawer-progress);
+  // no pointer target until there is something to dismiss, otherwise it would
+  // swallow every tap on the page
+  pointer-events: none;
+  // and not painted at all: a full-screen backdrop-filter costs compositing on
+  // every scroll frame even at opacity 0, which is most of a phone's life here
+  visibility: hidden;
+  transition:
+    opacity 0.28s var(--toc-drawer-ease),
+    visibility 0s linear 0.28s;
+
+  .toc-drawer.is-open &,
+  .toc-drawer.is-dragging & {
+    pointer-events: auto;
+    visibility: visible;
+    transition:
+      opacity 0.28s var(--toc-drawer-ease),
+      visibility 0s linear 0s;
+  }
+
+  .toc-drawer.is-dragging & {
+    transition: none;
+  }
+}
+
+.toc-drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: calc(var(--toc-drawer-z) + 1);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: var(--toc-drawer-width);
+  height: 100%;
+  // the browser chrome on a phone overlaps 100% viewport height; dvh tracks the
+  // visible part where it is supported, and the height above is the fallback
+  height: 100dvh;
+  padding: max(1.25rem, env(safe-area-inset-top)) 0 max(1.25rem, env(safe-area-inset-bottom));
+
+  background: var(--light);
+  border-left: 1px solid var(--lightgray);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+
+  transform: translateX(var(--toc-drawer-offset));
+  // hidden rather than merely off-screen: a screen reader would otherwise walk
+  // straight into a list that is not on the page yet, and Tab could land in it.
+  // Same delayed-visibility idiom as #toc-content in toc.scss.
+  visibility: hidden;
+  transition:
+    transform 0.28s var(--toc-drawer-ease),
+    visibility 0s linear 0.28s;
+
+  .toc-drawer.is-open &,
+  .toc-drawer.is-dragging & {
+    visibility: visible;
+    transition:
+      transform 0.28s var(--toc-drawer-ease),
+      visibility 0s linear 0s;
+  }
+
+  .toc-drawer.is-dragging & {
+    transition: none;
+  }
+}
+
+.toc-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  padding: 0 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--lightgray);
+
+  & h3 {
+    // matches the sidebar list's heading
+    font-size: 1rem;
+    margin: 0;
+    color: var(--dark);
+  }
+}
+
+.toc-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  // 44px of tap target around a 16px glyph, pulled back out to the panel edge
+  width: 44px;
+  height: 44px;
+  margin: -0.5rem -0.75rem -0.5rem 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: var(--dark);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: -2px;
+  }
+}
+
+.toc-drawer-list {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  list-style: none;
+  overflow-y: auto;
+  // scrolls to bring the section you are reading into view when the panel
+  // opens, which measures offsetTop against this element
+  position: relative;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
+  & > li > a {
+    // deliberately identical to the sidebar list in toc.scss: read sections sit
+    // at 0.9, everything still ahead of you at 0.35, and the boundary between
+    // them is where you are
+    display: block;
+    color: var(--dark);
+    text-decoration: none;
+    opacity: 0.35;
+    transition:
+      0.5s ease opacity,
+      0.3s ease color;
+
+    // the one departure: rows tall enough to hit with a thumb
+    padding: 0.4rem 0;
+    line-height: 1.3;
+
+    &.in-view {
+      opacity: 0.9;
+    }
+  }
+
+  @for $i from 0 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(0.75rem * #{$i});
+    }
+  }
+}
+
+// keeps the article from scrolling under the open panel on touch
+html.toc-drawer-open,
+html.toc-drawer-open body {
+  overflow: hidden;
+}
+
+// the floating cluster is pinned to the same corner the panel slides over, and
+// is unreachable behind it anyway
+html.toc-drawer-open .floating-buttons {
+  display: none;
+}
+
+// a dialog owns the whole screen; the tab has no business poking out over it
+html.home-modal-open .toc-drawer-tab {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-drawer-panel,
+  .toc-drawer-scrim,
+  .toc-drawer-tab {
+    transition-duration: 0.01ms;
+  }
+}

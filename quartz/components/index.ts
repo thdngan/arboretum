@@ -8,7 +8,7 @@ import Head from "./Head"
 import PageTitle from "./PageTitle"
 import ContentMeta from "./ContentMeta"
 import Spacer from "./Spacer"
-import TableOfContents from "./TableOfContents"
+import TableOfContents, { TocDrawerConstructor as TocDrawer } from "./TableOfContents"
 import Explorer from "./Explorer"
 import TagList from "./TagList"
 import TagList_noheading from "./TagList_noheading"
@@ -44,6 +44,7 @@ export {
   ContentMeta,
   Spacer,
   TableOfContents,
+  TocDrawer,
   Explorer,
   TagList,
   TagList_noheading,

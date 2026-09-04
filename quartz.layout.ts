@@ -223,6 +223,9 @@ export const defaultContentPageLayout: PageLayout = {
     //   })),
     
     Component.DesktopOnly(Component.TableOfContents()),
+    // the same contents below the sidebar breakpoint, in a panel that swipes in
+    // from the right edge. Renders nothing on a page without headings.
+    Component.TocDrawer(),
     
     Component.FloatingButtons({ position: 'right' }),
     
@@ -328,7 +331,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.FloatingButtons({position: 'right'}),
   ],
   // the map has to exist here for the floating map button and Ctrl+G to have
-  // anything to open - #global-graph-outer lives inside .graph. These pages
+  // anything to open, #global-graph-outer is inside .graph. These pages
   // already reserve an empty 320px right column, so this costs no content width.
   right: [Component.Graph({ ...graphConfig, localPanel: false })],
 }
