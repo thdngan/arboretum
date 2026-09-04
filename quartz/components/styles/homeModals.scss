@@ -25,9 +25,20 @@
 
     // a pair keeps its row: the short key takes its content width and the long
     // one absorbs the rest, so "getting around" never wraps the way it would
-    // in two equal halves of a phone-width row
+    // in two equal halves of a phone-width row. Flex rather than fixed grid
+    // tracks so the sizing follows the keys themselves, not their order - the
+    // pair can be authored either way round in quartz.layout.ts.
     &.home-modal-buttons--pair {
-      grid-template-columns: max-content minmax(0, 1fr);
+      display: flex;
+
+      > .home-modal-button {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      > .home-modal-button--short {
+        flex: 0 0 max-content;
+      }
     }
   }
 
