@@ -2,14 +2,16 @@ const bufferPx = 150
 const observer = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     const slug = entry.target.id
-    const tocEntryElement = document.querySelector(`a[data-for="${slug}"]`)
+    // querySelectorAll, not querySelector: a page carries the entry twice at
+    // narrow widths, once in the sidebar list and once in the mobile drawer
+    // (TocDrawer in TableOfContents.tsx), and both have to shade together
+    const tocEntryElements = document.querySelectorAll(`a[data-for="${slug}"]`)
     const windowHeight = entry.rootBounds?.height
-    if (windowHeight && tocEntryElement) {
-      if (entry.boundingClientRect.y < windowHeight) {
-        tocEntryElement.classList.add("in-view")
-      } else {
-        tocEntryElement.classList.remove("in-view")
-      }
+    if (windowHeight && tocEntryElements.length > 0) {
+      const inView = entry.boundingClientRect.y < windowHeight
+      tocEntryElements.forEach((tocEntryElement) => {
+        tocEntryElement.classList.toggle("in-view", inView)
+      })
     }
   }
 })

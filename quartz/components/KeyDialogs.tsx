@@ -51,9 +51,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               links like this
             </a>{" "}
             inside each page, or by using the <strong>interactive map</strong> (on desktop it's on
-            the right, on mobile it's at the bottom). Everything else lives in the{" "}
-            <strong>search box</strong> and the two toggles beside it (up in the sidebar), the
-            buttons at the bottom right, or on your keyboard:
+            the right, on mobile it's at the bottom). Everything else (buttons, toggles, search box, keyboard shortcuts, etc.) is explained below:
           </p>
 
           <table class="guide-keys">
