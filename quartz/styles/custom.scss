@@ -4,6 +4,10 @@
 :root {
   // shared by the body-text wikilink underline and every dinkus
   --accent: #BB63B6;
+  // wikilink underline weight. body-text wikilinks live in <article>, but the
+  // home modals render in .page-footer and restate the same rule, so both read
+  // the thickness from here rather than keeping their own copy in sync.
+  --wikilink-underline-thickness: 2px;
 }
 
 // put your custom CSS here!
@@ -157,7 +161,7 @@ article a.internal:not(.tag-link):not(.transclude-src):not([href^="#"]) {
     border-radius: 0;
     text-decoration: underline;
     text-decoration-color: var(--accent);
-    text-decoration-thickness: 1.5px;
+    text-decoration-thickness: var(--wikilink-underline-thickness);
     text-underline-offset: 2px;
     // descenders (g, y, p...) cut a gap out of the rule where they cross it
     text-decoration-skip-ink: auto;
