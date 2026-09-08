@@ -55,6 +55,10 @@
     display: none;
     overflow: hidden;
 
+    // the blur stops short of Safari's collapsed toolbar on iOS; this hides the
+    // sharp strip that leaves behind the pill
+    @include collapsed-toolbar-fade;
+
     // shared by the map panel and the close button that has to sit on its
     // corner; both are position: fixed and centred on the viewport, so the
     // button's offsets are derived from these rather than from the panel box

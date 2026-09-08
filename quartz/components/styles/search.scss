@@ -76,6 +76,9 @@
     overflow-y: auto;
     display: none;
     backdrop-filter: blur(4px);
+    // same as the map and the home dialogs: iOS does not blur the page behind
+    // Safari's collapsed toolbar, so fade that strip out instead
+    @include collapsed-toolbar-fade;
 
     &.active {
       display: inline-block;

@@ -179,6 +179,8 @@
   box-sizing: border-box;
   backdrop-filter: blur(4px);
   overscroll-behavior: contain;
+  // and the strip iOS leaves unblurred underneath Safari's collapsed toolbar
+  @include collapsed-toolbar-fade;
 
   &.active {
     display: flex;
