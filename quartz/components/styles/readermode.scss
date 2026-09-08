@@ -41,12 +41,14 @@
   // reader mode triggers cannot take it down with the bar
   .readermode-toast {
     position: fixed;
-    // clear of the floating buttons in the bottom-right corner
-    bottom: 2rem;
+    // the band the top bar vacates: in reader mode this strip is empty, so the
+    // message lands on background rather than over the writing, and it appears
+    // where the chrome just went instead of across the page from it
+    top: 2rem;
     left: 50%;
     z-index: 1000;
     padding: 0.5rem 0.9rem;
-    max-width: min(20rem, calc(100vw - 9rem));
+    max-width: min(20rem, calc(100vw - 3rem));
     border-radius: 4px;
     background: var(--dark);
     color: var(--light);
@@ -57,7 +59,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     pointer-events: none;
     opacity: 0;
-    transform: translate(-50%, 0.5rem);
+    transform: translate(-50%, -0.5rem);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease;
