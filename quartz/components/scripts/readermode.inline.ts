@@ -16,6 +16,46 @@ const setPeek = (peek: boolean) => {
 
 const isPeeking = () => document.documentElement.getAttribute("reader-peek") === "on"
 
+// reader mode hides the bar the toggle lives in, so on the way out there is no
+// visible change near the cursor to confirm the press. the toast says what
+// happened. it hangs off <body> rather than the toggle: the toggle sits inside
+// .sidebar.left, which is mid-fade at exactly this moment.
+const TOAST_ID = "readermode-toast"
+const TOAST_VISIBLE_MS = 1400
+const TOAST_FADE_MS = 300
+let toastTimers: ReturnType<typeof setTimeout>[] = []
+
+const clearToast = () => {
+  toastTimers.forEach(clearTimeout)
+  toastTimers = []
+  document.getElementById(TOAST_ID)?.remove()
+}
+
+const showToast = (mode: "on" | "off") => {
+  clearToast()
+
+  const toast = document.createElement("div")
+  toast.id = TOAST_ID
+  toast.className = "readermode-toast"
+  // polite, so it is announced after whatever the toggle itself says
+  toast.setAttribute("role", "status")
+  toast.setAttribute("aria-live", "polite")
+  toast.textContent = `Reader mode: ${mode.toUpperCase()}`
+  document.body.appendChild(toast)
+
+  // one frame in its start state first, or there is nothing to transition from
+  requestAnimationFrame(() => toast.classList.add("visible"))
+
+  toastTimers.push(
+    setTimeout(() => {
+      toast.classList.remove("visible")
+      // on a timer rather than transitionend: under prefers-reduced-motion the
+      // transition is off and the event would never arrive to remove the node
+      toastTimers.push(setTimeout(() => toast.remove(), TOAST_FADE_MS))
+    }, TOAST_VISIBLE_MS),
+  )
+}
+
 document.addEventListener("nav", () => {
   const switchReaderMode = () => {
     isReaderMode = !isReaderMode
@@ -27,6 +67,7 @@ document.addEventListener("nav", () => {
     for (const button of document.getElementsByClassName("readermode")) {
       button.setAttribute("aria-pressed", String(isReaderMode))
     }
+    showToast(newMode)
     emitReaderModeChangeEvent(newMode)
   }
 
@@ -61,6 +102,9 @@ document.addEventListener("nav", () => {
 
   document.addEventListener("click", togglePeek)
   window.addCleanup(() => document.removeEventListener("click", togglePeek))
+
+  // a nav replaces <body>, so a toast still on screen would be orphaned mid-fade
+  window.addCleanup(clearToast)
 
   // Set initial state
   document.documentElement.setAttribute("reader-mode", isReaderMode ? "on" : "off")

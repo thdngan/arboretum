@@ -37,6 +37,44 @@
     }
   }
 
+  // the toggle's confirmation, announced from <body> so the sidebar fade that
+  // reader mode triggers cannot take it down with the bar
+  .readermode-toast {
+    position: fixed;
+    // clear of the floating buttons in the bottom-right corner
+    bottom: 2rem;
+    left: 50%;
+    z-index: 1000;
+    padding: 0.5rem 0.9rem;
+    max-width: min(20rem, calc(100vw - 9rem));
+    border-radius: 4px;
+    background: var(--dark);
+    color: var(--light);
+    font-family: var(--bodyFont);
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, 0.5rem);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+
+    &.visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    // the script removes the node on a timer, so with motion off it simply
+    // appears and disappears rather than being left behind
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      transform: translate(-50%, 0);
+    }
+  }
+
   :root[reader-mode="on"] {
     & .readermode {
       background: var(--secondary);
