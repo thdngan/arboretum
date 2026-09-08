@@ -57,3 +57,39 @@ $desktopGrid: (
       "grid-sidebar-left grid-center grid-sidebar-right"\
       "grid-sidebar-left grid-footer grid-sidebar-right"',
 );
+
+// Masks the strip of sharp article that WebKit leaves along the bottom of a
+// full-screen backdrop-filter on iOS.
+//
+// Safari never rasterizes the page behind its collapsed floating toolbar, and a
+// backdrop-filter can only blur what was rasterized. So open one of the
+// full-screen dialogs while the bottom bar is retracted into the pill - or let
+// it retract while one is already open - and a band of crisp, unblurred article
+// shows through the blur along the bottom edge, exactly as tall as the pill
+// sitting over it. Geometry cannot fix this: the overlays already run the full
+// 100lvh down there, the blur simply has nothing to sample.
+//
+// So cover the strip instead, fading the overlay to the page colour across its
+// bottom edge. The band is `100lvh - 100svh` - the height of the collapsible
+// browser chrome - which makes it self-sizing in the two ways that matter: it
+// is zero on desktop, where the three viewport units agree, and on mobile it is
+// never taller than the toolbar, so while the toolbar is out the fade sits
+// entirely behind it. It surfaces only in the state that has the bug, where it
+// reads as the article fading out under the bar.
+@mixin collapsed-toolbar-fade($colour: var(--light)) {
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100lvh - 100svh);
+    // above the blurred backdrop but below everything the overlay actually
+    // holds - the dialog, the map panel, its legend - all of which are
+    // positioned and so paint over a negative layer. backdrop-filter makes the
+    // overlay a stacking context, so the -1 cannot escape past the blur.
+    z-index: -1;
+    background: linear-gradient(to top, $colour, transparent);
+    pointer-events: none;
+  }
+}
