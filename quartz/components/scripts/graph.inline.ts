@@ -53,6 +53,9 @@ type NodeRenderData = GraphicsInfo & {
 }
 
 const localStorageKey = "graph-visited"
+// marks <html> while the global map is open, so styles that only make sense
+// behind a full-screen dialog (see graph.scss) can hang off the root
+const GLOBAL_GRAPH_OPEN_CLASS = "global-graph-open"
 function getVisited(): Set<SimpleSlug> {
   return new Set(JSON.parse(localStorage.getItem(localStorageKey) ?? "[]"))
 }
@@ -698,9 +701,13 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const container = document.getElementById("global-graph-outer")
   const sidebar = container?.closest(".sidebar") as HTMLElement
 
+  // a nav away while the map is open would otherwise leave the class behind
+  document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
+
   function renderGlobalGraph() {
     const slug = getFullSlug(window)
     container?.classList.add("active")
+    document.documentElement.classList.add(GLOBAL_GRAPH_OPEN_CLASS)
     if (sidebar) {
       sidebar.style.zIndex = "1"
     }
@@ -711,6 +718,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 
   function hideGlobalGraph() {
     container?.classList.remove("active")
+    document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
     if (sidebar) {
       sidebar.style.zIndex = ""
     }
