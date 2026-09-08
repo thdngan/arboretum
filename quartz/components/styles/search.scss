@@ -266,3 +266,12 @@
     }
   }
 }
+
+// Same reason the home dialogs hide it (see homeModals.scss): iOS Safari
+// composites a fixed element onto its own layer, and backdrop-filter does not
+// capture those, so the floating cluster stayed sharp behind the blur and left
+// an unblurred patch down by the bottom bar. It is unreachable under a
+// full-screen dialog anyway.
+html.search-open .floating-buttons {
+  display: none;
+}

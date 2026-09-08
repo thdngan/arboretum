@@ -44,6 +44,9 @@ const fetchContentCache: Map<FullSlug, Element[]> = new Map()
 const contextWindowWords = 30
 const numSearchResults = 8
 const numTagResults = 5
+// marks <html> while the search is open, so styles that only make sense behind
+// a full-screen dialog (see search.scss) can hang off the root
+const SEARCH_OPEN_CLASS = "search-open"
 
 const tokenizeTerm = (term: string) => {
   const tokens = term.split(/\s+/).filter((t) => t.trim() !== "")
@@ -178,6 +181,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
 
   function hideSearch() {
     container.classList.remove("active")
+    document.documentElement.classList.remove(SEARCH_OPEN_CLASS)
     searchBar.value = "" // clear the input when we dismiss the search
     if (sidebar) sidebar.style.zIndex = ""
     removeAllChildren(results)
@@ -193,6 +197,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     searchType = searchTypeNew
     if (sidebar) sidebar.style.zIndex = "1"
     container.classList.add("active")
+    document.documentElement.classList.add(SEARCH_OPEN_CLASS)
     searchBar.focus()
   }
 
@@ -488,6 +493,8 @@ async function fillDocument(data: ContentIndex) {
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
+  // a nav away while the search is open would otherwise leave the class behind
+  document.documentElement.classList.remove(SEARCH_OPEN_CLASS)
   const data = await fetchData
   const searchElement = document.getElementsByClassName("search")
   for (const element of searchElement) {

@@ -84,12 +84,33 @@ $desktopGrid: (
     right: 0;
     bottom: 0;
     height: calc(100lvh - 100svh);
+
     // above the blurred backdrop but below everything the overlay actually
     // holds - the dialog, the map panel, its legend - all of which are
     // positioned and so paint over a negative layer. backdrop-filter makes the
     // overlay a stacking context, so the -1 cannot escape past the blur.
     z-index: -1;
-    background: linear-gradient(to top, $colour, transparent);
+    // Opaque across the bottom 5rem rather than ramping the whole way down. A
+    // mask is only a mask where it is solid, and a ramp over the full band left
+    // the top of the strip - which is where a line of body text tends to land -
+    // at barely half cover, so the sharp text was still legible through it. The
+    // solid part is taller than any collapsed toolbar; the rest is the fade
+    // that keeps it from reading as a hard edge.
+    background: linear-gradient(to top, $colour 5rem, transparent);
     pointer-events: none;
+
+    // Chrome and Firefox on iOS are WebKit underneath, so they inherit the bug,
+    // but their toolbars are their own views rather than Safari's chrome: the
+    // page keeps the whole screen and the bar is drawn over it, so all three
+    // viewport units come back equal and the calc above collapses to nothing.
+    // (It shows: a dialog is visibly cut off by their expanded bar, where under
+    // Safari dvh would have kept it clear.) Give the band a floor there instead.
+    // -webkit-touch-callout is iOS-only, and the width keeps it off iPads, whose
+    // toolbar is at the top - a band at the bottom would simply be visible.
+    @supports (-webkit-touch-callout: none) {
+      @media (max-width: 600px) {
+        height: max(calc(100lvh - 100svh), 7.5rem);
+      }
+    }
   }
 }
