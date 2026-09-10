@@ -24,15 +24,18 @@ export function getStaticResourcesFromPlugins(ctx: BuildCtx) {
 
   // if serving locally, listen for rebuilds and reload the page
   if (ctx.argv.serve) {
+    // resolved in the browser rather than baked in, so that a phone pointed at
+    // this machine's LAN address reconnects to *this machine* - a hardcoded
+    // localhost meant the phone, and live reload silently never fired there
     const wsUrl = ctx.argv.remoteDevHost
-      ? `wss://${ctx.argv.remoteDevHost}:${ctx.argv.wsPort}`
-      : `ws://localhost:${ctx.argv.wsPort}`
+      ? JSON.stringify(`wss://${ctx.argv.remoteDevHost}:${ctx.argv.wsPort}`)
+      : `"ws://" + location.hostname + ":${ctx.argv.wsPort}"`
 
     staticResources.js.push({
       loadTime: "afterDOMReady",
       contentType: "inline",
       script: `
-        const socket = new WebSocket('${wsUrl}')
+        const socket = new WebSocket(${wsUrl})
         // reload(true) ensures resources like images and scripts are fetched again in firefox
         socket.addEventListener('message', () => document.location.reload(true))
       `,
