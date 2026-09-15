@@ -23,12 +23,9 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        /** Site-wide fonts. The Typomagical faces (Playfair Display + Spectral)
-         *  are not here: they are scoped to the posts tagged #personal, loaded
-         *  by Head.tsx and applied in custom.scss. The 300 weight is what the
-         *  quote callouts are set in. */
+        /** Site-wide fonts.*/
         header: "Be Vietnam Pro", /** Schibsted Grotesk, Chelsea Market,Libre Baskerville, JetBrains*/
-        body: { name: "Charis SIL", weights: [300, 400, 600] }, /**Atkinson Hyperlegible Next */
+        body: { name: "Alegreya", weights: [300, 400, 600] }, /**Atkinson Hyperlegible Next */
         code: "JetBrains Mono", /**IBM Plex Mono */
 
         // body: "Noto Sans", /**Source Sans Pro, Roboto Serif */

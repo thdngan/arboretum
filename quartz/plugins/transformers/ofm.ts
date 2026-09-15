@@ -20,6 +20,7 @@ import calloutScript from "../../components/scripts/callout.inline.ts"
 // @ts-ignore
 import checkboxScript from "../../components/scripts/checkbox.inline.ts"
 import { FilePath, pathToRoot, slugTag, slugifyFilePath } from "../../util/path"
+import { imageDimensions } from "../../util/imageDimensions"
 import { toHast } from "mdast-util-to-hast"
 import { toHtml } from "hast-util-to-html"
 import { capitalize } from "../../util/lang"
@@ -215,7 +216,7 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
 
       return src
     },
-    markdownPlugins(_ctx) {
+    markdownPlugins(ctx) {
       const plugins: PluggableList = []
 
       // regex replacements
@@ -240,15 +241,19 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                   if ([".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".webp"].includes(ext)) {
                     const match = wikilinkImageEmbedRegex.exec(alias ?? "")
                     const alt = match?.groups?.alt ?? ""
-                    const width = match?.groups?.width ?? "auto"
-                    const height = match?.groups?.height ?? "auto"
+                    // only what the embed actually declared: `width="auto"` is
+                    // not a valid attribute value, so browsers drop it and the
+                    // image is left with no aspect ratio at all. Anything left
+                    // unset here is filled in from the file below.
+                    const width = match?.groups?.width
+                    const height = match?.groups?.height
                     return {
                       type: "image",
                       url,
                       data: {
                         hProperties: {
-                          width,
-                          height,
+                          ...(width ? { width } : {}),
+                          ...(height ? { height } : {}),
                           alt,
                         },
                       },
@@ -405,6 +410,46 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
           }
         })
       }
+
+      // An embedded image carries no dimensions of its own, so the browser has
+      // nothing to reserve space with until the file itself arrives - every
+      // image below the fold then shoves the rest of the page down as it lands,
+      // mid-scroll. Read the intrinsic size off the file at build time instead:
+      // `width` and `height` attributes give the box an aspect ratio to hold
+      // open, and base.scss's `height: auto` keeps it scaling to the column.
+      plugins.push(() => {
+        return async (tree: Root, _file) => {
+          const pending: Promise<void>[] = []
+
+          visit(tree, "image", (node) => {
+            if (externalLinkRegex.test(node.url)) return
+
+            const data = (node.data ??= {})
+            const properties = ((data.hProperties ??= {}) as Record<string, unknown>)
+            const declaredWidth = Number(properties.width)
+            if (properties.height && declaredWidth) return
+
+            pending.push(
+              imageDimensions(ctx, node.url).then((dimensions) => {
+                if (!dimensions) return
+
+                if (declaredWidth) {
+                  // an embed like `![[photo.jpg|300]]` fixes the width, and the
+                  // matching height is the one the browser would have computed
+                  properties.height = Math.round(
+                    (declaredWidth * dimensions.height) / dimensions.width,
+                  )
+                } else {
+                  properties.width = dimensions.width
+                  properties.height = dimensions.height
+                }
+              }),
+            )
+          })
+
+          await Promise.all(pending)
+        }
+      })
 
       if (opts.callouts) {
         plugins.push(() => {

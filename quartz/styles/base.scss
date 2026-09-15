@@ -524,9 +524,22 @@ tr {
 
 img {
   max-width: 100%;
+  // images ship with their intrinsic width and height as attributes (see the
+  // image pass in ofm.ts), which is what lets the browser hold their space open
+  // before the file lands. Those attributes also set the used height, so this
+  // has to give it back to the aspect ratio once max-width narrows the image.
+  height: auto;
   border-radius: 5px;
   margin: 1rem 0;
-  content-visibility: auto;
+  // no `content-visibility: auto` here, though upstream Quartz sets it. It made
+  // every image below the fold measure 0px tall until it scrolled into view -
+  // the browser skips layout for skipped content, and back when images carried
+  // no dimensions there was nothing to size the box with - so each one popped to
+  // full height as it was reached and shoved the rest of the page down
+  // mid-scroll. The dimensions above are enough to keep it from collapsing them
+  // now, but it only ever saves layout work on images that are already cheap,
+  // and it silently breaks again for any image that misses out on a width and
+  // height (a raw <img> tag, or a format sharp cannot measure), so it stays off.
 }
 
 p > img + em {
