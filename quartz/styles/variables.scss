@@ -83,28 +83,15 @@ $overlayBleed: 12rem;
 
 // The house backdrop for a full-screen overlay: a blur plus a flat wash.
 //
-// The wash is not decoration. WebKit does not rasterize the page behind the
-// browser's toolbar, and a backdrop-filter can only blur what was rasterized,
-// so the bottom of the scrim - the part $overlayBleed exists to cover - comes
-// out sharp while the rest of it blurs. An earlier version tried to hide that
-// with a gradient to the theme colour, opaque across the bottom 10rem, which
-// replaced the sharp strip with a bar of flat colour two thirds of the way down
-// the screen and a visible ramp above it. A uniform tint costs the blurred part
-// some contrast and buys the sharp part enough dimming that the seam stops
-// reading as an edge, which is the trade that leaves the whole overlay looking
-// like one surface.
+// The same everywhere, phone and desktop alike. An earlier version darkened the
+// wash under 600px, back when the tint was doubling as a mask for a strip of
+// sharp article along the bottom of the screen; $overlayBleed covers that strip
+// properly now, so the bump only made the phones look unlike the desktop.
 //
 // Black rather than a theme colour: --dark inverts with the theme, and a light
 // scrim over a dark page reads as a flash, not a dimming. Same wash as the toc
-// drawer (tocDrawer.scss) and the mermaid viewer, which have always tinted and
-// have never needed masking.
-@mixin overlay-scrim($blur: 4px, $alpha: 0.35, $phone-alpha: 0.5) {
+// drawer (tocDrawer.scss), which has always tinted.
+@mixin overlay-scrim($blur: 4px, $alpha: 0.35) {
   background: rgba(0, 0, 0, $alpha);
   backdrop-filter: blur($blur);
-
-  // the tint has to work harder on a phone, where part of it is dimming sharp
-  // text rather than blur
-  @media (max-width: 600px) {
-    background: rgba(0, 0, 0, $phone-alpha);
-  }
 }
