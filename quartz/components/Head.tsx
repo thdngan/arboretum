@@ -218,6 +218,13 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+// Playfair Display for h1 and Spectral for text, the two faces Typomagical
+// uses. Same shape as googleFontHref builds for the configured fonts, down to
+// the 300 weight the quote callouts are set in.
+const personalFontHref =
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700" +
+  "&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap"
+
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -245,6 +252,11 @@ export default (() => {
     const socialUrl =
       fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
 
+    // Typomagical's faces are scoped to the posts tagged #personal (see the
+    // body[data-tags~="personal"] block in custom.scss), so the two families
+    // are fetched only on those pages rather than site-wide
+    const usesPersonalFonts = fileData.frontmatter?.tags?.includes("personal") ?? false
+
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
       (e) => e.name === CustomOgImagesEmitterName,
     )
@@ -262,6 +274,7 @@ export default (() => {
             {cfg.theme.typography.title && (
               <link rel="stylesheet" href={googleFontSubsetHref(cfg.theme, cfg.pageTitle)} />
             )}
+            {usesPersonalFonts && <link rel="stylesheet" href={personalFontHref} />}
           </>
         )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />

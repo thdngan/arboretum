@@ -12,6 +12,45 @@
 
 // put your custom CSS here!
 
+///////////////////////////////////////////////////
+////////////// TYPOMAGICAL FONTS //////////////////
+///////////////////////////////////////////////////
+
+// Typomagical's faces, on the posts tagged #personal only. renderPage.tsx puts
+// the frontmatter tags on <body> so this can find them, and Head.tsx fetches the
+// two families on just those pages.
+//
+// The override sits on the article and its title rather than on <body>, so the
+// page furniture - breadcrumb, byline, tag list, both sidebars, search - keeps
+// the site fonts. The title is styled from .page-header, outside <article>,
+// hence the second selector; drop it to leave the title in the site font too.
+// body[data-tags~="personal"]
+    // article
+    // h1.article-title {
+    //     --headerFont: "Newsreader", serif;
+    //     --bodyFont: "Spectral", serif;
+    // }
+
+    // article {
+    //     // base.scss sets `font-family: var(--bodyFont)` on <body>, which resolves
+    //     // there and inherits down as a finished value, so the article has to say
+    //     // it again to pick up its own --bodyFont. Headings need no such line:
+    //     // base.scss sets their font-family on the heading elements themselves,
+    //     // where the var resolves against the article's value.
+    //     font-family: var(--bodyFont);
+
+    //     // the theme sets only h1 in the title face and leaves every other heading
+    //     // in the body serif, where Quartz hands all six --headerFont
+    //     h2,
+    //     h3,
+    //     h4,
+    //     h5,
+    //     h6 {
+    //         font-family: var(--bodyFont);
+    //     }
+    // }
+
+
 
 img { display: block !important; margin-left: auto !important; margin-right: auto !important; } .markdown-source-view.mod-cm6 .cm-content > * { margin: auto auto !important; }
 
@@ -251,6 +290,83 @@ blockquote:not(.callout) {
         &::before {
             left: -1.75rem;
             font-size: 2.75rem;
+        }
+    }
+}
+
+// Magazine-style quote callouts, ported from the Typomagical Obsidian theme's
+// `callout-quote-style` setting (on in this vault): no box, a big serif opening
+// mark over centered light text, and the callout title demoted to an
+// attribution line underneath. Written as `> [!quote] Arnold Schwarzenegger`.
+.callout[data-callout="quote"] {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    // Typomagical reverses the column to lift the body above the title. Quartz
+    // can emit that body as two siblings - the remainder of the title paragraph,
+    // then a .callout-content div for anything past a blank line - which a
+    // reversed column would show out of order, so the mark and the title get
+    // explicit positions instead and the body keeps document order.
+    &::after {
+        order: -1;
+        content: "\201C";
+        // --color is the callout's own accent, teal for quote callouts; the
+        // glyph would otherwise inherit body text colour
+        color: var(--color);
+        font-family: "Times New Roman", "Playfair Display", serif;
+        font-size: 3em;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 0.15em;
+    }
+
+    & > p,
+    & > .callout-content {
+        padding: 0;
+        // flex items do not collapse margins, so the leading of each body block
+        // would otherwise depend on which shape Quartz emitted; the space under
+        // the quote mark comes from its own margin instead
+        margin-top: 0;
+        font-size: 1.35em;
+        // the 300 face is requested alongside the body font in quartz.config.ts
+        font-weight: 300;
+        text-align: center;
+        font-variant-ligatures: discretionary-ligatures;
+        font-feature-settings: "liga";
+    }
+
+    & > .callout-title {
+        order: 1;
+        padding: 0;
+        justify-content: center;
+        // body text, not the teal the other callouts use for their titles: the
+        // attribution reads as part of the quote rather than as a label
+        color: var(--dark);
+
+        // the quotation-mark icon is redundant next to the glyph above, and the
+        // em dash takes its place in the flex row
+        & > .callout-icon {
+            display: none;
+        }
+
+        &::before {
+            content: "\2015";
+        }
+
+        & > .callout-title-inner {
+            font-weight: $normalWeight;
+
+            & > p {
+                color: var(--dark);
+            }
+        }
+
+        & > .fold-callout-icon {
+            transform: scale(0.75);
         }
     }
 }

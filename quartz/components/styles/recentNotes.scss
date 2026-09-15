@@ -1,7 +1,7 @@
 .recent-notes {
   & > h3 {
-    margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+    margin: 0.5rem 0 0 0; 
+    font-size: 1rem;  // ← the "Recent writings" label
   }
 
   & > ul.recent-ul {
@@ -10,7 +10,12 @@
     padding-left: 0;
 
     & > li {
+      // ← the entries; scoped, so article h3s keep 1.12rem
       margin: 1rem 0;
+      .section > .desc > h3 {
+        font-size: 1.12rem;
+        line-height: 1.3;   // optional: tighten wrapped titles
+      }
       .section > .desc > h3 > a {
         background-color: transparent;
       }

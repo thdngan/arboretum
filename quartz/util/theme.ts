@@ -38,9 +38,9 @@ export type FontSpecification =
 export interface Theme {
   typography: {
     title?: FontSpecification
-    header: string
-    body: string
-    code: string
+    header: FontSpecification
+    body: FontSpecification
+    code: FontSpecification
   }
   cdnCaching: boolean
   colors: Colors
@@ -179,9 +179,9 @@ ${stylesheet.join("\n\n")}
   --link: ${theme.colors.lightMode.link};
   --border: ${theme.colors.lightMode.border};
 
-  --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
-  --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
-  --codeFont: "${theme.typography.code}", ${DEFAULT_MONO};
+  --headerFont: "${getFontSpecificationName(theme.typography.header)}", ${DEFAULT_SANS_SERIF};
+  --bodyFont: "${getFontSpecificationName(theme.typography.body)}", ${DEFAULT_SANS_SERIF};
+  --codeFont: "${getFontSpecificationName(theme.typography.code)}", ${DEFAULT_MONO};
 }
 
 :root[saved-theme="dark"] {
