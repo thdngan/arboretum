@@ -58,24 +58,41 @@ $desktopGrid: (
       "grid-sidebar-left grid-footer grid-sidebar-right"',
 );
 
+// How far a full-screen overlay is grown past each end of the viewport.
+//
+// On iOS a fixed, 100lvh-tall overlay stops short of the bottom of the screen
+// once Safari's toolbar collapses into the floating pill, leaving a band of
+// untouched page below it - untinted, not merely unblurred, so the overlay's
+// box really does end there rather than the backdrop-filter being clipped. The
+// cause is the layout viewport, which a fixed element is measured against: with
+// no viewport-fit=cover on the page (see Head.tsx) it is inset by the safe areas
+// at both ends, so the same gap exists behind the status bar, where it is easy
+// to miss because iOS paints its own shading over it. No viewport unit measures
+// either gap: as of iOS 26 lvh, svh and dvh all report the same number, and that
+// number is the short one. Firefox and Chrome on iOS are WebKit underneath, with
+// their own bars and the same result.
+//
+// So the overlays overshoot at top and bottom by a constant sized past the
+// tallest of those bars - the expanded one, about 9rem in Firefox and 7rem in
+// Safari. Overshooting symmetrically keeps the box centred on the viewport, so
+// anything the overlay centres stays put; a call site that instead offsets its
+// contents from the top edge adds the same amount back (see search.scss). The
+// excess hangs off-screen and covers nothing, the overlay being fixed with
+// nothing anchored to its edges.
+$overlayBleed: 12rem;
+
 // The house backdrop for a full-screen overlay: a blur plus a flat wash.
 //
 // The wash is not decoration. WebKit does not rasterize the page behind the
 // browser's toolbar, and a backdrop-filter can only blur what was rasterized,
-// so on a phone the bottom of the scrim comes out sharp while the rest of it
-// blurs. Nothing in CSS measures that region either: as of iOS 26 the toolbar
-// floats over a full-height page in both of its states, so lvh, svh and dvh all
-// report the same number and their differences are zero. Firefox and Chrome on
-// iOS are WebKit underneath, with their own bars and the same result.
-//
-// An earlier version masked the strip with a gradient to the theme colour,
-// opaque across the bottom 10rem. That did hide the sharp article, but it hid
-// it under a bar of flat colour two thirds of the way down the screen, with a
-// visible ramp above it and whatever the mask failed to reach below - three
-// different-looking horizontal bands instead of one backdrop. A uniform tint
-// costs the blurred part some contrast and buys the sharp part enough dimming
-// that the seam stops reading as an edge, which is the trade that leaves the
-// whole overlay looking like one surface.
+// so the bottom of the scrim - the part $overlayBleed exists to cover - comes
+// out sharp while the rest of it blurs. An earlier version tried to hide that
+// with a gradient to the theme colour, opaque across the bottom 10rem, which
+// replaced the sharp strip with a bar of flat colour two thirds of the way down
+// the screen and a visible ramp above it. A uniform tint costs the blurred part
+// some contrast and buys the sharp part enough dimming that the seam stops
+// reading as an edge, which is the trade that leaves the whole overlay looking
+// like one surface.
 //
 // Black rather than a theme colour: --dark inverts with the theme, and a light
 // scrim over a dark page reads as a flash, not a dimming. Same wash as the toc

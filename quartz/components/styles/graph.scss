@@ -39,18 +39,17 @@
   }
 
   & > #global-graph-outer {
-    // lvh, not 100%: a fixed element at 100% is the small viewport on iOS
-    // Safari, so when its bottom bar collapses into the floating pill the page
-    // is taller than this and an unblurred strip is left along the bottom edge.
-    // The panel and its legend are position: fixed and centred on the viewport
-    // rather than on this box, so growing it moves nothing.
+    // Overhanging the viewport by $overlayBleed at each end: on iOS neither 100%
+    // nor 100lvh reaches the edges of the screen, and the bands left over are
+    // untouched page. The panel and its legend are position: fixed and centred
+    // on the viewport rather than on this box, so growing it moves nothing.
     position: fixed;
     z-index: 9999;
     left: 0;
-    top: 0;
+    top: calc(-1 * #{$overlayBleed});
     width: 100vw;
-    height: 100%;
-    height: 100lvh;
+    height: calc(100% + 2 * #{$overlayBleed});
+    height: calc(100lvh + 2 * #{$overlayBleed});
     display: none;
     overflow: hidden;
 
