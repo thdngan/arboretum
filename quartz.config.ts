@@ -23,9 +23,15 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        /** Site-wide fonts.*/
+        /** Site-wide fonts.
+         *  `body` is only the *default* now: the Aa button in the top bar lets a
+         *  reader pick any face listed in quartz/util/bodyFonts.ts, and the
+         *  picker overrides --bodyFont on <html>. Keep this in sync with
+         *  DEFAULT_FONT_ID there — it is the one face in the critical path;
+         *  every other is fetched lazily when it is chosen.
+         *  Alegreya's weight range is 400-900, so 300 has nothing to resolve to. */
         header: "Be Vietnam Pro", /** Schibsted Grotesk, Chelsea Market,Libre Baskerville, JetBrains*/
-        body: { name: "Alegreya", weights: [300, 400, 600] }, /**Atkinson Hyperlegible Next */
+        body: { name: "Alegreya", weights: [400, 500, 700] }, /**Lora, Atkinson Hyperlegible Next */
         code: "JetBrains Mono", /**IBM Plex Mono */
 
         // body: "Noto Sans", /**Source Sans Pro, Roboto Serif */

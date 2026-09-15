@@ -1,0 +1,9 @@
+// The stand-in for a page whose body is still empty - see pages/Content.tsx.
+// Deliberately quiet: it is furniture admitting there is nothing to read, not
+// content, so it sits in the muted grey rather than the body colour.
+.empty-content {
+  color: var(--gray);
+  font-style: italic;
+  text-align: center;
+  margin: 2rem 0;
+}

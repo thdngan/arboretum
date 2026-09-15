@@ -117,6 +117,13 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               </tr>
               <tr>
                 <td class="guide-buttons">
+                  <span class="guide-icon guide-icon--plain guide-icon--typography"></span>
+                </td>
+                <td>Set the reading font and text size</td>
+                <td class="guide-shortcut">&mdash;</td>
+              </tr>
+              <tr>
+                <td class="guide-buttons">
                   <span class="guide-icon guide-icon--plain guide-icon--reader"></span>
                 </td>
                 <td>Reader mode</td>
@@ -132,12 +139,14 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
             </tbody>
           </table>
 
-          <p>
+
+
+          {/* <p>
             <strong>Reader mode</strong> dims everything around the page so only the writing is
             left. Nothing is gone: on desktop the side panels fade back in when you move the
             cursor over them, and on mobile a tap anywhere brings the top bar and buttons back (tap the page
             again to send it away).
-          </p>
+          </p> */}
 
           <p>
             On a Mac, press <kbd>&#8984;</kbd> wherever the table says <kbd>Ctrl</kbd>.

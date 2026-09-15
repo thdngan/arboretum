@@ -1,4 +1,4 @@
-const userPref = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+const userPref = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark"
 const currentTheme = localStorage.getItem("theme") ?? userPref
 document.documentElement.setAttribute("saved-theme", currentTheme)
 
@@ -31,7 +31,7 @@ document.addEventListener("nav", () => {
   }
 
   // Listen for changes in prefers-color-scheme
-  const colorSchemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+  const colorSchemeMediaQuery = window.matchMedia("(prefers-color-scheme: light)")
   colorSchemeMediaQuery.addEventListener("change", themeChange)
   window.addCleanup(() => colorSchemeMediaQuery.removeEventListener("change", themeChange))
 })

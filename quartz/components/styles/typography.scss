@@ -1,0 +1,323 @@
+@use "../../styles/variables.scss" as *;
+
+// The two knobs the picker turns. --fontOptical normalises a face's x-height
+// so switching faces changes the voice, not the apparent size; --textScale is
+// the reader's own size control. Everything that scales multiplies by both.
+:root {
+  --fontOptical: 1;
+  --textScale: 1;
+  --textZoom: calc(var(--textScale) * var(--fontOptical));
+  // paragraph leading, as a ratio so it grows with the text. 1.48 is exactly
+  // what `line-height: 1.6rem` on 13pt worked out to before this was a
+  // variable. Vietnamese is happier nearer 1.7 if you ever want to open it up.
+  --textLeading: 1.48;
+}
+
+.typography-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.typography-toggle {
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  // "Aa" is a wider symbol than the moon or the book; matching their height is
+  // what makes the row read as even, so only the height is pinned to 20px
+  width: 29px;
+  height: 20px;
+  margin: 0;
+  color: var(--darkgray);
+  flex-shrink: 0;
+  // matches .readermode: grows the hit/hover area without moving the row
+  box-shadow: 0 0 0 4px transparent;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+
+  & svg {
+    display: block;
+    width: 29px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: var(--lightgray);
+    box-shadow: 0 0 0 4px var(--lightgray);
+  }
+
+  // matches how reader mode marks itself on: the key fills and the symbol
+  // flips to the background colour for as long as the panel is open
+  &[aria-expanded="true"] {
+    background: var(--secondary);
+    box-shadow: 0 0 0 4px var(--secondary);
+    color: var(--light);
+
+    & svg text {
+      fill: var(--light);
+    }
+  }
+}
+
+.typography-panel {
+  // the site only sets border-box on body and section, so without this the
+  // 0.85rem padding and the border are added on top of the declared width and
+  // the panel comes out ~29px wider than the clamp below assumes
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  // never wider than the screen it has to sit on; the JS below slides it
+  // sideways to keep both edges inside the viewport
+  width: min(17.5rem, calc(100vw - 1.5rem));
+  max-height: min(60vh, 30rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.typography-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.typography-label {
+  font-family: var(--headerFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.typography-label-block {
+  border-top: 1px solid var(--border);
+  padding-top: 0.7rem;
+}
+
+.typography-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  & button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--darkgray);
+    font-family: var(--headerFont);
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.3rem 0.55rem;
+    border-radius: 3px;
+    transition: background 0.15s ease;
+
+    &:hover:not(:disabled) {
+      background: var(--lightgray);
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  }
+}
+
+.typography-size {
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  color: var(--dark);
+  min-width: 3.1em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.typography-fonts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.typography-font {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.42rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: var(--darkgray);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: var(--highlight);
+  }
+
+  &[aria-pressed="true"] {
+    border-color: var(--secondary);
+    background: var(--highlight);
+  }
+}
+
+.typography-font-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.typography-font-name {
+  font-size: 0.95rem;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+// the sample is the point of the menu: it is set in the candidate face, so the
+// stacked marks are visible before you commit to anything
+.typography-font-sample {
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--darkgray);
+}
+
+.typography-font-note {
+  font-family: var(--headerFont);
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--gray);
+}
+
+.typography-warn {
+  font-family: var(--codeFont);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0 0.25rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.typography-reset {
+  align-self: flex-start;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--headerFont);
+  font-size: 0.7rem;
+  color: var(--gray);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+.typography-toggle:focus-visible,
+.typography-panel button:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 2px;
+}
+
+// The panel stays absolutely positioned against the button at every width.
+// It must NOT be position: fixed here: on mobile .sidebar.left is
+// `position: initial` (base.scss), so the top bar scrolls with the page, and a
+// fixed panel with `top: auto` falls back to its static position — which is why
+// it landed in a different place at every scroll offset and vanished near the
+// bottom of the page. Absolute keeps it travelling with the button it belongs
+// to; positionPanel() in the inline script handles the horizontal clamping.
+@media all and ($mobile) {
+  .typography-panel {
+    max-height: 65vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typography-toggle,
+  .typography-panel button {
+    transition: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// What the scale actually moves.
+//
+// The article is scaled as a block rather than just its paragraphs. Headings
+// are sized in rem, which ignores a parent's font-size, so scaling only the
+// body copy would leave h3 (1.12rem) *below* body text at the larger steps and
+// invert the hierarchy. Each heading is therefore multiplied explicitly.
+//
+// The selectors carry :root so they outrank `.page & article > h1` in
+// base.scss (0,1,2) without having to depend on stylesheet order. The chrome —
+// sidebar, explorer, search, table of contents — is deliberately left alone:
+// those columns are fixed-width navigation, and scaling their text overflows
+// them.
+// ---------------------------------------------------------------------------
+// the page title sits in .page-header, a sibling of <article>, so it needs its
+// own rule or it would stay put while the prose under it grew by half again
+:root .page .article-title {
+  font-size: calc(1.75rem * var(--textZoom));
+}
+
+:root .page article {
+  font-size: calc(13pt * var(--textZoom));
+  // some faces are too light at 400 on screen (Alegreya especially); headings
+  // use `font-weight: revert` further up base.scss, so they stay bold
+  font-weight: var(--bodyWeight, 400);
+
+  & h1 {
+    font-size: calc(1.75rem * var(--textZoom));
+  }
+  & h2 {
+    font-size: calc(1.4rem * var(--textZoom));
+  }
+  & h3 {
+    font-size: calc(1.12rem * var(--textZoom));
+  }
+  & h4,
+  & h5,
+  & h6 {
+    font-size: calc(1rem * var(--textZoom));
+  }
+
+  // was `line-height: 1.6rem`, an absolute value that would not have followed
+  // the text as it grew — at the top step the lines would have collided
+  & p,
+  & li,
+  & tbody {
+    line-height: var(--textLeading);
+  }
+}

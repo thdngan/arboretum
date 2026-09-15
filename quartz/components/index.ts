@@ -26,6 +26,7 @@ import Row from "./_Row"
 import ConditionalRender from "./ConditionalRender"
 import Flex from "./Flex"
 import ReaderMode from "./ReaderMode"
+import Typography from "./Typography"
 import BlogHome from "./BlogHome"
 import WideOnly from "./WideOnly"
 import NarrowOnly from "./NarrowOnly"
@@ -63,6 +64,7 @@ export {
   Flex,
   ConditionalRender,
   ReaderMode,
+  Typography,
   BlogHome,
   WideOnly,
   NarrowOnly,
