@@ -51,19 +51,19 @@
     width: 100vw;
     height: 100%;
     height: 100lvh;
-    backdrop-filter: blur(4px);
     display: none;
     overflow: hidden;
-
-    // the blur stops short of Safari's collapsed toolbar on iOS; this hides the
-    // sharp strip that leaves behind the pill
-    @include collapsed-toolbar-fade;
 
     // shared by the map panel and the close button that has to sit on its
     // corner; both are position: fixed and centred on the viewport, so the
     // button's offsets are derived from these rather than from the panel box
     --global-graph-width: 80vw;
     --global-graph-height: 80vh;
+
+    // blur plus tint; the tint is what covers the strip iOS refuses to blur
+    // under the toolbar. Last, because it carries a nested media query and
+    // sass warns about plain declarations that follow one.
+    @include overlay-scrim;
 
     @media all and not ($desktop) {
       --global-graph-width: 90%;

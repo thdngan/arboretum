@@ -157,9 +157,6 @@
   // and a strip of unblurred article is left along the bottom edge, reading as a
   // solid band of theme colour. lvh is the large viewport, the height with the
   // chrome retracted, so it covers the page in either state.
-  //
-  // And no background tint: the map has none, and a scrim over the blur made
-  // that unblurred strip read as an obvious crisp rectangle.
   position: fixed;
   left: 0;
   top: 0;
@@ -177,10 +174,10 @@
   padding: 1.5rem;
   padding-bottom: calc(1.5rem + 100lvh - 100dvh);
   box-sizing: border-box;
-  backdrop-filter: blur(4px);
   overscroll-behavior: contain;
-  // and the strip iOS leaves unblurred underneath Safari's collapsed toolbar
-  @include collapsed-toolbar-fade;
+  // blur plus tint, the same backdrop the map and the search sheet use; the
+  // tint is what covers the strip iOS refuses to blur under the toolbar
+  @include overlay-scrim;
 
   &.active {
     display: flex;
