@@ -43,8 +43,8 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
         <button class="home-modal-close" type="button" aria-label="Close">
           <CloseIcon />
         </button>
-        <h3 id="home-modal-guide-title">How to get around</h3>
         <div class="home-modal-body">
+          <h3 id="home-modal-guide-title">How to get around</h3>
           <p>
             You can hop between posts and notes by clicking on{" "}
             <a href={lithium} class="internal">
@@ -167,8 +167,8 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
         <button class="home-modal-close" type="button" aria-label="Close">
           <CloseIcon />
         </button>
-        <h3 id="home-modal-thanks-title">Colophon</h3>
         <div class="home-modal-body">
+          <h3 id="home-modal-thanks-title">Colophon</h3>
           <p>
             I stumbled upon an older version of <a href="https://quartz.jzhao.xyz/">Quartz</a>{" "}
             while trying to figure out how to publish my{" "}

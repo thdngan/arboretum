@@ -180,9 +180,6 @@
   padding: calc(1.5rem + env(safe-area-inset-top)) 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
   box-sizing: border-box;
   overscroll-behavior: contain;
-  // blur plus tint, the same backdrop the map and the search sheet use; the
-  // tint is what covers the strip iOS refuses to blur under the toolbar
-  @include overlay-scrim;
 
   &.active {
     display: flex;
@@ -208,20 +205,17 @@
   // the whole screen, chrome included
   max-height: 85vh;
   max-height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+  // the panel holds still and .home-modal-body does the scrolling, so the close
+  // button - absolutely positioned in here - stays on the corner instead of
+  // riding away with the text. The guide is long enough that it matters.
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   padding: 2rem 2rem 1.5rem;
   background: var(--light);
   border: 1px solid var(--lightgray);
   border-radius: 8px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-
-  & > h3 {
-    margin: 0 2.5rem 1.2rem 0;
-    font-size: calc(1.2rem * var(--fontOptical));
-    color: var(--dark);
-  }
 
   @media all and ($mobile) {
     padding: 1.5rem 1.1rem 1.1rem;
@@ -229,7 +223,22 @@
 }
 
 .home-modal-body {
+  // the scroller, taken over from .home-modal-panel. min-height:0 because a flex
+  // child defaults to min-content and would refuse to shrink far enough to scroll.
+  overflow-y: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   color: var(--darkgray);
+
+  // in here rather than on the panel, so the title scrolls away with the text and
+  // the close button is the only thing that holds still. The right margin is what
+  // keeps the first line clear of that button.
+  & > h3 {
+    margin: 0 2.5rem 1.2rem 0;
+    font-size: calc(1.2rem * var(--fontOptical));
+    color: var(--dark);
+  }
   font-size: calc(0.95rem * var(--fontOptical));
   line-height: 1.6;
 
@@ -275,7 +284,11 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  background: none;
+  // the panel's own colour, not `none`: the body scrolls underneath now, and a
+  // fully transparent button would have the text running through the cross.
+  // Held short of opaque so the text still reads as continuing behind it.
+  background: color-mix(in srgb, var(--light) 75%, transparent);
+  z-index: 1;
   border: none;
   border-radius: 4px;
   color: var(--gray);

@@ -294,7 +294,11 @@ html.toc-drawer-open .floating-buttons {
 }
 
 // a dialog owns the whole screen; the tab has no business poking out over it
-html.home-modal-open .toc-drawer-tab {
+// fixed positioning stops working inside #quartz-root while it carries a filter,
+// and the tab is unreachable behind a full-screen dialog anyway
+html.home-modal-open .toc-drawer-tab,
+html.global-graph-open .toc-drawer-tab,
+html.search-open .toc-drawer-tab {
   display: none;
 }
 

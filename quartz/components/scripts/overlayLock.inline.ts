@@ -1,63 +1,75 @@
-// Pins the page under a full-screen overlay, and - the reason this exists rather
-// than a line of `overflow: hidden` - makes the overlay's scrim reach the whole
-// screen on iOS.
+// Backdrop for the full-screen overlays, and the reason it is JS rather than a
+// line of backdrop-filter.
 //
 // On iOS the browser paints page content into a band the layout viewport does not
-// cover: with the toolbar collapsed to its pill, window.innerHeight reports 752
-// while screen.height is 874, and the page renders into all 874. A position:
-// fixed element is hard-clipped to the 752, so no scrim can be stretched over the
-// band however it is sized - not with lvh/svh/dvh (all of which report the short
-// number), not with viewport-fit=cover (Firefox iOS reports every safe-area inset
-// as 0), and not by overhanging the element past the viewport, which paints
-// nothing. Measured on an iPhone over USB; upstream Quartz has the same band.
+// cover: with the toolbar collapsed, window.innerHeight reports 752 while
+// screen.height is 874, and the page renders into all 874. A position: fixed
+// element is hard-clipped to the 752, so a scrim cannot be stretched over that
+// band by any means - not lvh/svh/dvh, which all report the short number, not
+// viewport-fit=cover, which Firefox iOS answers with zero insets, and not by
+// overhanging the element, which paints nothing. Measured on-device; upstream
+// Quartz has the same band.
 //
-// The one surface that does reach the band is the page canvas. So: put the
-// document itself into a fixed layer, which clips it to the viewport the same way
-// and stops it painting down there, and colour the canvas to match the scrim.
-// The band then reads as a continuation of the scrim rather than a strip of sharp
-// article. .overlay-locked in base.scss is that colour.
+// So nothing covers the band, and instead nothing needs to: blur and dim the
+// article itself, and whatever of it paints down there arrives already blurred and
+// dimmed, continuous with the rest. The overlay then carries no backdrop of its
+// own - it is a transparent box holding the dialog.
 //
-// The cost is a real scroll lock - a fixed body has no scroll offset of its own -
-// so the offset is carried on `top` and put back on release.
+// The catch is that a filter on an ancestor blurs everything inside it, overlays
+// included, and makes that ancestor the containing block for any position: fixed
+// descendant. So an overlay is moved out to <body> for as long as it is up, and
+// put back where it came from on close. A placeholder comment holds its seat, so
+// it lands back in its original spot rather than at the end of its parent.
 
-const LOCK_CLASS = "overlay-locked"
+const BLUR_CLASS = "content-blurred"
 
-let depth = 0
-let savedY = 0
+type Seat = { node: HTMLElement; placeholder: Comment }
 
-export function lockPage() {
+let open: Seat[] = []
+
+function root(): HTMLElement | null {
+  return document.getElementById("quartz-root")
+}
+
+export function openOverlay(node: HTMLElement | null | undefined) {
+  if (!node) return
+  if (open.some((s) => s.node === node)) return
+
+  // only lift it out if it is actually inside the element about to be blurred
+  const placeholder = document.createComment("overlay-seat")
+  const r = root()
+  if (r && r.contains(node)) {
+    node.parentNode?.insertBefore(placeholder, node)
+    document.body.appendChild(node)
+  }
+  open.push({ node, placeholder })
+  document.documentElement.classList.add(BLUR_CLASS)
+}
+
+export function closeOverlay(node: HTMLElement | null | undefined) {
+  if (!node) return
+  const i = open.findIndex((s) => s.node === node)
+  if (i === -1) return
+  const seat = open[i]
+  open.splice(i, 1)
+
+  // back to its seat if the seat still exists; an SPA navigation may have
+  // replaced the page under it, in which case the node is stale and just goes
+  if (seat.placeholder.parentNode) {
+    seat.placeholder.parentNode.insertBefore(seat.node, seat.placeholder)
+    seat.placeholder.remove()
+  } else if (seat.node.parentNode === document.body) {
+    seat.node.remove()
+  }
+
   // refcounted: search can be opened from behind a dialog, and whichever closes
-  // second must not release a lock the other still wants
-  if (depth++ > 0) return
-
-  savedY = window.scrollY
-  const body = document.body
-  body.style.position = "fixed"
-  body.style.top = `${-savedY}px`
-  body.style.left = "0"
-  body.style.right = "0"
-  body.style.width = "100%"
-  document.documentElement.classList.add(LOCK_CLASS)
+  // second must not lift the blur the other still wants
+  if (open.length === 0) document.documentElement.classList.remove(BLUR_CLASS)
 }
 
-export function unlockPage() {
-  if (depth === 0) return
-  if (--depth > 0) return
-
-  const body = document.body
-  body.style.position = ""
-  body.style.top = ""
-  body.style.left = ""
-  body.style.right = ""
-  body.style.width = ""
-  document.documentElement.classList.remove(LOCK_CLASS)
-  // instant, not smooth: the page never appeared to move, so it must not appear
-  // to move back either
-  window.scrollTo({ top: savedY, behavior: "instant" as ScrollBehavior })
-}
-
-// an SPA navigation with a dialog open would otherwise leave the body pinned
-export function releaseAllLocks() {
-  depth = depth > 0 ? 1 : 0
-  unlockPage()
+// a navigation with an overlay up would otherwise leave the page blurred
+export function releaseAllOverlays() {
+  for (const seat of [...open]) closeOverlay(seat.node)
+  open = []
+  document.documentElement.classList.remove(BLUR_CLASS)
 }

@@ -624,15 +624,33 @@ iframe.pdf {
   border-radius: 5px;
 }
 
-// The band iOS paints outside the layout viewport, which no positioned element
-// can reach - see the measurements in overlayLock.inline.ts. While an overlay is
-// up that script pins <body> into a fixed layer, which is clipped to the viewport
-// and so stops the article painting down there; that leaves the band to the page
-// canvas, the one surface that does reach it. Colouring the canvas with the same
-// wash the scrim uses makes the band read as the scrim running on behind the
-// browser's toolbar rather than as a strip of sharp article.
-html.overlay-locked {
-  background: color-mix(in srgb, #000 #{$overlayScrimAlpha * 100%}, var(--light));
+// Blurring the article in place, rather than putting a blurred scrim over it.
+// On iOS the page paints into a band below the layout viewport that no fixed
+// element can cover, so the only way that band matches the rest is for what
+// paints there to arrive already blurred - see overlayLock.inline.ts, which also
+// lifts the overlay out of #quartz-root so it is not blurred along with the page.
+html.content-blurred {
+  // the page background dims to exactly where brightness() takes the content, so
+  // the two never drift: both land on (1 - $overlayScrimAlpha) x the original
+  body {
+    background: color-mix(in srgb, #000 #{$overlayScrimAlpha * 100%}, var(--light));
+  }
+
+  #quartz-root {
+    filter: blur($overlayBlur) brightness(1 - $overlayScrimAlpha);
+  }
+
+  // the article holds still underneath; this is the whole scroll lock now, the
+  // pinned-body version having made the browser yank its toolbar open
+  &,
+  body {
+    overflow: hidden;
+  }
+}
+
+// declared unconditionally so it eases out as well as in
+#quartz-root {
+  transition: filter 0.18s ease;
 }
 
 .navigation-progress {
