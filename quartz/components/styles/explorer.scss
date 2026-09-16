@@ -120,7 +120,6 @@ button.desktop-explorer {
     list-style: none;
     margin: 0;
     padding: 0;
-    overscroll-behavior: contain;
 
     & li > a {
       color: var(--dark);
@@ -142,6 +141,17 @@ button.desktop-explorer {
 
   .folder-outer.open {
     grid-template-rows: 1fr;
+  }
+
+  // Keeps a wheel gesture inside the list instead of chaining on to the page
+  // once the list hits an end. It belongs on the scroll port itself and nowhere
+  // else: `.folder-outer > ul` below is `overflow: hidden`, which is still a
+  // scroll container, so the same property on a descendant ul used to swallow
+  // every gesture that started over a file inside an open folder - the box has
+  // no scroll range of its own, and `contain` stopped the wheel reaching the
+  // list. Only the strip above the first open folder still scrolled.
+  & > ul.overflow {
+    overscroll-behavior: contain;
   }
 
   .folder-outer > ul {
