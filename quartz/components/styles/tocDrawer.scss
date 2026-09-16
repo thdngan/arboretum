@@ -106,12 +106,10 @@
   height: 100%;
   height: 100lvh;
   z-index: var(--toc-drawer-z);
-  // a plain black wash rather than a theme colour: --dark inverts with the
-  // theme, and a light scrim over a dark page reads as a flash, not a dimming.
-  // The blur is the house backdrop (see .home-modal); the tint is what keeps
-  // the article legibly *behind* the panel rather than beside it.
-  background: rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(2px);
+  // No wash and no backdrop-filter any more: the article is blurred and dimmed in
+  // place while the drawer is out (see overlayLock.inline.ts), which a scrim
+  // cannot do because it cannot reach the band below the viewport. What is left
+  // here is the part a filter cannot do - swallowing taps meant for the article.
   opacity: var(--toc-drawer-progress);
   // no pointer target until there is something to dismiss, otherwise it would
   // swallow every tap on the page

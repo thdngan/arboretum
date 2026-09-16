@@ -636,8 +636,12 @@ html.content-blurred {
     background: color-mix(in srgb, #000 #{$overlayScrimAlpha * 100%}, var(--light));
   }
 
+  // --overlay-progress lets the toc drawer scale both by how far it is out, so
+  // dragging it closed fades the page back in with it. Everything else leaves the
+  // variable unset and gets the full amount.
   #quartz-root {
-    filter: blur($overlayBlur) brightness(1 - $overlayScrimAlpha);
+    filter: blur(calc(#{$overlayBlur} * var(--overlay-progress, 1)))
+      brightness(calc(1 - #{$overlayScrimAlpha} * var(--overlay-progress, 1)));
   }
 
   // the article holds still underneath; this is the whole scroll lock now, the

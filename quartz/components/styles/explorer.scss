@@ -36,7 +36,24 @@
   min-height: 1.2rem;
   flex: 0 1 auto;
   &.collapsed {
-    flex: 0 1 1.6rem;
+    // Sized to the title rather than to a number. This used to be
+    // `flex: 0 1 1.6rem`, a hardcoded 25.6px, and the title has outgrown it:
+    // the h2 is 1rem scaled by --fontOptical (typography.scss), plus its 0.3em
+    // padding and the 1px underline — about 29px with Alegreya. With the
+    // `overflow-y: hidden` above, the surplus was simply cropped, taking the
+    // bottom of the lettering and the underline with it. Content-sized, it
+    // cannot be outgrown again by a heading tweak or a wider-bodied face.
+    //
+    // Mobile is left alone: the block further down gives it a 34px bar and
+    // slides the content out of frame instead of hiding it.
+    @media all and not ($mobile) {
+      flex: 0 0 auto;
+
+      & > .explorer-content {
+        display: none;
+      }
+    }
+
     & .fold {
       transform: rotateZ(-90deg);
     }
@@ -257,9 +274,16 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
         transform 200ms ease,
         visibility 200ms ease;
       overflow: hidden;
-      padding: 4rem 0 2rem 0;
-      height: 100dvh;
-      max-height: 100dvh;
+      // Past the bottom of the viewport by $pageLayerBleed, so the panel itself
+      // covers the band iOS paints below it rather than leaving a strip of sharp
+      // article down there. This one can: it is position: absolute, so it lives in
+      // the page layer - the same layer whose content was showing through in the
+      // first place - rather than being clipped at the viewport the way a fixed
+      // element is. The bleed goes into the bottom padding too, so the list still
+      // ends where the screen does and nothing usable hides behind the toolbar.
+      padding: 4rem 0 calc(2rem + #{$pageLayerBleed}) 0;
+      height: calc(100dvh + #{$pageLayerBleed});
+      max-height: none;
       visibility: hidden;
     }
 

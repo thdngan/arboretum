@@ -75,4 +75,11 @@ $desktopGrid: (
 // to the content filter in step: color-mix at 35% black and brightness(0.65) both
 // land on 0.65 x the original, so background and content dim by the same amount.
 $overlayScrimAlpha: 0.35;
+
+// How far a page-layer element is grown past the bottom of the viewport to cover
+// the band iOS paints into below it. Only page-layer elements can: a position:
+// fixed one is clipped at the viewport and never reaches the band at all, which
+// is the whole reason overlayLock.inline.ts exists. Sized past the tallest
+// browser bar - the expanded one, about 9rem in Firefox and 7rem in Safari.
+$pageLayerBleed: 12rem;
 $overlayBlur: 4px;
