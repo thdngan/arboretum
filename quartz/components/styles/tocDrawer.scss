@@ -94,9 +94,7 @@
 }
 
 .toc-drawer-scrim {
-  // Covers the screen edge to edge, which takes viewport-fit=cover on the page
-  // (see Head.tsx) - without it the viewport stops at the safe area and this
-  // cannot paint behind the status bar or Safari's toolbar however tall it is.
+  // Covers the viewport.
   // lvh rather than dvh: the panel below ends where the visible page ends,
   // because you have to be able to tap it, but the scrim runs on behind the bar.
   position: fixed;
@@ -106,10 +104,10 @@
   height: 100%;
   height: 100lvh;
   z-index: var(--toc-drawer-z);
-  // No wash and no backdrop-filter any more: the article is blurred and dimmed in
-  // place while the drawer is out (see overlayLock.inline.ts), which a scrim
-  // cannot do because it cannot reach the band below the viewport. What is left
-  // here is the part a filter cannot do - swallowing taps meant for the article.
+  // a plain black wash rather than a theme colour: --dark inverts with the
+  // theme, and a light scrim over a dark page reads as a flash, not a dimming.
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(2px);
   opacity: var(--toc-drawer-progress);
   // no pointer target until there is something to dismiss, otherwise it would
   // swallow every tap on the page

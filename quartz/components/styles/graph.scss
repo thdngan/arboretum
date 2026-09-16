@@ -55,9 +55,8 @@ html.global-graph-open .floating-buttons {
 // blurring it too (see overlayLock.inline.ts). A descendant selector would stop
 // matching the moment it moves.
 #global-graph-outer {
-  // Covers the screen edge to edge, which takes viewport-fit=cover on the page
-  // (see Head.tsx) - without it the viewport stops at the safe area and this
-  // cannot paint behind the status bar or Safari's toolbar however tall it is.
+  // Covers the viewport; the strip below it is handled by blurring the article
+  // in place instead, see overlayLock.inline.ts.
   position: fixed;
   z-index: 9999;
   left: 0;
@@ -76,16 +75,12 @@ html.global-graph-open .floating-buttons {
   // all three are position: fixed and centred on the viewport, so their
   // offsets are derived from these rather than from the panel box.
   //
-  // The box above covers the whole screen, but the panel must not: it holds
-  // things you have to see and tap, and the screen now runs under the notch
-  // and Safari's toolbar. So the panel is sized and centred on the safe area
-  // instead. env() is 0 on anything without a cutout, leaving 80vh centred at
-  // 50% as before.
-  --safe-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-  --global-graph-center-y: calc(env(safe-area-inset-top) + var(--safe-height) / 2);
+  // dvh rather than vh so the panel tracks the browser's collapsing toolbar
+  // and never tucks its bottom edge behind it.
+  --safe-height: 100dvh;
+  --global-graph-center-y: 50%;
   --global-graph-width: 80vw;
   --global-graph-height: calc(0.8 * var(--safe-height));
-
 
   @media all and not ($desktop) {
     --global-graph-width: 90%;

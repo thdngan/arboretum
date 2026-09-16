@@ -129,13 +129,6 @@ a {
 .page {
   max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
-  // The page runs under the browser and system chrome now (viewport-fit=cover,
-  // see Head.tsx), which is what lets the full-screen overlays cover the screen.
-  // The article should not run under it too, so it keeps itself clear of the
-  // notch and the home indicator. These are 0 on anything without a cutout.
-  box-sizing: border-box;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
-    env(safe-area-inset-left);
   & article {
     & > h1 {
       font-size: 1.75rem;
@@ -636,20 +629,34 @@ html.content-blurred {
     background: color-mix(in srgb, #000 #{$overlayScrimAlpha * 100%}, var(--light));
   }
 
-  // --overlay-progress lets the toc drawer scale both by how far it is out, so
-  // dragging it closed fades the page back in with it. Everything else leaves the
-  // variable unset and gets the full amount.
   #quartz-root {
-    filter: blur(calc(#{$overlayBlur} * var(--overlay-progress, 1)))
-      brightness(calc(1 - #{$overlayScrimAlpha} * var(--overlay-progress, 1)));
+    filter: blur($overlayBlur) brightness(1 - $overlayScrimAlpha);
   }
 
-  // the article holds still underneath; this is the whole scroll lock now, the
-  // pinned-body version having made the browser yank its toolbar open
-  &,
-  body {
-    overflow: hidden;
-  }
+  // No `overflow: hidden` here, and none on body either. That stops <html> being
+  // a scroll container, and every sticky thing on the page - the desktop sidebars,
+  // the mobile top bar - drops out of its stuck position back into the flow,
+  // which on a scrolled page reads as the backdrop lurching upward. The page is
+  // held still from script instead (overlayLock.inline.ts), which leaves the root
+  // a scroll container and sticky alone.
+}
+
+// Covers the band iOS paints below the layout viewport - see bandCover.inline.ts
+// for why this is an ordinary page-layer element rather than part of the overlay
+// that needs it. Tall enough to clear the tallest browser bar, about 9rem in
+// Firefox and 7rem in Safari.
+.viewport-band-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 16rem;
+  z-index: 50;
+  pointer-events: none;
+  // plain page background, for the drawer as well as the explorer. The drawer
+  // dims the article behind a 32% scrim, so matching that down here was the
+  // obvious choice and the wrong one - it read as a dark bar, where the theme's
+  // own background reads as the page simply continuing under the browser's bar.
+  background: var(--light);
 }
 
 // declared unconditionally so it eases out as well as in
@@ -659,8 +666,7 @@ html.content-blurred {
 
 .navigation-progress {
   position: fixed;
-  // below the notch, or it is a 3px bar drawn where nobody can see it
-  top: env(safe-area-inset-top);
+  top: 0;
   left: 0;
   width: 0;
   height: 3px;

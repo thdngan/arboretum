@@ -18,7 +18,7 @@ const EDGE_ZONE = 28
 const AXIS_SLOP = 10
 // px/ms past which a flick settles the drawer in the direction it was thrown,
 // however far it actually got
-import { openOverlay, closeOverlay, releaseAllOverlays } from "./overlayLock.inline"
+import { showBandCover, hideBandCover } from "./bandCover.inline"
 
 const FLICK_SPEED = 0.4
 const DRAWER_OPEN_CLASS = "is-open"
@@ -49,18 +49,12 @@ function setOffset(px: number) {
   offset = Math.min(panelWidth, Math.max(0, px))
   // inline on the wrapper, so it beats the resting values .is-open sets
   drawer.style.setProperty("--toc-drawer-offset", `${offset}px`)
-  const progress = 1 - offset / panelWidth
-  drawer.style.setProperty("--toc-drawer-progress", `${progress}`)
-  // mirrored onto <html> because the page blur lives on #quartz-root, which is not
-  // inside the drawer - and once the drawer is open it is not even a sibling, the
-  // overlay having been lifted out to <body>. See overlayLock.inline.ts.
-  document.documentElement.style.setProperty("--overlay-progress", `${progress}`)
+  drawer.style.setProperty("--toc-drawer-progress", `${1 - offset / panelWidth}`)
 }
 
 function clearOffset() {
   drawer?.style.removeProperty("--toc-drawer-offset")
   drawer?.style.removeProperty("--toc-drawer-progress")
-  document.documentElement.style.removeProperty("--overlay-progress")
 }
 
 // the point of opening the contents mid-article is to see where you are, so
@@ -90,7 +84,7 @@ function openDrawer(moveFocus = false) {
   drawer.classList.add(DRAWER_OPEN_CLASS)
   tab?.setAttribute("aria-expanded", "true")
   document.documentElement.classList.add(DRAWER_LOCK_CLASS)
-  openOverlay(drawer)
+  showBandCover()
   revealCurrentEntry()
 
   if (moveFocus) {
@@ -104,7 +98,7 @@ function closeDrawer() {
   drawer.classList.remove(DRAWER_OPEN_CLASS)
   tab?.setAttribute("aria-expanded", "false")
   document.documentElement.classList.remove(DRAWER_LOCK_CLASS)
-  closeOverlay(drawer)
+  hideBandCover()
 
   // focus would otherwise be stranded on an element that is about to go
   // visibility:hidden, which drops it on <body>
@@ -191,8 +185,7 @@ function onTouchEnd() {
   axis = "unknown"
 
   // a flick is a statement of intent; only a slow drag is judged on distance
-  const shouldOpen =
-    Math.abs(speed) > FLICK_SPEED ? speed < 0 : offset < panelWidth / 2
+  const shouldOpen = Math.abs(speed) > FLICK_SPEED ? speed < 0 : offset < panelWidth / 2
 
   // dropping the class and the inline offset together lets the transition pick
   // up from wherever the finger left the panel
@@ -243,7 +236,7 @@ function onKeyDown(e: KeyboardEvent) {
 function setupTocDrawer() {
   // a nav away mid-swipe would otherwise leave the scroll lock behind
   document.documentElement.classList.remove(DRAWER_LOCK_CLASS)
-  releaseAllOverlays()
+  hideBandCover()
   isOpen = false
   tracking = false
   axis = "unknown"

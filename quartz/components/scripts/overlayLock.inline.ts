@@ -31,6 +31,51 @@ function root(): HTMLElement | null {
   return document.getElementById("quartz-root")
 }
 
+// Holding the page still, without `overflow: hidden` on the root.
+//
+// That used to be the lock, and it cost every sticky element on the page: making
+// <html> stop being a scroll container drops the desktop sidebars and the mobile
+// top bar out of their stuck positions and back into the flow, so the blurred
+// backdrop lurches upward the moment a dialog opens. Refusing the scroll where it
+// starts leaves the root exactly as it was.
+//
+// Anything aimed inside the open overlay still scrolls: the dialogs have their own
+// scrolling bodies, the search sheet scrolls its results, and the map is panned by
+// dragging it.
+const SCROLL_KEYS = new Set([
+  "ArrowUp",
+  "ArrowDown",
+  "PageUp",
+  "PageDown",
+  "Home",
+  "End",
+  " ",
+  "Spacebar",
+])
+
+function aimedAtOverlay(target: EventTarget | null): boolean {
+  return target instanceof Node && open.some((seat) => seat.node.contains(target))
+}
+
+function blockScroll(e: Event) {
+  if (aimedAtOverlay(e.target)) return
+  e.preventDefault()
+}
+
+function blockScrollKeys(e: KeyboardEvent) {
+  if (!SCROLL_KEYS.has(e.key)) return
+  if (aimedAtOverlay(e.target)) return
+  e.preventDefault()
+}
+
+function holdPage(on: boolean) {
+  const fn = on ? window.addEventListener : window.removeEventListener
+  // passive: false, or preventDefault is ignored on these two
+  fn("wheel", blockScroll, { passive: false } as AddEventListenerOptions)
+  fn("touchmove", blockScroll, { passive: false } as AddEventListenerOptions)
+  fn("keydown", blockScrollKeys as EventListener)
+}
+
 export function openOverlay(node: HTMLElement | null | undefined) {
   if (!node) return
   if (open.some((s) => s.node === node)) return
@@ -42,8 +87,10 @@ export function openOverlay(node: HTMLElement | null | undefined) {
     node.parentNode?.insertBefore(placeholder, node)
     document.body.appendChild(node)
   }
+  const first = open.length === 0
   open.push({ node, placeholder })
   document.documentElement.classList.add(BLUR_CLASS)
+  if (first) holdPage(true)
 }
 
 export function closeOverlay(node: HTMLElement | null | undefined) {
@@ -64,7 +111,10 @@ export function closeOverlay(node: HTMLElement | null | undefined) {
 
   // refcounted: search can be opened from behind a dialog, and whichever closes
   // second must not lift the blur the other still wants
-  if (open.length === 0) document.documentElement.classList.remove(BLUR_CLASS)
+  if (open.length === 0) {
+    document.documentElement.classList.remove(BLUR_CLASS)
+    holdPage(false)
+  }
 }
 
 // a navigation with an overlay up would otherwise leave the page blurred
@@ -72,4 +122,5 @@ export function releaseAllOverlays() {
   for (const seat of [...open]) closeOverlay(seat.node)
   open = []
   document.documentElement.classList.remove(BLUR_CLASS)
+  holdPage(false)
 }

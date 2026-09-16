@@ -274,16 +274,9 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
         transform 200ms ease,
         visibility 200ms ease;
       overflow: hidden;
-      // Past the bottom of the viewport by $pageLayerBleed, so the panel itself
-      // covers the band iOS paints below it rather than leaving a strip of sharp
-      // article down there. This one can: it is position: absolute, so it lives in
-      // the page layer - the same layer whose content was showing through in the
-      // first place - rather than being clipped at the viewport the way a fixed
-      // element is. The bleed goes into the bottom padding too, so the list still
-      // ends where the screen does and nothing usable hides behind the toolbar.
-      padding: 4rem 0 calc(2rem + #{$pageLayerBleed}) 0;
-      height: calc(100dvh + #{$pageLayerBleed});
-      max-height: none;
+      padding: 4rem 0 2rem 0;
+      height: 100dvh;
+      max-height: 100dvh;
       visibility: hidden;
     }
 
@@ -300,8 +293,36 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
   }
 }
 
+// Same as the map, the search sheet and the home dialogs (see graph.scss,
+// search.scss, homeModals.scss): the cluster is unreachable behind a full-screen
+// menu, and floating over it just looks like a mistake.
 .mobile-no-scroll {
   @media all and ($mobile) {
+    .floating-buttons {
+      display: none;
+    }
+  }
+}
+
+.mobile-no-scroll {
+  @media all and ($mobile) {
+    // This is what actually holds the page still, and blocking the gesture alone
+    // was not enough - touches find their way to the scroller by paths these two
+    // selectors do not cover.
+    //
+    // The cost is that <html> stops being a scroll container, and Safari responds
+    // by clipping the page to the layout viewport and filling the band below it
+    // with flat page background - a strip that survived the menu closing, because
+    // closing it never invalidated that region. That is now handled where it
+    // belongs, by forcing the repaint on close (forceBandRepaint in
+    // bandCover.inline.ts), rather than by giving up the scroll lock for it.
     overflow: hidden;
+
+    // kept alongside: it costs nothing and stops the gesture before it reaches
+    // the root at all, which is what the toc drawer relies on entirely
+    .explorer-content,
+    .sidebar.left:has(.explorer) {
+      touch-action: none;
+    }
   }
 }

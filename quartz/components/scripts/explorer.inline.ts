@@ -2,6 +2,8 @@ import { FileTrieNode } from "../../util/fileTrie"
 import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
 import { ContentDetails } from "../../plugins/emitters/contentIndex"
 
+import { showBandCover, hideBandCover, forceBandRepaint } from "./bandCover.inline"
+
 type MaybeHTMLElement = HTMLElement | undefined
 
 interface ParsedOptions {
@@ -54,11 +56,13 @@ function toggleExplorer(this: HTMLElement) {
 
   if (!explorerCollapsed) {
     document.documentElement.classList.add("mobile-no-scroll")
+    showBandCover()
   } else {
     document.documentElement.classList.remove("mobile-no-scroll")
+    hideBandCover()
+    forceBandRepaint()
   }
 }
-
 
 function toggleFolder(evt: MouseEvent) {
   evt.stopPropagation()
@@ -118,7 +122,7 @@ function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElemen
     // Standard text
     a.textContent = node.displayName
   }
-  a.classList.add("file-link");
+  a.classList.add("file-link")
 
   if (currentSlug === node.slug) {
     a.classList.add("active")
@@ -152,7 +156,6 @@ function createFolderNode(
     a.className = "folder-title"
     a.textContent = node.displayName
     button.replaceWith(a)
-
   } else {
     const span = titleContainer.querySelector(".folder-title") as HTMLElement
     span.textContent = node.displayName
@@ -302,7 +305,6 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
   await setupExplorer(currentSlug)
 
-
   // if mobile hamburger is visible, collapse by default
   for (const explorer of document.getElementsByClassName("explorer")) {
     const mobileExplorer = explorer.querySelector(".mobile-explorer")
@@ -314,6 +316,8 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 
       // Allow <html> to be scrollable when mobile explorer is collapsed
       document.documentElement.classList.remove("mobile-no-scroll")
+      hideBandCover()
+      forceBandRepaint()
     }
 
     mobileExplorer.classList.remove("hide-until-loaded")
@@ -322,7 +326,6 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     if (explorerContent && !explorer.classList.contains("collapsed")) {
       explorerContent.classList.add("open")
     }
-
   }
 })
 
@@ -332,8 +335,10 @@ window.addEventListener("resize", function () {
   const explorer = document.querySelector(".explorer")
   if (explorer && !explorer.classList.contains("collapsed")) {
     document.documentElement.classList.add("mobile-no-scroll")
+    showBandCover()
     return
   }
+  hideBandCover()
 })
 
 function setFolderState(folderElement: HTMLElement, collapsed: boolean) {

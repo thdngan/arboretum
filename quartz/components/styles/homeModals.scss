@@ -156,28 +156,23 @@
   // Geometry and backdrop copied from the global map (#global-graph-outer in
   // graph.scss) so the two read identically.
   //
-  // Covers the screen edge to edge, which takes viewport-fit=cover on the page
-  // (see Head.tsx) - without it the viewport stops at the safe area and this
-  // cannot paint behind the status bar or Safari's toolbar however tall it is.
+  // Covers the viewport. The strip iOS paints below it is not this box's job and
+  // cannot be - see overlayLock.inline.ts, which blurs the article in place so
+  // that whatever shows down there is already blurred.
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
-  // dvh, not lvh: lvh is the viewport with the chrome retracted, and pinning the
-  // body expands the chrome, so an lvh-tall box overhangs the visible area and
-  // takes whatever it centres down with it. dvh tracks the bar. The strip below
-  // is the canvas's job now (see overlayLock.inline.ts), not this box's.
+  // dvh, not lvh: lvh is the viewport with the chrome retracted, so an lvh-tall
+  // box overhangs the visible area and takes whatever it centres down with it.
+  // dvh tracks the bar.
   height: 100%;
   height: 100dvh;
   z-index: 9999;
   display: none;
   align-items: center;
   justify-content: center;
-  // The scrim covers the whole screen, the dialog stays inside the safe area:
-  // padding the flex box by the insets centres the dialog on the part you can
-  // see rather than on the part that runs under the notch and the toolbar.
-  // env() is 0 without a cutout, leaving the plain 1.5rem.
-  padding: calc(1.5rem + env(safe-area-inset-top)) 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+  padding: 1.5rem;
   box-sizing: border-box;
   overscroll-behavior: contain;
 
@@ -186,8 +181,7 @@
   }
 
   @media all and ($mobile) {
-    padding: calc(0.75rem + env(safe-area-inset-top)) 0.75rem
-      calc(0.75rem + env(safe-area-inset-bottom));
+    padding: 0.75rem;
     // centred, like the global map. Anchoring to the bottom left the panel
     // hugging the viewport edge with only the padding beneath it, and since the
     // offset then depends on content height the two dialogs sat at visibly
@@ -215,7 +209,12 @@
   background: var(--light);
   border: 1px solid var(--lightgray);
   border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  // Tight, because the backdrop is now blurred article rather than a flat scrim
+  // (see overlayLock.inline.ts) and a wide halo shows up against it as a band of
+  // dead grey. The guide is tall enough to fill the panel to max-height, leaving
+  // only the container's 1.5rem of padding visible - a 30px shadow swallowed that
+  // strip whole, which is why the guide banded and the shorter colophon did not.
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 
   @media all and ($mobile) {
     padding: 1.5rem 1.1rem 1.1rem;
@@ -230,6 +229,21 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   color: var(--darkgray);
+
+  // <kbd> is an inline element carrying vertical padding and a 2px bottom border
+  // (custom.scss), and neither grows the line box it sits in - the box simply
+  // spills out of it. In running text that is invisible; inside a scroll
+  // container it is not, because the spill counts as overflow without adding any
+  // height to scroll through. The guide's last line ends in two key caps, so the
+  // dialog got a few pixels of scrollbar and clipped their bottom edges, and no
+  // amount of extra height fixed it - the panel was never at its cap.
+  //
+  // inline-block puts the padding and border back into the line box's reckoning.
+  // Scoped to the dialog: elsewhere <kbd> sits in ordinary prose with nothing to
+  // clip against.
+  kbd {
+    display: inline-block;
+  }
 
   // in here rather than on the panel, so the title scrolls away with the text and
   // the close button is the only thing that holds still. The right margin is what
@@ -309,12 +323,6 @@
     outline: 2px solid var(--secondary);
     outline-offset: 2px;
   }
-}
-
-// keeps the page behind the modal from scrolling under it on touch devices
-html.home-modal-open,
-html.home-modal-open body {
-  overflow: hidden;
 }
 
 // iOS Safari composites fixed elements onto their own layer, and backdrop-filter

@@ -278,22 +278,7 @@ export default (() => {
           </>
         )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
-        {/* viewport-fit=cover, which upstream Quartz omits. Without it iOS sizes
-            the layout viewport to the *safe area* rather than the screen, and a
-            position: fixed element cannot paint into the bands left outside it -
-            so every full-screen overlay on the site (the map, the dialogs,
-            search, the toc scrim) showed a strip of sharp, untinted article
-            behind the status bar and behind Safari's floating toolbar. Growing
-            those elements past the viewport does not reach either band; the
-            viewport itself has to cover the screen. The cost is that the page
-            now extends under the chrome too, so anything anchored to an edge
-            pads itself with env(safe-area-inset-*) - which returns 0 until this
-            attribute is present, and is why the toc drawer's existing insets
-            (tocDrawer.scss) had never done anything. */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
