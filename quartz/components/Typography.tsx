@@ -3,13 +3,17 @@ import typographyScript from "./scripts/typography.inline"
 import styles from "./styles/typography.scss"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
-import { BODY_FONTS, fontStack } from "../util/bodyFonts"
+import { BODY_FONTS, DEFAULT_FONT_ID, fontStack } from "../util/bodyFonts"
 
 // A reader's typography menu: which face the prose is set in, and how big.
 // Only the body face is offered — headings stay on the configured header font
 // so the site keeps its voice — and the size control scales the article alone,
 // never the surrounding chrome.
 const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+  // Sorted here rather than in bodyFonts.ts, so the list stays alphabetical in
+  // the menu however the table itself is grouped or added to later.
+  const fonts = [...BODY_FONTS].sort((a, b) => a.name.localeCompare(b.name))
+
   return (
     <div class={classNames(displayClass, "typography-control")}>
       <button
@@ -53,7 +57,7 @@ const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => 
 
         <span class="typography-label typography-label-block">Body face</span>
         <ul class="typography-fonts">
-          {BODY_FONTS.map((f) => (
+          {fonts.map((f) => (
             <li>
               <button
                 type="button"
@@ -64,11 +68,18 @@ const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => 
               >
                 <span class="typography-font-head">
                   <span class="typography-font-name">{f.name}</span>
-                  {f.noVietnamese && (
-                    <span class="typography-warn" title="No Vietnamese glyphs — falls back mid-word">
-                      no&nbsp;VN
-                    </span>
-                  )}
+                  <span class="typography-badges">
+                    {f.id === DEFAULT_FONT_ID && (
+                      <span class="typography-badge" title="What the site opens with">
+                        default
+                      </span>
+                    )}
+                    {f.noVietnamese && (
+                      <span class="typography-warn" title="No Vietnamese glyphs — falls back mid-word">
+                        no&nbsp;VN
+                      </span>
+                    )}
+                  </span>
                 </span>
                 <span class="typography-font-sample">Nghiêng ế ệ ữ ộ</span>
                 <span class="typography-font-note">{f.note}</span>

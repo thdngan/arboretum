@@ -82,8 +82,9 @@
   // sideways to keep both edges inside the viewport
   width: min(17.5rem, calc(100vw - 1.5rem));
   max-height: min(60vh, 30rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  // the panel clips; the font list inside it is what scrolls, so the size
+  // control and its label stay put at the top
+  overflow: hidden;
   padding: 0.85rem;
   display: flex;
   flex-direction: column;
@@ -96,6 +97,13 @@
   &[hidden] {
     display: none;
   }
+}
+
+// everything above the list holds its place while the list moves under it
+.typography-row,
+.typography-label-block,
+.typography-reset {
+  flex: 0 0 auto;
 }
 
 .typography-row {
@@ -164,6 +172,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  // min-height: 0 is what actually lets this shrink: a flex child's default
+  // min-height is auto, which refuses to go below its content, so without it
+  // the list would push the panel past its max-height and the whole panel
+  // would scroll again instead of just this part
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  // keeps the scrollbar off the option text
+  padding-right: 0.2rem;
 }
 
 .typography-font {
@@ -218,6 +236,27 @@
   font-size: 0.68rem;
   line-height: 1.35;
   color: var(--gray);
+}
+
+.typography-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+// quieter than the warning chip, and deliberately not the selection colour —
+// the default face is not necessarily the one currently chosen
+.typography-badge {
+  font-family: var(--codeFont);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0 0.25rem;
+  white-space: nowrap;
 }
 
 .typography-warn {
