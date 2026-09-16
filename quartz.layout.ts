@@ -107,7 +107,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       // GitHub: "https://github.com/thdngan",
       "About": "https://thdngan.github.io/",
-      "Contact": "mailto:ngan.trinh@ens.psl.eu",
+      "Contact": "mailto:hello-arboretum@pm.me",
     },
 
   }),
