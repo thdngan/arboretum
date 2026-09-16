@@ -109,8 +109,8 @@ const config: QuartzConfig = {
         
           nodefirst: "#E06C75",
           nodesecond: "#20E9A9",
-          nodethird: "#B34BD2",
-          nodevisited: "#61afef",  // 61afef: blue
+          nodethird: "#61afef",
+          nodevisited: "#e5c07b",  // 61afef: blue
           border: "rgba(224, 224, 224,0.2)",
           link: "rgba(224, 224, 224,0.25)",
 
