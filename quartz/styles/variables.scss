@@ -69,7 +69,11 @@ $desktopGrid: (
 // Black rather than a theme colour: --dark inverts with the theme, and a light
 // scrim over a dark page reads as a flash, not a dimming. Same wash as the toc
 // drawer (tocDrawer.scss), which has always tinted.
-@mixin overlay-scrim($blur: 4px, $alpha: 0.35) {
+// shared with .overlay-locked in base.scss, which paints this same wash onto the
+// page canvas to reach the band iOS leaves outside the viewport
+$overlayScrimAlpha: 0.35;
+
+@mixin overlay-scrim($blur: 4px, $alpha: $overlayScrimAlpha) {
   background: rgba(0, 0, 0, $alpha);
   backdrop-filter: blur($blur);
 }

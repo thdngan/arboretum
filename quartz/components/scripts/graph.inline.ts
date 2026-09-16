@@ -1,4 +1,5 @@
 import type { ContentDetails } from "../../plugins/emitters/contentIndex"
+import { lockPage, unlockPage, releaseAllLocks } from "./overlayLock.inline"
 import {
   SimulationNodeDatum,
   SimulationLinkDatum,
@@ -703,11 +704,13 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 
   // a nav away while the map is open would otherwise leave the class behind
   document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
+  releaseAllLocks()
 
   function renderGlobalGraph() {
     const slug = getFullSlug(window)
     container?.classList.add("active")
     document.documentElement.classList.add(GLOBAL_GRAPH_OPEN_CLASS)
+    lockPage()
     if (sidebar) {
       sidebar.style.zIndex = "1"
     }
@@ -719,6 +722,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   function hideGlobalGraph() {
     container?.classList.remove("active")
     document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
+    unlockPage()
     if (sidebar) {
       sidebar.style.zIndex = ""
     }

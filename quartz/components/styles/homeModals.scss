@@ -163,8 +163,12 @@
   left: 0;
   top: 0;
   width: 100vw;
+  // dvh, not lvh: lvh is the viewport with the chrome retracted, and pinning the
+  // body expands the chrome, so an lvh-tall box overhangs the visible area and
+  // takes whatever it centres down with it. dvh tracks the bar. The strip below
+  // is the canvas's job now (see overlayLock.inline.ts), not this box's.
   height: 100%;
-  height: 100lvh;
+  height: 100dvh;
   z-index: 9999;
   display: none;
   align-items: center;

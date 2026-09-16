@@ -2,6 +2,8 @@
 // acknowledgements open, mirroring how the floating map button behaves:
 // click outside, hit the close button, or press Esc to dismiss.
 
+import { lockPage, unlockPage, releaseAllLocks } from "./overlayLock.inline"
+
 const OPEN_CLASS = "active"
 const LOCK_CLASS = "home-modal-open"
 
@@ -24,6 +26,7 @@ function closeModal() {
     .querySelectorAll<HTMLElement>(`[data-home-modal][aria-expanded="true"]`)
     .forEach((btn) => btn.setAttribute("aria-expanded", "false"))
   document.documentElement.classList.remove(LOCK_CLASS)
+  unlockPage()
   openPanel = null
 
   // send focus back where it came from, otherwise it lands on <body>.
@@ -47,6 +50,7 @@ function openModal(name: string, trigger: HTMLElement) {
   panel.classList.add(OPEN_CLASS)
   trigger.setAttribute("aria-expanded", "true")
   document.documentElement.classList.add(LOCK_CLASS)
+  lockPage()
 
   // start the panel scrolled to the top even if it was left scrolled last time
   const scroller = panel.querySelector<HTMLElement>(".home-modal-panel")
@@ -58,6 +62,7 @@ function openModal(name: string, trigger: HTMLElement) {
 function setupHomeModals() {
   // a nav away leaves the lock class behind otherwise
   document.documentElement.classList.remove(LOCK_CLASS)
+  releaseAllLocks()
   openPanel = null
   lastTrigger = null
 

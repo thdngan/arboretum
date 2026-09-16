@@ -3,6 +3,8 @@ import { ContentDetails } from "../../plugins/emitters/contentIndex"
 import { registerEscapeHandler, removeAllChildren } from "./util"
 import { FullSlug, normalizeRelativeURLs, resolveRelative } from "../../util/path"
 
+import { lockPage, unlockPage } from "./overlayLock.inline"
+
 interface Item {
   id: number
   slug: FullSlug
@@ -182,6 +184,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   function hideSearch() {
     container.classList.remove("active")
     document.documentElement.classList.remove(SEARCH_OPEN_CLASS)
+    unlockPage()
     searchBar.value = "" // clear the input when we dismiss the search
     if (sidebar) sidebar.style.zIndex = ""
     removeAllChildren(results)
@@ -198,6 +201,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     if (sidebar) sidebar.style.zIndex = "1"
     container.classList.add("active")
     document.documentElement.classList.add(SEARCH_OPEN_CLASS)
+    lockPage()
     searchBar.focus()
   }
 

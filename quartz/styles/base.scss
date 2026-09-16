@@ -624,6 +624,17 @@ iframe.pdf {
   border-radius: 5px;
 }
 
+// The band iOS paints outside the layout viewport, which no positioned element
+// can reach - see the measurements in overlayLock.inline.ts. While an overlay is
+// up that script pins <body> into a fixed layer, which is clipped to the viewport
+// and so stops the article painting down there; that leaves the band to the page
+// canvas, the one surface that does reach it. Colouring the canvas with the same
+// wash the scrim uses makes the band read as the scrim running on behind the
+// browser's toolbar rather than as a strip of sharp article.
+html.overlay-locked {
+  background: color-mix(in srgb, #000 #{$overlayScrimAlpha * 100%}, var(--light));
+}
+
 .navigation-progress {
   position: fixed;
   // below the notch, or it is a 3px bar drawn where nobody can see it

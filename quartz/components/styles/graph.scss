@@ -47,8 +47,12 @@
     left: 0;
     top: 0;
     width: 100vw;
+    // dvh, not lvh: lvh is the viewport with the chrome retracted, and pinning the
+    // body expands the chrome, so an lvh-tall box overhangs the visible area and
+    // takes whatever it centres down with it. dvh tracks the bar. The strip below
+    // is the canvas's job now (see overlayLock.inline.ts), not this box's.
     height: 100%;
-    height: 100lvh;
+    height: 100dvh;
     display: none;
     overflow: hidden;
 
@@ -61,7 +65,7 @@
     // and Safari's toolbar. So the panel is sized and centred on the safe area
     // instead. env() is 0 on anything without a cutout, leaving 80vh centred at
     // 50% as before.
-    --safe-height: calc(100lvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    --safe-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     --global-graph-center-y: calc(env(safe-area-inset-top) + var(--safe-height) / 2);
     --global-graph-width: 80vw;
     --global-graph-height: calc(0.8 * var(--safe-height));
