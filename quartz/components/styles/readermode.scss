@@ -44,7 +44,7 @@
     // the band the top bar vacates: in reader mode this strip is empty, so the
     // message lands on background rather than over the writing, and it appears
     // where the chrome just went instead of across the page from it
-    top: 2rem;
+    top: calc(2rem + env(safe-area-inset-top));
     left: 50%;
     z-index: 1000;
     padding: 0.5rem 0.9rem;

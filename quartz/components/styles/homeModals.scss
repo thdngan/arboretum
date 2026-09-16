@@ -156,28 +156,24 @@
   // Geometry and backdrop copied from the global map (#global-graph-outer in
   // graph.scss) so the two read identically.
   //
-  // top/height rather than `inset: 0`, and overhanging the viewport by
-  // $overlayBleed at each end: on iOS Safari a fixed element sized to any of
-  // 100%, 100lvh or 100dvh stops short of the edges of the screen, leaving bands
-  // of untouched article outside it. Symmetric, so the dialog this box centres
-  // stays centred on the viewport.
+  // Covers the screen edge to edge, which takes viewport-fit=cover on the page
+  // (see Head.tsx) - without it the viewport stops at the safe area and this
+  // cannot paint behind the status bar or Safari's toolbar however tall it is.
   position: fixed;
   left: 0;
-  top: calc(-1 * #{$overlayBleed});
+  top: 0;
   width: 100vw;
-  height: calc(100% + 2 * #{$overlayBleed});
-  height: calc(100lvh + 2 * #{$overlayBleed});
+  height: 100%;
+  height: 100lvh;
   z-index: 9999;
   display: none;
   align-items: center;
   justify-content: center;
-  // The dialog should be centred on the part of the screen you can see, not on
-  // the part the viewport claims: dvh tracks the toolbar, so its difference from
-  // lvh is exactly how much chrome is currently in the way - and zero once that
-  // retracts. (The symmetric overshoot above cancels out of the centring, so it
-  // does not appear here.)
-  padding: 1.5rem;
-  padding-bottom: calc(1.5rem + 100lvh - 100dvh);
+  // The scrim covers the whole screen, the dialog stays inside the safe area:
+  // padding the flex box by the insets centres the dialog on the part you can
+  // see rather than on the part that runs under the notch and the toolbar.
+  // env() is 0 without a cutout, leaving the plain 1.5rem.
+  padding: calc(1.5rem + env(safe-area-inset-top)) 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
   box-sizing: border-box;
   overscroll-behavior: contain;
   // blur plus tint, the same backdrop the map and the search sheet use; the
@@ -189,8 +185,8 @@
   }
 
   @media all and ($mobile) {
-    padding: 0.75rem;
-    padding-bottom: calc(0.75rem + 100lvh - 100dvh);
+    padding: calc(0.75rem + env(safe-area-inset-top)) 0.75rem
+      calc(0.75rem + env(safe-area-inset-bottom));
     // centred, like the global map. Anchoring to the bottom left the panel
     // hugging the viewport edge with only the padding beneath it, and since the
     // offset then depends on content height the two dialogs sat at visibly
@@ -203,9 +199,11 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 42rem;
+  // 100% of the flex box's content area, which the padding above has already
+  // pulled inside the safe area - rather than a vh figure, which now measures
+  // the whole screen, chrome included
   max-height: 85vh;
-  // iOS: vh counts the collapsing address bar, dvh doesn't
-  max-height: 85dvh;
+  max-height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -223,8 +221,6 @@
 
   @media all and ($mobile) {
     padding: 1.5rem 1.1rem 1.1rem;
-    max-height: 88vh;
-    max-height: 88dvh;
   }
 }
 

@@ -94,18 +94,17 @@
 }
 
 .toc-drawer-scrim {
-  // Not `inset: 0`, and not `height: 100%` either. On iOS Safari a fixed element
-  // sized either way - or to 100lvh - comes out at the layout viewport, which is
-  // inset from the screen at both ends, leaving strips of untinted article along
-  // the top and bottom edges that read as solid bands of theme colour under the
-  // dialog. So it overhangs by $overlayBleed at each end; see variables.scss.
-  // The scrim holds nothing, so the overhang costs it nothing.
+  // Covers the screen edge to edge, which takes viewport-fit=cover on the page
+  // (see Head.tsx) - without it the viewport stops at the safe area and this
+  // cannot paint behind the status bar or Safari's toolbar however tall it is.
+  // lvh rather than dvh: the panel below ends where the visible page ends,
+  // because you have to be able to tap it, but the scrim runs on behind the bar.
   position: fixed;
-  top: calc(-1 * #{$overlayBleed});
+  top: 0;
   left: 0;
   right: 0;
-  height: calc(100% + 2 * #{$overlayBleed});
-  height: calc(100lvh + 2 * #{$overlayBleed});
+  height: 100%;
+  height: 100lvh;
   z-index: var(--toc-drawer-z);
   // a plain black wash rather than a theme colour: --dark inverts with the
   // theme, and a light scrim over a dark page reads as a flash, not a dimming.

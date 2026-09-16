@@ -70,10 +70,12 @@
     contain: layout;
     z-index: 999;
     left: 0;
-    top: calc(-1 * #{$overlayBleed});
+    top: 0;
     width: 100vw;
-    // past both edges of the screen, see $overlayBleed
-    height: calc(100vh + 2 * #{$overlayBleed});
+    height: 100vh;
+    // the sheet scrolls inside this, so the last result has to clear the bar
+    padding-bottom: env(safe-area-inset-bottom);
+    box-sizing: border-box;
     overflow-y: auto;
     display: none;
     // same backdrop as the map and the home dialogs
@@ -85,9 +87,7 @@
 
     & > .search-space {
       width: 65%;
-      // offset from the top of the screen, not of the box, which now starts
-      // $overlayBleed above it
-      margin-top: calc(12vh + #{$overlayBleed});
+      margin-top: 12vh;
       margin-left: auto;
       margin-right: auto;
 

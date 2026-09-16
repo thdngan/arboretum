@@ -129,6 +129,13 @@ a {
 .page {
   max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
+  // The page runs under the browser and system chrome now (viewport-fit=cover,
+  // see Head.tsx), which is what lets the full-screen overlays cover the screen.
+  // The article should not run under it too, so it keeps itself clear of the
+  // notch and the home indicator. These are 0 on anything without a cutout.
+  box-sizing: border-box;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
   & article {
     & > h1 {
       font-size: 1.75rem;
@@ -619,7 +626,8 @@ iframe.pdf {
 
 .navigation-progress {
   position: fixed;
-  top: 0;
+  // below the notch, or it is a 3px bar drawn where nobody can see it
+  top: env(safe-area-inset-top);
   left: 0;
   width: 0;
   height: 3px;

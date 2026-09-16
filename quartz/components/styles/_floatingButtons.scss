@@ -3,17 +3,19 @@
 @use "../../styles/variables.scss" as *;
 .floating-buttons {
     position: fixed;
-    bottom: 1.5rem;
+    // clear of the home indicator and Safari's floating toolbar: the viewport
+    // reaches under both now, see the viewport-fit=cover note in Head.tsx
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     z-index: 100;
     
     &.floating-right {
-      right: 1.5rem;
+      right: calc(1.5rem + env(safe-area-inset-right));
     }
     
     &.floating-left {
-      left: 1.5rem;
+      left: calc(1.5rem + env(safe-area-inset-left));
     }
     
     .button-group {
@@ -197,14 +199,16 @@
   // 响应式调整
   @media (max-width: 600px) {
     .floating-buttons {
-      bottom: 1rem;
+      // the safe-area terms have to be repeated here, or this tighter phone
+      // spacing drops them and puts the cluster back under the home indicator
+      bottom: calc(1rem + env(safe-area-inset-bottom));
       
       &.floating-right {
-        right: 1rem;
+        right: calc(1rem + env(safe-area-inset-right));
       }
       
       &.floating-left {
-        left: 1rem;
+        left: calc(1rem + env(safe-area-inset-left));
       }
       
       .floating-button {

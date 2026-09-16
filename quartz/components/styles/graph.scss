@@ -39,29 +39,33 @@
   }
 
   & > #global-graph-outer {
-    // Overhanging the viewport by $overlayBleed at each end: on iOS neither 100%
-    // nor 100lvh reaches the edges of the screen, and the bands left over are
-    // untouched page. The panel and its legend are position: fixed and centred
-    // on the viewport rather than on this box, so growing it moves nothing.
+    // Covers the screen edge to edge, which takes viewport-fit=cover on the page
+    // (see Head.tsx) - without it the viewport stops at the safe area and this
+    // cannot paint behind the status bar or Safari's toolbar however tall it is.
     position: fixed;
     z-index: 9999;
     left: 0;
-    top: calc(-1 * #{$overlayBleed});
+    top: 0;
     width: 100vw;
-    height: calc(100% + 2 * #{$overlayBleed});
-    height: calc(100lvh + 2 * #{$overlayBleed});
+    height: 100%;
+    height: 100lvh;
     display: none;
     overflow: hidden;
 
-    // shared by the map panel and the close button that has to sit on its
-    // corner; both are position: fixed and centred on the viewport, so the
-    // button's offsets are derived from these rather than from the panel box
+    // Shared by the map panel, its legend and the close button on its corner;
+    // all three are position: fixed and centred on the viewport, so their
+    // offsets are derived from these rather than from the panel box.
+    //
+    // The box above covers the whole screen, but the panel must not: it holds
+    // things you have to see and tap, and the screen now runs under the notch
+    // and Safari's toolbar. So the panel is sized and centred on the safe area
+    // instead. env() is 0 on anything without a cutout, leaving 80vh centred at
+    // 50% as before.
+    --safe-height: calc(100lvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    --global-graph-center-y: calc(env(safe-area-inset-top) + var(--safe-height) / 2);
     --global-graph-width: 80vw;
-    --global-graph-height: 80vh;
+    --global-graph-height: calc(0.8 * var(--safe-height));
 
-    // blur plus tint; the tint is what covers the strip iOS refuses to blur
-    // under the toolbar. Last, because it carries a nested media query and
-    // sass warns about plain declarations that follow one.
     @include overlay-scrim;
 
     @media all and not ($desktop) {
@@ -78,7 +82,7 @@
       border-radius: 5px;
       box-sizing: border-box;
       position: fixed;
-      top: 50%;
+      top: var(--global-graph-center-y);
       left: 50%;
       transform: translate(-50%, -50%);
       height: var(--global-graph-height);
@@ -90,7 +94,7 @@
     // --global-graph-* vars rather than from the panel box
     & > .global-graph-legend {
       position: fixed;
-      top: calc(50% - var(--global-graph-height) / 2 + 0.6rem);
+      top: calc(var(--global-graph-center-y) - var(--global-graph-height) / 2 + 0.6rem);
       left: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
       margin: 0;
       padding: 0.6rem 0.85rem;
@@ -178,7 +182,7 @@
     // matches .home-modal-close on the landing page's pop-ups
     & > .global-graph-close {
       position: fixed;
-      top: calc(50% - var(--global-graph-height) / 2 + 0.6rem);
+      top: calc(var(--global-graph-center-y) - var(--global-graph-height) / 2 + 0.6rem);
       right: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
       width: 32px;
       height: 32px;
