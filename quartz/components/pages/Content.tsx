@@ -4,7 +4,14 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import style from "../styles/emptyContent.scss"
 
 // Shown in place of the article body when a note is still just frontmatter.
-const emptyMessage = "Whoops... There's nothing here (yet)! Please come back later :-)"
+// One entry per line; the stylesheet blocks them out, so add or drop a line
+// here rather than threading <br>s through the string.
+const emptyMessage = [
+  // "Whoops... There's nothing here (yet)!",
+  "Empty for now!",
+  "Please come back later :-)",
+  "(“later” could be anything from next week to next year)"
+]
 
 // Elements that carry a page's meaning without any text of their own, so a body
 // holding only one of these is not empty.
@@ -35,7 +42,11 @@ export default (() => {
     if (!hasContent(tree as Root)) {
       return (
         <article class={classString}>
-          <p class="empty-content">{emptyMessage}</p>
+          <p class="empty-content">
+            {emptyMessage.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </p>
         </article>
       )
     }

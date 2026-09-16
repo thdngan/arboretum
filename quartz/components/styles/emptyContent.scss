@@ -5,5 +5,15 @@
   color: var(--gray);
   font-style: italic;
   text-align: center;
-  margin: 2rem 0;
+  // centred prose needs a measure, or a long line runs the full article width
+  // and wraps into a ragged block. auto keeps it centred within the article.
+  max-width: 45ch;
+  margin: 2rem auto;
+
+  // each entry of emptyMessage gets its own line. Blocking the spans out rather
+  // than joining them with <br> keeps the line break a matter of styling, so the
+  // two lines reflow into one on a narrow screen only if you ask them to.
+  span {
+    display: block;
+  }
 }

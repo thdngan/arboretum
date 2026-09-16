@@ -331,7 +331,7 @@ blockquote:not(.callout) {
         // would otherwise depend on which shape Quartz emitted; the space under
         // the quote mark comes from its own margin instead
         margin-top: 0;
-        font-size: 1.35em;
+        font-size: 1em;
         // the 300 face is requested alongside the body font in quartz.config.ts
         font-weight: 300;
         text-align: center;
