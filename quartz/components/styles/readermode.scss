@@ -53,7 +53,7 @@
     background: var(--dark);
     color: var(--light);
     font-family: var(--bodyFont);
-    font-size: 0.85rem;
+    font-size: calc(0.85rem * var(--fontOptical));
     line-height: 1.2;
     white-space: nowrap;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);

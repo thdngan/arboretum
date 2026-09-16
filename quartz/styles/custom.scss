@@ -1226,3 +1226,7 @@ a.internal[href^="#cite-bib-"],
     color: var(--secondary);
   }
 }
+
+// The table of contents needs no size of its own: it inherits the chrome
+// baseline, which typography.scss corrects for x-height alongside everything
+// else in the sidebar.

@@ -77,6 +77,12 @@
   padding: 11px 18px;
   border-radius: 5px;
   font-family: var(--codeFont);
+  // NOT scaled by --fontOptical, unlike the modal prose below: the keys are
+  // fixed-geometry controls, and --stack sits them in the 320px sidebar where
+  // "home" + "getting around" only just fit on one row. An 11% wider label at
+  // the default face wraps the pair and flex: 1 1 auto then stretches the
+  // second key to the full column. Same reason --textScale is kept out of the
+  // chrome in typography.scss: label width is load-bearing here.
   font-size: 0.95rem;
   // buttons don't inherit the body weight, so state it: these should read as
   // body text on a key, not as a heading
@@ -211,7 +217,7 @@
 
   & > h3 {
     margin: 0 2.5rem 1.2rem 0;
-    font-size: 1.2rem;
+    font-size: calc(1.2rem * var(--fontOptical));
     color: var(--dark);
   }
 
@@ -224,7 +230,7 @@
 
 .home-modal-body {
   color: var(--darkgray);
-  font-size: 0.95rem;
+  font-size: calc(0.95rem * var(--fontOptical));
   line-height: 1.6;
 
   & > p {

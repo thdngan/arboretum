@@ -7,6 +7,10 @@
   --fontOptical: 1;
   --textScale: 1;
   --textZoom: calc(var(--textScale) * var(--fontOptical));
+  // the one body size the whole site derives from. base.scss writes 13pt
+  // directly on `body, section`; the chrome baseline below restates it through
+  // this variable so there is a single place to change it.
+  --bodySize: 13pt;
   // paragraph leading, as a ratio so it grows with the text. 1.48 is exactly
   // what `line-height: 1.6rem` on 13pt worked out to before this was a
   // variable. Vietnamese is happier nearer 1.7 if you ever want to open it up.
@@ -293,7 +297,7 @@
 }
 
 :root .page article {
-  font-size: calc(13pt * var(--textZoom));
+  font-size: calc(var(--bodySize) * var(--textZoom));
   // some faces are too light at 400 on screen (Alegreya especially); headings
   // use `font-weight: revert` further up base.scss, so they stay bold
   font-weight: var(--bodyWeight, 400);
@@ -320,4 +324,50 @@
   & tbody {
     line-height: var(--textLeading);
   }
+}
+
+// ---------------------------------------------------------------------------
+// The chrome baseline.
+//
+// The block above scales <article> by --textZoom and leaves the chrome alone,
+// which is right for --textScale - the reader's size control runs to 145% and
+// would overflow the fixed-width columns - but wrong for --fontOptical. That
+// half of the zoom is the x-height correction, and the chrome is set in the
+// same face as the prose (typography.inline.ts puts --bodyFont on :root), so
+// without it the sidebar's lowercase renders up to 11% shorter than the article
+// beside it. Same typeface, same nominal size, visibly different: at the
+// default Alegreya the article is 14.38pt against the chrome's flat 13pt.
+//
+// So: --fontOptical everywhere, --textScale only in the article.
+//
+// :root on each selector buys the specificity to outrank base.scss (0,0,1) and
+// the component stylesheets without depending on emit order - custom.scss pulls
+// base.scss in via @use, so base lands *after* every component sheet in
+// index.css and a bare `body` rule here would lose.
+// ---------------------------------------------------------------------------
+
+// everything that inherits its size: toc entries, search results, breadcrumbs,
+// byline, tag list, explorer file links, backlink entries
+:root body,
+:root section {
+  font-size: calc(var(--bodySize) * var(--fontOptical));
+}
+
+// Everything sized in rem, which ignores the rule above. Base sizes are
+// unchanged - only the multiplier is new - so this block moves nothing at
+// --fontOptical: 1. It does duplicate each size from its own stylesheet, so if
+// you retune one there, retune it here too.
+:root button#toc h3,
+:root .toc-drawer-header h3,
+:root .backlinks > h3,
+:root .recent-notes > h3,
+:root .graph > h3,
+:root button.mobile-explorer h2,
+:root button.desktop-explorer h2 {
+  font-size: calc(1rem * var(--fontOptical));
+}
+
+:root .folder-container div > a,
+:root .folder-container div > button span {
+  font-size: calc(0.95rem * var(--fontOptical));
 }

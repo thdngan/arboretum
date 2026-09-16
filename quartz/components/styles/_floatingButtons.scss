@@ -62,7 +62,7 @@
         color: var(--light);
         padding: 4px 8px;
         border-radius: 4px;
-        font-size: 12px;
+        font-size: calc(12px * var(--fontOptical));
         white-space: nowrap;
         opacity: 0;
         visibility: hidden;
@@ -131,7 +131,7 @@
       
       h3 {
         margin: 0 0 1.5rem;
-        font-size: 1.2rem;
+        font-size: calc(1.2rem * var(--fontOptical));
         color: var(--dark);
       }
       

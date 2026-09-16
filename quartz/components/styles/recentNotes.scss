@@ -13,7 +13,7 @@
       // ← the entries; scoped, so article h3s keep 1.12rem
       margin: 1rem 0;
       .section > .desc > h3 {
-        font-size: 1.1rem;
+        font-size: calc(1rem * var(--fontOptical));
         line-height: 1.3;   // optional: tighten wrapped titles
       }
       .section > .desc > h3 > a {
