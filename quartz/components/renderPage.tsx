@@ -239,12 +239,18 @@ export function renderPage(
           <Body {...componentData}>
             {LeftComponent}
             <div class="center">
+              {/* The header slot sits here rather than inside .page-header so
+                  that it can be sticky: a sticky element only travels inside
+                  its own parent, and .page-header is a couple of hundred pixels
+                  tall, where .center is as tall as the article. It is still
+                  outside .popover-hint, which is what link previews and search
+                  results are built from. */}
+              <Header {...componentData}>
+                {header.map((HeaderComponent) => (
+                  <HeaderComponent {...componentData} />
+                ))}
+              </Header>
               <div class="page-header">
-                <Header {...componentData}>
-                  {header.map((HeaderComponent) => (
-                    <HeaderComponent {...componentData} />
-                  ))}
-                </Header>
                 <div class="popover-hint">
                   {beforeBody.map((BodyComponent) => (
                     <BodyComponent {...componentData} />

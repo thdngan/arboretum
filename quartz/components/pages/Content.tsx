@@ -9,8 +9,8 @@ import style from "../styles/emptyContent.scss"
 const emptyMessage = [
   // "Whoops... There's nothing here (yet)!",
   "Empty for now!",
-  "Please come back later :-)",
-  "(“later” could be anything from next week to next year)"
+  "Please come back next week or next year :-)",
+  // "(“later” could be anything from next week to next year)"
 ]
 
 // Elements that carry a page's meaning without any text of their own, so a body

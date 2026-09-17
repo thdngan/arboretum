@@ -3,7 +3,7 @@ import { ContentDetails } from "../../plugins/emitters/contentIndex"
 import { registerEscapeHandler, removeAllChildren } from "./util"
 import { FullSlug, normalizeRelativeURLs, resolveRelative } from "../../util/path"
 
-import { openOverlay, closeOverlay } from "./overlayLock.inline"
+import { openOverlay, closeOverlay, releaseAllOverlays } from "./overlayLock.inline"
 
 interface Item {
   id: number
@@ -497,8 +497,12 @@ async function fillDocument(data: ContentIndex) {
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
-  // a nav away while the search is open would otherwise leave the class behind
+  // a nav away while the search is open would otherwise leave the class behind,
+  // and - invisibly, so it is the one that bites - the scroll lock with it. The
+  // sheet does not get a hideSearch() on every route out: a link inside the
+  // preview pane is an ordinary SPA navigation that nothing in here sees.
   document.documentElement.classList.remove(SEARCH_OPEN_CLASS)
+  releaseAllOverlays()
   const data = await fetchData
   const searchElement = document.getElementsByClassName("search")
   for (const element of searchElement) {

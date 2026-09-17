@@ -1,6 +1,13 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
+// How far down the centre column the reading-controls row starts. Everything
+// else about that row's spacing is derived from this and $topSpacing.
+$headerRowTop: 1.5rem;
+// Breathing room above and below the controls, which is also the depth of the
+// backdrop the row carries once it is stuck to the top of the window.
+$headerRowPad: 0.5rem;
+
 :root {
   // shared by the body-text wikilink underline and every dinkus
   --accent: #BB63B6;
@@ -426,6 +433,188 @@ em strong {
 //   }
 
 
+// The reading controls (Aa, theme, reader mode) live in the header slot at the
+// top of the centre column. renderPage renders them as direct children of
+// <header>, which is a child of .center — flex items, so no line-box strut to
+// collapse and no wrapper divs like the ones the rule below deals with — and
+// .center is also what lets the row be sticky further down.
+//
+// They sit against the right edge so the column keeps one left edge from
+// breadcrumb to last paragraph.
+.center > header {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    // Header's own stylesheet sets `margin: 2rem 0`, which is spacing for a
+    // site title, not for three icons; the desktop block below sets what the
+    // row actually needs.
+    margin: 0;
+
+    // the toggles are inline-blocks; as flex items that is already block-level,
+    // but zeroing the line-height keeps the row's height exactly the tallest
+    // control rather than a text line box around it
+    line-height: 0;
+}
+
+@media all and not ($mobile) {
+    // The row is only ever as tall as its tallest control. What made the header
+    // look big was where it sat: the column opens with $topSpacing (6rem) of
+    // air that used to be the space above the breadcrumb, so three 20px glyphs
+    // ended up floating in the middle of a 96px band.
+    //
+    // So the band is split. The row takes a small offset off the top of the
+    // column — the way the button strip does on a Jupyter Book page — and the
+    // rest of $topSpacing goes to .page-header below it, which puts the
+    // breadcrumb back on the 6rem line that the sidebar's wordmark sits on. The
+    // header ends up costing nothing: the content below is exactly where it was
+    // before this row existed, and the two columns still start together.
+    .center > header {
+        margin-top: $headerRowTop;
+        padding: $headerRowPad 0;
+
+        // Stays with the reader rather than scrolling away. Sticky, not fixed,
+        // so the row keeps the centre column's edges at any window width, and
+        // it travels the length of the article because renderPage makes it a
+        // child of .center (~11000px tall here) rather than of .page-header
+        // (~200px), which is as far as a sticky element can ever travel.
+        position: sticky;
+        // flush with the top of the window once it gets there: with a standoff
+        // the article would show through the strip above the row
+        top: 0;
+        // over the article, under the typography panel (200) and the floating
+        // buttons (100)
+        z-index: 5;
+
+        // <header> is block-level, so this is the width of the column: once the
+        // row is stuck, article text passes underneath it, and the page colour
+        // is what keeps the icons legible instead of type showing through them.
+        background: var(--light);
+    }
+
+    // #quartz-body is carried here on purpose: base.scss sets this margin
+    // through `.page > #quartz-body .page-header`, and an id in that selector
+    // outranks any plain class chain, so the shorter selector silently loses.
+    #quartz-body .center > .page-header {
+        // what is left of $topSpacing once the row's offset, its own height
+        // (22px, the pill — the tallest control) and its padding are taken out
+        margin-top: calc(
+            #{$topSpacing} - #{$headerRowTop} - 22px - (#{$headerRowPad} * 2)
+        );
+    }
+}
+
+// Jumping to a heading - from the table of contents, from a heading's own
+// anchor link, or from a url pasted with a #fragment - parks that heading at
+// the very top of the window, which is exactly where the sticky bars live. The
+// heading lands underneath one and you arrive at a section whose title you
+// cannot read.
+//
+// scroll-margin-top is the fix rather than a scroll handler, because it applies
+// to all three routes at once: the browser's own anchor jump, the SPA router's
+// scrollIntoView (spa.inline.ts) and a page opened at a #fragment. None of them
+// has to know about it.
+//
+// It goes through a custom property because there is no single answer. What is
+// stuck to the top differs by breakpoint, and on mobile by whether the bar is
+// showing - and the headings should not have to know which case they are in.
+:root {
+    // a little more than the bar itself, so the heading clears it instead of
+    // sitting flush against its underside
+    --heading-scroll-air: 0.75rem;
+    // nothing is stuck to the top of the window by default
+    --heading-scroll-offset: 0px;
+}
+
+@media all and not ($mobile) {
+    :root {
+        // the reading-controls row, in the same terms .page-header's margin is
+        // built from above: its own padding plus the 22px pill, the tallest
+        // control in it
+        --heading-scroll-offset: calc(
+            (#{$headerRowPad} * 2) + 22px + var(--heading-scroll-air)
+        );
+    }
+}
+
+@media all and ($mobile) {
+    // The top bar, whose height this file cannot state. The wordmark in it is
+    // sized in vw (`h1.page-title a` above), so the bar grows with the viewport
+    // - about 58px on a phone, 97px just under the breakpoint - and any number
+    // written here would be right at one width and wrong at every other. So it
+    // is measured instead, by toc.inline.ts, and arrives as
+    // --mobile-bar-height; the fallback is the phone-width case, for the moment
+    // before that script runs.
+    //
+    // Reader mode is deliberately not in this list. It does not take the bar out
+    // of the flow, only down to opacity 0 (readermode.scss), so a heading that
+    // lands under the hidden bar reads perfectly well and an offset would push
+    // it away for nothing. A peek brings the bar back, and this with it.
+    :root:not([reader-mode="on"]),
+    :root[reader-mode="on"][reader-peek="on"] {
+        --heading-scroll-offset: calc(
+            var(--mobile-bar-height, 58px) + var(--heading-scroll-air)
+        );
+    }
+}
+
+// [id] because an id is what a jump can land on; a heading without one is
+// unreachable, and needs no room made above it
+article :is(h1, h2, h3, h4, h5, h6)[id] {
+    scroll-margin-top: var(--heading-scroll-offset);
+}
+
+@media all and ($mobile) {
+    // Below the breakpoint the three controls are rendered in the left bar
+    // instead, so every child of this row is desktop-only and the row is an
+    // empty flex box: no height of its own, but its margins would still push
+    // the breadcrumb down. The :not(:has()) is what keeps this honest — put
+    // anything in the header that a phone can see and the row comes back.
+    .center > header:not(:has(> :not(.desktop-only))) {
+        margin: 0;
+    }
+
+    // The mobile bar is a flex row with `gap: 0` (base.scss). That was fine
+    // while these travelled inside a Flex wrapper carrying its own 1rem gap,
+    // but as direct children of the bar they have to space themselves.
+    //
+    // The row is already at capacity — which is why .spacer between the
+    // wordmark and the controls measures 0 wide — so every pixel here is taken
+    // off the wordmark, the only thing in the row that flexes. 0.75rem between
+    // the controls leaves it about the width it had when they were wrapped,
+    // and the wider first margin groups the cluster away from the wordmark
+    // rather than letting it read as one undifferentiated run.
+    .sidebar.left > .readermode,
+    .sidebar.left > .darkmode,
+    .sidebar.left > .search {
+        margin-left: 0.75rem;
+    }
+
+    .sidebar.left > .typography-control {
+        margin-left: 1.1rem;
+    }
+
+    // Below about 360px the row runs out of room: hamburger, four controls and
+    // the gaps above come to ~200px of a ~278px bar, and the wordmark — which
+    // is the only flexible thing in the row — gets squeezed until it wraps and
+    // drops its last letter under the penguin. Tightening the gaps and letting
+    // the wordmark set a touch smaller keeps it on one line at 320px, which is
+    // the narrowest phone still worth drawing for.
+    @media all and (max-width: 360px) {
+        .sidebar.left > .readermode,
+        .sidebar.left > .darkmode,
+        .sidebar.left > .search {
+            margin-left: 0.45rem;
+        }
+
+        .sidebar.left > .typography-control {
+            margin-left: 0.6rem;
+        }
+
+        .sidebar.left .page-title a {
+            font-size: 3vw;
+        }
+    }
+}
 // the darkmode and reader-mode toggles are inline-blocks, so the Flex wrapper
 // around each one gets a text line box: its strut adds a few px of descender
 // space below the button, so the wrapper is taller than the icon and the icon

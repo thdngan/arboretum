@@ -38,7 +38,21 @@ const isHome = (slug: string) => slug === "index"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  // The three reading controls, at the top of the centre column. renderPage
+  // puts this slot inside .page-header and *above* .popover-hint, which is the
+  // block link previews and search results are built from — so the buttons sit
+  // over the article without turning up inside every popover and every result.
+  header: [
+    Component.DesktopOnly(
+      Component.Typography(),
+    ),
+    Component.DesktopOnly(
+      Component.ReaderMode(),
+    ),
+    Component.DesktopOnly(
+      Component.Darkmode(),
+    )
+  ],
   // afterBody: Explorer[],
   afterBody: [
     // the panels the keys open, rendered once wherever a key can appear
@@ -143,19 +157,16 @@ export const defaultContentPageLayout: PageLayout = {
     //   Component.Search(),
     //   Component.Darkmode(),
     // ]),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true, // Search will grow to fill available space
-        },
-        { Component: Component.Darkmode() }, // Darkmode keeps its natural size
-        { Component: Component.Typography() },
-        { Component: Component.ReaderMode() },
-      ],
-      direction: "row",
-      gap: "1rem",
-    }),
+    Component.MobileOnly(
+      Component.Typography(),
+    ),
+    Component.MobileOnly(
+      Component.ReaderMode(),
+    ),
+    Component.MobileOnly(
+      Component.Darkmode(),
+    ),
+    Component.Search(),
     Component.MobileOnly(
       Component.Explorer({
         sortFn: (a, b) => {
@@ -274,19 +285,17 @@ export const defaultListPageLayout: PageLayout = {
     //   Component.Search(),
     //   Component.Darkmode(),
     // ]),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true, // Search will grow to fill available space
-        },
-        { Component: Component.Darkmode() }, // Darkmode keeps its natural size
-        { Component: Component.Typography() },
-        { Component: Component.ReaderMode() },
-      ],
-      direction: "row",
-      gap: "1rem",
-    }),
+
+    Component.MobileOnly(
+      Component.Typography(),
+    ),
+    Component.MobileOnly(
+      Component.ReaderMode(),
+    ),
+    Component.MobileOnly(
+      Component.Darkmode(),
+    ),
+    Component.Search(),
     // Component.Search(),
     // Component.Darkmode(),
     Component.Explorer({

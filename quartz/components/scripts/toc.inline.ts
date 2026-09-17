@@ -50,6 +50,50 @@ function toggleToc(this: HTMLElement) {
   content.classList.toggle("collapsed")
 }
 
+// How much room a jump has to leave above a heading.
+//
+// Clicking an entry above parks its heading at the top of the window, which is
+// where the sticky bars live, so the heading you jumped to is the one thing you
+// cannot read. custom.scss holds it clear with scroll-margin-top, and on desktop
+// it can state that distance itself: the reading-controls row is built out of
+// variables that live in the stylesheet.
+//
+// The mobile top bar cannot be stated. Its wordmark is sized in vw, so the bar
+// grows with the viewport - about 58px on a phone, 97px just under the
+// breakpoint - and any number written into the stylesheet would be right at one
+// width and wrong at every other. So it is measured here. What to do with it
+// stays in the stylesheet, which knows the cases: reader mode leaves the bar in
+// the flow at opacity 0, and a heading under an invisible bar needs no room.
+const MOBILE = "(max-width: 800px)"
+
+let barObserver: ResizeObserver | null = null
+
+function measureTopBar(bar: HTMLElement) {
+  // above the breakpoint .sidebar.left is the full-height column beside the
+  // article rather than a bar over it, and covers nothing a jump can land on.
+  // The property is left at whatever it last held: only the mobile rule reads
+  // it, and crossing back resizes the bar, which measures it again.
+  if (!window.matchMedia(MOBILE).matches) return
+  document.documentElement.style.setProperty(
+    "--mobile-bar-height",
+    `${Math.round(bar.getBoundingClientRect().height)}px`,
+  )
+}
+
+// A ResizeObserver rather than a resize listener, because the window is not the
+// only thing that moves this number. The bar is still settling when `nav` fires
+// - measured there it comes out ~5px short of where it ends up - so the thing to
+// watch is the bar itself, which reports both its own settling and every width
+// the wordmark grows through.
+function watchTopBar() {
+  const bar = document.querySelector<HTMLElement>(".sidebar.left")
+  if (!bar) return
+  barObserver?.disconnect()
+  barObserver = new ResizeObserver(() => measureTopBar(bar))
+  barObserver.observe(bar)
+  window.addCleanup(() => barObserver?.disconnect())
+}
+
 function setupToc() {
   const toc = document.getElementById("toc")
   if (toc) {
@@ -63,6 +107,7 @@ function setupToc() {
 window.addEventListener("resize", setupToc)
 document.addEventListener("nav", () => {
   setupToc()
+  watchTopBar()
 
   tracked = [
     ...document.querySelectorAll<HTMLElement>("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]"),

@@ -19,16 +19,48 @@ const defaultOptions: Options = {
   layout: "modern",
 }
 
-// the references/bibliography heading is the one entry whose number comes from
-// the content rather than from the list itself, so it gets stripped and flagged
-// here instead of in every renderer below
+// The toc transformer hands every entry a dotted section label ("1. Intro",
+// "1.2. Details"). Top-level sections read as names, not as items in a numbered
+// list, so their label is dropped and only what sits *below* a section keeps a
+// number - counted from that section rather than from the page, since the
+// section it belongs to no longer shows a number to count from:
+//
+//   Introduction        1.     ->  (none)
+//     Background        1.1.   ->  1.
+//       Details         1.1.2. ->  1.2.
+//   Methods             2.     ->  (none)
+//     Setup             2.1.   ->  1.
+//
+// The references/bibliography heading is the one entry whose number comes from
+// the content rather than from the list, so it is stripped and left unnumbered.
 function tocEntryParts(tocEntry: TocEntry) {
   const isReference = tocEntry.slug === "references" || tocEntry.slug === "bibliography"
-  return {
-    isReference,
+  if (isReference) {
     // Strip out any hardcoded numbers (e.g. "5. References" -> "References")
-    displayText: isReference ? tocEntry.text.replace(/^[\d.]+\s*/, "") : tocEntry.text,
+    return { displayText: tocEntry.text.replace(/^[\d.]+\s*/, ""), number: undefined }
   }
+
+  const [, label = "", rest] = /^(\d+(?:\.\d+)*)\.\s+(.*)$/s.exec(tocEntry.text) ?? []
+  const below = label.split(".").slice(1)
+  return {
+    displayText: rest ?? tocEntry.text,
+    number: below.length > 0 ? `${below.join(".")}.` : undefined,
+  }
+}
+
+// every list in this file renders an entry the same way, down to the class names
+// the shading script and the drawer's scroll-into-view look for
+function TocItem({ tocEntry }: { tocEntry: TocEntry }) {
+  const { displayText, number } = tocEntryParts(tocEntry)
+
+  return (
+    <li class={`depth-${tocEntry.depth}${number ? " numbered" : ""}`}>
+      <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
+        {number && <span class="toc-number">{number}</span>}
+        <span class="toc-text">{displayText}</span>
+      </a>
+    </li>
+  )
 }
 
 const TableOfContents: QuartzComponent = ({
@@ -67,17 +99,9 @@ const TableOfContents: QuartzComponent = ({
       </button>
       <div id="toc-content" class={fileData.collapseToc ? "collapsed" : ""}>
         <ul class="overflow">
-          {fileData.toc.map((tocEntry) => {
-            const { isReference, displayText } = tocEntryParts(tocEntry)
-
-            return (
-              <li key={tocEntry.slug} class={`depth-${tocEntry.depth} ${isReference ? "no-number" : ""}`}>
-                <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                  {displayText}
-                </a>
-              </li>
-            )
-          })}
+          {fileData.toc.map((tocEntry) => (
+            <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+          ))}
         </ul>
       </div>
     </div>
@@ -151,20 +175,9 @@ const TocDrawer: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => 
           </button>
         </div>
         <ul class="toc-drawer-list">
-          {fileData.toc.map((tocEntry) => {
-            const { isReference, displayText } = tocEntryParts(tocEntry)
-
-            return (
-              <li
-                key={tocEntry.slug}
-                class={`depth-${tocEntry.depth} ${isReference ? "no-number" : ""}`}
-              >
-                <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                  {displayText}
-                </a>
-              </li>
-            )
-          })}
+          {fileData.toc.map((tocEntry) => (
+            <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+          ))}
         </ul>
       </aside>
     </div>
@@ -183,17 +196,9 @@ const LegacyTableOfContents: QuartzComponent = ({ fileData, cfg }: QuartzCompone
         <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
       </summary>
       <ul>
-        {fileData.toc.map((tocEntry) => {
-          const { isReference, displayText } = tocEntryParts(tocEntry)
-
-          return (
-            <li key={tocEntry.slug} class={`depth-${tocEntry.depth} ${isReference ? "no-number" : ""}`}>
-              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                {displayText}
-              </a>
-            </li>
-          )
-        })}
+        {fileData.toc.map((tocEntry) => (
+          <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+        ))}
       </ul>
     </details>
   )

@@ -251,7 +251,8 @@
     // deliberately identical to the sidebar list in toc.scss: read sections sit
     // at 0.9, everything still ahead of you at 0.35, and the boundary between
     // them is where you are
-    display: block;
+    display: flex;
+    gap: 0.4rem;
     color: var(--dark);
     text-decoration: none;
     opacity: 0.35;
@@ -268,9 +269,38 @@
     }
   }
 
-  @for $i from 0 through 6 {
+  & .toc-number {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // unnumbered sections, numbered subsections hanging off a shared guide line:
+  // the same arrangement as the sidebar list, see toc.scss for why it is built
+  // out of per-row borders
+  & .depth-1 {
+    padding-left: 0;
+    margin-top: 0.35rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    & > a {
+      font-weight: 600;
+    }
+  }
+
+  & li:not(.depth-1) {
+    border-left: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+
+    &:has(> a.in-view) {
+      border-left-color: color-mix(in srgb, var(--secondary) 70%, transparent);
+    }
+  }
+
+  @for $i from 2 through 6 {
     & .depth-#{$i} {
-      padding-left: calc(0.75rem * #{$i});
+      padding-left: calc(0.6rem + 0.75rem * (#{$i} - 2));
     }
   }
 }

@@ -25,7 +25,71 @@ const BLUR_CLASS = "content-blurred"
 
 type Seat = { node: HTMLElement; placeholder: Comment }
 
-let open: Seat[] = []
+// One lock for the whole page, parked on window.
+//
+// Every component that imports this module - search, the global graph, the home
+// dialogs - is bundled separately, so esbuild emits a private copy of this file
+// into each bundle. Module-level state would therefore be three unrelated
+// `open` arrays holding three unrelated listener identities, and the refcount
+// would only ever be right by accident: search could hold the scroll lock while
+// the graph's copy, which runs releaseAllOverlays() on every nav, stripped the
+// blur class off <html> and removed its own listeners instead of search's. The
+// page then looked completely untouched while wheel and touchmove stayed
+// cancelled for the rest of the session - dead trackpad scrolling, with only
+// the scrollbar still working, until a full reload.
+//
+// So the state and the handler identities live on window, where every copy
+// finds the same ones.
+interface OverlayLock {
+  open: Seat[]
+  held: boolean
+  wheel: (e: Event) => void
+  keys: (e: Event) => void
+}
+
+const LOCK_KEY = "__quartzOverlayLock" as const
+
+const SCROLL_KEYS = new Set([
+  "ArrowUp",
+  "ArrowDown",
+  "PageUp",
+  "PageDown",
+  "Home",
+  "End",
+  " ",
+  "Spacebar",
+])
+
+function lock(): OverlayLock {
+  const w = window as unknown as Record<string, OverlayLock | undefined>
+  const existing = w[LOCK_KEY]
+  if (existing) return existing
+
+  const state = { open: [], held: false } as unknown as OverlayLock
+
+  const aimedAtOverlay = (target: EventTarget | null): boolean =>
+    target instanceof Node && state.open.some((seat) => seat.node.contains(target))
+
+  // Fail open. If the refcount ever falls out of step with the listeners - a
+  // navigation that tears the overlay out of the DOM before anything closed it,
+  // an exception between the splice and the release - the worst case has to be
+  // a lock that does nothing, not a page that can never be scrolled again.
+  state.wheel = (e: Event) => {
+    if (state.open.length === 0) return
+    if (aimedAtOverlay(e.target)) return
+    e.preventDefault()
+  }
+
+  state.keys = (e: Event) => {
+    if (state.open.length === 0) return
+    if (!SCROLL_KEYS.has((e as KeyboardEvent).key)) return
+    if (aimedAtOverlay(e.target)) return
+    e.preventDefault()
+  }
+
+  w[LOCK_KEY] = state
+  return state
+}
 
 function root(): HTMLElement | null {
   return document.getElementById("quartz-root")
@@ -42,43 +106,26 @@ function root(): HTMLElement | null {
 // Anything aimed inside the open overlay still scrolls: the dialogs have their own
 // scrolling bodies, the search sheet scrolls its results, and the map is panned by
 // dragging it.
-const SCROLL_KEYS = new Set([
-  "ArrowUp",
-  "ArrowDown",
-  "PageUp",
-  "PageDown",
-  "Home",
-  "End",
-  " ",
-  "Spacebar",
-])
-
-function aimedAtOverlay(target: EventTarget | null): boolean {
-  return target instanceof Node && open.some((seat) => seat.node.contains(target))
-}
-
-function blockScroll(e: Event) {
-  if (aimedAtOverlay(e.target)) return
-  e.preventDefault()
-}
-
-function blockScrollKeys(e: KeyboardEvent) {
-  if (!SCROLL_KEYS.has(e.key)) return
-  if (aimedAtOverlay(e.target)) return
-  e.preventDefault()
-}
-
 function holdPage(on: boolean) {
-  const fn = on ? window.addEventListener : window.removeEventListener
-  // passive: false, or preventDefault is ignored on these two
-  fn("wheel", blockScroll, { passive: false } as AddEventListenerOptions)
-  fn("touchmove", blockScroll, { passive: false } as AddEventListenerOptions)
-  fn("keydown", blockScrollKeys as EventListener)
+  const state = lock()
+  if (state.held === on) return
+  state.held = on
+  if (on) {
+    // passive: false, or preventDefault is ignored on these two
+    window.addEventListener("wheel", state.wheel, { passive: false })
+    window.addEventListener("touchmove", state.wheel, { passive: false })
+    window.addEventListener("keydown", state.keys)
+  } else {
+    window.removeEventListener("wheel", state.wheel)
+    window.removeEventListener("touchmove", state.wheel)
+    window.removeEventListener("keydown", state.keys)
+  }
 }
 
 export function openOverlay(node: HTMLElement | null | undefined) {
   if (!node) return
-  if (open.some((s) => s.node === node)) return
+  const state = lock()
+  if (state.open.some((s) => s.node === node)) return
 
   // only lift it out if it is actually inside the element about to be blurred
   const placeholder = document.createComment("overlay-seat")
@@ -87,18 +134,27 @@ export function openOverlay(node: HTMLElement | null | undefined) {
     node.parentNode?.insertBefore(placeholder, node)
     document.body.appendChild(node)
   }
-  const first = open.length === 0
-  open.push({ node, placeholder })
+  state.open.push({ node, placeholder })
   document.documentElement.classList.add(BLUR_CLASS)
-  if (first) holdPage(true)
+  holdPage(true)
 }
 
 export function closeOverlay(node: HTMLElement | null | undefined) {
   if (!node) return
-  const i = open.findIndex((s) => s.node === node)
+  const state = lock()
+  const i = state.open.findIndex((s) => s.node === node)
   if (i === -1) return
-  const seat = open[i]
-  open.splice(i, 1)
+  const seat = state.open[i]
+  state.open.splice(i, 1)
+
+  // refcounted: search can be opened from behind a dialog, and whichever closes
+  // second must not lift the blur the other still wants. Released before the
+  // node is put back, so a throw while reseating a stale node cannot strand the
+  // lock (see the fail-open note above - this is the belt to that's braces)
+  if (state.open.length === 0) {
+    document.documentElement.classList.remove(BLUR_CLASS)
+    holdPage(false)
+  }
 
   // back to its seat if the seat still exists; an SPA navigation may have
   // replaced the page under it, in which case the node is stale and just goes
@@ -108,19 +164,16 @@ export function closeOverlay(node: HTMLElement | null | undefined) {
   } else if (seat.node.parentNode === document.body) {
     seat.node.remove()
   }
-
-  // refcounted: search can be opened from behind a dialog, and whichever closes
-  // second must not lift the blur the other still wants
-  if (open.length === 0) {
-    document.documentElement.classList.remove(BLUR_CLASS)
-    holdPage(false)
-  }
 }
 
-// a navigation with an overlay up would otherwise leave the page blurred
+// a navigation with an overlay up would otherwise leave the page blurred, or -
+// worse, because it is invisible - leave the scroll lock on. Every component
+// that owns an overlay calls this as it sets itself up on `nav`, and because
+// the lock is shared, any one of those calls cleans up after all of them.
 export function releaseAllOverlays() {
-  for (const seat of [...open]) closeOverlay(seat.node)
-  open = []
+  const state = lock()
+  for (const seat of [...state.open]) closeOverlay(seat.node)
+  state.open.length = 0
   document.documentElement.classList.remove(BLUR_CLASS)
   holdPage(false)
 }
