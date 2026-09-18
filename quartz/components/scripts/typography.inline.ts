@@ -81,22 +81,30 @@ applyFont(savedFont())
 applyScale(savedScaleIndex())
 
 document.addEventListener("nav", () => {
-  const control = document.querySelector(".typography-control")
-  const toggle = document.querySelector<HTMLButtonElement>(".typography-toggle")
-  const panel = document.querySelector<HTMLElement>(".typography-panel")
-  if (!control || !toggle || !panel) return
+  // The layout may render this menu more than once — the desktop header and the
+  // mobile top bar each carry a copy, only one of them visible at a time — so
+  // every copy is wired, not just the first in the document. Taking the first
+  // is how the visible desktop button went dead: the hidden mobile copy sits in
+  // the left sidebar, which comes earlier in the page than the centre column.
+  const controls = Array.from(document.querySelectorAll<HTMLElement>(".typography-control"))
+  if (controls.length === 0) return
 
-  const sizeValue = panel.querySelector<HTMLElement>("[data-size-value]")
-  const stepButtons = Array.from(panel.querySelectorAll<HTMLButtonElement>("[data-size-step]"))
-  const fontButtons = Array.from(panel.querySelectorAll<HTMLButtonElement>("[data-font]"))
-  const resetButton = panel.querySelector<HTMLButtonElement>("[data-typography-reset]")
+  const inAll = <T extends Element>(selector: string): T[] =>
+    controls.flatMap((c) => Array.from(c.querySelectorAll<T>(selector)))
+  const sizeValues = inAll<HTMLElement>("[data-size-value]")
+  const stepButtons = inAll<HTMLButtonElement>("[data-size-step]")
+  const fontButtons = inAll<HTMLButtonElement>("[data-font]")
 
+  // One reader, one set of preferences. The copies share this and are painted
+  // together, so a change made in one already shows in the other if the window
+  // crosses the breakpoint and that is the copy that gets opened next.
   let scaleIndex = savedScaleIndex()
   let font = savedFont()
   let previewLoaded = false
 
   const paintState = () => {
-    if (sizeValue) sizeValue.textContent = `${Math.round(TEXT_SCALES[scaleIndex] * 100)}%`
+    const percent = `${Math.round(TEXT_SCALES[scaleIndex] * 100)}%`
+    for (const v of sizeValues) v.textContent = percent
     for (const b of stepButtons) {
       const dir = Number(b.dataset.sizeStep)
       b.disabled = dir < 0 ? scaleIndex === 0 : scaleIndex === TEXT_SCALES.length - 1
@@ -119,36 +127,6 @@ document.addEventListener("nav", () => {
     link.setAttribute("spa-preserve", "")
     document.head.appendChild(link)
   }
-
-  // The panel is absolutely positioned against the button, and by default is
-  // centred on it. On a narrow screen that centre would hang off one edge, so
-  // once it is open we measure and slide it back inside the viewport. Left as a
-  // CSS-only centre it would be correct on desktop and wrong on every phone.
-  const positionPanel = () => {
-    if (panel.hidden) return
-    // clear last run's offset so the measurement starts from a known origin
-    panel.style.left = "0px"
-    panel.style.transform = "none"
-    const viewport = document.documentElement.clientWidth
-    const controlLeft = control.getBoundingClientRect().left
-    const button = toggle.getBoundingClientRect()
-    const width = panel.offsetWidth
-    const gutter = 12
-    const centred = button.left + button.width / 2 - width / 2
-    const clamped = Math.max(gutter, Math.min(centred, viewport - width - gutter))
-    panel.style.left = `${clamped - controlLeft}px`
-  }
-
-  const setOpen = (open: boolean) => {
-    panel.hidden = !open
-    toggle.setAttribute("aria-expanded", String(open))
-    if (open) {
-      loadPreviewFaces()
-      positionPanel()
-    }
-  }
-
-  const onToggle = () => setOpen(panel.hidden)
 
   const onStep = (e: Event) => {
     const button = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-size-step]")
@@ -182,35 +160,75 @@ document.addEventListener("nav", () => {
     paintState()
   }
 
-  const onDocumentClick = (e: MouseEvent) => {
-    if (!panel.hidden && !control.contains(e.target as Node)) setOpen(false)
-  }
+  // Everything below belongs to one copy: its own button, its own panel, its
+  // own idea of what counts as clicking outside.
+  for (const control of controls) {
+    const toggle = control.querySelector<HTMLButtonElement>(".typography-toggle")
+    const panel = control.querySelector<HTMLElement>(".typography-panel")
+    if (!toggle || !panel) continue
+    const resetButton = panel.querySelector<HTMLButtonElement>("[data-typography-reset]")
 
-  const onKeydown = (e: KeyboardEvent) => {
-    if (e.key === "Escape" && !panel.hidden) {
-      setOpen(false)
-      toggle.focus()
+    // The panel is absolutely positioned against the button, and by default is
+    // centred on it. On a narrow screen that centre would hang off one edge, so
+    // once it is open we measure and slide it back inside the viewport. Left as
+    // a CSS-only centre it would be correct on desktop and wrong on every phone.
+    const positionPanel = () => {
+      if (panel.hidden) return
+      // clear last run's offset so the measurement starts from a known origin
+      panel.style.left = "0px"
+      panel.style.transform = "none"
+      const viewport = document.documentElement.clientWidth
+      const controlLeft = control.getBoundingClientRect().left
+      const button = toggle.getBoundingClientRect()
+      const width = panel.offsetWidth
+      const gutter = 12
+      const centred = button.left + button.width / 2 - width / 2
+      const clamped = Math.max(gutter, Math.min(centred, viewport - width - gutter))
+      panel.style.left = `${clamped - controlLeft}px`
     }
+
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open
+      toggle.setAttribute("aria-expanded", String(open))
+      if (open) {
+        loadPreviewFaces()
+        positionPanel()
+      }
+    }
+
+    const onToggle = () => setOpen(panel.hidden)
+
+    const onDocumentClick = (e: MouseEvent) => {
+      if (!panel.hidden && !control.contains(e.target as Node)) setOpen(false)
+    }
+
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !panel.hidden) {
+        setOpen(false)
+        toggle.focus()
+      }
+    }
+
+    toggle.addEventListener("click", onToggle)
+    panel.addEventListener("click", onStep)
+    panel.addEventListener("click", onPickFont)
+    resetButton?.addEventListener("click", onReset)
+    document.addEventListener("click", onDocumentClick)
+    document.addEventListener("keydown", onKeydown)
+    window.addEventListener("resize", positionPanel)
+
+    window.addCleanup(() => {
+      toggle.removeEventListener("click", onToggle)
+      panel.removeEventListener("click", onStep)
+      panel.removeEventListener("click", onPickFont)
+      resetButton?.removeEventListener("click", onReset)
+      document.removeEventListener("click", onDocumentClick)
+      document.removeEventListener("keydown", onKeydown)
+      window.removeEventListener("resize", positionPanel)
+    })
+
+    setOpen(false)
   }
 
-  toggle.addEventListener("click", onToggle)
-  panel.addEventListener("click", onStep)
-  panel.addEventListener("click", onPickFont)
-  resetButton?.addEventListener("click", onReset)
-  document.addEventListener("click", onDocumentClick)
-  document.addEventListener("keydown", onKeydown)
-  window.addEventListener("resize", positionPanel)
-
-  window.addCleanup(() => {
-    toggle.removeEventListener("click", onToggle)
-    panel.removeEventListener("click", onStep)
-    panel.removeEventListener("click", onPickFont)
-    resetButton?.removeEventListener("click", onReset)
-    document.removeEventListener("click", onDocumentClick)
-    document.removeEventListener("keydown", onKeydown)
-    window.removeEventListener("resize", positionPanel)
-  })
-
-  setOpen(false)
   paintState()
 })

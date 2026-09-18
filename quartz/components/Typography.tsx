@@ -10,6 +10,11 @@ import { BODY_FONTS, DEFAULT_FONT_ID, fontStack } from "../util/bodyFonts"
 // so the site keeps its voice — and the size control scales the article alone,
 // never the surrounding chrome.
 const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+  // The layout renders one copy for the desktop header and one for the mobile
+  // bar, so the panel's id has to differ between them or aria-controls on both
+  // buttons would point at whichever panel came first. The copies differ by
+  // displayClass (desktop-only / mobile-only), which makes a stable suffix.
+  const panelId = displayClass ? `typography-panel-${displayClass}` : "typography-panel"
   // Sorted here rather than in bodyFonts.ts, so the list stays alphabetical in
   // the menu however the table itself is grouped or added to later.
   const fonts = [...BODY_FONTS].sort((a, b) => a.name.localeCompare(b.name))
@@ -19,7 +24,7 @@ const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => 
       <button
         class="typography-toggle"
         aria-expanded="false"
-        aria-controls="typography-panel"
+        aria-controls={panelId}
         aria-label="Reading typography"
         title="Reading typography"
       >
@@ -45,7 +50,7 @@ const Typography: QuartzComponent = ({ displayClass }: QuartzComponentProps) => 
         </svg>
       </button>
 
-      <div class="typography-panel" id="typography-panel" role="dialog" aria-label="Reading typography" hidden>
+      <div class="typography-panel" id={panelId} role="dialog" aria-label="Reading typography" hidden>
         <div class="typography-row">
           <span class="typography-label">Text size</span>
           <div class="typography-stepper">
