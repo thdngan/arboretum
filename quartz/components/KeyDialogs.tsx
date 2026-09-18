@@ -109,8 +109,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               </tr>
               <tr>
                 <td class="guide-buttons">
-                  <span class="guide-icon guide-icon--plain guide-icon--sun"></span>
-                  <span class="guide-icon guide-icon--plain guide-icon--moon"></span>
+                  <span class="guide-icon guide-icon--theme"></span>
                 </td>
                 <td>Flip between light and dark</td>
                 <td class="guide-shortcut">&mdash;</td>
@@ -131,7 +130,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
               </tr>
               <tr>
                 <td class="guide-buttons"></td>
-                <td>Close the search or the map</td>
+                <td>Close the search, the map, or whichever panel is open</td>
                 <td class="guide-shortcut">
                   <kbd>Esc</kbd>
                 </td>

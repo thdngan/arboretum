@@ -1,6 +1,14 @@
 // from https://quartz.eilleeenz.com/Quartz-customization-log#scroll-to-top--random-page
 import { FullSlug, getFullSlug, pathToRoot, simplifySlug } from "../../util/path"
 
+// paths to leave out of the random pick: the page itself and everything
+// under it. works for folders ("empty") and tag pages ("tags/empty")
+const excludedFolders = ["empty", "tags/empty"]
+
+function isExcluded(slug: string) {
+  return excludedFolders.some((folder) => slug === folder || slug.startsWith(`${folder}/`))
+}
+
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
   }
@@ -8,17 +16,14 @@ function getRandomInt(max: number) {
 export async function navigateToRandomPage() {
     const fullSlug = getFullSlug(window)
     const data = await fetchData
-    const allPosts = Object.keys(data).map((slug) => simplifySlug(slug as FullSlug))
-    // window.location.href = `${pathToRoot(fullSlug)}/${allPosts[getRandomInt(allPosts.length - 1)]}`
-    let newSlug = `${pathToRoot(fullSlug)}/${allPosts[getRandomInt(allPosts.length - 1)]}`;
+    const current = simplifySlug(fullSlug)
+    const allPosts = Object.keys(data)
+      .filter((slug) => !isExcluded(slug))
+      .map((slug) => simplifySlug(slug as FullSlug))
+      .filter((slug) => slug !== current)
+    if (allPosts.length === 0) return
 
-    if (newSlug === fullSlug) {
-      // Generate a new random slug until it's different from the starting fullSlug
-      do {
-        newSlug = `${pathToRoot(fullSlug)}/${allPosts[getRandomInt(allPosts.length - 1)]}`;
-      } while (newSlug === fullSlug);
-    }
-    window.location.href = newSlug;
+    window.location.href = `${pathToRoot(fullSlug)}/${allPosts[getRandomInt(allPosts.length)]}`
 }
 
 // don't hijack the key while the visitor is typing somewhere

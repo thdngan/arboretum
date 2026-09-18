@@ -16,6 +16,9 @@ const defaultOptions: TagContentOptions = {
   numPages: 10,
 }
 
+// tags whose pages are kept off every other tag's listing
+const hiddenTags = ["empty"]
+
 export default ((opts?: Partial<TagContentOptions>) => {
   const options: TagContentOptions = { ...defaultOptions, ...opts }
 
@@ -28,10 +31,15 @@ export default ((opts?: Partial<TagContentOptions>) => {
     }
 
     const tag = simplifySlug(slug.slice("tags/".length) as FullSlug)
+    // pages tagged with a hidden tag only show up on that tag's own listing
+    const isHiddenTag = (tag: string) =>
+      hiddenTags.some((hidden) => tag === hidden || tag.startsWith(`${hidden}/`))
     const allPagesWithTag = (tag: string) =>
-      allFiles.filter((file) =>
-        (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes).includes(tag),
-      )
+      allFiles.filter((file) => {
+        const fileTags = (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes)
+        if (!fileTags.includes(tag)) return false
+        return isHiddenTag(tag) || !fileTags.some(isHiddenTag)
+      })
 
     const content =
       (tree as Root).children.length === 0
@@ -44,7 +52,10 @@ export default ((opts?: Partial<TagContentOptions>) => {
         ...new Set(
           allFiles.flatMap((data) => data.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes),
         ),
-      ].sort((a, b) => a.localeCompare(b))
+      ]
+        .sort((a, b) => a.localeCompare(b))
+        // drop tags whose only pages are hidden ones
+        .filter((tag) => allPagesWithTag(tag).length > 0)
       const tagItemMap: Map<string, QuartzPluginData[]> = new Map()
       for (const tag of tags) {
         tagItemMap.set(tag, allPagesWithTag(tag))

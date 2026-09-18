@@ -176,7 +176,7 @@ export const defaultContentPageLayout: PageLayout = {
 
           // 2. Custom folder order
           if (a.isFolder && b.isFolder) {
-            var order =["empty", "posts", "notes_folder"];
+            var order =["posts", "notes_folder","empty"];
             var indexA = order.indexOf(a.slugSegment);
             var indexB = order.indexOf(b.slugSegment);
 
@@ -306,7 +306,7 @@ export const defaultListPageLayout: PageLayout = {
 
         // 2. Custom folder order
         if (a.isFolder && b.isFolder) {
-          var order =["empty", "posts", "notes_folder"];
+          var order =["posts", "notes_folder","empty"];
           var indexA = order.indexOf(a.slugSegment);
           var indexB = order.indexOf(b.slugSegment);
 
