@@ -7,7 +7,7 @@ tags:
   - planetary-science
   - writings
 ---
-This is the back-of-the-napkin version of Earth’s climate. It’s called "zero-dimensional" because it treats the planet as a perfectly mixed, uniform sphere: no poles, no tropics, one big average temperature, no maps or weather patterns, just a look at how energy moves in and out.
+This is the back-of-the-napkin version of Earth’s climate. It’s called "zero-dimensional" because it treats the planet as a perfectly mixed, uniform sphere with no poles or tropics or weather patterns, there's just one big average temperature and we take a look at how energy moves in and out.
 
 What it does is balance the Earth's energy budget, tracking the Sun, the Earth's surface and the atmosphere through a few main processes:
 
