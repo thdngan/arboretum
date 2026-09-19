@@ -191,5 +191,5 @@ export const previewHref = (): string =>
   "&display=swap"
 
 /** the size steps the −/+ buttons walk through */
-export const TEXT_SCALES = [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.2, 1.3, 1.45]
-export const DEFAULT_SCALE_INDEX = 3
+export const TEXT_SCALES = [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4]
+export const DEFAULT_SCALE_INDEX = 8

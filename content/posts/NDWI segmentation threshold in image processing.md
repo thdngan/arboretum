@@ -19,7 +19,7 @@ There are a few important concepts for segmentation thresholding using NDWI/NDVI
 
 ### Digital Number (DN)
 
-A digital image is a matrix made of pixels (picture elements). Each pixel is filled by an integer called a digital number. The digital number represents the radiance of the light measured for the pixel, and it is proportional to the radiance. A 256x256 [[posts/sampling and quantization|spatial domain]] image, for example, has 256 x 256 = 65,536 pixels, whereas a 1024x1280 image has 1,310,720 pixels. The value of each pixel in grayscale images is related to the amount of bits of data used to represent the pixel (typically 8 bits), ranging from 0 to 255 (2<sup>8</sup> = 256 grayscale levels created from combinations of 8 binary numbers: 00000000 to 11111111). If a pixel's value is represented by 16 bits, the value range is 0 to 65,535 (2<sup>16</sup> = 65,536 grayscale levels).
+A digital image is a matrix made of pixels (picture elements). Each pixel is filled by an integer called a digital number. The digital number represents the radiance of the light measured for the pixel, and it is proportional to the radiance. A 256x256 [[sampling and quantization|spatial domain]] image, for example, has 256 x 256 = 65,536 pixels, whereas a 1024x1280 image has 1,310,720 pixels. The value of each pixel in grayscale images is related to the amount of bits of data used to represent the pixel (typically 8 bits), ranging from 0 to 255 (2<sup>8</sup> = 256 grayscale levels created from combinations of 8 binary numbers: 00000000 to 11111111). If a pixel's value is represented by 16 bits, the value range is 0 to 65,535 (2<sup>16</sup> = 65,536 grayscale levels).
 
 ![[images/image processing/qinghai landsat b3.png]] 
  <span class = "caption">  
