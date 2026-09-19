@@ -84,7 +84,7 @@ export const sharedPageComponents: SharedLayout = {
     }),
     Component.MobileOnly(
       Component.RecentNotes({
-        title: "Recent writings",
+        title: "Lately",
         limit: 5,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
@@ -217,7 +217,7 @@ export const defaultContentPageLayout: PageLayout = {
     ),
     Component.DesktopOnly(
       Component.RecentNotes({
-        title: "Recent writings",
+        title: "Lately",
         limit: 4,
         filter: (f) =>
           f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,

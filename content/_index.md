@@ -8,7 +8,7 @@ enableToc: false
 
 Hey, I'm Ngân.
 
-This is a little nook of the internet where I stash my writings, quick notes, class notebooks, unfinished discussions, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
+This is a little nook of the internet where I stash my writings, quick notes, class notebooks, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
 
 Below are a handful of the topics I've dabbled in:
 

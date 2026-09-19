@@ -2,11 +2,20 @@
   & > h3 {
     margin: 0.5rem 0 0 0; 
     font-size: 1rem;  // ← the "Recent writings" label
+    // same rule as the Explorer heading (global h2 in custom.scss): inline-block
+    // so the underline spans the words, not the whole column
+    display: inline-block;
+    // Explorer's and the TOC's headings sit inside a <button>, which the browser
+    // resets to `line-height: normal`; this one inherits the page's tighter
+    // leading, so without this the rule cuts through the descenders
+    line-height: normal;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 0.3em;
   }
 
   & > ul.recent-ul {
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding-left: 0;
 
     & > li {
