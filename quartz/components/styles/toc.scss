@@ -1,0 +1,130 @@
+button#toc {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+
+  & h3 {
+    font-size: 1rem;
+    // inline-block, so the rule below stops at the end of the word rather than
+    // running under the fold arrow and on across the sidebar
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 0rem;
+
+    // the Explorer heading is an <h2> and picks this rule up from custom.scss
+    // for free; this one is an <h3>, so it has to ask. Same hardcoded #aaa on
+    // purpose - a theme colour here would read as a different rule sitting one
+    // sidebar section away from that one.
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 0.3em;
+  }
+
+  & .fold {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+
+  &.collapsed .fold {
+    transform: rotateZ(-90deg);
+  }
+}
+
+#toc-content {
+  list-style: none;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  transition:
+    max-height 0.35s ease,
+    visibility 0s linear 0s;
+  position: relative;
+  visibility: visible;
+
+  &.collapsed {
+    max-height: 0;
+    transition:
+      max-height 0.35s ease,
+      visibility 0s linear 0.35s;
+    visibility: hidden;
+  }
+
+  &.collapsed > .overflow::after {
+    opacity: 0;
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    & > li > a {
+      // flex rather than inline: the number sits in its own column so a heading
+      // that wraps hangs under its own text instead of under the number
+      display: flex;
+      gap: 0.4rem;
+      line-height: 1.35;
+      padding: 0.12rem 0;
+      color: var(--dark);
+      text-decoration: none;
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      &.in-view {
+        opacity: 0.9;
+      }
+    }
+  }
+  > ul.overflow {
+    max-height: none;
+    width: 100%;
+    // the fold arrow's button has no bottom padding, so the gap under the
+    // heading has to come from here
+    margin-top: 0.35rem;
+  }
+
+  & .toc-number {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // The top-level sections are the spine of the page rather than items in a
+  // numbered list, so they carry no number and no rule - the rule below hangs
+  // off them. A little air above each one is what separates the groups.
+  & .depth-1 {
+    padding-left: 0;
+    margin-top: 0.45rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    & > a {
+      font-weight: 600;
+    }
+  }
+
+  // Everything under a section shares one guide line. The border lives on each
+  // row, and consecutive rows stack flush, so a run of subsections draws a
+  // single unbroken rule that stops at the next top-level heading. The deeper
+  // levels indent away from that one line rather than growing a line each.
+  & li:not(.depth-1) {
+    border-left: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+    // the same read/unread boundary the text opacity draws, on the rule: the
+    // filled part of the line is how much of the section is behind you
+    &:has(> a.in-view) {
+      border-left-color: color-mix(in srgb, var(--secondary) 70%, transparent);
+    }
+  }
+
+  @for $i from 2 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(0.45rem + 0.75rem * (#{$i} - 2));
+    }
+  }
+}

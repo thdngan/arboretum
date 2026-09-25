@@ -1,0 +1,333 @@
+@use "../../styles/variables.scss" as *;
+
+// three keys on the landing page: two pop a dialog open, one leaves for the
+// main site. Built from the same ingredients as the <kbd> keys in the guide
+// table (see "SHORTCUTS / GUIDE" in styles/custom.scss) - the code font, a
+// --lightgray fill, and a heavier bottom border standing in for key depth.
+.home-modal-buttons {
+  // grid rather than flex so every key is the same width: auto-flow column with
+  // 1fr tracks gives N equal columns for N buttons, with no count hardcoded.
+  // (content-width pills centred in a row read as accidentally ragged.)
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  // wide enough that the longest label ("getting around", ~14 mono characters
+  // plus icon and padding) still fits one line in a third of the row
+  max-width: 40rem;
+  margin: 3rem auto 2rem;
+
+  // not just $mobile: through the whole tablet band the sidebars squeeze the
+  // centre column enough that three keys in a row wrap to two lines
+  @media all and not ($desktop) {
+    grid-auto-flow: row;
+
+    // a pair keeps its row: the short key takes its content width and the long
+    // one absorbs the rest, so "getting around" never wraps the way it would
+    // in two equal halves of a phone-width row. Flex rather than fixed grid
+    // tracks so the sizing follows the keys themselves, not their order - the
+    // pair can be authored either way round in quartz.layout.ts.
+    &.home-modal-buttons--pair {
+      display: flex;
+
+      > .home-modal-button {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      > .home-modal-button--short {
+        flex: 0 0 max-content;
+      }
+    }
+  }
+
+  // In the right sidebar, flex rather than the equal-width grid: the iconic
+  // keys shrink to squares and the labelled ones absorb the rest of the row, so
+  // the column stops being a stack of identical full-width rectangles sitting
+  // under an equally wide map panel.
+  &--stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: none;
+    margin: 0;
+
+    > .home-modal-button {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    > .home-modal-button--compact {
+      flex: 0 0 auto;
+      width: 2.75rem;
+      padding-left: 0;
+      padding-right: 0;
+      gap: 0;
+    }
+  }
+}
+
+.home-modal-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-family: var(--codeFont);
+  // NOT scaled by --fontOptical, unlike the modal prose below: the keys are
+  // fixed-geometry controls, and --stack sits them in the 320px sidebar where
+  // "home" + "getting around" only just fit on one row. An 11% wider label at
+  // the default face wraps the pair and flex: 1 1 auto then stretches the
+  // second key to the full column. Same reason --textScale is kept out of the
+  // chrome in typography.scss: label width is load-bearing here.
+  font-size: 0.95rem;
+  // buttons don't inherit the body weight, so state it: these should read as
+  // body text on a key, not as a heading
+  font-weight: $normalWeight;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  // deliberately not `all`: transform and border-width drive the press, and a
+  // 200ms press feels mushy
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  // the "main hub" button is an <a>, which the global link rule would
+  // otherwise underline
+  text-decoration: none;
+
+  // A touch darker than the page so the keys read as objects sitting on it,
+  // but lighter than either --lightgray (which measures 4.24:1, under the 4.5
+  // AA floor) or --highlight (4.50, kept for hover). 40% of the way from the
+  // page toward --lightgray measures 4.81:1 light / 6.74:1 dark.
+  // The plain declaration first is the fallback for engines without color-mix.
+  background: var(--light);
+  background: color-mix(in srgb, var(--lightgray) 40%, var(--light));
+  border: 1px solid var(--gray);
+  // key depth, same trick as <kbd> but scaled up for a button-sized key
+  border-bottom-width: 3px;
+  // same teal as the icon, so the label, glyph and border read as one object
+  color: var(--secondary);
+
+  &:hover {
+    // the label is already --secondary at rest, so the hover is carried by the
+    // fill and the border warming up to match it
+    background: var(--highlight);
+    border-color: var(--secondary);
+    // `a:hover` forces --tertiary with !important, so the anchor-flavoured
+    // button needs this to stay the same colour as its <button> siblings
+    color: var(--secondary) !important;
+  }
+
+  // the key travels: drop it by the 2px of depth it gives up
+  &:active {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  .shimmer-symbol {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  // marks the one key that leaves the site
+  .home-modal-button-external {
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.9rem;
+  }
+}
+
+.home-modal {
+  // Geometry and backdrop copied from the global map (#global-graph-outer in
+  // graph.scss) so the two read identically.
+  //
+  // Covers the viewport. The strip iOS paints below it is not this box's job and
+  // cannot be - see overlayLock.inline.ts, which blurs the article in place so
+  // that whatever shows down there is already blurred.
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  // dvh, not lvh: lvh is the viewport with the chrome retracted, so an lvh-tall
+  // box overhangs the visible area and takes whatever it centres down with it.
+  // dvh tracks the bar.
+  height: 100%;
+  height: 100dvh;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+
+  &.active {
+    display: flex;
+  }
+
+  @media all and ($mobile) {
+    padding: 0.75rem;
+    // centred, like the global map. Anchoring to the bottom left the panel
+    // hugging the viewport edge with only the padding beneath it, and since the
+    // offset then depends on content height the two dialogs sat at visibly
+    // different heights.
+  }
+}
+
+.home-modal-panel {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  // 100% of the flex box's content area, which the padding above has already
+  // pulled inside the safe area - rather than a vh figure, which now measures
+  // the whole screen, chrome included
+  max-height: 85vh;
+  max-height: 100%;
+  // the panel holds still and .home-modal-body does the scrolling, so the close
+  // button - absolutely positioned in here - stays on the corner instead of
+  // riding away with the text. The guide is long enough that it matters.
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 2rem 2rem 1.5rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  // Tight, because the backdrop is now blurred article rather than a flat scrim
+  // (see overlayLock.inline.ts) and a wide halo shows up against it as a band of
+  // dead grey. The guide is tall enough to fill the panel to max-height, leaving
+  // only the container's 1.5rem of padding visible - a 30px shadow swallowed that
+  // strip whole, which is why the guide banded and the shorter colophon did not.
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+  @media all and ($mobile) {
+    padding: 1.5rem 1.1rem 1.1rem;
+  }
+}
+
+.home-modal-body {
+  // the scroller, taken over from .home-modal-panel. min-height:0 because a flex
+  // child defaults to min-content and would refuse to shrink far enough to scroll.
+  overflow-y: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  color: var(--darkgray);
+
+  // <kbd> is an inline element carrying vertical padding and a 2px bottom border
+  // (custom.scss), and neither grows the line box it sits in - the box simply
+  // spills out of it. In running text that is invisible; inside a scroll
+  // container it is not, because the spill counts as overflow without adding any
+  // height to scroll through. The guide's last line ends in two key caps, so the
+  // dialog got a few pixels of scrollbar and clipped their bottom edges, and no
+  // amount of extra height fixed it - the panel was never at its cap.
+  //
+  // inline-block puts the padding and border back into the line box's reckoning.
+  // Scoped to the dialog: elsewhere <kbd> sits in ordinary prose with nothing to
+  // clip against.
+  kbd {
+    display: inline-block;
+  }
+
+  // in here rather than on the panel, so the title scrolls away with the text and
+  // the close button is the only thing that holds still. The right margin is what
+  // keeps the first line clear of that button.
+  & > h3 {
+    margin: 0 2.5rem 1.2rem 0;
+    font-size: calc(1.2rem * var(--fontOptical));
+    color: var(--dark);
+  }
+  font-size: calc(0.95rem * var(--fontOptical));
+  line-height: 1.6;
+
+  & > p {
+    margin: 0 0 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // the guide table already handles its own widths; don't let the modal's
+  // narrower column push it into a horizontal scroll
+  table.guide-keys {
+    max-width: 100%;
+  }
+
+  // the modals render in .page-footer, outside <article>, so they miss the
+  // rule that strips the highlight pill off body-text wikilinks. repeat it
+  // here so these links look like every other wikilink on the site (the pill's
+  // side padding also left a visible gap before trailing punctuation).
+  // the underline weight comes from --wikilink-underline-thickness (declared in
+  // styles/custom.scss) so changing it there moves both copies together.
+  a.internal {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: var(--wikilink-underline-thickness);
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: auto;
+  }
+}
+
+.home-modal-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  // the panel's own colour, not `none`: the body scrolls underneath now, and a
+  // fully transparent button would have the text running through the cross.
+  // Held short of opaque so the text still reads as continuing behind it.
+  background: color-mix(in srgb, var(--light) 75%, transparent);
+  z-index: 1;
+  border: none;
+  border-radius: 4px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: var(--lightgray);
+    color: var(--dark);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+// iOS Safari composites fixed elements onto their own layer, and backdrop-filter
+// does not capture those - the floating cluster stayed sharp and left an
+// unblurred patch by the bottom bar. It is unreachable behind a dialog anyway.
+html.home-modal-open .floating-buttons {
+  display: none;
+}

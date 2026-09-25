@@ -1,0 +1,33 @@
+details#toc {
+  & summary {
+    cursor: pointer;
+
+    &::marker {
+      color: var(--dark);
+    }
+
+    & > * {
+      padding-left: 0.25rem;
+      display: inline-block;
+      margin: 0;
+    }
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0.5rem 1.25rem;
+    padding: 0;
+  }
+
+  // the subsection numbers are their own span (TableOfContents.tsx), so the
+  // space between number and heading has to be put back
+  & .toc-number {
+    margin-right: 0.35rem;
+  }
+
+  @for $i from 1 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(1rem * #{$i});
+    }
+  }
+}

@@ -1,0 +1,118 @@
+// from https://quartz.eilleeenz.com/Quartz-customization-log#scroll-to-top--random-page
+//  original source: 2/2/25
+// https://github.com/CatCodeMe/catcodeme.github.io/blob/770f3f8d1f6849ef40bc06b4300a52b3aecfb551/quartz/components/FloatingButtons.tsx#L11
+
+import {QuartzComponentConstructor, QuartzComponentProps} from "./types"
+// @ts-ignore
+import script from "./scripts/_floatingButtons.inline"
+import style from "./styles/_floatingButtons.scss"
+import {classNames} from "../util/lang"
+
+interface FloatingButtonsOptions {
+  position?: 'left' | 'right'
+}
+
+export default ((opts?: FloatingButtonsOptions) => {
+  function FloatingButtons({ displayClass }: QuartzComponentProps) {
+    const position = opts?.position || 'right'
+    
+    return (
+      <div class={classNames(displayClass, "floating-buttons", `floating-${position}`)}>
+        <div class="button-group">
+          {/* SCROLL UP */}
+          <button
+            class="floating-button"
+            title="Scroll to top"
+            data-action="scrollTop"
+          >
+            <span class="floating-button-tooltip">Scroll to top</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+          {/* SCROLL DOWN */}
+          <button
+            class="floating-button"
+            title="Scroll to bottom"
+            data-action="scrollBottom"
+          >
+            <span class="floating-button-tooltip">Scroll to bottom</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          {/* GRAPH BUTTON */}
+          <button
+            class="floating-button"
+            title="Global map"
+            data-action="graph"
+          >
+            <span class="floating-button-tooltip">Global map</span>
+            {/* Feather "map" (MIT). Font Awesome bakes the outline width into a
+                filled path, so its lightest weight still read heavier than the
+                other glyphs here; drawing the same folded map as strokes lets
+                it sit at the weight of the chevrons and the dice. */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+              <line x1="8" y1="2" x2="8" y2="18" />
+              <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+          </button>
+
+          {/* SHORTCUTS BUTTON */}
+          {/* <button
+            class="floating-button"
+            title="快捷键"
+            data-action="shortcuts"
+          >
+            <span class="floating-button-tooltip">快捷键</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20">
+              <path fill="currentColor" d="M5 12.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m6.502-4.495a.752.752 0 1 0 0-1.505a.752.752 0 0 0 0 1.505m3.753-.753a.752.752 0 1 1-1.505 0a.752.752 0 0 1 1.505 0m-9.753.753a.752.752 0 1 0 0-1.505a.752.752 0 0 0 0 1.505M7.75 9.752a.752.752 0 1 1-1.505 0a.752.752 0 0 1 1.505 0m2.252.753a.752.752 0 1 0 0-1.505a.752.752 0 0 0 0 1.505m3.757-.753a.752.752 0 1 1-1.504 0a.752.752 0 0 1 1.504 0M8.503 8.005a.752.752 0 1 0 0-1.505a.752.752 0 0 0 0 1.505M2 5.5A1.5 1.5 0 0 1 3.5 4h13A1.5 1.5 0 0 1 18 5.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 13.5zM3.5 5a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5z" />
+            </svg>
+          </button> */}
+          {/* RANDOM PAGE */}
+          <button
+            class="floating-button"
+            title="Random page"
+            data-action="randomPgFloating"
+          >
+            <span class="floating-button-tooltip">Random page</span>
+            {/* <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> 
+              <path d="M3 7H4.77985C6.93172 7 8.00766 7 8.87921 7.45631C9.25172 7.65134 9.59114 7.90388 9.88499 8.20464C10.5725 8.90832 10.8817 9.93888 11.5 12V12C12.1183 14.0611 12.4275 15.0917 13.115 15.7954C13.4089 16.0961 13.7483 16.3487 14.1208 16.5437C14.9923 17 16.0683 17 18.2202 17H21M21 17L18 14M21 17L18 20" stroke="currentColor"></path> 
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M21.3536 6.64648L18.3536 3.64648L17.6464 4.35359L19.7929 6.50004H18.2202H18.1963C17.1406 6.50003 16.3153 6.50003 15.6464 6.55901C14.964 6.61918 14.405 6.74317 13.8889 7.01339C13.4698 7.2328 13.0879 7.51691 12.7574 7.85526C12.7386 7.87444 12.7202 7.8938 12.7019 7.91335C12.8289 8.16228 12.9399 8.41464 13.0406 8.66741C13.0782 8.7617 13.1154 8.85879 13.1523 8.95851C13.2519 8.80434 13.3571 8.6724 13.4727 8.5541C13.7298 8.29094 14.0268 8.06996 14.3527 7.89931C14.7081 7.71321 15.1228 7.60905 15.7343 7.55514C16.3542 7.50049 17.1355 7.50004 18.2202 7.50004H19.7929L17.6464 9.64648L18.3536 10.3536L21.3536 7.35359L21.7071 7.00004L21.3536 6.64648ZM10.2981 16.0867C10.1711 15.8378 10.0601 15.5854 9.95935 15.3327C9.92175 15.2384 9.88456 15.1413 9.84766 15.0416C9.74807 15.1957 9.64293 15.3277 9.52735 15.446C9.27024 15.7091 8.97324 15.9301 8.6473 16.1008C8.29185 16.2869 7.87716 16.391 7.26574 16.4449C6.64583 16.4996 5.86454 16.5 4.77985 16.5H3V17.5H4.77985H4.80369C5.85944 17.5 6.68467 17.5 7.35357 17.4411C8.03597 17.3809 8.59502 17.2569 9.11113 16.9867C9.5302 16.7673 9.91205 16.4832 10.2426 16.1448C10.2614 16.1256 10.2798 16.1063 10.2981 16.0867Z" fill="currentColor"></path> 
+            </g></svg> */}
+
+            {/* the die is drawn as thin filled outlines, so there is no stroke width
+                to raise; stroking the fills in the same colour grows every edge
+                instead, which is what makes it legible at 18px */}
+            <svg width="62" height="62" viewBox="-1 -1 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+            <path d="M43.3 19.355c-.894-.524-1.767-.789-2.457-.789c-.686 0-1.188.265-1.34.789c-.31 1.049.896 2.749 2.686 3.798c.896.526 1.768.788 2.456.788c.686 0 1.188-.262 1.344-.788c.307-1.049-.897-2.749-2.689-3.798" fill="currentColor"></path>
+            <path d="M29.13 48.144c-.645-.231-1.554-.277-2.576-.084c-2.04.391-3.744 1.591-3.807 2.682c-.032.545.354.962 1.002 1.191c.647.231 1.557.275 2.576.081c2.041-.388 3.746-1.587 3.809-2.681c.032-.545-.354-.961-1.004-1.189" fill="currentColor"></path>
+            <path d="M39.002 45.923c-.646-.229-1.558-.277-2.576-.082c-2.039.389-3.742 1.586-3.805 2.68c-.03.546.355.961 1.002 1.191s1.558.275 2.576.083c2.043-.39 3.742-1.588 3.807-2.681c.028-.546-.356-.96-1.004-1.191" fill="currentColor"></path>
+            <path d="M48.466 43.989c-.645-.229-1.558-.275-2.578-.081c-2.037.389-3.742 1.587-3.803 2.681c-.03.545.354.961 1.002 1.191c.646.23 1.558.275 2.578.081c2.041-.389 3.742-1.587 3.805-2.679c.03-.547-.356-.962-1.004-1.193" fill="currentColor"></path>
+            <path d="M21.38 26.28c-.54.424-1.065 1.17-1.449 2.136c-.762 1.932-.66 4.01.227 4.647c.446.318 1.004.217 1.544-.207c.543-.424 1.068-1.17 1.45-2.135c.762-1.931.661-4.012-.227-4.649c-.445-.318-1.004-.217-1.545.208" fill="currentColor"></path>
+            <path d="M10.38 22.931c-.543.424-1.068 1.168-1.45 2.134c-.764 1.931-.663 4.012.229 4.647c.442.319 1 .216 1.543-.208c.54-.424 1.065-1.169 1.447-2.135c.764-1.93.662-4.011-.227-4.649c-.444-.317-1.002-.215-1.542.211" fill="currentColor"></path>
+            <path d="M61.692 35.723l-6.555-19.768c-.99-2.986-4.104-6.103-7.092-7.093l-19.77-6.555c-1.234-.409-2.343-.407-3.197-.004c-.924.251-1.98.649-3.062 1.153c-1.479.689-3.303 1.736-4.077 2.647a4.874 4.874 0 0 0-.253.233L4.427 19.598c-2.061 2.06-2.978 5.98-2.087 8.925l5.762 19.084c.105.349.235.678.387.979c.464 1.412 2.366 3.391 2.95 3.975c.586.585 2.568 2.492 3.98 2.955c.3.149.629.279.976.384l19.083 5.762c.74.225 1.553.338 2.418.338h.001c2.479 0 5.032-.952 6.504-2.424l13.262-13.263c.084-.084.16-.168.234-.253c.912-.777 1.959-2.601 2.646-4.075c.507-1.087.905-2.146 1.156-3.071c.404-.859.402-1.959-.007-3.191M11.509 49.767c-.727-.884-1.112-1.539-1.189-1.811l-.074-.184a4.155 4.155 0 0 1-.29-.724L4.192 27.963c-.679-2.245.055-5.449 1.603-6.996L19.057 7.704c.068-.069.14-.129.209-.189l.128-.134c.226-.286.839-.752 1.719-1.27c.839.265 1.553 1.057 1.94 2.343l5.762 19.085c.784 2.593-.042 6.159-1.845 7.962L13.71 48.763c-.722.721-1.488 1.034-2.201 1.004m45.107-5.16l-.137.133c-.059.068-.117.137-.186.205l-13.26 13.263c-1.11 1.11-3.175 1.855-5.136 1.855h-.001a6.428 6.428 0 0 1-1.859-.254l-19.083-5.762a4.22 4.22 0 0 1-.724-.291l-.185-.072c-.271-.076-.926-.463-1.81-1.19c-.031-.714.28-1.479 1.003-2.202l13.259-13.261c1.804-1.804 5.368-2.63 7.962-1.846l19.083 5.763c1.288.389 2.08 1.104 2.344 1.943c-.516.878-.984 1.489-1.27 1.716m3.314-6.48l-.076.2c-.094.357-.223.753-.372 1.163c-.537.103-1.197.047-1.962-.207l-19.769-6.555c-2.688-.89-5.59-3.792-6.478-6.479L24.718 6.48c-.253-.765-.31-1.424-.207-1.962c.408-.147.801-.276 1.157-.37l.203-.079c.173-.09.396-.136.663-.136c.332 0 .713.071 1.134.21l19.769 6.555c2.388.792 5.072 3.478 5.863 5.865l6.556 19.768c.248.754.276 1.407.074 1.796" fill="currentColor"></path></svg>
+
+
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  FloatingButtons.css = style
+  FloatingButtons.afterDOMLoaded = script
+  return FloatingButtons
+}) satisfies QuartzComponentConstructor

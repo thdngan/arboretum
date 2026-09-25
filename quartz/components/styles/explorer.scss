@@ -1,0 +1,328 @@
+@use "../../styles/variables.scss" as *;
+
+@media all and ($mobile) {
+  .page > #quartz-body {
+    // Shift page position when toggling Explorer on mobile.
+    & > :not(.sidebar.left:has(.explorer)) {
+      transition: transform 300ms ease-in-out;
+    }
+    &.lock-scroll > :not(.sidebar.left:has(.explorer)) {
+      transform: translateX(100dvw);
+      transition: transform 300ms ease-in-out;
+    }
+
+    // Sticky top bar (stays in place when scrolling down on mobile).
+    .sidebar.left:has(.explorer) {
+      box-sizing: border-box;
+      position: sticky;
+      background-color: var(--light);
+      // the bar is only ~34px of content; a full 1rem above and below made it
+      // read much heavier than it needed to
+      padding: 0.5rem 0;
+      margin: 0;
+    }
+
+    .hide-until-loaded ~ .explorer-content {
+      display: none;
+    }
+  }
+}
+
+.explorer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+
+  min-height: 1.2rem;
+  flex: 0 1 auto;
+  &.collapsed {
+    // Sized to the title rather than to a number. This used to be
+    // `flex: 0 1 1.6rem`, a hardcoded 25.6px, and the title has outgrown it:
+    // the h2 is 1rem scaled by --fontOptical (typography.scss), plus its 0.3em
+    // padding and the 1px underline — about 29px with Alegreya. With the
+    // `overflow-y: hidden` above, the surplus was simply cropped, taking the
+    // bottom of the lettering and the underline with it. Content-sized, it
+    // cannot be outgrown again by a heading tweak or a wider-bodied face.
+    //
+    // Mobile is left alone: the block further down gives it a 34px bar and
+    // slides the content out of frame instead of hiding it.
+    @media all and not ($mobile) {
+      flex: 0 0 auto;
+
+      & > .explorer-content {
+        display: none;
+      }
+    }
+
+    & .fold {
+      transform: rotateZ(-90deg);
+    }
+  }
+
+  & .fold {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+
+  @media all and ($mobile) {
+    order: -1;
+    height: initial;
+    overflow: hidden;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  button.mobile-explorer {
+    display: none;
+  }
+
+  button.desktop-explorer {
+    display: flex;
+  }
+
+  @media all and ($mobile) {
+    button.mobile-explorer {
+      display: flex;
+    }
+
+    button.desktop-explorer {
+      display: none;
+    }
+  }
+
+  &.desktop-only {
+    @media all and not ($mobile) {
+      display: flex;
+    }
+  }
+
+  svg {
+    pointer-events: all;
+    transition: transform 0.35s ease;
+
+    & > polyline {
+      pointer-events: none;
+    }
+  }
+}
+
+button.mobile-explorer,
+button.desktop-explorer {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+
+  & h2 {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+.explorer-content {
+  list-style: none;
+  overflow: hidden;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & li > a {
+      color: var(--dark);
+      opacity: 0.75;
+      pointer-events: all;
+
+      &.active {
+        opacity: 1;
+        color: var(--tertiary);
+      }
+    }
+  }
+
+  .folder-outer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
+  }
+
+  .folder-outer.open {
+    grid-template-rows: 1fr;
+  }
+
+  // Keeps a wheel gesture inside the list instead of chaining on to the page
+  // once the list hits an end. It belongs on the scroll port itself and nowhere
+  // else: `.folder-outer > ul` below is `overflow: hidden`, which is still a
+  // scroll container, so the same property on a descendant ul used to swallow
+  // every gesture that started over a file inside an open folder - the box has
+  // no scroll range of its own, and `contain` stopped the wheel reaching the
+  // list. Only the strip above the first open folder still scrolled.
+  & > ul.overflow {
+    overscroll-behavior: contain;
+  }
+
+  .folder-outer > ul {
+    overflow: hidden;
+    margin-left: 6px;
+    padding-left: 0.8rem;
+    border-left: 1px solid var(--lightgray);
+  }
+}
+
+.folder-container {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  & div > a {
+    color: var(--secondary);
+    font-family: var(--headerFont);
+    font-size: 0.95rem;
+    font-weight: $semiBoldWeight;
+    line-height: 1.5rem;
+    display: inline-block;
+  }
+
+  & div > a:hover {
+    color: var(--tertiary);
+  }
+
+  & div > button {
+    color: var(--dark);
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    font-family: var(--headerFont);
+
+    & span {
+      font-size: 0.95rem;
+      display: inline-block;
+      color: var(--secondary);
+      font-weight: $semiBoldWeight;
+      margin: 0;
+      line-height: 1.5rem;
+      pointer-events: none;
+    }
+  }
+}
+
+.folder-icon {
+  margin-right: 5px;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  backface-visibility: visible;
+  flex-shrink: 0;
+}
+
+li:has(> .folder-outer:not(.open)) > .folder-container > svg {
+  transform: rotate(-90deg);
+}
+
+.folder-icon:hover {
+  color: var(--tertiary);
+}
+
+.explorer {
+  @media all and ($mobile) {
+    &.collapsed {
+      flex: 0 0 34px;
+
+      & > .explorer-content {
+        transform: translateX(-100vw);
+        visibility: hidden;
+      }
+    }
+
+    &:not(.collapsed) {
+      flex: 0 0 34px;
+
+      & > .explorer-content {
+        transform: translateX(0);
+        visibility: visible;
+      }
+    }
+
+    .explorer-content {
+      box-sizing: border-box;
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: 0;
+      background-color: var(--light);
+      max-width: 100vw;
+      width: 100%;
+      transform: translateX(-100vw);
+      transition:
+        transform 200ms ease,
+        visibility 200ms ease;
+      overflow: hidden;
+      padding: 4rem 0 2rem 0;
+      height: 100dvh;
+      max-height: 100dvh;
+      visibility: hidden;
+    }
+
+    .mobile-explorer {
+      margin: 0;
+      padding: 5px;
+      z-index: 101;
+      position: relative;
+
+      .lucide-menu {
+        stroke: var(--darkgray);
+      }
+    }
+  }
+}
+
+// Same as the map, the search sheet and the home dialogs (see graph.scss,
+// search.scss, homeModals.scss): the cluster is unreachable behind a full-screen
+// menu, and floating over it just looks like a mistake.
+.mobile-no-scroll {
+  @media all and ($mobile) {
+    .floating-buttons {
+      display: none;
+    }
+  }
+}
+
+.mobile-no-scroll {
+  @media all and ($mobile) {
+    // This is what actually holds the page still, and blocking the gesture alone
+    // was not enough - touches find their way to the scroller by paths these two
+    // selectors do not cover.
+    //
+    // The cost is that <html> stops being a scroll container, and Safari responds
+    // by clipping the page to the layout viewport and filling the band below it
+    // with flat page background - a strip that survived the menu closing, because
+    // closing it never invalidated that region. That is now handled where it
+    // belongs, by forcing the repaint on close (forceBandRepaint in
+    // bandCover.inline.ts), rather than by giving up the scroll lock for it.
+    overflow: hidden;
+
+    // kept alongside: it costs nothing and stops the gesture before it reaches
+    // the root at all, which is what the toc drawer relies on entirely
+    .explorer-content,
+    .sidebar.left:has(.explorer) {
+      touch-action: none;
+    }
+  }
+}

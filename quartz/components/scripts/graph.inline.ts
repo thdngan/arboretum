@@ -1,0 +1,751 @@
+import type { ContentDetails } from "../../plugins/emitters/contentIndex"
+import { openOverlay, closeOverlay, releaseAllOverlays } from "./overlayLock.inline"
+import {
+  SimulationNodeDatum,
+  SimulationLinkDatum,
+  Simulation,
+  forceSimulation,
+  forceManyBody,
+  forceCenter,
+  forceLink,
+  forceCollide,
+  forceRadial,
+  zoomIdentity,
+  select,
+  drag,
+  zoom,
+} from "d3"
+import { Text, Graphics, Application, Container, Circle } from "pixi.js"
+import { Group as TweenGroup, Tween as Tweened } from "@tweenjs/tween.js"
+import { registerEscapeHandler, removeAllChildren } from "./util"
+import { FullSlug, SimpleSlug, getFullSlug, resolveRelative, simplifySlug } from "../../util/path"
+import { D3Config } from "../Graph"
+
+type GraphicsInfo = {
+  color: string
+  gfx: Graphics
+  alpha: number
+  active: boolean
+}
+
+type NodeData = {
+  id: SimpleSlug
+  text: string
+  tags: string[]
+} & SimulationNodeDatum
+
+type SimpleLinkData = {
+  source: SimpleSlug
+  target: SimpleSlug
+}
+
+type LinkData = {
+  source: NodeData
+  target: NodeData
+} & SimulationLinkDatum<NodeData>
+
+type LinkRenderData = GraphicsInfo & {
+  simulationData: LinkData
+}
+
+type NodeRenderData = GraphicsInfo & {
+  simulationData: NodeData
+  label: Text
+}
+
+const localStorageKey = "graph-visited"
+// marks <html> while the global map is open, so styles that only make sense
+// behind a full-screen dialog (see graph.scss) can hang off the root
+const GLOBAL_GRAPH_OPEN_CLASS = "global-graph-open"
+function getVisited(): Set<SimpleSlug> {
+  return new Set(JSON.parse(localStorage.getItem(localStorageKey) ?? "[]"))
+}
+
+function addToVisited(slug: SimpleSlug) {
+  const visited = getVisited()
+  visited.add(slug)
+  localStorage.setItem(localStorageKey, JSON.stringify([...visited]))
+}
+
+type TweenNode = {
+  update: (time: number) => void
+  stop: () => void
+}
+
+async function renderGraph(container: string, fullSlug: FullSlug) {
+  const slug = simplifySlug(fullSlug)
+  const visited = getVisited()
+  const graph = document.getElementById(container)
+  if (!graph) return
+  removeAllChildren(graph)
+
+  let {
+    drag: enableDrag,
+    zoom: enableZoom,
+    depth,
+    scale,
+    repelForce,
+    centerForce,
+    linkDistance,
+    fontSize,
+    opacityScale,
+    removeTags,
+    showTags,
+    focusOnHover,
+    enableRadial,
+    excludeTags,
+  } = JSON.parse(graph.dataset["cfg"]!) as D3Config
+
+  const originalData: Map<SimpleSlug, ContentDetails> = new Map(
+    Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
+      simplifySlug(k as FullSlug),
+      v,
+    ]),
+  )
+  // Take out files that have the tags in excludeTags
+  const data: Map<SimpleSlug, ContentDetails> = new Map(
+    [...originalData.entries()].filter(([key, value]) => {
+    return !value.tags?.some(tag => excludeTags.includes(tag))
+    })
+  )
+
+
+  const links: SimpleLinkData[] = []
+  const tags: SimpleSlug[] = []
+  const validLinks = new Set(data.keys())
+
+  const tweens = new Map<string, TweenNode>()
+  for (const [source, details] of data.entries()) {
+    const outgoing = details.links ?? []
+
+    for (const dest of outgoing) {
+      if (validLinks.has(dest)) {
+        links.push({ source: source, target: dest })
+      }
+    }
+
+    if (showTags) {
+      const localTags = details.tags
+        .filter((tag) => !removeTags.includes(tag))
+        .map((tag) => simplifySlug(("tags/" + tag) as FullSlug))
+
+      tags.push(...localTags.filter((tag) => !tags.includes(tag)))
+
+      for (const tag of localTags) {
+        links.push({ source: source, target: tag })
+      }
+    }
+  }
+
+  const neighbourhood = new Set<SimpleSlug>()
+  const wl: (SimpleSlug | "__SENTINEL")[] = [slug, "__SENTINEL"]
+  if (depth >= 0) {
+    // Compute the neighbourhood as before
+    while (depth >= 0 && wl.length > 0) {
+      // compute neighbours
+      const cur = wl.shift()!
+      if (cur === "__SENTINEL") {
+        depth--
+        wl.push("__SENTINEL")
+      } else {
+        neighbourhood.add(cur)
+        const outgoing = links.filter((l) => l.source === cur)
+        const incoming = links.filter((l) => l.target === cur)
+        wl.push(...outgoing.map((l) => l.target), ...incoming.map((l) => l.source))
+      }
+    }
+  } else {
+    // Fall back to the global graph (display all nodes)
+    validLinks.forEach((id) => neighbourhood.add(id))
+    if (showTags) tags.forEach((tag) => neighbourhood.add(tag))
+  }  
+
+  const nodes = [...neighbourhood].map((url) => {
+    const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
+    return {
+      id: url,
+      text,
+      tags: data.get(url)?.tags ?? [],
+    }
+  })
+  const graphData: { nodes: NodeData[]; links: LinkData[] } = {
+    nodes,
+    links: links
+      .filter((l) => neighbourhood.has(l.source) && neighbourhood.has(l.target))
+      .map((l) => ({
+        source: nodes.find((n) => n.id === l.source)!,
+        target: nodes.find((n) => n.id === l.target)!,
+      })),
+  }
+
+  const width = graph.offsetWidth
+  const height = Math.max(graph.offsetHeight, 250)
+
+  // we virtualize the simulation and use pixi to actually render it
+  // Calculate the radius of the container circle
+  // const radius = Math.min(width, height) / 2 - 40 // 40px padding
+  // Obsidian-style force layout:
+  //  - repulsion falls off past `repelDistance` so a big graph breaks into
+  //    clusters instead of one giant expanding ring
+  //  - links are springs with a fixed rest length (`linkDistance`)
+  //  - a weak pull toward the origin keeps disconnected nodes in frame, the way
+  //    Obsidian's center force does
+  //  - collision uses a padded radius so nodes never sit on top of each other
+  const repelDistance = Math.max(width, height)
+  const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
+    .force(
+      "charge",
+      forceManyBody()
+        .strength(-100 * repelForce)
+        .distanceMax(repelDistance),
+    )
+    .force("center", forceCenter().strength(centerForce))
+    .force("gravity", forceRadial(0, 0, 0).strength(0.02 + 0.08 * centerForce))
+    .force("link", forceLink(graphData.links).distance(linkDistance))
+    .force("collide", forceCollide<NodeData>((n) => nodeRadius(n) * 1.5 + 6).iterations(2))
+    // slightly heavier damping than d3's 0.4 default: nodes glide into place
+    // rather than overshooting and bouncing
+    .velocityDecay(0.45)
+
+  // enableRadial tightens everything into a disc around the center
+  if (enableRadial) simulation.force("gravity", forceRadial(0, 0, 0).strength(0.3))
+
+  // the simulation cools down and comes to rest like Obsidian's does; dragging
+  // a node reheats it (see the drag handler below).
+  // to make it drift forever instead, add: simulation.alphaTarget(0.3)
+
+
+  // precompute style prop strings as pixi doesn't support css variables
+  const cssVars = [
+    "--secondary",
+    "--tertiary",
+    "--gray",
+    "--light",
+    "--lightgray",
+    "--dark",
+    "--darkgray",
+    "--bodyFont",
+    "--nodefirst",
+    "--nodesecond",
+    "--nodethird",
+    "--nodevisited",
+    "--border",
+    "--link",
+  ] as const
+  const computedStyleMap = cssVars.reduce(
+    (acc, key) => {
+      acc[key] = getComputedStyle(document.documentElement).getPropertyValue(key)
+      return acc
+    },
+    {} as Record<(typeof cssVars)[number], string>,
+  )
+
+  // calculate color
+  const color = (d: NodeData) => {
+    const isCurrent = d.id === slug
+    if (isCurrent) {
+      return computedStyleMap["--nodefirst"]
+    } else if (d.id.startsWith("tags/")) {
+      return computedStyleMap["--nodesecond"]
+    } else if (visited.has(d.id)) {
+      return computedStyleMap["--nodevisited"]
+    }
+    else {
+      return computedStyleMap["--nodethird"]
+    }
+  }
+  
+  function nodeRadius(d: NodeData) {
+    const numLinks = graphData.links.filter(
+      (l) => l.source.id === d.id || l.target.id === d.id,
+    ).length
+    if (/^\/$/.test(d.id)) { // this regex is making the index node bigger
+      return (1.5 + Math.sqrt(numLinks)) * 1.25
+    } else {
+      return 1.5 + Math.sqrt(numLinks * 0.75)
+    }
+  }
+
+  // labels sit above the node: `labelGap` is the visible gap between the top of
+  // the circle and the bottom of the title.
+  const labelPadding = 6
+  const labelGap = 3
+  const labelAnchor = { x: 0.5, y: 1 }
+  // longer titles wrap into centered lines instead of running off sideways
+  const labelWrapWidth = 100
+
+  // labels fade in as you zoom in. this is the alpha a label falls back to once
+  // it is no longer part of the hovered node's neighbourhood — without it,
+  // every label a hover lit up would stay lit forever
+  let labelRestingAlpha = Math.max((opacityScale - 1) / 3.75, 0)
+
+  // pixi anchors a padded text quad by the *padded* texture size and then
+  // shifts it back by `padding` on each axis. that only lines up for anchor 0 —
+  // at any other anchor the glyphs land 2 * anchor * padding off (up and to the
+  // left for our bottom-center anchor), so add it back here. `s` is the label's
+  // live scale, which the hover tween animates.
+  const labelPaddingShift = (s: number) => ({
+    x: 2 * labelAnchor.x * labelPadding * s,
+    y: 2 * labelAnchor.y * labelPadding * s,
+  })
+
+  let hoveredNodeId: string | null = null
+  let hoveredNeighbours: Set<string> = new Set()
+  const linkRenderData: LinkRenderData[] = []
+  const nodeRenderData: NodeRenderData[] = []
+  function updateHoverInfo(newHoveredId: string | null) {
+    hoveredNodeId = newHoveredId
+
+    if (newHoveredId === null) {
+      hoveredNeighbours = new Set()
+      for (const n of nodeRenderData) {
+        n.active = false
+      }
+
+      for (const l of linkRenderData) {
+        l.active = false
+      }
+    } else {
+      hoveredNeighbours = new Set()
+      for (const l of linkRenderData) {
+        const linkData = l.simulationData
+        if (linkData.source.id === newHoveredId || linkData.target.id === newHoveredId) {
+          hoveredNeighbours.add(linkData.source.id)
+          hoveredNeighbours.add(linkData.target.id)
+        }
+
+        l.active = linkData.source.id === newHoveredId || linkData.target.id === newHoveredId
+      }
+
+      for (const n of nodeRenderData) {
+        n.active = hoveredNeighbours.has(n.simulationData.id)
+      }
+    }
+  }
+
+  // the current page and tag nodes always keep their titles on screen
+  const alwaysLabelled = (id: string) => id === slug || id.startsWith("tags/")
+
+  // hovering a node shows its own title *and* those of its immediate
+  // neighbours (`active` is set for both in updateHoverInfo)
+  function syncLabelVisibility() {
+    for (const n of nodeRenderData) {
+      n.label.visible = n.active || alwaysLabelled(n.simulationData.id)
+    }
+  }
+
+  // alpha for a label outside the hovered neighbourhood: its zoom-derived
+  // opacity, knocked back while another node is hovered so that unrelated
+  // titles (tags especially, which stay visible) recede instead of competing
+  const inactiveLabelAlpha = () =>
+    hoveredNodeId !== null ? labelRestingAlpha * 0.2 : labelRestingAlpha
+
+  let dragStartTime = 0
+  let dragging = false
+
+  function renderLinks() {
+    tweens.get("link")?.stop()
+    const tweenGroup = new TweenGroup()
+
+    for (const l of linkRenderData) {
+      let alpha = 1
+
+      // if we are hovering over a node, we want to highlight the immediate neighbours
+      // with full alpha and the rest with default alpha
+      if (hoveredNodeId) {
+        alpha = l.active ? 1 : 0.2
+      }
+
+      l.color = l.active ? computedStyleMap["--border"] : computedStyleMap["--lightgray"]
+      tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 200))
+    }
+
+    tweenGroup.getAll().forEach((tw) => tw.start())
+    tweens.set("link", {
+      update: tweenGroup.update.bind(tweenGroup),
+      stop() {
+        tweenGroup.getAll().forEach((tw) => tw.stop())
+      },
+    })
+  }
+
+  function renderLabels() {
+    tweens.get("label")?.stop()
+    const tweenGroup = new TweenGroup()
+
+    const defaultScale = 1 / scale
+    const activeScale = defaultScale * 1.1
+    for (const n of nodeRenderData) {
+      const nodeId = n.simulationData.id
+
+      if (hoveredNodeId === nodeId) {
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to(
+            {
+              alpha: 1,
+              scale: { x: activeScale, y: activeScale },
+            },
+            100,
+          ),
+        )
+      } else if (hoveredNodeId !== null && n.active) {
+        // a neighbour of the hovered node: full opacity, but only the hovered
+        // node itself gets the size bump
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to(
+            {
+              alpha: 1,
+              scale: { x: defaultScale, y: defaultScale },
+            },
+            100,
+          ),
+        )
+      } else {
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to(
+            {
+              alpha: inactiveLabelAlpha(),
+              scale: { x: defaultScale, y: defaultScale },
+            },
+            100,
+          ),
+        )
+      }
+    }
+
+    tweenGroup.getAll().forEach((tw) => tw.start())
+    tweens.set("label", {
+      update: tweenGroup.update.bind(tweenGroup),
+      stop() {
+        tweenGroup.getAll().forEach((tw) => tw.stop())
+      },
+    })
+  }
+
+  function renderNodes() {
+    tweens.get("hover")?.stop()
+
+    const tweenGroup = new TweenGroup()
+    for (const n of nodeRenderData) {
+      let alpha = 1
+
+      // if we are hovering over a node, we want to highlight the immediate neighbours
+      if (hoveredNodeId !== null && focusOnHover) {
+        alpha = n.active ? 1 : 0.2
+      }
+
+      tweenGroup.add(new Tweened<Graphics>(n.gfx, tweenGroup).to({ alpha }, 200))
+    }
+
+    tweenGroup.getAll().forEach((tw) => tw.start())
+    tweens.set("hover", {
+      update: tweenGroup.update.bind(tweenGroup),
+      stop() {
+        tweenGroup.getAll().forEach((tw) => tw.stop())
+      },
+    })
+  }
+
+  function renderPixiFromD3() {
+    renderNodes()
+    renderLinks()
+    renderLabels()
+  }
+
+  tweens.forEach((tween) => tween.stop())
+  tweens.clear()
+
+  const app = new Application()
+  await app.init({
+    width,
+    height,
+    antialias: true,
+    autoStart: false,
+    autoDensity: true,
+    backgroundAlpha: 0,
+    preference: "webgl",
+    resolution: window.devicePixelRatio,
+    eventMode: "static",
+  })
+  graph.appendChild(app.canvas)
+
+  const stage = app.stage
+  stage.interactive = false
+
+  const labelsContainer = new Container<Text>({ zIndex: 3 })
+  const nodesContainer = new Container<Graphics>({ zIndex: 2 })
+  const linkContainer = new Container<Graphics>({ zIndex: 1 })
+  stage.addChild(nodesContainer, labelsContainer, linkContainer)
+
+  for (const n of graphData.nodes) {
+    const nodeId = n.id
+
+    const label = new Text({
+      interactive: false,
+      eventMode: "none",
+      text: n.text,
+      alpha: 0,
+      // bottom-center anchor so the label hangs *above* the node (Obsidian-style)
+      // and multi-line titles grow upwards; the vertical gap itself is applied
+      // in animate() from the node radius
+      anchor: labelAnchor,
+      style: {
+        fontSize: fontSize * 15,
+        fill: computedStyleMap["--dark"],
+        fontFamily: computedStyleMap["--bodyFont"],
+        align: "center",
+        wordWrap: true,
+        wordWrapWidth: labelWrapWidth,
+        // pixi sizes the text texture from font metrics and clips whatever
+        // falls outside it; without padding, descenders (g, y, p) get shaved
+        padding: labelPadding,
+      },
+      resolution: window.devicePixelRatio * 4,
+      visible: false, // Initially hide all labels
+    });
+    label.scale.set(1 / scale);
+    (label as any).originalText = n.text;
+    (label as any).nodeId = n.id; //Store node id
+  
+    let oldLabelOpacity = 0
+    const isTagNode = nodeId.startsWith("tags/")
+    const isCurrentNode = nodeId === slug
+    label.visible = alwaysLabelled(nodeId)
+    const gfx = new Graphics({
+      interactive: true,
+      label: nodeId,
+      eventMode: "static",
+      hitArea: new Circle(0, 0, nodeRadius(n)),
+      cursor: "pointer",
+    })
+      .circle(0, 0, nodeRadius(n))
+      .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
+      .stroke({
+        width: isTagNode ? 2 : 0,
+        color: isCurrentNode ? computedStyleMap["--nodefirst"] : computedStyleMap["--nodesecond"],
+      })
+      .on("pointerover", (e) => {
+        updateHoverInfo(e.target.label)
+        syncLabelVisibility()
+        if (!dragging) {
+          renderPixiFromD3()
+        }
+      })
+      .on("pointerleave", () => {
+        updateHoverInfo(null)
+        syncLabelVisibility()
+        if (!dragging) {
+          renderPixiFromD3()
+        }
+      })
+
+    nodesContainer.addChild(gfx)
+    labelsContainer.addChild(label)
+
+    const nodeRenderDatum: NodeRenderData = {
+      simulationData: n,
+      gfx,
+      label,
+      color: color(n),
+      alpha: 1,
+      active: false,
+    }
+
+    nodeRenderData.push(nodeRenderDatum)
+  }
+
+  for (const l of graphData.links) {
+    const gfx = new Graphics({ interactive: false, eventMode: "none" })
+    linkContainer.addChild(gfx)
+
+    const linkRenderDatum: LinkRenderData = {
+      simulationData: l,
+      gfx,
+      color: computedStyleMap["--lightgray"],
+      alpha: 1,
+      active: false,
+    }
+
+    linkRenderData.push(linkRenderDatum)
+  }
+
+  let currentTransform = zoomIdentity
+  if (enableDrag) {
+    select<HTMLCanvasElement, NodeData | undefined>(app.canvas).call(
+      drag<HTMLCanvasElement, NodeData | undefined>()
+        .container(() => app.canvas)
+        .subject(() => graphData.nodes.find((n) => n.id === hoveredNodeId))
+        .on("start", function dragstarted(event) {
+          if (!event.active) simulation.alphaTarget(0.4).restart()
+          event.subject.fx = event.subject.x
+          event.subject.fy = event.subject.y
+          event.subject.__initialDragPos = {
+            x: event.subject.x,
+            y: event.subject.y,
+            fx: event.subject.fx,
+            fy: event.subject.fy,
+          }
+          dragStartTime = Date.now()
+          dragging = true
+        })
+        .on("drag", function dragged(event) {
+          const initPos = event.subject.__initialDragPos
+          event.subject.fx = initPos.x + (event.x - initPos.x) / currentTransform.k
+          event.subject.fy = initPos.y + (event.y - initPos.y) / currentTransform.k
+        })
+        .on("end", function dragended(event) {
+          if (!event.active) simulation.alphaTarget(0)
+          event.subject.fx = null
+          event.subject.fy = null
+          dragging = false
+
+          // if the time between mousedown and mouseup is short, we consider it a click
+          if (Date.now() - dragStartTime < 300) {
+            const node = graphData.nodes.find((n) => n.id === event.subject.id) as NodeData
+            const targ = resolveRelative(fullSlug, node.id)
+            window.spaNavigate(new URL(targ, window.location.toString()))
+          }
+        }),
+    )
+  } else {
+    for (const node of nodeRenderData) {
+      node.gfx.on("click", () => {
+        const targ = resolveRelative(fullSlug, node.simulationData.id)
+        window.spaNavigate(new URL(targ, window.location.toString()))
+      })
+    }
+  }
+
+  if (enableZoom) {
+    select<HTMLCanvasElement, NodeData>(app.canvas)
+      .call(
+        zoom<HTMLCanvasElement, NodeData>()
+          .extent([
+            [0, 0],
+            [width, height],
+          ])
+          .scaleExtent([0.25, 4])
+          .on("zoom", ({ transform }) => {
+            currentTransform = transform
+            stage.scale.set(transform.k, transform.k)
+            stage.position.set(transform.x, transform.y)
+  
+            // keep whatever the hover state says should be labelled
+            syncLabelVisibility()
+  
+            // zoom adjusts opacity of labels too
+            const scale = transform.k * opacityScale
+            labelRestingAlpha = Math.max((scale - 1) / 3.75, 0)
+            const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+  
+            for (const label of labelsContainer.children) {
+              if (!activeNodes.includes(label)) {
+                label.alpha = inactiveLabelAlpha()
+              }
+            }
+          }),
+      )
+  }  
+
+  function animate(time: number) {
+    for (const n of nodeRenderData) {
+      const { x, y } = n.simulationData
+      if (!x || !y) continue
+      n.gfx.position.set(x + width / 2, y + height / 2)
+      if (n.label) {
+        // sit the label just above the node's circle, so bigger nodes push
+        // their title further up instead of overlapping it
+        const shift = labelPaddingShift(n.label.scale.x)
+        n.label.position.set(
+          x + width / 2 + shift.x,
+          y + height / 2 - nodeRadius(n.simulationData) - labelGap + shift.y,
+        )
+      }
+    }
+
+    for (const l of linkRenderData) {
+      const linkData = l.simulationData
+      l.gfx.clear()
+      l.gfx.moveTo(linkData.source.x! + width / 2, linkData.source.y! + height / 2)
+      l.gfx
+        .lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
+        .stroke({ alpha: l.alpha, width: 1, color: l.color })
+    }
+
+    tweens.forEach((t) => t.update(time))
+    app.renderer.render(stage)
+    requestAnimationFrame(animate)
+  }
+
+  const graphAnimationFrameHandle = requestAnimationFrame(animate)
+  window.addCleanup(() => cancelAnimationFrame(graphAnimationFrameHandle))
+}
+
+document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
+  const slug = e.detail.url
+  addToVisited(simplifySlug(slug))
+  await renderGraph("graph-container", slug)
+
+  // Function to re-render the graph when the theme changes
+  const handleThemeChange = () => {
+    renderGraph("graph-container", slug)
+  }
+
+  // event listener for theme change
+  document.addEventListener("themechange", handleThemeChange)
+
+  // cleanup for the event listener
+  window.addCleanup(() => {
+    document.removeEventListener("themechange", handleThemeChange)
+  })
+
+  const container = document.getElementById("global-graph-outer")
+  const sidebar = container?.closest(".sidebar") as HTMLElement
+
+  // a nav away while the map is open would otherwise leave the class behind
+  document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
+  releaseAllOverlays()
+
+  function renderGlobalGraph() {
+    const slug = getFullSlug(window)
+    container?.classList.add("active")
+    document.documentElement.classList.add(GLOBAL_GRAPH_OPEN_CLASS)
+    openOverlay(container)
+    if (sidebar) {
+      sidebar.style.zIndex = "1"
+    }
+
+    renderGraph("global-graph-container", slug)
+    registerEscapeHandler(container, hideGlobalGraph)
+  }
+
+  function hideGlobalGraph() {
+    container?.classList.remove("active")
+    document.documentElement.classList.remove(GLOBAL_GRAPH_OPEN_CLASS)
+    closeOverlay(container)
+    if (sidebar) {
+      sidebar.style.zIndex = ""
+    }
+  }
+
+  async function shortcutHandler(e: HTMLElementEventMap["keydown"]) {
+    if (e.key === "g" && (e.ctrlKey || e.metaKey) && !e.shiftKey) {
+      e.preventDefault()
+      const globalGraphOpen = container?.classList.contains("active")
+      globalGraphOpen ? hideGlobalGraph() : renderGlobalGraph()
+    }
+  }
+
+  const containerIcon = document.getElementById("global-graph-icon")
+  containerIcon?.addEventListener("click", renderGlobalGraph)
+  window.addCleanup(() => containerIcon?.removeEventListener("click", renderGlobalGraph))
+
+  // registerEscapeHandler only dismisses on clicks that land on the backdrop
+  // itself, so the close button needs its own listener
+  const closeButton = container?.querySelector<HTMLElement>(".global-graph-close")
+  closeButton?.addEventListener("click", hideGlobalGraph)
+  window.addCleanup(() => closeButton?.removeEventListener("click", hideGlobalGraph))
+
+  document.addEventListener("keydown", shortcutHandler)
+  window.addCleanup(() => document.removeEventListener("keydown", shortcutHandler))
+})

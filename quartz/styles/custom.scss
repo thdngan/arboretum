@@ -1,0 +1,1684 @@
+@use "./base.scss";
+@use "./variables.scss" as *;
+
+// How far down the centre column the reading-controls row starts. Everything
+// else about that row's spacing is derived from this and $topSpacing.
+$headerRowTop: 1.5rem;
+// Breathing room above and below the controls, which is also the depth of the
+// backdrop the row carries once it is stuck to the top of the window.
+$headerRowPad: 0.5rem;
+
+:root {
+  // shared by the body-text wikilink underline and every dinkus
+  --accent: #BB63B6;
+  // wikilink underline weight. body-text wikilinks live in <article>, but the
+  // home modals render in .page-footer and restate the same rule, so both read
+  // the thickness from here rather than keeping their own copy in sync.
+  --wikilink-underline-thickness: 2px;
+}
+
+// put your custom CSS here!
+
+///////////////////////////////////////////////////
+////////////// TYPOMAGICAL FONTS //////////////////
+///////////////////////////////////////////////////
+
+// Typomagical's faces, on the posts tagged #personal only. renderPage.tsx puts
+// the frontmatter tags on <body> so this can find them, and Head.tsx fetches the
+// two families on just those pages.
+//
+// The override sits on the article and its title rather than on <body>, so the
+// page furniture - breadcrumb, byline, tag list, both sidebars, search - keeps
+// the site fonts. The title is styled from .page-header, outside <article>,
+// hence the second selector; drop it to leave the title in the site font too.
+// body[data-tags~="personal"]
+    // article
+    // h1.article-title {
+    //     --headerFont: "Newsreader", serif;
+    //     --bodyFont: "Spectral", serif;
+    // }
+
+    // article {
+    //     // base.scss sets `font-family: var(--bodyFont)` on <body>, which resolves
+    //     // there and inherits down as a finished value, so the article has to say
+    //     // it again to pick up its own --bodyFont. Headings need no such line:
+    //     // base.scss sets their font-family on the heading elements themselves,
+    //     // where the var resolves against the article's value.
+    //     font-family: var(--bodyFont);
+
+    //     // the theme sets only h1 in the title face and leaves every other heading
+    //     // in the body serif, where Quartz hands all six --headerFont
+    //     h2,
+    //     h3,
+    //     h4,
+    //     h5,
+    //     h6 {
+    //         font-family: var(--bodyFont);
+    //     }
+    // }
+
+
+
+img { display: block !important; margin-left: auto !important; margin-right: auto !important; } .markdown-source-view.mod-cm6 .cm-content > * { margin: auto auto !important; }
+
+/* Center tables on the page */
+.markdown-preview-view table {
+    margin-left: auto;
+    margin-right: auto;
+}
+span.caption {
+  display:table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3%;
+  text-align: center !important;
+}
+
+
+#banner {
+    margin: 3em 0;
+    filter: invert(0%);
+    opacity: 0.85;
+  
+    [saved-theme="dark"] & {
+      filter: invert(100%);
+    }
+  }
+
+#index {
+    & > .bio {
+      display: flex;
+      gap: 1.5em;
+      z-index: 1;
+      position: relative;
+  
+      @media screen and (max-width: 1440px) {
+        flex-direction: column-reverse !important;
+        gap: 4em;
+      }
+  
+      & > .writing-sidebar {
+        flex: 0 0 30%;
+  
+        & > div {
+          margin-bottom: 2em;
+        }
+  
+        & ul {
+          list-style: none;
+          padding-left: 0;
+          margin-left: 0;
+          z-index: 0;
+        }
+  
+        & > div > a {
+          opacity: 0.6;
+        }
+  
+        & h2 {
+          font-size: 1.4rem;
+          margin: 0.75em 0;
+        }
+        
+        & li {
+          margin-bottom: 0.8em;
+        }
+        
+        & ol {
+          display: list-item;
+          padding: 0;
+          margin: 0;
+        }
+  
+        & h3 {
+          margin: 0;
+        }
+  
+        & .meta {
+          margin: 0.2em 0;
+        }
+  
+        & .tags > li > a {
+          font-size: 0.9em;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+hr {
+    overflow: visible;
+    padding: 0;
+    margin: 3em auto;
+    border: none;
+    // the "* * *" comes from &:after, which inherits this
+    color: var(--accent);
+    text-align: center;
+    width: 40%;
+    // border-color: var(--gray);
+    background-color: transparent; 
+    height: 0; 
+
+    &:after {
+        content: "* * *";
+        display: inline-block;
+        margin: -1em 0 0.5em;
+        // margin: 0;
+        font-size: 1.5em;
+        padding: 0.5em 1em;
+        // background: var(--light);
+        background: transparent;
+    }
+}
+
+.meta,
+.content-meta {
+  font-family: myfont; //var(--bodyFont);
+  font-size:x-small;
+  font-weight: bold;
+}
+
+
+// Underline links
+a {
+    font-weight: bold;
+    // text-decoration: underline;
+    color: var(--secondary);
+    transition: color 0.2s ease;
+    &:hover {
+        color: var(--tertiary) !important;
+    }
+    &.internal {
+        text-decoration: none;
+        background-color: var(--highlight);
+        padding: 0 0.125em 0.0625em;
+        border-radius: 5px;
+    }
+}
+
+// Two tags get their own colours wherever a tag pill appears (tag list, Recent
+// writings, page listings): #personal in the wikilink-underline magenta, #empty
+// in the link-hover gold. Matched on the href, since the tag name is only in
+// the link text. The site-wide hover turns link text --tertiary with
+// !important, which would erase both, so hover deepens the tint instead.
+a.internal.tag-link[href$="/tags/personal"] {
+    --tag-color: var(--accent);
+}
+a.internal.tag-link[href$="/tags/empty"] {
+    --tag-color: var(--tertiary);
+}
+a.internal.tag-link:is([href$="/tags/personal"], [href$="/tags/empty"]) {
+    color: var(--tag-color);
+    background-color: color-mix(in srgb, var(--tag-color) 15%, transparent);
+
+    &:hover {
+        color: var(--tag-color) !important;
+        background-color: color-mix(in srgb, var(--tag-color) 28%, transparent);
+    }
+}
+
+// Body-content wikilinks only: no highlight background, just bold text with an
+// underline in --accent.
+// Excluded on purpose: tag links, same-page anchors (citations, footnotes and
+// their backrefs, heading anchors), page/folder/tag listings, Recent writings,
+// backlinks, breadcrumbs, explorer and the table of contents, and the home
+// page's topic cards.
+article a.internal:not(.tag-link):not(.transclude-src):not([href^="#"]):not(.topic-card) {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: var(--wikilink-underline-thickness);
+    text-underline-offset: 2px;
+    // descenders (g, y, p...) cut a gap out of the rule where they cross it
+    text-decoration-skip-ink: auto;
+
+    &:has(> img) {
+        text-decoration: none;
+    }
+}
+
+// listings rendered inside an article (folder/tag pages) keep the old look
+article .page-listing a.internal,
+article .section-ul a.internal,
+// "See N more" in the Recent writings column: same muted tone as the dates
+// (.meta inherits --darkgray and is dimmed to 0.6 in recentNotes.scss), with an
+// underline under the words but not the trailing arrow
+.recent-notes a.see-more {
+    color: var(--darkgray);
+    opacity: 0.6;
+    text-decoration: none;
+
+    .see-more-label {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+    }
+
+    .see-more-arrow {
+        text-decoration: none;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+article .recent-notes a.internal {
+    background-color: var(--highlight);
+    padding: 0 0.125em 0.0625em;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+h1.page-title a {
+    text-decoration: none;
+    color: var(--dark);
+    font-family: myfont;
+    font-size: x-large;//1.2vw;
+    @media ($tablet) {
+      font-size: 3.5vw;
+    }
+  
+    @media ($mobile) {
+      font-size: 3.4vw;
+    }
+  }
+
+  ///////////////////////////////////////////////////
+  ////////////////// BLOCKQUOTES ////////////////////
+  ///////////////////////////////////////////////////
+
+// hanging quotation mark instead of the default vertical rule.
+// `:not(.callout)` keeps admonitions (which are also blockquotes) untouched.
+blockquote:not(.callout) {
+    border-left: none;
+    padding-left: 0;
+    position: relative;
+    margin: 1.5rem 0 1.5rem 2.5rem;
+
+    &::before {
+        content: "\201C";
+        position: absolute;
+        left: -2.5rem;
+        top: 0;
+        // pull the glyph's baseline up so the visible top of the quote mark
+        // lines up with the cap height of the first line of the quote
+        transform: translateY(-0.08em);
+        font-family: var(--headerFont);
+        font-size: 5rem;
+        line-height: 1;
+        color: var(--secondary);
+        opacity: 0.4;
+    }
+
+    @media all and ($mobile) {
+        margin-left: 1.75rem;
+
+        &::before {
+            left: -1.75rem;
+            font-size: 2.75rem;
+        }
+    }
+}
+
+// Magazine-style quote callouts, ported from the Typomagical Obsidian theme's
+// `callout-quote-style` setting (on in this vault): no box, a big serif opening
+// mark over centered light text, and the callout title demoted to an
+// attribution line underneath. Written as `> [!quote] Arnold Schwarzenegger`.
+.callout[data-callout="quote"] {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    // Typomagical reverses the column to lift the body above the title. Quartz
+    // can emit that body as two siblings - the remainder of the title paragraph,
+    // then a .callout-content div for anything past a blank line - which a
+    // reversed column would show out of order, so the mark and the title get
+    // explicit positions instead and the body keeps document order.
+    &::after {
+        order: -1;
+        content: "\201C";
+        // --color is the callout's own accent, teal for quote callouts; the
+        // glyph would otherwise inherit body text colour
+        color: var(--color);
+        font-family: "Times New Roman", "Playfair Display", serif;
+        font-size: 2.5em;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 0.15em;
+    }
+
+    & > p,
+    & > .callout-content {
+        padding: 0;
+        // flex items do not collapse margins, so the leading of each body block
+        // would otherwise depend on which shape Quartz emitted; the space under
+        // the quote mark comes from its own margin instead
+        margin-top: 0;
+        font-size: 1.15em;
+        // the 300 face is requested alongside the body font in quartz.config.ts
+        font-weight: 300;
+        text-align: center;
+        font-variant-ligatures: discretionary-ligatures;
+        font-feature-settings: "liga";
+    }
+
+    & > .callout-title {
+        order: 1;
+        padding: 0;
+        justify-content: center;
+        // body text, not the teal the other callouts use for their titles: the
+        // attribution reads as part of the quote rather than as a label
+        color: var(--dark);
+
+        // the quotation-mark icon is redundant next to the glyph above, and the
+        // em dash takes its place in the flex row
+        & > .callout-icon {
+            display: none;
+        }
+
+        &::before {
+            content: "\2015";
+        }
+
+        & > .callout-title-inner {
+            font-weight: $normalWeight;
+
+            & > p {
+                color: var(--dark);
+            }
+        }
+
+        & > .fold-callout-icon {
+            transform: scale(0.75);
+        }
+    }
+}
+
+// Note callouts as quiet asides rather than boxes: just a
+// hairline of the accent down the left, slightly smaller and dimmer text, and
+// the title shrunk to a small-caps label. Collapsed (`> [!note]-`), it is a
+// single muted line that can be open. --color determines the fold chevron (and the
+// icon, hidden here), so it is set to the same muted tone as the label.
+.callout[data-callout="note"] {
+    --color: color-mix(in srgb, var(--darkgray) 60%, transparent);
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 0;
+    padding: 0 0 0 1em;
+    margin: 1.25em 0;
+
+    & > .callout-title {
+        padding: 0.2em 0;
+        align-items: center;
+        --icon-size: 14px;
+
+        & > .callout-icon {
+            display: none;
+        }
+
+        & > .callout-title-inner {
+            font-weight: $normalWeight;
+            font-variant-caps: all-small-caps;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    & > .callout-content {
+        font-size: 0.9em;
+        color: color-mix(in srgb, var(--darkgray) 85%, transparent);
+        padding-bottom: 0.4em;
+
+        & > p {
+            margin: 0.3em 0;
+        }
+    }
+}
+
+h2 {
+border-bottom: 1px solid #aaa;
+margin: 1;
+padding-bottom: 0.3em;
+padding-top: 0.5em;
+}
+
+// The Logbook heading is preceded by a dinkus, which already marks the break
+// between the page and its comments. The rule under the heading repeats that
+// 52px later, so this one heading goes without. Article h2s keep theirs, where
+// it reads as section structure rather than repetition.
+.page-footer > h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+p-code-font {
+font-size: 0.9em;
+color: var(--dark);
+font-family: var(--codeFont);
+border-radius: 5px;
+padding: 0.1rem 0.2rem;
+// background: var(--lightgray);
+}
+
+strong .text-highlight {
+    background-color: #86ff8846;
+    padding: 0 0.1rem;
+    border-radius: 5px;
+    font-weight: normal;
+  }
+
+em {
+color: var(--italic);
+}
+
+em strong {
+    // background-color: #f3ec78;
+    background-image: linear-gradient(45deg, var(--gradient1), var(--gradient2));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-weight: 900;
+    padding-right: 0.7em; //prevent cutting off on the right
+    margin-right: -0.7em;
+  }
+
+// // remove tags in tags list page
+// .page-listing .tag-link {
+//     display: none;
+//   }
+
+
+// The reading controls (Aa, theme, reader mode) live in the header slot at the
+// top of the centre column. renderPage renders them as direct children of
+// <header>, which is a child of .center — flex items, so no line-box strut to
+// collapse and no wrapper divs like the ones the rule below deals with — and
+// .center is also what lets the row be sticky further down.
+//
+// They sit against the right edge so the column keeps one left edge from
+// breadcrumb to last paragraph.
+.center > header {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    // Header's own stylesheet sets `margin: 2rem 0`, which is spacing for a
+    // site title, not for three icons; the desktop block below sets what the
+    // row actually needs.
+    margin: 0;
+
+    // the toggles are inline-blocks; as flex items that is already block-level,
+    // but zeroing the line-height keeps the row's height exactly the tallest
+    // control rather than a text line box around it
+    line-height: 0;
+}
+
+@media all and not ($mobile) {
+    // The row is only ever as tall as its tallest control. What made the header
+    // look big was where it sat: the column opens with $topSpacing (6rem) of
+    // air that used to be the space above the breadcrumb, so three 20px glyphs
+    // ended up floating in the middle of a 96px band.
+    //
+    // So the band is split. The row takes a small offset off the top of the
+    // column — the way the button strip does on a Jupyter Book page — and the
+    // rest of $topSpacing goes to .page-header below it, which puts the
+    // breadcrumb back on the 6rem line that the sidebar's wordmark sits on. The
+    // header ends up costing nothing: the content below is exactly where it was
+    // before this row existed, and the two columns still start together.
+    .center > header {
+        margin-top: $headerRowTop;
+        padding: $headerRowPad 0;
+
+        // Stays with the reader rather than scrolling away. Sticky, not fixed,
+        // so the row keeps the centre column's edges at any window width, and
+        // it travels the length of the article because renderPage makes it a
+        // child of .center (~11000px tall here) rather than of .page-header
+        // (~200px), which is as far as a sticky element can ever travel.
+        position: sticky;
+        // flush with the top of the window once it gets there: with a standoff
+        // the article would show through the strip above the row
+        top: 0;
+        // over the article, under the typography panel (200) and the floating
+        // buttons (100)
+        z-index: 5;
+
+        // <header> is block-level, so this is the width of the column: once the
+        // row is stuck, article text passes underneath it, and the page colour
+        // is what keeps the icons legible instead of type showing through them.
+        background: var(--light);
+    }
+
+    // #quartz-body is carried here on purpose: base.scss sets this margin
+    // through `.page > #quartz-body .page-header`, and an id in that selector
+    // outranks any plain class chain, so the shorter selector silently loses.
+    #quartz-body .center > .page-header {
+        // what is left of $topSpacing once the row's offset, its own height
+        // (22px, the pill — the tallest control) and its padding are taken out
+        margin-top: calc(
+            #{$topSpacing} - #{$headerRowTop} - 22px - (#{$headerRowPad} * 2)
+        );
+    }
+}
+
+// Jumping to a heading - from the table of contents, from a heading's own
+// anchor link, or from a url pasted with a #fragment - parks that heading at
+// the very top of the window, which is exactly where the sticky bars live. The
+// heading lands underneath one and you arrive at a section whose title you
+// cannot read.
+//
+// scroll-margin-top is the fix rather than a scroll handler, because it applies
+// to all three routes at once: the browser's own anchor jump, the SPA router's
+// scrollIntoView (spa.inline.ts) and a page opened at a #fragment. None of them
+// has to know about it.
+//
+// It goes through a custom property because there is no single answer. What is
+// stuck to the top differs by breakpoint, and on mobile by whether the bar is
+// showing - and the headings should not have to know which case they are in.
+:root {
+    // a little more than the bar itself, so the heading clears it instead of
+    // sitting flush against its underside
+    --heading-scroll-air: 0.75rem;
+    // nothing is stuck to the top of the window by default
+    --heading-scroll-offset: 0px;
+}
+
+@media all and not ($mobile) {
+    :root {
+        // the reading-controls row, in the same terms .page-header's margin is
+        // built from above: its own padding plus the 22px pill, the tallest
+        // control in it
+        --heading-scroll-offset: calc(
+            (#{$headerRowPad} * 2) + 22px + var(--heading-scroll-air)
+        );
+    }
+}
+
+@media all and ($mobile) {
+    // The top bar, whose height this file cannot state. The wordmark in it is
+    // sized in vw (`h1.page-title a` above), so the bar grows with the viewport
+    // - about 58px on a phone, 97px just under the breakpoint - and any number
+    // written here would be right at one width and wrong at every other. So it
+    // is measured instead, by toc.inline.ts, and arrives as
+    // --mobile-bar-height; the fallback is the phone-width case, for the moment
+    // before that script runs.
+    //
+    // Reader mode is deliberately not in this list. It does not take the bar out
+    // of the flow, only down to opacity 0 (readermode.scss), so a heading that
+    // lands under the hidden bar reads perfectly well and an offset would push
+    // it away for nothing. A peek brings the bar back, and this with it.
+    :root:not([reader-mode="on"]),
+    :root[reader-mode="on"][reader-peek="on"] {
+        --heading-scroll-offset: calc(
+            var(--mobile-bar-height, 58px) + var(--heading-scroll-air)
+        );
+    }
+}
+
+// [id] because an id is what a jump can land on; a heading without one is
+// unreachable, and needs no room made above it
+article :is(h1, h2, h3, h4, h5, h6)[id] {
+    scroll-margin-top: var(--heading-scroll-offset);
+}
+
+@media all and ($mobile) {
+    // Below the breakpoint the three controls are rendered in the left bar
+    // instead, so every child of this row is desktop-only and the row is an
+    // empty flex box: no height of its own, but its margins would still push
+    // the breadcrumb down. The :not(:has()) is what keeps this honest — put
+    // anything in the header that a phone can see and the row comes back.
+    .center > header:not(:has(> :not(.desktop-only))) {
+        margin: 0;
+    }
+
+    // The mobile bar is a flex row with `gap: 0` (base.scss). That was fine
+    // while these travelled inside a Flex wrapper carrying its own 1rem gap,
+    // but as direct children of the bar they have to space themselves.
+    //
+    // The row is already at capacity — which is why .spacer between the
+    // wordmark and the controls measures 0 wide — so every pixel here is taken
+    // off the wordmark, the only thing in the row that flexes. 0.75rem between
+    // the controls leaves it about the width it had when they were wrapped,
+    // and the wider first margin groups the cluster away from the wordmark
+    // rather than letting it read as one undifferentiated run.
+    .sidebar.left > .readermode,
+    .sidebar.left > .darkmode,
+    .sidebar.left > .search {
+        margin-left: 0.75rem;
+    }
+
+    .sidebar.left > .typography-control {
+        margin-left: 1.1rem;
+    }
+
+    // Below about 360px the row runs out of room: hamburger, four controls and
+    // the gaps above come to ~200px of a ~278px bar, and the wordmark — which
+    // is the only flexible thing in the row — gets squeezed until it wraps and
+    // drops its last letter under the penguin. Tightening the gaps and letting
+    // the wordmark set a touch smaller keeps it on one line at 320px, which is
+    // the narrowest phone still worth drawing for.
+    @media all and (max-width: 360px) {
+        .sidebar.left > .readermode,
+        .sidebar.left > .darkmode,
+        .sidebar.left > .search {
+            margin-left: 0.45rem;
+        }
+
+        .sidebar.left > .typography-control {
+            margin-left: 0.6rem;
+        }
+
+        .sidebar.left .page-title a {
+            font-size: 3vw;
+        }
+    }
+}
+// the darkmode and reader-mode toggles are inline-blocks, so the Flex wrapper
+// around each one gets a text line box: its strut adds a few px of descender
+// space below the button, so the wrapper is taller than the icon and the icon
+// ends up off-centre next to the search box. zeroing the wrapper's line-height
+// makes it hug the button.
+// (setting display:block on the buttons themselves would work too, but the
+// wrapper is the safer place to fix it — the buttons carry displayClass.)
+div:has(> .darkmode),
+div:has(> .readermode) {
+    line-height: 0;
+}
+
+// force icons on same row in left sidebar
+.forced-row {
+    // flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
+    padding: 0;
+    // padding-top: 50%;     /* Set padding-top to same percentage as width */
+    position: relative;
+    & .search {
+        flex-grow: 1;
+        // max-width: unset; // Remove any max-width limitation
+        // min-width: 0; // Allow it to shrink properly if needed
+    }
+    & .darkmode{
+        // flex-shrink: 0;
+        // margin-right:1rem;
+        margin: 0.4rem;
+    }
+    // @media all and (min-width: $tablet) {
+    @media all and ($mobile) {
+        justify-content: flex-end;
+    }
+  }
+
+
+.explorer {
+  a {
+    display: block;
+    padding-left: 0.5rem;
+    text-indent: -0.5rem;
+    padding-inline-start: 0.5rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: normal;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  a .shimmer-symbol {
+    text-indent: 0;     /* Stops the icon from double-shifting to the left */
+    display: inline;    /* Forces it to act exactly like a standard text character */
+    color: inherit;
+  }
+
+  li {
+    margin-bottom: 0.5rem; // space between entries
+  }
+
+  a.file-link:hover {
+    background-color: rgba(253, 241, 216,0.1);
+  }
+
+  a.folder-title {
+    font-weight: bold;
+    color: var(--secondary);
+    // optional: add folder-specific styles here
+  }
+}
+
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// wikipedia style//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+/* infobox callout */
+.callout[data-callout="infobox"] {
+    background-color: var(--wikibackground);
+    --callout-icon: none;
+    border: 1px solid var(--wikiborder);
+    // border-radius: 0px;
+    float: right;
+    width: 300px;
+    margin: 24px 0px 10px 10px;
+    padding: 3px;
+    // opacity:0.1;
+  }
+  
+  /* mobile breakpoint */
+  @media (max-width: 767px) {
+    .callout[data-callout="infobox"] {
+      width: 100%;
+      float: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .callout[data-callout="infobox"] {
+      width:100%;
+      float: none;
+    }
+  }
+  
+  /* stack infoboxes vertically with 'clear' */
+  .callout[data-callout="infobox"] {
+    clear: right;
+  }
+  
+  /* Remove Callout Title */
+  .callout[data-callout="infobox"] .callout-title {
+    display: none;
+  }
+  
+  
+  /* H2 Title */
+  .callout[data-callout="infobox"] h4 {
+    margin: 0px 0px 0px 0px ;
+    width: 100%;
+    font-family: var(--bodyFont);
+    font-size: $calloutBoxFontsize;
+    text-align: center;
+    padding-left: 38px;
+    border-radius: 2px;
+    background-color: var(--wikiheading);
+    // padding: 0px 0px 0px 19px;
+    // box-sizing: border-box;
+    width: auto;
+  }
+  
+  /* H3 Title */
+  .callout[data-callout="infobox"] h5 {
+    margin: 4px 0px 0px ;
+    width: 100%;
+    font-family: var(--bodyFont);
+    font-size: $calloutBoxFontsize;
+    text-align: center;
+    padding-left: 38px;
+    border-radius: 2px;
+    background-color: var(--wikiheading);
+    // padding: 0px;
+    // box-sizing: border-box;
+    width: auto;
+  }
+  
+  /* Spacing */
+  .callout[data-callout="infobox"] p {
+    margin-block-start: 10px;
+    margin-block-end: 0px;
+    width: 100%;
+  }
+  
+  /* Image */
+  .callout[data-callout="infobox"] img {
+    display: block;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+  }
+  
+  /* Table */
+  .callout[data-callout="infobox"] table {
+    margin: 0px !important;
+    width: 100%;
+    font-size: $calloutBoxFontsize;
+    border: 0px solid var(--wikiborder);
+    background-color: var(--wikibackground);
+  }
+  
+  .callout[data-callout="infobox"] th {
+    padding-left: 12px; 
+    padding-right: 0px;
+    vertical-align: top;
+    // font-weight:normal;
+    display:none;
+  }
+  
+  .callout[data-callout="infobox"] td {
+   padding-left: 12px; 
+   padding-right: 0px;
+   vertical-align: top;
+  }
+  
+  
+  
+  ////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
+  // wikipedia CAPTION CALLOUT////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
+  
+  /*----caption left callout----*/
+  .callout[data-callout="caption_left"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    float: left;
+    max-width: 40%;
+    padding: 6px;
+    margin: 24px 1cm 2px 0px; /*top right bottom left*/
+  }
+  
+  .callout[data-callout="caption_left"] > .callout-title {
+    display: none;
+  }
+  
+  .callout[data-callout="caption_left"] img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+  }
+  
+  .callout[data-callout="caption_left"] p {
+    text-align: left;
+    padding: 2px;
+    margin: auto;
+    font-size: $calloutBoxFontsize;
+  }
+  
+  /* mobile breakpoint */
+  @media (max-width: 767px) {
+    .callout[data-callout="caption_left"] {
+      max-width: 50%;
+    }
+  }
+  
+  /*----caption center callout----*/
+  .callout[data-callout="caption"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    padding: 6px;
+    max-width: 80%;
+    margin: auto;
+    /* callouts are their own block formatting context (callouts.scss sets
+       overflow-y), so without this they squeeze in beside a preceding
+       caption_left / caption_right float instead of spanning the column */
+    clear: both;
+  }
+  
+  .callout[data-callout="caption"] > .callout-title {
+    display: none;
+  }
+  
+  .callout[data-callout="caption"] img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+  }
+  
+  .callout[data-callout="caption"] p {
+    text-align: center;
+    padding: 2px;
+    margin: auto;
+    font-size: $calloutBoxFontsize;
+  }
+  
+  /*----caption right callout----*/
+  .callout[data-callout="caption_right"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    float: right;
+    max-width: 40%;
+    padding: 6px;
+    margin: 24px 0px 2px 0.5cm;
+  }
+  
+  .callout[data-callout="caption_right"] > .callout-title {
+    display: none;
+  }
+  
+  .callout[data-callout="caption_right"] img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    // aspect-ratio: 4 / 3;
+  }
+  
+  .callout[data-callout="caption_right"] p {
+    text-align: left;
+    padding: 2px;
+    margin: auto;
+    font-size: $calloutBoxFontsize;
+  }
+  
+  /* mobile breakpoint */
+  @media (max-width: 767px) {
+    .callout[data-callout="caption_right"] {
+      max-width: 50%;
+    }
+  }
+
+
+  /*----caption row callout (multiple images side-by-side)----*/
+  .callout[data-callout="caption_row"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    padding: 6px;
+    max-width: 90%; /* Made slightly wider to fit multiple images nicely */
+    margin: auto;
+    clear: both; /* start below any caption_left / caption_right float */
+  }
+  
+  .callout[data-callout="caption_row"] > .callout-title {
+    display: none;
+  }
+
+  /* Turn the callout content area into a Flexbox row */
+  .callout[data-callout="caption_row"] .callout-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 5px; /* Space between the image columns */
+  }
+  
+  /* Target the paragraphs inside the content to act as equal-width columns */
+  .callout[data-callout="caption_row"] .callout-content > p {
+    flex: 1; /* Makes 2 or 3 or 4 columns exactly equal width */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+
+    text-align: center;
+    margin: 0;
+    padding: 2px;
+    font-size: $calloutBoxFontsize;
+  }
+
+  .callout[data-callout="caption_row"] .callout-content > p br {
+    display: none;
+  }
+  
+  .callout[data-callout="caption_row"] img {
+    display: block;
+    margin: 0 auto 8px auto; /* Centers the image and adds space above the caption */
+    // max-width: 100%;
+    width: 100%;            /* Force image to fill the column width */
+    aspect-ratio: 1 / 1;    /* Force all images to be the exact same shape */
+    object-fit: cover;      /* Crop beautifully without squishing or stretching */
+    border-radius: 6px;     /* Optional: adds a nice soft edge */
+  }
+  
+  /* mobile breakpoint - stacks the images vertically on small screens */
+  @media (max-width: 767px) {
+    .callout[data-callout="caption_row"] .callout-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .callout[data-callout="caption_row"] {
+      max-width: 80%; /* Shrink back down for mobile */
+    }
+  }
+
+  /*----caption column callout (multiple images stacked vertically)----*/
+  .callout[data-callout="caption_column"] {
+    --color: var(--wikibackground);
+    --border: var(--wikiborder);
+    --bg: var(--wikibackground);
+    padding: 6px;
+    max-width: 80%; /* same width as the centered caption callout */
+    margin: auto;
+    clear: both; /* start below any caption_left / caption_right float */
+  }
+
+  .callout[data-callout="caption_column"] > .callout-title {
+    display: none;
+  }
+
+  /* Turn the callout content area into a Flexbox column */
+  .callout[data-callout="caption_column"] .callout-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px; /* Space between the stacked images */
+  }
+
+  /* Each paragraph is one image + its caption */
+  .callout[data-callout="caption_column"] .callout-content > p {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    text-align: center;
+    margin: 0;
+    padding: 2px;
+    font-size: $calloutBoxFontsize;
+  }
+
+  .callout[data-callout="caption_column"] .callout-content > p br {
+    display: none;
+  }
+
+  .callout[data-callout="caption_column"] img {
+    display: block;
+    margin: 0 auto 8px auto; /* Centers the image and adds space above the caption */
+    width: 100%;            /* Force image to fill the column width */
+    height: auto;           /* Keep each image's own proportions */
+    // aspect-ratio: 1 / 1;    /* Uncomment to crop every image to the same shape */
+    // object-fit: cover;
+    border-radius: 6px;     /* Optional: adds a nice soft edge */
+  }
+
+  ///////////////////////////////////////////////////
+  ///////////////// EMOJIS / ICONS //////////////////
+  ///////////////////////////////////////////////////
+
+  // The animation for the shimmer (emojis)
+@keyframes shimmer {
+    0% { background-position: -200%; }
+    100% { background-position: 200%; }
+}
+
+.shimmer-symbol {
+    display: inline-block;
+    font-family: inherit;
+    
+    // This forces the browser to use the "Text" version of the emoji
+    font-variant-emoji: text; 
+    
+    // Now standard color works perfectly
+    color: var(--secondary); 
+    
+    // If we want to keep the shimmer effect from before:
+    /*
+    background: linear-gradient(90deg, var(--light), var(--secondary), var(--light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    */
+}
+
+  ///////////////////////////////////////////////////
+  /////////////////// HOME BUTTON ///////////////////
+  ///////////////////////////////////////////////////
+
+/* Container to center the button */
+.blog-home-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 3rem 0 2rem 0;
+}
+
+/* Same look as the landing page's .home-modal-button (see
+   components/styles/homeModals.scss): a scaled-up <kbd> keycap. */
+.blog-home-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-family: var(--codeFont);
+  font-size: 0.95rem;
+  font-weight: $normalWeight;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none !important; /* Force remove underline */
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  // A touch darker than the page so the keys read as objects sitting on it,
+  // but lighter than either --lightgray (which measures 4.24:1, under the 4.5
+  // AA floor) or --highlight (4.50, kept for hover). 40% of the way from the
+  // page toward --lightgray measures 4.81:1 light / 6.74:1 dark.
+  // The plain declaration first is the fallback for engines without color-mix.
+  background: var(--light);
+  background: color-mix(in srgb, var(--lightgray) 40%, var(--light));
+  border: 1px solid var(--gray);
+  // key depth, same trick as <kbd> but scaled up for a button-sized key
+  border-bottom-width: 3px;
+  // same teal as the icon, so the label, glyph and border read as one object
+  color: var(--secondary) !important;
+
+  // the key travels: drop it by the 2px of depth it gives up
+  &:active {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+  }
+
+  &:hover {
+    // the label is already --secondary at rest, so the hover is carried by the
+    // fill plus the border warming up to match it
+    background: var(--highlight);
+    border-color: var(--secondary);
+    // this is an <a>, and the global `a:hover` rule forces --tertiary with
+    // !important. that beats the resting colour above on specificity
+    // ((0,1,1) vs (0,1,0)), so it has to be restated here
+    color: var(--secondary) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  .shimmer-symbol {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.9rem;
+  }
+}
+
+.article-title .shimmer-symbol {
+  color: inherit;
+}
+
+
+
+// The right sidebar is a 100vh sticky flex column with overflow visible, so on a
+// short viewport its last block (Tags) lands past the bottom edge with no way to
+// scroll to it, and the backlinks list gets flex-squeezed to zero height before
+// anything else gives. Let the column scroll, and stop the list collapsing.
+@media all and ($desktop) {
+  .sidebar.right {
+    overflow-y: auto;
+  }
+
+  // The floor is gated on the list actually being long. Applied unconditionally
+  // it pads a one-item list out to 8rem, which reopens the Backlinks -> Tags gap
+  // this file just closed. With four or more items the natural height already
+  // exceeds 8rem, so this only ever binds when flex tries to squeeze the list.
+  // (base.scss already relies on :has, in `div:has(> .overflow)`.)
+  .backlinks > ul.overflow:has(> li:nth-child(4)) {
+    min-height: 8rem;
+  }
+}
+
+// The right sidebar sets a 32px gap between blocks, but two blocks add space of
+// their own on top of it, so Backlinks -> Tags read wider than Map -> keys.
+// The graph and backlinks headings are already zeroed; the tag list's was not.
+.taglist > h3 {
+  // top margin zeroed to match the graph and backlinks headings, which is what
+  // made Backlinks -> Tags read wider than the other gaps. The bottom margin has
+  // to stay, though: the tags <ul> is display:inline, so its own margin-top is
+  // ignored (vertical margins do not apply to inline boxes) and this heading is
+  // the only thing holding the pills off the title. 0.5rem matches the gap
+  // .backlinks > ul gives its own list.
+  margin: 0 0 0.5rem;
+}
+
+.backlinks > ul {
+  margin-bottom: 0;
+}
+
+// base.scss reserves 30px under the last item of a ul.overflow to clear its
+// fade-out gradient, but backlinks.scss turns that gradient off - so here it is
+// only a trailing gap, and it is what made Backlinks -> Tags read wide.
+.backlinks > ul.overflow > li:last-of-type {
+  margin-bottom: 0;
+}
+
+// The mobile top bar measured 74px around ~34px of actual content. Besides the
+// padding (trimmed in explorer.scss), the wordmark carried baseline slack: its
+// <a> measured 39px around a 24px glyph, because an inline SVG sits on the text
+// baseline and drags the line box down with it. Laying the link out as a flex
+// row removes that phantom height without changing the size of anything drawn.
+@media all and ($mobile) {
+  .sidebar.left .page-title a {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .sidebar.left .explorer {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+// Visibility helpers that only ever hide, splitting at $desktop.
+// Quartz's own .desktop-only / .mobile-only set `display` in the visible state,
+// which overrides a component's own display - a grid row collapses to block and
+// loses its equal-width tracks. These set nothing when visible.
+.wide-only {
+  @media all and not ($desktop) {
+    display: none !important;
+  }
+}
+
+.narrow-only {
+  @media all and ($desktop) {
+    display: none !important;
+  }
+}
+
+  ///////////////////////////////////////////////////
+  //////////////// SHORTCUTS / GUIDE ////////////////
+  ///////////////////////////////////////////////////
+
+// keyboard keys, e.g. <kbd>Ctrl</kbd>
+kbd {
+  font-family: var(--codeFont);
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 0.25em 0.45em;
+  border: 1px solid var(--gray);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--lightgray);
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+// the guide table on the landing page
+table.guide-keys {
+  // auto side margins keep the table centered in the article column
+  margin: 1.2rem auto;
+  padding: 0;
+  width: 100%;
+  // stay clear of the floating buttons, which are pinned to the right edge
+  max-width: 37rem;
+  border-collapse: collapse;
+  font-size: 0.95em;
+
+  th,
+  td {
+    min-width: 0;
+    padding: 0.5rem 0.6rem;
+    border: none;
+    vertical-align: middle;
+    line-height: 1.5rem;
+  }
+
+  thead th {
+    text-align: left;
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-family: var(--bodyFont);
+    font-weight: $semiBoldWeight;
+  }
+
+  tbody tr {
+    border-top: 1px solid var(--lightgray);
+  }
+
+  td.guide-buttons {
+    width: 1%;
+    white-space: nowrap;
+    padding-left: 0;
+  }
+
+  td.guide-shortcut {
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 0;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.85em;
+
+    th,
+    td {
+      padding: 0.4rem 0.35rem;
+    }
+
+    // keep every combo on one line: with nowrap the table's auto layout has to
+    // reserve the full width for the widest shortcut (Ctrl + Shift + K) and
+    // takes the space from the description column, which wraps happily.
+    // letting it wrap instead broke combos mid-way, with the key boxes
+    // touching on the two lines.
+    td.guide-shortcut {
+      white-space: nowrap;
+    }
+
+    kbd {
+      font-size: 0.72em;
+      padding: 0.2em 0.35em;
+    }
+  }
+}
+
+// a miniature of the real floating button: same square, border and icon,
+// masked so the glyph follows the theme's text color
+.guide-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--light);
+  border: 1px solid var(--gray);
+  color: var(--dark);
+  vertical-align: middle;
+
+  & + .guide-icon {
+    margin-left: 0.35rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: currentColor;
+    -webkit-mask: var(--guide-icon) no-repeat center / contain;
+    mask: var(--guide-icon) no-repeat center / contain;
+  }
+
+  &.guide-icon--search::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><g fill="none" stroke="black" stroke-width="1.6"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg>');
+  }
+  &.guide-icon--map::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><path d="M8 2v16M16 6v16"/></svg>');
+  }
+  &.guide-icon--dice::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 64 64" stroke="black" stroke-width="1" stroke-linejoin="round"><path fill="black" d="M43.3 19.355c-.894-.524-1.767-.789-2.457-.789c-.686 0-1.188.265-1.34.789c-.31 1.049.896 2.749 2.686 3.798c.896.526 1.768.788 2.456.788c.686 0 1.188-.262 1.344-.788c.307-1.049-.897-2.749-2.689-3.798"/><path fill="black" d="M29.13 48.144c-.645-.231-1.554-.277-2.576-.084c-2.04.391-3.744 1.591-3.807 2.682c-.032.545.354.962 1.002 1.191c.647.231 1.557.275 2.576.081c2.041-.388 3.746-1.587 3.809-2.681c.032-.545-.354-.961-1.004-1.189"/><path fill="black" d="M39.002 45.923c-.646-.229-1.558-.277-2.576-.082c-2.039.389-3.742 1.586-3.805 2.68c-.03.546.355.961 1.002 1.191s1.558.275 2.576.083c2.043-.39 3.742-1.588 3.807-2.681c.028-.546-.356-.96-1.004-1.191"/><path fill="black" d="M48.466 43.989c-.645-.229-1.558-.275-2.578-.081c-2.037.389-3.742 1.587-3.803 2.681c-.03.545.354.961 1.002 1.191c.646.23 1.558.275 2.578.081c2.041-.389 3.742-1.587 3.805-2.679c.03-.547-.356-.962-1.004-1.193"/><path fill="black" d="M21.38 26.28c-.54.424-1.065 1.17-1.449 2.136c-.762 1.932-.66 4.01.227 4.647c.446.318 1.004.217 1.544-.207c.543-.424 1.068-1.17 1.45-2.135c.762-1.931.661-4.012-.227-4.649c-.445-.318-1.004-.217-1.545.208"/><path fill="black" d="M10.38 22.931c-.543.424-1.068 1.168-1.45 2.134c-.764 1.931-.663 4.012.229 4.647c.442.319 1 .216 1.543-.208c.54-.424 1.065-1.169 1.447-2.135c.764-1.93.662-4.011-.227-4.649c-.444-.317-1.002-.215-1.542.211"/><path fill="black" d="M61.692 35.723l-6.555-19.768c-.99-2.986-4.104-6.103-7.092-7.093l-19.77-6.555c-1.234-.409-2.343-.407-3.197-.004c-.924.251-1.98.649-3.062 1.153c-1.479.689-3.303 1.736-4.077 2.647a4.874 4.874 0 0 0-.253.233L4.427 19.598c-2.061 2.06-2.978 5.98-2.087 8.925l5.762 19.084c.105.349.235.678.387.979c.464 1.412 2.366 3.391 2.95 3.975c.586.585 2.568 2.492 3.98 2.955c.3.149.629.279.976.384l19.083 5.762c.74.225 1.553.338 2.418.338h.001c2.479 0 5.032-.952 6.504-2.424l13.262-13.263c.084-.084.16-.168.234-.253c.912-.777 1.959-2.601 2.646-4.075c.507-1.087.905-2.146 1.156-3.071c.404-.859.402-1.959-.007-3.191M11.509 49.767c-.727-.884-1.112-1.539-1.189-1.811l-.074-.184a4.155 4.155 0 0 1-.29-.724L4.192 27.963c-.679-2.245.055-5.449 1.603-6.996L19.057 7.704c.068-.069.14-.129.209-.189l.128-.134c.226-.286.839-.752 1.719-1.27c.839.265 1.553 1.057 1.94 2.343l5.762 19.085c.784 2.593-.042 6.159-1.845 7.962L13.71 48.763c-.722.721-1.488 1.034-2.201 1.004m45.107-5.16l-.137.133c-.059.068-.117.137-.186.205l-13.26 13.263c-1.11 1.11-3.175 1.855-5.136 1.855h-.001a6.428 6.428 0 0 1-1.859-.254l-19.083-5.762a4.22 4.22 0 0 1-.724-.291l-.185-.072c-.271-.076-.926-.463-1.81-1.19c-.031-.714.28-1.479 1.003-2.202l13.259-13.261c1.804-1.804 5.368-2.63 7.962-1.846l19.083 5.763c1.288.389 2.08 1.104 2.344 1.943c-.516.878-.984 1.489-1.27 1.716m3.314-6.48l-.076.2c-.094.357-.223.753-.372 1.163c-.537.103-1.197.047-1.962-.207l-19.769-6.555c-2.688-.89-5.59-3.792-6.478-6.479L24.718 6.48c-.253-.765-.31-1.424-.207-1.962c.408-.147.801-.276 1.157-.37l.203-.079c.173-.09.396-.136.663-.136c.332 0 .713.071 1.134.21l19.769 6.555c2.388.792 5.072 3.478 5.863 5.865l6.556 19.768c.248.754.276 1.407.074 1.796"/></svg>');
+  }
+  &.guide-icon--up::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15" fill="none" stroke="black" stroke-width="2"/></svg>');
+  }
+  &.guide-icon--down::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"/></svg>');
+  }
+  &.guide-icon--typography::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 18.2 6.9 4.6l5.1 13.6M3.7 13.6h6.4"/><path d="M14.3 18.2l3.4-8.8 3.4 8.8M15.6 15.1h4.2"/></svg>');
+  }
+  &.guide-icon--reader::before {
+    --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"/></svg>');
+  }
+
+  // the two sidebar toggles are bare icons, not boxed like the floating
+  // buttons, so their miniatures drop the frame and match their real size
+  // The theme switch is a pill rather than an icon, so its miniature is a small
+  // pill as well: the track with the switch's two glyphs in it, moon at one end
+  // and sun at the other, so the row shows both states it flips between. The
+  // ring uses the same colour as the boxed miniatures' borders, so it reads as
+  // one of them.
+  &.guide-icon--theme {
+    width: 44px;
+    height: 20px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border: none;
+    border-radius: 10px;
+    background: var(--light);
+    box-shadow: inset 0 0 0 1px var(--gray);
+
+    // the moon, the same lucide glyph the switch itself draws
+    &::before {
+      --guide-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>');
+      width: 12px;
+      height: 12px;
+    }
+
+    // the sun, the same lucide glyph the switch itself draws
+    &::after {
+      --guide-sun: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>');
+      content: "";
+      display: block;
+      width: 12px;
+      height: 12px;
+      background-color: currentColor;
+      -webkit-mask: var(--guide-sun) no-repeat center / contain;
+      mask: var(--guide-sun) no-repeat center / contain;
+    }
+  }
+
+  &.guide-icon--plain {
+    background: none;
+    border: none;
+
+    &::before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+  ///////////////////////////////////////////////////
+  /////////////////// CITATIONS /////////////////////
+  ///////////////////////////////////////////////////
+
+
+/* Citation links (inline [@key] refs and the return arrows) sit flush in the
+   text: no highlight pill, no underline */
+a.internal[href^="#bib-"],
+a.internal[href^="#cite-bib-"],
+#refs .csl-entry a.internal {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+/* Add spacing between bibliography entries */
+#refs .csl-entry {
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Style the return arrows to look like Obsidian footnotes */
+#refs .csl-entry .footnote-backref {
+  text-decoration: none;
+  color: var(--tertiary);
+  font-family: var(--codeFont);
+  font-size: 0.95em;
+  margin-left: 0.2rem;
+  
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+// The table of contents needs no size of its own: it inherits the chrome
+// baseline, which typography.scss corrects for x-height alongside everything
+// else in the sidebar.
+
+
+///////////////////////////////////////////////////
+//////////////// HOME TOPIC CARDS /////////////////
+///////////////////////////////////////////////////
+
+// The topic grid on the home page, after blog.eledah.ir's featured cards: a
+// photo sits greyed out behind the title until the card is hovered. The first
+// card is the large one, two rows by two columns; the other five fill in around
+// it. A card with no <img> falls back to a gradient in the site colours.
+.topic-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: 0.9rem;
+  margin: 1.5rem 0 2rem;
+
+  // phones keep the desktop arrangement, just tighter
+  @media all and ($mobile) {
+    grid-auto-rows: minmax(96px, auto);
+    gap: 0.5rem;
+  }
+}
+
+article a.topic-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  // border: 1px solid var(--lightgray);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+  text-decoration: none;
+  line-height: 1.3;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  @media all and ($mobile) {
+    padding: 0.5rem 0.55rem;
+    border-radius: 8px;
+  }
+
+  // darkens the bottom of the card so the white text reads on any photo
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.72) 100%);
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+
+    &::before {
+      opacity: 0.75;
+    }
+
+    .topic-card-bg {
+      filter: grayscale(0%);
+      transform: scale(calc(var(--zoom, 1) * 1.06));
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tertiary);
+    outline-offset: 2px;
+  }
+}
+
+article a.topic-card--hero {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 260px;
+
+  .topic-card-title {
+    font-size: 1.6rem;
+  }
+
+  // two phone rows are already tall enough, so let them set the height
+  @media all and ($mobile) {
+    min-height: 0;
+
+    .topic-card-title {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// base.scss gives every article image a margin and a radius; the photo here is
+// a full-bleed backdrop instead.
+// Each <img> can frame itself with two custom properties in its style attribute:
+//   --focus: the point of the photo to keep in view, as "x% y%" from the top
+//            left (default "50% 50%", the centre)
+//   --zoom:  how far to magnify around that point (default 1, no zoom)
+// e.g. style="--focus: 30% 70%; --zoom: 1.8"
+article .topic-card img.topic-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);
+  transform: scale(var(--zoom, 1));
+  transform-origin: var(--focus, 50% 50%);
+  filter: grayscale(70%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.topic-card-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.topic-card-title {
+  font-family: var(--headerFont);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+
+  // shrinks with the screen so a word like "Cosmology" never splits in a
+  // narrow third-width card
+  @media all and ($mobile) {
+    font-size: clamp(0.78rem, 3.6vw, 0.9rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+.topic-card-sub {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+
+  @media all and ($mobile) {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    // at most two lines, then an ellipsis
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  article a.topic-card,
+  article .topic-card img.topic-card-bg {
+    transition: none;
+  }
+
+  article a.topic-card:hover {
+    transform: none;
+  }
+
+  // keep the card's own zoom, drop only the extra hover zoom
+  article a.topic-card:hover .topic-card-bg {
+    transform: scale(var(--zoom, 1));
+  }
+}

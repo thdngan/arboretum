@@ -1,0 +1,99 @@
+@use "../../styles/variables.scss" as *;
+
+ul.section-ul {
+  list-style: none;
+  margin-top: 2em;
+  padding-left: 0;
+}
+
+li.section-li {
+  margin-bottom: 1em;
+
+  & > .section {
+    display: grid;
+    grid-template-columns: fit-content(8em) 3fr 1fr;
+
+    @media all and ($mobile) {
+      & > .tags {
+        display: none;
+      }
+    }
+
+    & > .desc > h3 > a {
+      background-color: transparent;
+    }
+
+    & .meta {
+      margin: 0 1em 0 0;
+      opacity: 0.6;
+    }
+  }
+}
+
+// modifications in popover context
+.popover .section {
+  grid-template-columns: fit-content(8em) 1fr !important;
+  // grid-template-columns: 8em 3fr;
+  & > .tags {
+    display: none;
+  }
+}
+
+// foldable sections on the all-tags page
+.tag-section {
+  & > h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  & .tag-fold {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+
+    & .fold {
+      transition: transform 0.3s ease;
+      opacity: 0.8;
+    }
+  }
+
+  // grid rows animate between 0 and the content's own height, which max-height
+  // can only approximate
+  & > .tag-section-content {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition:
+      grid-template-rows 0.35s ease,
+      visibility 0s linear 0s;
+    visibility: visible;
+
+    & > div {
+      overflow: hidden;
+      min-height: 0;
+    }
+  }
+
+  &.collapsed {
+    & .tag-fold .fold {
+      transform: rotateZ(-90deg);
+    }
+
+    & > .tag-section-content {
+      grid-template-rows: 0fr;
+      transition:
+        grid-template-rows 0.35s ease,
+        visibility 0s linear 0.35s;
+      visibility: hidden;
+    }
+  }
+}
+
+// no script runs inside a popover, so the fold arrow would do nothing there
+.popover .tag-fold {
+  display: none;
+}

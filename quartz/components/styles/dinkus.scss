@@ -1,0 +1,10 @@
+@use "../../styles/variables.scss" as *;
+
+// Visibility lives here rather than in a MobileOnly wrapper: that wrapper sets
+// `display: initial` in the visible state, which on an <hr> computes to inline
+// and collapses the centred rule the dinkus is drawn with.
+.dinkus--mobile {
+  @media all and not ($mobile) {
+    display: none;
+  }
+}

@@ -1,0 +1,81 @@
+@use "sass:map";
+
+/**
+ * Layout breakpoints
+ * $mobile: screen width below this value will use mobile styles
+ * $desktop: screen width above this value will use desktop styles
+ * Screen width between $mobile and $desktop width will use the tablet layout.
+ * assuming mobile < desktop
+ */
+$breakpoints: (
+  mobile: 800px,
+  desktop: 1200px,
+);
+
+$mobile: "(max-width: #{map.get($breakpoints, mobile)})";
+$tablet: "(min-width: #{map.get($breakpoints, mobile)}) and (max-width: #{map.get($breakpoints, desktop)})";
+$desktop: "(min-width: #{map.get($breakpoints, desktop)})";
+
+$pageWidth: #{map.get($breakpoints, mobile)};
+$sidePanelWidth: 320px; //380px;
+$topSpacing: 6rem;
+$boldWeight: 700;
+$semiBoldWeight: 600;
+$normalWeight: 400;
+// text in the caption and infobox callouts. em, not px, so it follows the
+// article and the reader's text-size control; 1em matches body text.
+$calloutBoxFontsize: 0.9em;
+
+$mobileGrid: (
+  templateRows: "auto auto auto auto auto",
+  templateColumns: "auto",
+  rowGap: "5px",
+  columnGap: "5px",
+  templateAreas:
+    '"grid-sidebar-left"\
+      "grid-header"\
+      "grid-center"\
+      "grid-sidebar-right"\
+      "grid-footer"',
+);
+$tabletGrid: (
+  templateRows: "auto auto auto auto",
+  templateColumns: "#{$sidePanelWidth} auto",
+  rowGap: "5px",
+  columnGap: "5px",
+  templateAreas:
+    '"grid-sidebar-left grid-header"\
+      "grid-sidebar-left grid-center"\
+      "grid-sidebar-left grid-sidebar-right"\
+      "grid-sidebar-left grid-footer"',
+);
+$desktopGrid: (
+  templateRows: "auto auto auto",
+  templateColumns: "#{$sidePanelWidth} auto #{$sidePanelWidth}",
+  rowGap: "5px",
+  columnGap: "5px",
+  templateAreas:
+    '"grid-sidebar-left grid-header grid-sidebar-right"\
+      "grid-sidebar-left grid-center grid-sidebar-right"\
+      "grid-sidebar-left grid-footer grid-sidebar-right"',
+);
+
+// The house backdrop for a full-screen overlay: a blur plus a flat wash.
+//
+// The same everywhere, phone and desktop alike. Earlier versions darkened it
+// under 600px, or masked the bottom of it with an opaque gradient, both to hide
+// a strip of sharp article that iOS left along the bottom edge. That strip was a
+// viewport bug, not a backdrop one - see the measurements in overlayLock.inline.ts
+// - so the scrim no longer compensates for anything and phone and desktop match.
+//
+// Black rather than a theme colour: --dark inverts with the theme, and a light
+// scrim over a dark page reads as a flash, not a dimming. Same wash as the toc
+// drawer (tocDrawer.scss), which has always tinted.
+// The article is blurred and dimmed in place rather than behind a scrim - see
+// overlayLock.inline.ts for why a scrim cannot work on iOS. These two numbers are
+// what the old scrim used, and base.scss applies them to the page background and
+// to the content filter in step: color-mix at 35% black and brightness(0.65) both
+// land on 0.65 x the original, so background and content dim by the same amount.
+$overlayScrimAlpha: 0.05;
+
+$overlayBlur: 3px;

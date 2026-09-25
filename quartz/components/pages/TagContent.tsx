@@ -1,0 +1,167 @@
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
+import style from "../styles/listPage.scss"
+import { PageList, SortFn } from "../PageList"
+import { FullSlug, getAllSegmentPrefixes, simplifySlug } from "../../util/path"
+import { QuartzPluginData } from "../../plugins/vfile"
+import { Root } from "hast"
+import { htmlToJsx } from "../../util/jsx"
+import { i18n } from "../../i18n"
+// @ts-ignore
+import script from "../scripts/tagListing.inline"
+
+interface TagContentOptions {
+  sort?: SortFn
+  numPages: number
+}
+
+const defaultOptions: TagContentOptions = {
+  numPages: 10,
+}
+
+// tags whose pages are kept off every other tag's listing
+const hiddenTags = ["empty"]
+
+export default ((opts?: Partial<TagContentOptions>) => {
+  const options: TagContentOptions = { ...defaultOptions, ...opts }
+
+  const TagContent: QuartzComponent = (props: QuartzComponentProps) => {
+    const { tree, fileData, allFiles, cfg } = props
+    const slug = fileData.slug
+
+    if (!(slug?.startsWith("tags/") || slug === "tags")) {
+      throw new Error(`Component "TagContent" tried to render a non-tag page: ${slug}`)
+    }
+
+    const tag = simplifySlug(slug.slice("tags/".length) as FullSlug)
+    // pages tagged with a hidden tag only show up on that tag's own listing
+    const isHiddenTag = (tag: string) =>
+      hiddenTags.some((hidden) => tag === hidden || tag.startsWith(`${hidden}/`))
+    const allPagesWithTag = (tag: string) =>
+      allFiles.filter((file) => {
+        const fileTags = (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes)
+        if (!fileTags.includes(tag)) return false
+        return isHiddenTag(tag) || !fileTags.some(isHiddenTag)
+      })
+
+    const content =
+      (tree as Root).children.length === 0
+        ? fileData.description
+        : htmlToJsx(fileData.filePath!, tree)
+    const cssClasses: string[] = fileData.frontmatter?.cssclasses ?? []
+    const classes = cssClasses.join(" ")
+    if (tag === "/") {
+      const tags = [
+        ...new Set(
+          allFiles.flatMap((data) => data.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes),
+        ),
+      ]
+        .sort((a, b) => a.localeCompare(b))
+        // drop tags whose only pages are hidden ones
+        .filter((tag) => allPagesWithTag(tag).length > 0)
+      const tagItemMap: Map<string, QuartzPluginData[]> = new Map()
+      for (const tag of tags) {
+        tagItemMap.set(tag, allPagesWithTag(tag))
+      }
+      return (
+        <div class="popover-hint">
+          <article class={classes}>
+            <p>{content}</p>
+          </article>
+          <p>{i18n(cfg.locale).pages.tagContent.totalTags({ count: tags.length })}</p>
+          <div>
+            {tags.map((tag) => {
+              const pages = tagItemMap.get(tag)!
+              const listProps = {
+                ...props,
+                allFiles: pages,
+              }
+
+              const contentPage = allFiles.filter((file) => file.slug === `tags/${tag}`).at(0)
+
+              const root = contentPage?.htmlAst
+              const content =
+                !root || root?.children.length === 0
+                  ? contentPage?.description
+                  : htmlToJsx(contentPage.filePath!, root)
+
+              return (
+                <div class="tag-section" data-tag={tag}>
+                  <h2>
+                    <button
+                      type="button"
+                      class="tag-fold"
+                      aria-expanded="true"
+                      aria-controls={`tag-section-${tag}`}
+                      aria-label={`Toggle ${tag}`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="fold"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <a class="internal tag-link" href={`../tags/${tag}`}>
+                      {tag}
+                    </a>
+                  </h2>
+                  <div class="tag-section-content" id={`tag-section-${tag}`}>
+                    <div>
+                      {content && <p>{content}</p>}
+                      <div class="page-listing">
+                        <p>
+                          {i18n(cfg.locale).pages.tagContent.itemsUnderTag({ count: pages.length })}
+                          {pages.length > options.numPages && (
+                            <>
+                              {" "}
+                              <span>
+                                {i18n(cfg.locale).pages.tagContent.showingFirst({
+                                  count: options.numPages,
+                                })}
+                              </span>
+                            </>
+                          )}
+                        </p>
+                        <PageList limit={options.numPages} {...listProps} sort={options?.sort} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )
+    } else {
+      const pages = allPagesWithTag(tag)
+      const listProps = {
+        ...props,
+        allFiles: pages,
+      }
+
+      return (
+        <div class={classes}>
+          <article class="popover-hint">{content}</article>
+          <div class="page-listing">
+            <p>{i18n(cfg.locale).pages.tagContent.itemsUnderTag({ count: pages.length })}</p>
+            <div>
+              <PageList {...listProps} sort={options?.sort} />
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  TagContent.css = style + PageList.css
+  TagContent.afterDOMLoaded = script
+  return TagContent
+}) satisfies QuartzComponentConstructor
