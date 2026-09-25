@@ -85,8 +85,6 @@ So here it is: I find the colours and patterns of Jupiter pretty. I wondered why
 
 Maybe that's part of the pull: a planet full of problems nobody has fully solved yet. And whether or not the problems get solved, I know for sure that I enjoy the *journey* of doing research itself. The tinkering, the failed attempts, the moment something finally clicks, even the deflating moment of realizing the approach you spent weeks or even months on was wrong and you have to back out of it. Trying to understand something feels worth doing for its own sake, not just for the destination it leads to. You can always ask what a goal is for, and then what *that* is for, but at some point the chain has to end in something wanted for itself (right?). Mine seems to end in curiosity, and I sometimes wonder where exactly that comes from.
 
-The most general cause I can think of is evolution. Maybe we evolved a general curiosity because nobody can know in advance which information will turn out useful, which is the same argument I give when people ask what Jupiter is good for. And so we gleefully stray into paths that sometimes lead to discoveries.
-
 ---
 
 ### Jupiter, for now
