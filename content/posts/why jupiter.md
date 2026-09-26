@@ -54,7 +54,7 @@ Of course, luck like that can run out for anyone, so I've been torn ever since b
 
 What made me so stubborn about a field with such poor job prospects, especially in my own home country?
 
-Perhaps pride. The way I looked, dressed and acted didn't fit the usual mold for my gender, and some of the people closest to me never let me forget it. Anything below the very top of the class wasn't good enough either, and I heard about it every time I fell short. So pursuing a strange, niche scientific field was my way of rebelling, of saying: *I'm still gonna try something I find cool, and be myself, no matter what you say*.
+Perhaps pride. Where I grew up, the way I looked, dressed and acted didn't fit the usual mold for my gender, and some of the people closest to me never let me forget it. Anything below the very top of the class wasn't good enough either, and I heard about it every time I fell short. So pursuing a strange, niche scientific field was my way of rebelling, of saying: *I'm still gonna try something I find cool, and be myself, no matter what you say*.
 
 Perhaps the wish to take my mind to outer space, where there are no barriers, hierarchies or national borders. Studying the fluid dynamics of astronomical objects, something few people back home had heard of, turned out to be a ticket out in real life, too. It lets me work on something I enjoy while travelling to new places where I can unlearn the rigid ideas I myself had internalized about how people should look and behave.
 
