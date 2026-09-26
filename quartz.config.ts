@@ -13,7 +13,8 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
+      provider: "goatcounter",
+      websiteId: "dieungan",
     },
     locale: "en-US",
     baseUrl: "thdngan.github.io/arboretum",
