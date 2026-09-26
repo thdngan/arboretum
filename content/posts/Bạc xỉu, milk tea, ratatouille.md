@@ -31,9 +31,10 @@ I couldn't picture where I would be in a few years, or whether all the effort I 
 >
 >![[Hanoi_sunset.jpg]]
 >Sunset
->
+
+<!-- >
 >![[braids.jpg]]
->First attempt at braiding my own hair at the age of 20
+>First attempt at braiding my own hair at the age of 20 -->
 
 
 >[!caption_right]
