@@ -5,7 +5,7 @@ icon: fa-regular fa-envelope
 tags:
   - writings
   - personal
-draft: false
+draft: true
 ---
 
 <!-- >[!quote] Pascal Mercier, *Night Train to Lisbon*
