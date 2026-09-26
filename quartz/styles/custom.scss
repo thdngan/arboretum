@@ -34,6 +34,25 @@ td,
   hyphens: manual;
 }
 
+// KaTeX pins \tag{} numbers to the right edge with position: absolute, so an
+// equation wider than the leftover space runs under its number on phones.
+// Lay the equation and its number out in a row instead: the number always
+// positioned after the equation, and a too wide equation scrolls with it.
+.katex-display > .katex > .katex-html:has(> .tag) {
+  display: flex;
+  align-items: baseline;
+
+  & > .base:first-child {
+    margin-left: auto;
+  }
+
+  & > .tag {
+    position: static;
+    margin-left: auto;
+    padding-left: 1em;
+  }
+}
+
 ///////////////////////////////////////////////////
 ////////////// TYPOMAGICAL FONTS //////////////////
 ///////////////////////////////////////////////////
