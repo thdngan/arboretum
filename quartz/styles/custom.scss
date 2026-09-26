@@ -19,6 +19,21 @@ $headerRowPad: 0.5rem;
 
 // put your custom CSS here!
 
+// base.scss turns on hyphens: auto, which splits words like "often" into
+// "of-" / "ten" at line ends. Keep words whole instead.
+p,
+ul,
+ol,
+li,
+text,
+a,
+tr,
+td,
+.katex,
+.math {
+  hyphens: manual;
+}
+
 ///////////////////////////////////////////////////
 ////////////// TYPOMAGICAL FONTS //////////////////
 ///////////////////////////////////////////////////
