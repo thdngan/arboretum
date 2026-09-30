@@ -1,0 +1,11 @@
+.empty-content {
+  color: var(--gray);
+  font-style: italic;
+  text-align: center;
+  max-width: 45ch;
+  margin: 2rem auto;
+
+  span {
+    display: block;
+  }
+}

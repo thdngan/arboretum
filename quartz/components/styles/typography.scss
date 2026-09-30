@@ -1,0 +1,328 @@
+@use "../../styles/variables.scss" as *;
+
+:root {
+  --fontOptical: 1;
+  --textScale: 1;
+  --textZoom: calc(var(--textScale) * var(--fontOptical));
+  --bodySize: 13pt;
+  --textLeading: 1.48;
+}
+
+.typography-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.typography-toggle {
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  width: 29px;
+  height: 20px;
+  margin: 0;
+  color: var(--darkgray);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px transparent;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+
+  & svg {
+    display: block;
+    width: 29px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: var(--lightgray);
+    box-shadow: 0 0 0 4px var(--lightgray);
+  }
+
+  &[aria-expanded="true"] {
+    background: var(--secondary);
+    box-shadow: 0 0 0 4px var(--secondary);
+    color: var(--light);
+
+    & svg text {
+      fill: var(--light);
+    }
+  }
+}
+
+.typography-panel {
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: min(17.5rem, calc(100vw - 1.5rem));
+  max-height: min(60vh, 30rem);
+  overflow: hidden;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.typography-row,
+.typography-label-block,
+.typography-reset {
+  flex: 0 0 auto;
+}
+
+.typography-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.typography-label {
+  font-family: var(--headerFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.typography-label-block {
+  border-top: 1px solid var(--border);
+  padding-top: 0.7rem;
+}
+
+.typography-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  & button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--darkgray);
+    font-family: var(--headerFont);
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.3rem 0.55rem;
+    border-radius: 3px;
+    transition: background 0.15s ease;
+
+    &:hover:not(:disabled) {
+      background: var(--lightgray);
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  }
+}
+
+.typography-size {
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  color: var(--dark);
+  min-width: 3.1em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.typography-fonts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.2rem;
+}
+
+.typography-font {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.42rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: var(--darkgray);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: var(--highlight);
+  }
+
+  &[aria-pressed="true"] {
+    border-color: var(--secondary);
+    background: var(--highlight);
+  }
+}
+
+.typography-font-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.typography-font-name {
+  font-size: 0.95rem;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.typography-font-sample {
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--darkgray);
+}
+
+.typography-font-note {
+  font-family: var(--headerFont);
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--gray);
+}
+
+.typography-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.typography-badge {
+  font-family: var(--codeFont);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0 0.25rem;
+  white-space: nowrap;
+}
+
+.typography-warn {
+  font-family: var(--codeFont);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0 0.25rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.typography-reset {
+  align-self: flex-start;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--headerFont);
+  font-size: 0.7rem;
+  color: var(--gray);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+.typography-toggle:focus-visible,
+.typography-panel button:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 2px;
+}
+
+@media all and ($mobile) {
+  .typography-panel {
+    max-height: 65vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typography-toggle,
+  .typography-panel button {
+    transition: none;
+  }
+}
+
+:root .page .article-title {
+  font-size: calc(1.75rem * var(--textZoom));
+}
+
+:root .page article {
+  font-size: calc(var(--bodySize) * var(--textZoom));
+  font-weight: var(--bodyWeight, 400);
+
+  & h1 {
+    font-size: calc(1.75rem * var(--textZoom));
+  }
+  & h2 {
+    font-size: calc(1.4rem * var(--textZoom));
+  }
+  & h3 {
+    font-size: calc(1.12rem * var(--textZoom));
+  }
+  & h4,
+  & h5,
+  & h6 {
+    font-size: calc(1rem * var(--textZoom));
+  }
+
+  & p,
+  & li,
+  & tbody {
+    line-height: var(--textLeading);
+  }
+}
+
+:root body,
+:root section {
+  font-size: calc(var(--bodySize) * var(--fontOptical));
+}
+
+:root button#toc h3,
+:root .toc-drawer-header h3,
+:root .backlinks > h3,
+:root .recent-notes > h3,
+:root .graph > h3,
+:root button.mobile-explorer h2,
+:root button.desktop-explorer h2 {
+  font-size: calc(1rem * var(--fontOptical));
+}
+
+:root .folder-container div > a,
+:root .folder-container div > button span {
+  font-size: calc(0.95rem * var(--fontOptical));
+}

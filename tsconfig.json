@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      // micromorph ships index.d.ts but its package.json "exports" doesn't point at it
+      "micromorph": ["./node_modules/micromorph/index.d.ts"],
+    },
+    "strict": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+  },
+  "include": ["**/*.ts", "**/*.tsx", "./package.json"],
+  "exclude": ["build/**/*.d.ts"],
+}

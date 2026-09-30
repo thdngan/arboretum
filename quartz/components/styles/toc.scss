@@ -1,0 +1,111 @@
+button#toc {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+
+  & h3 {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 0rem;
+
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 0.3em;
+  }
+
+  & .fold {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+
+  &.collapsed .fold {
+    transform: rotateZ(-90deg);
+  }
+}
+
+#toc-content {
+  list-style: none;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  transition:
+    max-height 0.35s ease,
+    visibility 0s linear 0s;
+  position: relative;
+  visibility: visible;
+
+  &.collapsed {
+    max-height: 0;
+    transition:
+      max-height 0.35s ease,
+      visibility 0s linear 0.35s;
+    visibility: hidden;
+  }
+
+  &.collapsed > .overflow::after {
+    opacity: 0;
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    & > li > a {
+      display: flex;
+      gap: 0.4rem;
+      line-height: 1.35;
+      padding: 0.12rem 0;
+      color: var(--dark);
+      text-decoration: none;
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      &.in-view {
+        opacity: 0.9;
+      }
+    }
+  }
+  > ul.overflow {
+    max-height: none;
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+
+  & .toc-number {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  & .depth-1 {
+    padding-left: 0;
+    margin-top: 0.45rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    & > a {
+      font-weight: 600;
+    }
+  }
+
+  & li:not(.depth-1) {
+    border-left: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+    &:has(> a.in-view) {
+      border-left-color: color-mix(in srgb, var(--secondary) 70%, transparent);
+    }
+  }
+
+  @for $i from 2 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(0.45rem + 0.75rem * (#{$i} - 2));
+    }
+  }
+}

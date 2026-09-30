@@ -1,0 +1,191 @@
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import legacyStyle from "./styles/legacyToc.scss"
+import modernStyle from "./styles/toc.scss"
+import drawerStyle from "./styles/tocDrawer.scss"
+import { classNames } from "../util/lang"
+import { TocEntry } from "../plugins/transformers/toc"
+
+// @ts-ignore
+import script from "./scripts/toc.inline"
+// @ts-ignore
+import drawerScript from "./scripts/tocDrawer.inline"
+import { i18n } from "../i18n"
+
+interface Options {
+  layout: "modern" | "legacy"
+}
+
+const defaultOptions: Options = {
+  layout: "modern",
+}
+
+function tocEntryParts(tocEntry: TocEntry) {
+  const isReference = tocEntry.slug === "references" || tocEntry.slug === "bibliography"
+  if (isReference) {
+    return { displayText: tocEntry.text.replace(/^[\d.]+\s*/, ""), number: undefined }
+  }
+
+  const [, label = "", rest] = /^(\d+(?:\.\d+)*)\.\s+(.*)$/s.exec(tocEntry.text) ?? []
+  const below = label.split(".").slice(1)
+  return {
+    displayText: rest ?? tocEntry.text,
+    number: below.length > 0 ? `${below.join(".")}.` : undefined,
+  }
+}
+
+function TocItem({ tocEntry }: { tocEntry: TocEntry }) {
+  const { displayText, number } = tocEntryParts(tocEntry)
+
+  return (
+    <li class={`depth-${tocEntry.depth}${number ? " numbered" : ""}`}>
+      <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
+        {number && <span class="toc-number">{number}</span>}
+        <span class="toc-text">{displayText}</span>
+      </a>
+    </li>
+  )
+}
+
+const TableOfContents: QuartzComponent = ({
+  fileData,
+  displayClass,
+  cfg,
+}: QuartzComponentProps) => {
+  if (!fileData.toc) {
+    return null
+  }
+
+  return (
+    <div class={classNames(displayClass, "toc")}>
+      <button
+        type="button"
+        id="toc"
+        class={fileData.collapseToc ? "collapsed" : ""}
+        aria-controls="toc-content"
+        aria-expanded={!fileData.collapseToc}
+      >
+        <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="fold"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div id="toc-content" class={fileData.collapseToc ? "collapsed" : ""}>
+        <ul class="overflow">
+          {fileData.toc.map((tocEntry) => (
+            <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+TableOfContents.css = modernStyle
+TableOfContents.afterDOMLoaded = script
+
+const TocDrawer: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
+  if (!fileData.toc) {
+    return null
+  }
+
+  const title = i18n(cfg.locale).components.tableOfContents.title
+
+  return (
+    <div class="toc-drawer">
+      <button
+        type="button"
+        class="toc-drawer-tab"
+        aria-controls="toc-drawer-panel"
+        aria-expanded="false"
+        aria-label={title}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="toc-drawer-scrim" aria-hidden="true"></div>
+      <aside
+        id="toc-drawer-panel"
+        class="toc-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+      >
+        <div class="toc-drawer-header">
+          <h3>{title}</h3>
+          <button type="button" class="toc-drawer-close" aria-label="Close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-drawer-list">
+          {fileData.toc.map((tocEntry) => (
+            <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+          ))}
+        </ul>
+      </aside>
+    </div>
+  )
+}
+TocDrawer.css = drawerStyle
+TocDrawer.afterDOMLoaded = drawerScript
+
+const LegacyTableOfContents: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
+  if (!fileData.toc) {
+    return null
+  }
+  return (
+    <details id="toc" open={!fileData.collapseToc}>
+      <summary>
+        <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
+      </summary>
+      <ul>
+        {fileData.toc.map((tocEntry) => (
+          <TocItem key={tocEntry.slug} tocEntry={tocEntry} />
+        ))}
+      </ul>
+    </details>
+  )
+}
+LegacyTableOfContents.css = legacyStyle
+
+export const TocDrawerConstructor = (() => TocDrawer) satisfies QuartzComponentConstructor
+
+export default ((opts?: Partial<Options>) => {
+  const layout = opts?.layout ?? defaultOptions.layout
+  return layout === "modern" ? TableOfContents : LegacyTableOfContents
+}) satisfies QuartzComponentConstructor

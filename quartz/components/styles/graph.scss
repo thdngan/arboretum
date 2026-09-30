@@ -1,0 +1,198 @@
+@use "../../styles/variables.scss" as *;
+
+.graph {
+  & > h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  & > .graph-outer {
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+    height: 250px;
+    margin: 0.5em 0;
+    position: relative;
+    overflow: hidden;
+
+    & > #global-graph-icon {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--dark);
+      opacity: 0.5;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      padding: 0.2rem;
+      margin: 0.3rem;
+      top: 0;
+      right: 0;
+      border-radius: 4px;
+      background-color: transparent;
+      transition: background-color 0.5s ease;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--lightgray);
+      }
+    }
+  }
+
+
+}
+
+html.global-graph-open .floating-buttons {
+  display: none;
+}
+
+#global-graph-outer {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  height: 100dvh;
+  display: none;
+  overflow: hidden;
+
+  --safe-height: 100dvh;
+  --global-graph-center-y: 50%;
+  --global-graph-width: 80vw;
+  --global-graph-height: calc(0.8 * var(--safe-height));
+
+  @media all and not ($desktop) {
+    --global-graph-width: 90%;
+  }
+
+  &.active {
+    display: inline-block;
+  }
+
+  & > #global-graph-container {
+    border: 1px solid var(--border);
+    background-color: var(--light);
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: fixed;
+    top: var(--global-graph-center-y);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: var(--global-graph-height);
+    width: var(--global-graph-width);
+  }
+
+  & > .global-graph-legend {
+    position: fixed;
+    top: calc(var(--global-graph-center-y) - var(--global-graph-height) / 2 + 0.6rem);
+    left: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
+    margin: 0;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--lightgray);
+    border-radius: 5px;
+    background: var(--light);
+    color: var(--darkgray);
+    font-size: calc(0.85rem * var(--fontOptical));
+    line-height: 1.5;
+    pointer-events: none;
+    user-select: none;
+
+    & > figcaption {
+      margin: 0 0 0.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: calc(0.75rem * var(--fontOptical));
+    }
+
+    & > ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      & > li {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin: 0;
+        padding: 0.1rem 0;
+      }
+    }
+
+    .legend-swatch {
+      flex: none;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+
+    .legend-current {
+      background: var(--nodefirst);
+    }
+
+    .legend-tag {
+      background: var(--light);
+      border: 2px solid var(--nodesecond);
+    }
+
+    .legend-current-tag {
+      background: var(--light);
+      border: 2px solid var(--nodefirst);
+    }
+
+    & > ul > .legend-current-tag-item {
+      display: none;
+    }
+
+    body[data-slug^="tags/"] & > ul > .legend-current-tag-item {
+      display: flex;
+    }
+
+    body[data-slug^="tags/"] & > ul > .legend-current-page-item {
+      display: none;
+    }
+
+    .legend-visited {
+      background: var(--nodevisited);
+    }
+
+    .legend-unvisited {
+      background: var(--nodethird);
+    }
+  }
+
+  & > .global-graph-close {
+    position: fixed;
+    top: calc(var(--global-graph-center-y) - var(--global-graph-height) / 2 + 0.6rem);
+    right: calc(50% - var(--global-graph-width) / 2 + 0.6rem);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: var(--lightgray);
+      color: var(--dark);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--secondary);
+      outline-offset: 2px;
+    }
+  }
+}

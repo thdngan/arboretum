@@ -1,0 +1,234 @@
+@use "../../styles/variables.scss" as *;
+
+.home-modal-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 3rem auto 2rem;
+
+  @media all and not ($desktop) {
+    grid-auto-flow: row;
+
+    &.home-modal-buttons--pair {
+      display: flex;
+
+      > .home-modal-button {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      > .home-modal-button--short {
+        flex: 0 0 max-content;
+      }
+    }
+  }
+
+  &--stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: none;
+    margin: 0;
+
+    > .home-modal-button {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    > .home-modal-button--compact {
+      flex: 0 0 auto;
+      width: 2.75rem;
+      padding-left: 0;
+      padding-right: 0;
+      gap: 0;
+    }
+  }
+}
+
+.home-modal-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-family: var(--codeFont);
+  font-size: 0.95rem;
+  font-weight: $normalWeight;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  text-decoration: none;
+
+  background: var(--light);
+  background: color-mix(in srgb, var(--lightgray) 40%, var(--light));
+  border: 1px solid var(--gray);
+  border-bottom-width: 3px;
+  color: var(--secondary);
+
+  &:hover {
+    background: var(--highlight);
+    border-color: var(--secondary);
+    color: var(--secondary) !important;
+  }
+
+  &:active {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  .shimmer-symbol {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  .home-modal-button-external {
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+
+  @media all and ($mobile) {
+    font-size: 0.9rem;
+  }
+}
+
+.home-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  height: 100dvh;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+
+  &.active {
+    display: flex;
+  }
+
+  @media all and ($mobile) {
+    padding: 0.75rem;
+  }
+}
+
+.home-modal-panel {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  max-height: 85vh;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 2rem 2rem 1.5rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+  @media all and ($mobile) {
+    padding: 1.5rem 1.1rem 1.1rem;
+  }
+}
+
+.home-modal-body {
+  overflow-y: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  color: var(--darkgray);
+
+  kbd {
+    display: inline-block;
+  }
+
+  & > h3 {
+    margin: 0 2.5rem 1.2rem 0;
+    font-size: calc(1.2rem * var(--fontOptical));
+    color: var(--dark);
+  }
+  font-size: calc(0.95rem * var(--fontOptical));
+  line-height: 1.6;
+
+  & > p {
+    margin: 0 0 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  table.guide-keys {
+    max-width: 100%;
+  }
+
+  a.internal {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: var(--wikilink-underline-thickness);
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: auto;
+  }
+}
+
+.home-modal-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: color-mix(in srgb, var(--light) 75%, transparent);
+  z-index: 1;
+  border: none;
+  border-radius: 4px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: var(--lightgray);
+    color: var(--dark);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+html.home-modal-open .floating-buttons {
+  display: none;
+}
