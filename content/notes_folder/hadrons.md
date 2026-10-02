@@ -5,7 +5,6 @@ tags:
   - particle
   - physics
   - notes
-  - incomplete
 ---
 include:
 - [[baryons]]

@@ -7,7 +7,6 @@ tags:
   - astrophysics
   - physics
   - climate
-  - incomplete
 ---
 
 *An attempt to summarize the content of* @MedvedevTrinh2026 *(I'm just looking for an excuse to yap about my first time actually making a significant contribution to a paper :D).*

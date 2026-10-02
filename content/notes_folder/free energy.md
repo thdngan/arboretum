@@ -4,7 +4,6 @@ tags:
   - notes
   - thermodynamics
   - physics
-  - incomplete
 date: 2024-05-14
 ---
 Energy available to do work at constant temperature (decreases in spontaneous processes, minimum at equilibrium).
