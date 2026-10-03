@@ -8,7 +8,7 @@ tags:
   - astrophysics
   - planetary-science
 ---
-There's one question I've been asked quite often these past few months, whenever I talk about my latest work and the PhD I'll be doing for the next 3 years. Lately, I've been asking it myself too.
+There's one question I've been asked quite often these past few months, whenever I talk about my latest work and the work I'll be doing for the next 3 years. Lately, I've been asking it myself too.
 
 >[!quote] random person, my dad, me
 >I have a simple question: Why Jupiter?
