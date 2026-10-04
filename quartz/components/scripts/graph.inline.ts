@@ -699,6 +699,17 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   closeButton?.addEventListener("click", hideGlobalGraph)
   window.addCleanup(() => closeButton?.removeEventListener("click", hideGlobalGraph))
 
+  function resetVisited() {
+    localStorage.removeItem(localStorageKey)
+    addToVisited(simplifySlug(slug))
+    renderGraph("graph-container", slug)
+    renderGraph("global-graph-container", slug)
+  }
+
+  const resetButton = container?.querySelector<HTMLElement>(".legend-reset")
+  resetButton?.addEventListener("click", resetVisited)
+  window.addCleanup(() => resetButton?.removeEventListener("click", resetVisited))
+
   document.addEventListener("keydown", shortcutHandler)
   window.addCleanup(() => document.removeEventListener("keydown", shortcutHandler))
 })

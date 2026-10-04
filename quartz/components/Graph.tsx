@@ -121,6 +121,9 @@ export default ((opts?: Partial<GraphOptions>) => {
                 Unvisited note
               </li>
             </ul>
+            <button class="legend-reset" type="button">
+              Reset memory
+            </button>
           </figure>
           <button class="global-graph-close" type="button" aria-label="Close">
             <svg

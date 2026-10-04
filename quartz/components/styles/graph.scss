@@ -161,6 +161,31 @@ html.global-graph-open .floating-buttons {
     .legend-unvisited {
       background: var(--nodethird);
     }
+
+    & > .legend-reset {
+      display: block;
+      width: 100%;
+      margin: 0.4rem 0 0;
+      padding: 0.4rem 0 0;
+      border: none;
+      border-top: 1px solid var(--lightgray);
+      background: none;
+      color: var(--gray);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--dark);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--secondary);
+        outline-offset: 2px;
+      }
+    }
   }
 
   & > .global-graph-close {
