@@ -4,18 +4,28 @@ date: 2021-11-01
 enableToc: false
 ---
 
-<img id="banner" src="/images/banner.webp" alt="Penguins wandering along a shoreline, drawn by hand (by me :v)" width="2600" height="679">
+Hey, I'm Ngân. 
 
-Hey, I'm Ngân.
+A friend says I yipper-yapper their ears off once I'm comfy. I guess this site is a preview.
 
-This is a little nook of the internet where I stash my writings, quick notes, class notebooks, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
+If you're interested in some science, [[Mars hydrogen escape|how Mars loses its water]] is a plain-ish summary of a recent paper I worked on.
+
+Sometimes I also write personal pieces like [[why jupiter|Why Jupiter?]], as a way to talk things through with myself and share thoughts that will hopefully resonate with someone.
+
+The rest is mostly [[posts/index|posts]] where I explained things from class again in my own words, plus [[notes_folder/index|short notes]] on the terms that come up in them. More diverse topics will pop up here once life beats me up some more (fingers crossed).
+
+Anyway, there's no particular order to any of it. Wander wherever you like!
+
+
+
+<!-- This is a little nook of the internet where I stash my writings, quick notes, class notebooks, some personal thoughts, and whatever else pops into my orbit. Some of them are polished, some are half-finished scribbles, and a few might just be placeholders waiting for future me to deal with.
 
 Below are a handful of the topics I've dabbled in:
 
 ▸ [[planetary-science|Planetary science]] & [[climate]] (mostly [[tags/modelling]]),  
 ▸ [[tags/astrophysics|astrophysics]], [[cosmology]], [[particle]] [[tags/physics]],  
 ▸ [[chemistry]] (more like _physical_ chemistry, really),  
-▸ or completely random topics I'll probably never revisit... [[tags/|see all tags here]]!
+▸ or completely random topics I'll probably never revisit... [[tags/|see all tags here]]! -->
 
 <!-- <div class="topic-cards">
 <a class="topic-card topic-card--hero" href="tags/planetary-science" data-no-popover="true"><img class="topic-card-bg" src="/images/planetary science/mars/mars_NASA.jpg" style="--zoom: 1.5" alt="" loading="lazy"><span class="topic-card-text"><span class="topic-card-title">Planetary science</span><span class="topic-card-sub">Atmospheres, ices and other worlds</span></span></a>
@@ -27,4 +37,4 @@ Below are a handful of the topics I've dabbled in:
 </div> -->
 
 
-No particular order to any of it. Follow whatever looks interesting!
+<!-- No particular order to any of it. Follow whatever looks interesting! -->

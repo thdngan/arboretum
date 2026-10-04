@@ -5,5 +5,5 @@ tags:
   - personal
   - vietnamese
   - empty
-draft: true
+draft: false
 ---

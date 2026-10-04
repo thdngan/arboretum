@@ -216,6 +216,18 @@ a.internal.tag-link:is([href$="/tags/personal"], [href$="/tags/empty"]) {
     }
 }
 
+ul.tags.desktop-only {
+    @media all and not ($mobile) {
+        display: flex;
+    }
+}
+
+ul.tags.mobile-only {
+    @media all and ($mobile) {
+        display: flex;
+    }
+}
+
 article a.internal:not(.tag-link):not(.transclude-src):not([href^="#"]):not(.topic-card) {
     background-color: transparent;
     padding: 0;
@@ -233,7 +245,8 @@ article a.internal:not(.tag-link):not(.transclude-src):not([href^="#"]):not(.top
 
 article .page-listing a.internal,
 article .section-ul a.internal,
-.recent-notes a.see-more {
+.recent-notes a.see-more,
+.topics a.see-more {
     color: var(--darkgray);
     opacity: 0.6;
     text-decoration: none;
@@ -477,6 +490,16 @@ em strong {
         margin-top: calc(
             #{$topSpacing} - #{$headerRowTop} - 22px - (#{$headerRowPad} * 2)
         );
+    }
+
+    .page > #quartz-body .sidebar.left {
+        padding-top: calc(#{$headerRowTop} + #{$headerRowPad});
+    }
+}
+
+@media all and ($desktop) {
+    .page > #quartz-body .sidebar.right {
+        padding-top: calc(#{$headerRowTop} + #{$headerRowPad});
     }
 }
 

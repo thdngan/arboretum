@@ -19,6 +19,7 @@ import Footer from "./Footer"
 import DesktopOnly from "./DesktopOnly"
 import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
+import Topics from "./Topics"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import FloatingButtons from "./_FloatingButtons"
@@ -33,6 +34,7 @@ import NarrowOnly from "./NarrowOnly"
 import Dinkus from "./Dinkus"
 import KeyRow from "./KeyRow"
 import KeyDialogs from "./KeyDialogs"
+import Signpost from "./Signpost"
 
 export {
   ArticleTitle,
@@ -56,6 +58,7 @@ export {
   DesktopOnly,
   MobileOnly,
   RecentNotes,
+  Topics,
   NotFound,
   Breadcrumbs,
   Comments,
@@ -71,4 +74,5 @@ export {
   Dinkus,
   KeyRow,
   KeyDialogs,
+  Signpost,
 }

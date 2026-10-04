@@ -1,0 +1,120 @@
+.banner,
+.signpost {
+  position: relative;
+
+  & img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.banner {
+  margin: 3em 0;
+
+  & #banner {
+    margin: 0;
+  }
+}
+
+.signpost {
+  max-width: 15rem;
+  margin: 2rem auto;
+
+  & img {
+    margin: 0;
+    opacity: 0.85;
+
+    [saved-theme="dark"] & {
+      filter: invert(100%);
+    }
+  }
+}
+
+.signpost-sign {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible,
+  &[aria-expanded="true"] {
+    background-color: color-mix(in srgb, var(--secondary) 25%, transparent);
+    outline: none;
+  }
+}
+
+.banner > .signpost-guide {
+  clip-path: polygon(
+    61.1% 7.6%,
+    70.4% 5.2%,
+    73.6% 10.7%,
+    73% 13.9%,
+    69.2% 23%,
+    61.3% 25.6%,
+    60.8% 10.2%
+  );
+}
+
+.banner > .signpost-seed {
+  clip-path: polygon(
+    58.5% 37.2%,
+    61.3% 30.1%,
+    67.1% 29.8%,
+    66.9% 36.5%,
+    66.5% 42.5%,
+    61.1% 44.8%,
+    58.5% 38.9%
+  );
+}
+
+.banner > .signpost-about {
+  clip-path: polygon(
+    61.5% 48.3%,
+    70.2% 45.5%,
+    72.5% 49.3%,
+    72.4% 50.7%,
+    69.8% 57.9%,
+    61.2% 60.3%,
+    61.1% 50.9%
+  );
+}
+
+.signpost > .signpost-guide {
+  clip-path: polygon(
+    24.2% 9.1%,
+    73.2% 5.8%,
+    90% 13.4%,
+    86.8% 17.8%,
+    66.8% 30.3%,
+    25.3% 33.9%,
+    22.6% 12.7%
+  );
+}
+
+.signpost > .signpost-seed {
+  clip-path: polygon(
+    10.5% 49.9%,
+    25.3% 40.1%,
+    55.8% 39.7%,
+    54.7% 49%,
+    52.6% 57.2%,
+    24.2% 60.4%,
+    10.5% 52.3%
+  );
+}
+
+.signpost > .signpost-about {
+  clip-path: polygon(
+    26.3% 65.2%,
+    72.1% 61.4%,
+    84.2% 66.6%,
+    83.7% 68.6%,
+    70% 78.5%,
+    24.7% 81.8%,
+    24.2% 68.8%
+  );
+}

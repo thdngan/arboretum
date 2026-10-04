@@ -36,7 +36,7 @@ I have a practiced answer to this one. Jupiter is a giant natural laboratory of 
 
 The other half of my answer is that nobody can tell in advance which detours in our pursuit of knowledge will turn out to be useful. When Mariner 9 reached Mars in 1971, the planet was hidden under a global dust storm, and the spacecraft found the atmosphere warmer and the surface colder than they should have been. Planetary scientists spent years working out how dust in an atmosphere does that. Some of the same people went on to apply that physics to volcanoes, then to the asteroid that killed the dinosaurs, and finally to the smoke and dust a nuclear war would throw into the sky, in the study that gave us the phrase *nuclear winter* ([Turco et al., 1983](https://doi.org/10.1126/science.222.4630.1283)). I still find it wild that a dust storm on Mars ended up there.
 
-I sometimes wonder if that's why we're curious at all. Maybe we evolved a general curiosity because we can never tell which information will pay off. And so we gleefully stray into paths that sometimes lead to discoveries.
+I sometimes wonder if that's why we're curious at all. Maybe we evolved a general curiosity because we can never tell which information will pay off. So we spent most of our history roaming fearlessly and gleefully down every croocked little trail, often with no aim at all, and once in a while we stumble upon a discovery.
 
 That's the answer I give to other people, and it works for planetary science, or cosmology, or pure mathematics, or any STEM field with an ivory-tower reputation. I find the more personal versions of the question harder.
 
