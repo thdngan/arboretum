@@ -42,7 +42,7 @@ const config: QuartzConfig = {
           darkgray: "#3d3d3d", /**4e4e4e for text                                                ; #000000*/
           dark: "#292929", /**2b2b2b for headings and icons                                      ; #1F4172*/
           secondary: "#10736C", /**284b63 for titles and links, current graph node               ; #6C5A37; #8bbf9f*/
-          tertiary: "#d2940f", /**84a59d for when hovering above link                            ; #457B9D*/
+          tertiary: "#BB63B6", /**84a59d for when hovering above link : d2940f                            ; #457B9D*/
           highlight: "rgba(171, 196, 193, 0.3)", /**rgba(143, 159, 169, 0.15) for background of internal link   ; rgba(117, 129, 107, 0.15)*/
           textHighlight: "#fff23688",
 
@@ -97,7 +97,7 @@ const config: QuartzConfig = {
           darkgray: "#d4d4d4",       // text
           dark: "#ebebec",           // headings and icons, search text
           secondary: "#76c2be",      // titles and links, current graph node, 6d9c9a
-          tertiary: "#f0b32d",       // for when hovering above link
+          tertiary: "#BB63B6",       // for when hovering above link f0b32d
           highlight: "rgba(149, 164, 163, 0.15)", // background for internal links
           textHighlight: "#b3aa0288",
         

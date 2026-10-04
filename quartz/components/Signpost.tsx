@@ -18,6 +18,7 @@ const Signs = ({ displayClass }: Pick<QuartzComponentProps, "displayClass">) => 
       aria-label="Guide: how to get around"
       title="How to get around"
     ></button>
+    <span class={classNames(displayClass, "signpost-fill", "signpost-guide")}></span>
     <button
       class={classNames(displayClass, "signpost-sign", "signpost-seed")}
       type="button"
@@ -27,6 +28,7 @@ const Signs = ({ displayClass }: Pick<QuartzComponentProps, "displayClass">) => 
       aria-label="Colophon"
       title="Colophon"
     ></button>
+    <span class={classNames(displayClass, "signpost-fill", "signpost-seed")}></span>
     <a
       class={classNames(displayClass, "signpost-sign", "signpost-about")}
       href="https://thdngan.github.io/"
@@ -35,6 +37,7 @@ const Signs = ({ displayClass }: Pick<QuartzComponentProps, "displayClass">) => 
       aria-label="About: main hub (opens in a new tab)"
       title="Main hub"
     ></a>
+    <span class={classNames(displayClass, "signpost-fill", "signpost-about")}></span>
   </>
 )
 

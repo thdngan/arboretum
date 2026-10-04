@@ -1,6 +1,7 @@
 .banner,
 .signpost {
   position: relative;
+  isolation: isolate;
 
   & img {
     display: block;
@@ -30,21 +31,33 @@
   }
 }
 
-.signpost-sign {
+.signpost-sign,
+.signpost-fill {
   position: absolute;
   inset: 0;
+}
+
+.signpost-sign {
   padding: 0;
   border: 0;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 
-  &:hover,
-  &:focus-visible,
-  &[aria-expanded="true"] {
-    background-color: color-mix(in srgb, var(--secondary) 25%, transparent);
+  &:focus-visible {
     outline: none;
   }
+}
+
+.signpost-fill {
+  z-index: -1;
+  background-color: var(--highlight);
+  transition: background-color 0.2s ease;
+}
+
+.signpost-sign:hover + .signpost-fill,
+.signpost-sign:focus-visible + .signpost-fill,
+.signpost-sign[aria-expanded="true"] + .signpost-fill {
+  background-color: color-mix(in srgb, var(--secondary) 28%, transparent);
 }
 
 .banner > .signpost-guide {

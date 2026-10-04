@@ -200,11 +200,20 @@ a {
     }
 }
 
+a.internal.tag-link:hover {
+    color: var(--secondary) !important;
+    background-color: color-mix(in srgb, var(--secondary) 28%, transparent);
+}
+
 a.internal.tag-link[href$="/tags/personal"] {
     --tag-color: var(--accent);
 }
 a.internal.tag-link[href$="/tags/empty"] {
-    --tag-color: var(--tertiary);
+    --tag-color: #d2940f;
+
+    [saved-theme="dark"] & {
+      --tag-color: #f0b32d;
+    }
 }
 a.internal.tag-link:is([href$="/tags/personal"], [href$="/tags/empty"]) {
     color: var(--tag-color);
