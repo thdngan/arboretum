@@ -41,6 +41,11 @@ export const SyncArgv = {
     default: true,
     describe: "create a git commit for your unsaved changes",
   },
+  codeOnly: {
+    boolean: true,
+    default: false,
+    describe: "leave changes in your content folder out of the commit",
+  },
   message: {
     string: true,
     alias: ["m"],

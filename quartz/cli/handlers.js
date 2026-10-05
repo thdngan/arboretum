@@ -562,7 +562,8 @@ export async function handleSync(argv) {
       timeStyle: "short",
     })
     const commitMessage = argv.message ?? `Quartz sync: ${currentTimestamp}`
-    spawnSync("git", ["add", "."], { stdio: "inherit" })
+    const pathspec = argv.codeOnly ? [".", `:(exclude)${contentFolder}`] : ["."]
+    spawnSync("git", ["add", ...pathspec], { stdio: "inherit" })
     spawnSync("git", ["commit", "-m", commitMessage], { stdio: "inherit" })
 
     if (contentStat.isSymbolicLink()) {
