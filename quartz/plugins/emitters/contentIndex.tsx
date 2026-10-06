@@ -7,6 +7,8 @@ import { QuartzEmitterPlugin } from "../types"
 import { toHtml } from "hast-util-to-html"
 import { write } from "./helpers"
 import { i18n } from "../../i18n"
+import { recentPages } from "../../components/RecentNotes"
+import { latelyConfig } from "../../../quartz.layout"
 
 export type ContentIndexMap = Map<FullSlug, ContentDetails>
 export type ContentDetails = {
@@ -99,16 +101,22 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
     name: "ContentIndex",
     async *emit(ctx, content) {
       const cfg = ctx.cfg.configuration
+      const lately = recentPages(
+        cfg,
+        content.map(([_, file]) => file.data),
+        latelyConfig,
+      ).shown.map((page) => simplifySlug(page.slug!))
       const linkIndex: ContentIndexMap = new Map()
       for (const [tree, file] of content) {
         const slug = file.data.slug!
         const date = getDate(ctx.cfg.configuration, file.data) ?? new Date()
+        const links = file.data.links ?? []
         if (opts?.includeEmptyFiles || (file.data.text && file.data.text !== "")) {
           linkIndex.set(slug, {
             slug,
             filePath: file.data.relativePath!,
             title: file.data.frontmatter?.title!,
-            links: file.data.links ?? [],
+            links: slug === "index" ? [...new Set([...links, ...lately])] : links,
             tags: file.data.frontmatter?.tags ?? [],
             content: file.data.text ?? "",
             richContent: opts?.rssFullHtml

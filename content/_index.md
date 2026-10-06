@@ -8,13 +8,15 @@ Hey, I'm Ngân.
 
 A friend says I yipper-yapper their ears off once I'm comfy. I guess this site is a preview.
 
-If you're interested in some science, [[Mars hydrogen escape|how Mars loses its water]] is a plain-ish summary of a recent paper I worked on.
+I try to write about science in plain-ish words, and sometimes more personal pieces, as a way to talk things through with myself and share thoughts that will hopefully resonate with someone. The newest ones are listed below.
+
+<!-- If you're interested in some science, [[Mars hydrogen escape|how Mars loses its water]] is a plain-ish summary of a recent paper I worked on.
 
 Sometimes I also write personal pieces like [[why jupiter|Why Jupiter?]], as a way to talk things through with myself and share thoughts that will hopefully resonate with someone.
 
 The rest is mostly [[posts/index|posts]] where I explained things from class again in my own words, plus [[notes_folder/index|short notes]] on the terms that come up in them. More diverse topics will pop up here once life beats me up some more (fingers crossed).
 
-Anyway, there's no particular order to any of it. Wander wherever you like!
+Anyway, there's no particular order to any of it. Wander wherever you like! -->
 
 
 

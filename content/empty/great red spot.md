@@ -1,5 +1,5 @@
 ---
-title: Storms on Jupiter
+title: Great Red Spot
 date: 2026-07-02
 tags:
   - empty

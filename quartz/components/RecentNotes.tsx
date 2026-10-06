@@ -8,7 +8,7 @@ import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
 
-interface Options {
+export interface Options {
   title?: string
   limit: number
   linkToMore: SimpleSlug | false
@@ -25,6 +25,19 @@ const defaultOptions = (cfg: GlobalConfiguration): Options => ({
   sort: byDateAndAlphabetical(cfg),
 })
 
+export function recentPages(
+  cfg: GlobalConfiguration,
+  allFiles: QuartzPluginData[],
+  userOpts?: Partial<Options>,
+) {
+  const opts = { ...defaultOptions(cfg), ...userOpts }
+  const pages = allFiles.filter(opts.filter).sort(opts.sort)
+  return {
+    shown: pages.slice(0, opts.limit),
+    remaining: Math.max(0, pages.length - opts.limit),
+  }
+}
+
 export default ((userOpts?: Partial<Options>) => {
   const RecentNotes: QuartzComponent = ({
     allFiles,
@@ -36,13 +49,12 @@ export default ((userOpts?: Partial<Options>) => {
     if (fileData.slug !== "index") {
       return <></>
     }
-    const pages = allFiles.filter(opts.filter).sort(opts.sort)
-    const remaining = Math.max(0, pages.length - opts.limit)
+    const { shown, remaining } = recentPages(cfg, allFiles, userOpts)
     return (
       <div class={classNames(displayClass, "recent-notes")}>
         <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>
         <ul class="recent-ul">
-          {pages.slice(0, opts.limit).map((page) => {
+          {shown.map((page) => {
             const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
             const tags = page.frontmatter?.tags ?? []
             const icon = page.frontmatter?.icon as string | undefined 

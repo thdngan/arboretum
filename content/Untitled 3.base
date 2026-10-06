@@ -1,0 +1,6 @@
+views:
+  - type: table
+    name: View
+    groupBy:
+      property: file.folder
+      direction: ASC

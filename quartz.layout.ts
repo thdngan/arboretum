@@ -1,6 +1,7 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { Options as ExplorerOptions } from "./quartz/components/Explorer"
+import { Options as RecentNotesOptions } from "./quartz/components/RecentNotes"
 import { SimpleSlug } from "./quartz/util/path"
 
 // Constants for config
@@ -76,6 +77,13 @@ const explorerConfig: Partial<ExplorerOptions> = {
     return 0;
   }
 };
+export const latelyConfig: Partial<RecentNotesOptions> = {
+  title: "Lately",
+  limit: 4,
+  filter: (f) =>
+    f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+  linkToMore: "posts/" as SimpleSlug,
+};
 
 const isListPage = (slug: string) => slug.startsWith("tags/") || slug.endsWith("/index")
 
@@ -104,6 +112,7 @@ export const sharedPageComponents: SharedLayout = {
     //   ),
     //   condition: (page) => isHome(page.fileData.slug!),
     // }),
+    Component.RecentNotes(latelyConfig),
     Component.ConditionalRender({
       component: Component.NarrowOnly(Component.Signpost({ variant: "post" })),
       condition: (page) => isHome(page.fileData.slug!),
@@ -121,15 +130,6 @@ export const sharedPageComponents: SharedLayout = {
       component: Component.Dinkus({ mobileOnly: true }),
       condition: (page) => isHome(page.fileData.slug!),
     }),
-    // Component.MobileOnly(
-    //   Component.RecentNotes({
-    //     title: "Lately",
-    //     limit: 5,
-    //     filter: (f) =>
-    //       f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
-    //     linkToMore: "posts/" as SimpleSlug,
-    //   }),
-    // ),
     // Component.MobileOnly(Component.Topics(topicsConfig)),
     // Component.ConditionalRender({
     //   component: Component.Dinkus({ mobileOnly: true }),
@@ -223,7 +223,7 @@ export const defaultContentPageLayout: PageLayout = {
     //     linkToMore: "posts/" as SimpleSlug,
     //   }),
     // ),
-    // Component.DesktopOnly(Component.Topics(topicsConfig)),
+    Component.DesktopOnly(Component.Topics(topicsConfig)),
 
     // Component.DesktopOnly(
     //   Component.RecentNotes({
