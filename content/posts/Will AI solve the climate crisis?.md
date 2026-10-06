@@ -4,7 +4,6 @@ date: 2026-10-04
 tags:
   - writings
   - discussions
-  - incomplete
   - artificial-intelligence-AI
   - climate
 draft: false
