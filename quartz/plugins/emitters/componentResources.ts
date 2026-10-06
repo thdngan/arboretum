@@ -152,11 +152,15 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       goatcounterScript.src = "${cfg.analytics.scriptSrc ?? "https://gc.zgo.at/count.js"}";
       goatcounterScript.defer = true;
       goatcounterScript.setAttribute('data-goatcounter', endpoint);
+      const chromeVersion = navigator.userAgent.match(/Chrome\\/(\\d+)/);
+      const maybeBot = (chromeVersion && Number(chromeVersion[1]) < 140)
+        || (/Windows|X11/.test(navigator.userAgent) && screen.width <= 1024);
+      const countPath = () => (maybeBot ? '/possible-bot' : '') + location.pathname;
       goatcounterScript.onload = () => {
         window.goatcounter.endpoint = endpoint;
-        goatcounter.count({ path: location.pathname });
+        goatcounter.count({ path: countPath() });
         document.addEventListener('nav', () => {
-          goatcounter.count({ path: location.pathname });
+          goatcounter.count({ path: countPath() });
         });
       };
 
