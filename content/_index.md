@@ -8,7 +8,7 @@ Hey, I'm Ngân.
 
 A friend says I yipper-yapper their ears off once I'm comfy. I guess this site is a preview.
 
-I try to write about science in plain-ish words, and sometimes more personal pieces, as a way to talk things through with myself and share thoughts that will hopefully resonate with someone. The newest ones are listed below.
+I try to write about science in plain-ish words, and sometimes more personal pieces, as a way to talk things through with myself and share thoughts that will hopefully resonate with someone. The newest writings are listed below.
 
 <!-- If you're interested in some science, [[Mars hydrogen escape|how Mars loses its water]] is a plain-ish summary of a recent paper I worked on.
 
