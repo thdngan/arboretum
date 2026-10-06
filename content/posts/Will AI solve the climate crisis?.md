@@ -90,7 +90,7 @@ Part of the policy problem is that people misjudge and underrate (or underestima
 
 A related bias is the false consensus effect, where we overestimate how acceptable and common our own behaviour is in society ([Bergseth, 2021](https://theconversation.com/everyone-else-does-it-so-i-can-too-how-the-false-consensus-effect-drives-environmental-damage-153305)). I'll write about that one separately.
 
-A technology that is good at persuading (\*coughs\* *propaganda* \*coughs\*) could perhaps close that gap, or widen it. In experiments with almost 77,000 responses (from more than 42,000 people) and 19 AI language models, the largest gains in persuasiveness came from how a model was trained and prompted. The methods that made the models more persuasive also made their claims less accurate ([Hackenburg et al., 2025](https://doi.org/10.1126/science.aea3884)). So... AI persuasion works for whoever trains and prompts the model. That then leaves the last, but arguably most important, point to me.
+A technology that is good at persuading (\*coughs\* *propaganda* \*coughs\*) could perhaps close that gap, or widen it. In experiments with almost 77,000 responses (from more than 42,000 people) and 19 AI language models, the largest gains in persuasiveness came from how a model was trained and prompted. The methods that made the models more persuasive also made their claims less accurate ([Hackenburg et al., 2025](https://doi.org/10.1126/science.aea3884)). So... AI persuasion works for whoever trains and prompts the model. This brings me to what I consider to be the most important point.
 
 ---
 
