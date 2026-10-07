@@ -79,7 +79,10 @@ const explorerConfig: Partial<ExplorerOptions> = {
 };
 export const latelyConfig: Partial<RecentNotesOptions> = {
   title: "Lately",
-  limit: 4,
+  showTitle: false,
+  // marker: "•",
+  datePosition: "before",
+  limit: 5,
   filter: (f) =>
     f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
   linkToMore: "posts/" as SimpleSlug,

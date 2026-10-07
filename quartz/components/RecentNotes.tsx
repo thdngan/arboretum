@@ -10,6 +10,9 @@ import { classNames } from "../util/lang"
 
 export interface Options {
   title?: string
+  showTitle: boolean
+  marker: string | false
+  datePosition: "below" | "before"
   limit: number
   linkToMore: SimpleSlug | false
   showTags: boolean
@@ -18,6 +21,9 @@ export interface Options {
 }
 
 const defaultOptions = (cfg: GlobalConfiguration): Options => ({
+  showTitle: true,
+  marker: false,
+  datePosition: "below",
   limit: 3,
   linkToMore: false,
   showTags: false,
@@ -50,18 +56,33 @@ export default ((userOpts?: Partial<Options>) => {
       return <></>
     }
     const { shown, remaining } = recentPages(cfg, allFiles, userOpts)
+    const dateBefore = opts.datePosition === "before"
+    const listClasses = ["recent-ul"]
+    if (opts.marker) listClasses.push("with-marker")
+    if (dateBefore) listClasses.push("date-before")
     return (
       <div class={classNames(displayClass, "recent-notes")}>
-        <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>
-        <ul class="recent-ul">
+        {opts.showTitle && <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>}
+        <ul class={listClasses.join(" ")}>
           {shown.map((page) => {
             const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
             const tags = page.frontmatter?.tags ?? []
             const icon = page.frontmatter?.icon as string | undefined 
+            const date = (page.dates || dateBefore) && (
+              <p class="meta">
+                {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
+              </p>
+            )
 
             return (
               <li class="recent-li">
+                {opts.marker && (
+                  <span class="recent-marker" aria-hidden="true">
+                    {opts.marker}
+                  </span>
+                )}
                 <div class="section">
+                  {dateBefore && date}
                   <div class="desc">
                     <h3>
                       <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
@@ -74,11 +95,7 @@ export default ((userOpts?: Partial<Options>) => {
                       </a>
                     </h3>
                   </div>
-                  {page.dates && (
-                    <p class="meta">
-                      <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                    </p>
-                  )}
+                  {!dateBefore && date}
                   {opts.showTags && (
                     <ul class="tags">
                       {tags.map((tag) => (
