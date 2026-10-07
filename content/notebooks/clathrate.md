@@ -27,7 +27,7 @@ Lunine & Stevenson [-@Lunine1985] extended a statistical mechanical model of cla
 
 ## Clathrate structures & what we know so far
 
-Clathrate hydrates have an open, cage-like design built from 20 to 28 hydrogen-bonded water molecules. They come in two main structural types: Structure I and Structure II. The size of the guest molecule determines which type forms. Structure I, for example, has a mix of small and large cages and can host molecules like CO2 and CH4. Meanwhile, Structure II has even bigger large cages, so it can hold bigger guests, but it also has twice as many small cages as large ones (16 and 8 per unit cell, against 2 and 6 in Structure I) [@Sloan2003]. The smallest guests, like O2, Kr, and Ar, fill those small cages, so they form Structure II too [@Mao2007].
+Clathrate hydrates have an open, cage-like design built from 20 to 28 hydrogen-bonded water molecules. They have two main structural types: Structure I and Structure II. The size of the guest molecule determines which type forms. Structure I, for example, has a mix of small and large cages and can host molecules like CO2 and CH4. Meanwhile, Structure II has even bigger large cages, so it can hold bigger guests, but it also has twice as many small cages as large ones (16 and 8 per unit cell, against 2 and 6 in Structure I) [@Sloan2003]. The smallest guests, like O2, Kr, and Ar, fill those small cages, so they form Structure II too [@Mao2007].
 
 For a long time, we thought that if a molecule was smaller than 5.8 angstroms, it would automatically form Structure I. But Davidson et al. [-@Davidson1984] showed that argon and krypton actually prefer Structure II, even though they're small enough for Structure I.
 

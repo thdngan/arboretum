@@ -131,7 +131,7 @@ So the annually integrated hydrogen escape from Mars is driven mostly by seasona
 
 ### How much water is Mars actually losing?
 
-Integrating over a full Martian year gives about 24,000 to 26,000 tonnes of water equivalent lost per year (expressed as H₂O, since 2 H atoms escaping = 1 water molecule lost). In hydrogen, that's about 3,000 to 3,250 tonnes per Martian year, or 50 to 55 g/s on average, below the range of 160 to 1800 g/s estimated from MAVEN observations by @Jakosky.etal2018. Only the perihelion peak, about 400 g/s, falls inside that range.
+Integrating over a full Martian year gives about 27,000 to 29,000 tonnes of water equivalent lost per year (expressed as H₂O, since 2 H atoms escaping = 1 water molecule lost). In hydrogen, that's about 3,000 to 3,250 tonnes per Martian year, or 50 to 55 g/s on average, below the range of 160 to 1800 g/s estimated from MAVEN observations by @Jakosky.etal2018. Only the perihelion peak, about 400 g/s, falls inside that range.
 
 ## Caveats
 
