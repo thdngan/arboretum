@@ -1090,6 +1090,23 @@ div:has(> .readermode) {
   margin-bottom: 0;
 }
 
+.sidebar.left .backlinks {
+  flex: 0 0 auto;
+
+  &:has(> ul > li:nth-child(4)) {
+    flex-shrink: 100;
+    min-height: 10.5rem;
+  }
+
+  & > ul.overflow {
+    height: auto;
+  }
+
+  @media all and ($mobile) {
+    display: none;
+  }
+}
+
 @media all and ($mobile) {
   .sidebar.left .page-title a {
     display: inline-flex;

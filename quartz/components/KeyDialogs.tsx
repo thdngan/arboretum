@@ -87,7 +87,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
                   <kbd>Ctrl</kbd> + <kbd>G</kbd>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td class="guide-buttons">
                   <span class="guide-icon guide-icon--dice"></span>
                 </td>
@@ -102,7 +102,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
                 </td>
                 <td>Filter the random pick by section or tag</td>
                 <td class="guide-shortcut">&mdash;</td>
-              </tr>
+              </tr> */}
               <tr>
                 <td class="guide-buttons">
                   <span class="guide-icon guide-icon--up"></span>

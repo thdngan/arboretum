@@ -227,6 +227,10 @@ export const defaultContentPageLayout: PageLayout = {
     //   }),
     // ),
     Component.DesktopOnly(Component.Topics(topicsConfig)),
+    // Component.ConditionalRender({
+    //   component: Component.DesktopOnly(Component.Backlinks()),
+    //   condition: (page) => !isHome(page.fileData.slug!),
+    // }),
 
     // Component.DesktopOnly(
     //   Component.RecentNotes({
