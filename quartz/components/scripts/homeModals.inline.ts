@@ -1,10 +1,12 @@
 import { openOverlay, closeOverlay, releaseAllOverlays } from "./overlayLock.inline"
 
 const OPEN_CLASS = "active"
+const CLOSING_CLASS = "closing"
 const LOCK_CLASS = "home-modal-open"
 
 let openPanel: HTMLElement | null = null
 let lastTrigger: HTMLElement | null = null
+let finishClosing: (() => void) | null = null
 
 function focusableIn(panel: HTMLElement): HTMLElement[] {
   return Array.from(
@@ -16,14 +18,24 @@ function focusableIn(panel: HTMLElement): HTMLElement[] {
 
 function closeModal() {
   if (!openPanel) return
+  const panel = openPanel
+  openPanel = null
 
-  openPanel.classList.remove(OPEN_CLASS)
   document
     .querySelectorAll<HTMLElement>(`[data-home-modal][aria-expanded="true"]`)
     .forEach((btn) => btn.setAttribute("aria-expanded", "false"))
-  document.documentElement.classList.remove(LOCK_CLASS)
-  closeOverlay(openPanel)
-  openPanel = null
+
+  panel.classList.add(CLOSING_CLASS)
+  const finish = () => {
+    if (finishClosing !== finish) return
+    finishClosing = null
+    panel.classList.remove(OPEN_CLASS, CLOSING_CLASS)
+    document.documentElement.classList.remove(LOCK_CLASS)
+    closeOverlay(panel)
+  }
+  finishClosing = finish
+  const fading = panel.querySelector(".home-modal-panel")?.getAnimations?.() ?? []
+  Promise.allSettled(fading.map((animation) => animation.finished)).then(finish)
 
   const trigger = lastTrigger
   lastTrigger = null
@@ -35,6 +47,7 @@ function openModal(name: string, trigger: HTMLElement) {
   if (!panel) return
 
   if (openPanel && openPanel !== panel) closeModal()
+  finishClosing?.()
 
   lastTrigger = trigger
   openPanel = panel
@@ -50,6 +63,7 @@ function openModal(name: string, trigger: HTMLElement) {
 }
 
 function setupHomeModals() {
+  finishClosing?.()
   document.documentElement.classList.remove(LOCK_CLASS)
   releaseAllOverlays()
   openPanel = null

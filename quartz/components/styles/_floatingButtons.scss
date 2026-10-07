@@ -86,6 +86,193 @@
         visibility: visible;
       }
     }
+
+    .button-pair {
+      display: flex;
+      flex-direction: column;
+
+      .floating-button[data-action="randomFilter"] {
+        height: 24px;
+        border-bottom: none;
+
+        svg {
+          width: 13px;
+          height: 13px;
+        }
+
+        &.filtered {
+          color: var(--secondary);
+
+          svg {
+            fill: currentColor;
+          }
+        }
+
+        &[aria-expanded="true"] {
+          background: var(--secondary);
+          color: var(--light);
+        }
+
+        @media (pointer: coarse) {
+          height: 36px;
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+
+    &:has(.random-filter-panel:not([hidden])) .floating-button-tooltip {
+      display: none;
+    }
+
+    .random-filter-panel {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      right: calc(100% + 0.6rem);
+      width: min(17.5rem, calc(100vw - 36px - 2.85rem));
+      max-height: min(70vh, 26rem);
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+
+      &[hidden] {
+        display: none;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+
+        &:focus-visible {
+          outline: 2px solid var(--tertiary);
+          outline-offset: 2px;
+        }
+
+        &:disabled {
+          cursor: default;
+          opacity: 0.35;
+        }
+      }
+
+      .random-filter-label,
+      .random-filter-count {
+        font-family: var(--headerFont);
+        font-size: 0.7rem;
+      }
+
+      .random-filter-label {
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+
+      .random-filter-count {
+        color: var(--darkgray);
+      }
+
+      .random-filter-row {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+      }
+
+      .random-filter-segments {
+        flex: 0 0 auto;
+        display: flex;
+        gap: 0.15rem;
+        padding: 0.15rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+
+        button {
+          flex: 1 1 auto;
+          padding: 0.3rem 0.5rem;
+          border-radius: 3px;
+          font-family: var(--headerFont);
+          font-size: 0.78rem;
+          line-height: 1.2;
+          color: var(--darkgray);
+
+          &:hover {
+            background: var(--lightgray);
+          }
+
+          &[aria-pressed="true"] {
+            background: var(--secondary);
+            color: var(--light);
+          }
+        }
+
+        &.random-filter-match button {
+          padding: 0.2rem 0.55rem;
+          font-size: 0.7rem;
+        }
+      }
+
+      .random-filter-tags {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 0.35rem;
+
+        button {
+          padding: 0 0.35rem;
+          border-radius: 5px;
+          background: var(--highlight);
+          font-family: var(--bodyFont);
+          font-size: calc(0.9rem * var(--fontOptical));
+          font-weight: bold;
+          line-height: 1.5;
+          color: var(--secondary);
+
+          &::before {
+            content: "#";
+          }
+
+          @media (hover: hover) {
+            &:hover:not(:disabled):not([aria-pressed="true"]) {
+              background: color-mix(in srgb, var(--secondary) 28%, transparent);
+            }
+          }
+
+          &[aria-pressed="true"] {
+            background: var(--secondary);
+            color: var(--light);
+          }
+        }
+      }
+
+      .random-filter-reset {
+        padding: 0;
+        border-bottom: 1px solid var(--border);
+        font-family: var(--headerFont);
+        font-size: 0.7rem;
+        color: var(--gray);
+
+        &:hover:not(:disabled) {
+          color: var(--secondary);
+        }
+      }
+    }
   }
   
   // 左侧按钮组的提示显示在右侧
@@ -100,6 +287,11 @@
         border-right: 4px solid var(--dark);
         border-left: none;
       }
+    }
+
+    .random-filter-panel {
+      right: auto;
+      left: calc(100% + 0.6rem);
     }
   }
   

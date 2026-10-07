@@ -1,7 +1,7 @@
 // from https://quartz.eilleeenz.com/Quartz-customization-log#scroll-to-top--random-page
 // original source: 2/2/25
 // https://github.com/CatCodeMe/catcodeme.github.io/blob/770f3f8d1f6849ef40bc06b4300a52b3aecfb551/quartz/components/scripts/floatingButtons.inline.ts
-import { navigateToRandomPage } from "./_randomPage.inline";
+import { navigateToRandomPage, toggleRandomFilter } from "./_randomPage.inline";
 
 // 全局变量跟踪状态
 // let activeModal: HTMLElement | null = null
@@ -93,6 +93,10 @@ function setupFloatingButtons() {
 
       case 'randomPgFloating':
         navigateToRandomPage()
+        break
+
+      case 'randomFilter':
+        toggleRandomFilter()
         break
     }
   }
