@@ -6,7 +6,6 @@ tags:
   - physics
   - discussions
   - incomplete
-  - writings
 ---
 
 *This is one of those ancient posts that is still incomplete and I just don't know if I'll ever find the motivation to finish it lol. BUT. It did set the foundation for this little blog, so I'll leave it here :)*
@@ -20,10 +19,6 @@ Of course in order to discuss all that, we need to grasp the basic concepts. The
 ## What are neutrinos?
 
 Basically they are elementary particles that have neutral charge and very VERY small mass (thought to be massless for a long time). They are [[fermions|fermions]] that interact only via the [[weak interactions|weak interactions]] and [[gravity|gravity]].
-
-*I know, I know... The explanation above is still kind of vague, especially if you're not deep into particle physics (same). Like, cool, they're [[fermions]], but... what even are [[fermions]]? What exactly counts as an [[elementary particles|elementary particle]]? Where do they hang out inside atoms? And how do they connect to the particles we are more familiar with, like [[electrons]], [[protons]], [[neutrons]]?*
-
-*That's exactly why I set up this site (though the topics kind of strayed far from* just *particle physics), to take full advantage of bidirectional links and make sense of all this. Instead of aimlessly Googling definitions, you can jump between individual notes by clicking the [[fermions|internal links]], or explore how everything connects in the interactive map.*
 
 ## Why neutrinos for communication?
 

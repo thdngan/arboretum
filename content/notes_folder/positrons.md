@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - antiparticle of the [[electrons|electron]]: same mass and spin, charge +e
 - annihilate with electrons → two 511 keV gamma-ray [[photons]], emitted back to back

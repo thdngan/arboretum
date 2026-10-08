@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - lightest [[mesons]], made of up and down [[quarks]] and antiquarks: π⁺, π⁻, π⁰
 - mass ≈ 140 MeV/c² (charged) and 135 MeV/c² (neutral), ~15% of a [[protons|proton]]'s

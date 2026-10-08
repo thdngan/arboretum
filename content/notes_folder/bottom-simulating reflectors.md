@@ -1,7 +1,6 @@
 ---
 title: bottom-simulating reflectors
 tags:
-  - notes
   - planetary-science
 date: 2024-05-14
 draft: false

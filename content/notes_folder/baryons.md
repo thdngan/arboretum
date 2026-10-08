@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[hadrons]] made of three [[quarks]], bound by the [[strong interactions|strong interaction]]
 - half-integer spin → [[fermions]]

@@ -2,7 +2,6 @@
 title: Arrhenius equation
 date: 2024-05-12
 tags:
-  - notes
   - chemistry
   - physics
 ---

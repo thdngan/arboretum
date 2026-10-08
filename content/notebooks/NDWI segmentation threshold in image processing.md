@@ -3,8 +3,6 @@ title: NDWI segmentation threshold in image processing
 date: 2022-11-01
 tags:
   - image-processing
-  - notebooks
-  - writings
 ---
 
 

@@ -1,7 +1,6 @@
 ---
 title: rheology
 tags:
-  - notes
   - physics
   - planetary-science
 date: 2024-05-14

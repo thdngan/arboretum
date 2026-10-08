@@ -2,7 +2,6 @@
 title: Will AI solve the climate crisis?
 date: 2026-10-04
 tags:
-  - writings
   - discussions
   - artificial-intelligence-AI
   - climate

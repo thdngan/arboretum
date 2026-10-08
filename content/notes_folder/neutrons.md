@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[composite particles|composite]] particle, a [[baryons|baryon]]: one up [[quarks|quark]] and two down quarks (udd)
 - no electric charge, spin 1/2

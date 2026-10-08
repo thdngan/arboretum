@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - one of the four fundamental interactions, the only one that changes [[quarks|quark]] or [[leptons|lepton]] flavour (e.g. d → u)
 - carriers: W⁺ and W⁻ (80.4 GeV/c²) and Z⁰ (91.2 GeV/c²) [[bosons]]

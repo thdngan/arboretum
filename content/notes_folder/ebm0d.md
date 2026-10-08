@@ -3,9 +3,7 @@ title: Zero-dimensional Energy Balance Model
 date: 2023-02-12
 tags:
   - climate
-  - notebooks
   - planetary-science
-  - notes
 ---
 
 Global mean energy budget of a planet, treated as one uniform, well-mixed sphere:

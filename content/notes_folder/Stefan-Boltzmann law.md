@@ -5,7 +5,6 @@ tags:
   - physics
   - planetary-science
   - astrophysics
-  - notes
 ---
 Total power emitted per unit area by a [[blackbody]]:
 

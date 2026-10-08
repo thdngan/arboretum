@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[composite particles|composite]] particle, a [[baryons|baryon]]: two up [[quarks]] and one down quark (uud), bound by the [[strong interactions|strong interaction]]
 - charge $+e$, spin 1/2

@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
   - hypothetical
 ---
 - hypothetical, very light, weakly interacting [[bosons|boson]]

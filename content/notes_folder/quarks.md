@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[elementary particles|elementary]] [[fermions]] (spin 1/2) that make up [[hadrons]], e.g. [[protons]] (uud) and [[neutrons]] (udd)
 - 6 flavours in 3 generations: up/down, charm/strange, top/bottom

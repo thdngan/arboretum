@@ -3,9 +3,7 @@ title: One-dimensional Energy Balance Model
 date: 2023-03-11
 tags:
   - climate
-  - notebooks
   - planetary-science
-  - writings
 ---
 So far we've looked at the [[ebm0d|zero-dimensional energy balance model]] (EBM), which treats Earth as a single uniform entity, so it can't capture differences between latitudes. Solar radiation varies a lot from the equator to the poles, and ice feedbacks matter a great deal for regional climate, so we need to add a spatial dimension.
 

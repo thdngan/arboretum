@@ -1,6 +1,5 @@
 ---
 tags:
-  - notes
   - physics
   - chemistry
   - planetary-science

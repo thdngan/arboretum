@@ -1,7 +1,6 @@
 ---
 title: free energy
 tags:
-  - notes
   - thermodynamics
   - physics
 date: 2024-05-14

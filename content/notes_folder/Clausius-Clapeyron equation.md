@@ -2,7 +2,6 @@
 title: Clausius-Clapeyron equation
 date: 2024-05-14
 tags:
-  - notes
   - physics
   - planetary-science
 ---

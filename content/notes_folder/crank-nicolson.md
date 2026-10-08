@@ -1,7 +1,6 @@
 ---
 title: Crank-Nicolson scheme
 tags:
-  - notes
   - physics
   - modelling
 date: 2025-07-31

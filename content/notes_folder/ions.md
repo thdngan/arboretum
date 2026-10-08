@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - atom or molecule with a net electric charge, from losing or gaining [[electrons]]
 - cation (positive, e.g. Na⁺), anion (negative, e.g. Cl⁻), polyatomic ions (e.g. SO₄²⁻)

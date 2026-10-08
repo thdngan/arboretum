@@ -2,7 +2,6 @@
 title: blackbody and blackbody radiation
 date: 2022-09-05
 tags:
-  - notes
   - physics
   - astrophysics
   - planetary-science

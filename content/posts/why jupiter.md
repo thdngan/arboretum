@@ -4,7 +4,6 @@ icon: fa-regular fa-envelope
 date: 2026-09-12
 tags:
   - personal
-  - writings
   - astrophysics
   - planetary-science
 ---

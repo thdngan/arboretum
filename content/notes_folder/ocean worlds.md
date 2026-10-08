@@ -3,7 +3,6 @@ title: ocean worlds
 date: 2024-05-09
 tags:
   - planetary-science
-  - notes
 ---
 - bodies with a large liquid-water ocean, usually under an ice shell
 - mostly icy moons of the outer solar system (Earth also counts)

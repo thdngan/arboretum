@@ -2,7 +2,7 @@
 title: difference between ∂, δ, d and Δ
 date: 2022-09-11
 tags:
-  - notes
+  - maths
 draft: false
 ---
 - **Δ (capital delta)**: finite change ($\Delta t = t_2 - t_1$), also the Laplacian ($\Delta f = \nabla^2 f$) and the discriminant of a polynomial

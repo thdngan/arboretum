@@ -1,7 +1,6 @@
 ---
 title: gas adsorption
 tags:
-  - notes
   - physics
   - chemistry
   - planetary-science

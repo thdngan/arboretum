@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[bosons]] (spin 1, massless) that carry the [[strong interactions|strong interaction]]
 - hold [[quarks]] together inside [[hadrons]]

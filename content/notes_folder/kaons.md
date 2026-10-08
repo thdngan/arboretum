@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - lightest [[mesons]] containing a strange [[quarks|quark]] (strange quark or antiquark, with an up or down one)
 - decay only via the [[weak interactions|weak interaction]] → long-lived (charged kaons ≈ 12 ns)

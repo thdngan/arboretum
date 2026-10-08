@@ -3,9 +3,7 @@ title: "The planet that regulates itself: Daisy world"
 date: 2023-05-14
 tags:
   - climate
-  - notebooks
   - planetary-science
-  - writings
 ---
 Earth is kind of like one giant living organism. At least, that's what the Gaia Hypothesis suggests: the planet as a self-regulating system where the atmosphere, oceans, land and life all work together to keep conditions habitable. Living organisms adapt to their environment, and they also shape it in ways that keep the system stable.
 

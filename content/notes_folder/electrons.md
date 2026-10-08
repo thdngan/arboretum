@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - [[elementary particles|elementary]] particle, a charged [[leptons|lepton]] (first generation)
 - charge $-e = -1.602\times10^{-19}$ C, spin 1/2 ([[fermions|fermion]])

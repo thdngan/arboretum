@@ -1,7 +1,6 @@
 ---
 title: nonstoichiometric
 tags:
-  - notes
   - chemistry
 date: 2024-05-14
 ---

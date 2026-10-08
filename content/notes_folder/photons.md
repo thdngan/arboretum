@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - quanta of electromagnetic radiation, from radio waves to gamma rays
 - the [[bosons|boson]] that carries the electromagnetic force: spin 1, no mass, no charge

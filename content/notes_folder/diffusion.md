@@ -1,7 +1,6 @@
 ---
 title: diffusion
 tags:
-  - notes
   - physics
   - chemistry
 date: 2024-05-14

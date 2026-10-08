@@ -19,7 +19,7 @@ Bài đầu tiên trong sách tả những người về chót trong một cuộ
 >Chúng ta hay có xu hướng bám lấy những người siêu phàm, những người được cho rằng một tay thay đổi thế giới, mà bỏ qua câu chuyện của những kẻ người trần mắt thịt như chính bản thân chúng ta, những người lê lết đau đớn ở cuối đoàn marathon, những người như em Ruby. Đây là một điều đáng tiếc. Bởi vì khi chúng ta bị thu hút bởi những người xuất chúng và nổi tiếng, chúng ta dễ rơi vào tâm lý chờ đợi, phó thác.
 
 
-Lúc này tác giả chưa đề cập đến khái niệm "anh hùng thường nhật" (mượn của nhà tâm lý học Philip Zimbardo), nhưng theo mình Ruby, gia đình em và cô giáo dạy em, Barbary Henry, chính là những người như thế. Cái khái niệm đó phải mấy bài sau mới xuất hiện, trong một bài về chuyện "sống chung với lũ". 
+Lúc này tác giả chưa đề cập đến khái niệm "anh hùng thường nhật" (mượn của nhà tâm lý học Philip Zimbardo), nhưng theo mình Ruby, gia đình em và cô giáo dạy em, Barbara Henry, chính là những người như thế. Cái khái niệm đó phải mấy bài sau mới xuất hiện, trong một bài về chuyện "sống chung với lũ". 
 
 >[!quote] "Sống chung với lũ" và chủ nghĩa anh hùng thường nhật, tr. 40-41
 >Khái niệm "anh hùng thường nhật" thay đổi cách nhìn của chúng ta. Thay vì hình dung rằng phẩm chất "anh hùng" được thiên nhiên ban tặng cho một số cá nhân đặc biệt, chúng ta hiểu rằng nó không phi thường, mà gần gũi hơn rất nhiều. [...] "anh hùng thường nhật" mang trong nó hàm ý là ai trong chúng ta cũng có thể làm được điều tốt, thậm chí, thay vì thụ động chờ đợi một siêu nhân ra tay, ai cũng có nghĩa vụ trở thành anh hùng thường nhật ở một khía cạnh nào đó, trong một tình huống nào đó. Đó là cách duy nhất để đẩy lùi lũ.

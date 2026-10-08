@@ -3,7 +3,6 @@ title: albedo
 date: 2022-10-22
 tags:
   - climate
-  - notes
   - planetary-science
 ---
 - fraction of incident radiation reflected by a surface or body

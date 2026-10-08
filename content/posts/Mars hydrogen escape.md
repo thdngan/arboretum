@@ -3,7 +3,6 @@ title: How Mars loses its water
 date: 2026-06-01
 tags:
   - planetary-science
-  - writings
   - astrophysics
   - physics
   - climate

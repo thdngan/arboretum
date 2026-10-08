@@ -4,9 +4,7 @@ date: 2024-09-13
 tags:
   - cosmology
   - astrophysics
-  - notebooks
   - incomplete
-  - writings
 draft: false
 ---
 
@@ -113,7 +111,7 @@ Lastly, some have suggested nonstandard cosmologies, like variations in the bary
 
 ## Update?
 
-OK our view on whether stellar effects could account for all of the missing lithium seems to have changed. The latest review by the Particle Data Group calls stellar depletion "the leading resolution" of the lithium problem, even though the stellar models still need to be fine-tuned in otder to destroy enough lithium [@Fields2025]. So Suspect #1 is now the prime suspect.
+OK our view on whether stellar effects could account for all of the missing lithium seems to have changed. The latest review by the Particle Data Group calls stellar depletion "the leading resolution" of the lithium problem, even though the stellar models still need to be fine-tuned in order to destroy enough lithium [@Fields2025]. So Suspect #1 is now the prime suspect.
 
 (Previously, there was a strong argument against this suspect in the form of lithium-6. This isotope is more fragile than lithium-7, and has been reported in at least two of these stars. If the former had survived, the latter couldn't have been destroyed to any great extent. But more sensitive searches now find no lithium-6 there, only upper limits [@Fields2022]. These stars should have been born with some lithium-6, since cosmic rays produce it. This absence therefore suggests that it has been destroyed [@Fields2025]. And if they destroyed lithium-7 by the same amount, that would be more than enough to fill in the missing part [@Fields2022]).
 

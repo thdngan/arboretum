@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - second-generation charged [[leptons|lepton]]: same charge and spin as the [[electrons|electron]], ~207× heavier
 - mean lifetime 2.2 μs, decays into an electron and two [[neutrinos]]

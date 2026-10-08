@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - strongest of the four fundamental interactions, range ~10⁻¹⁵ m (the size of a nucleus)
 - acts on colour charge, carried by [[gluons]]

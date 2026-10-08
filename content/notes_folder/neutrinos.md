@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 Neutrinos are [[fermions]] that only interact through [[weak interactions]] and [[gravity]].
 

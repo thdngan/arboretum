@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - particles with integer spin (0, 1, 2, ...), vs. [[fermions]] (half-integer)
 - no Pauli exclusion: any number can share one quantum state (lasers, Bose-Einstein condensates)

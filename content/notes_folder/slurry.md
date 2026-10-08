@@ -1,7 +1,5 @@
 ---
 title: slurry
-tags:
-  - notes
 date: 2024-05-14
 ---
 - fine solid particles suspended in a liquid (usually water), fluid enough to pump or pour

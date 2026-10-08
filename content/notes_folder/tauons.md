@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - third-generation charged [[leptons|lepton]]: 1.777 GeV/c², ~3500× the [[electrons|electron]] mass (~1.9 [[protons|proton]] masses)
 - lifetime ≈ 2.9 × 10⁻¹³ s

@@ -4,7 +4,6 @@ date: 2022-08-01
 tags:
   - particle
   - physics
-  - notes
 ---
 - one of the four fundamental interactions, by far the weakest (between two protons, ~10⁻³⁶ of the electric force)
 - always attractive, infinite range → dominates at large scales
