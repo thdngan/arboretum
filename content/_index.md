@@ -2,6 +2,7 @@
 title: L'arboretum
 date: 2021-11-01
 enableToc: false
+comments: false
 ---
 
 Hey, I'm Ngân. 

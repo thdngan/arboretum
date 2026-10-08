@@ -130,7 +130,7 @@ export const sharedPageComponents: SharedLayout = {
     //     !isHome(page.fileData.slug!) && !isListPage(page.fileData.slug!),
     // }),
     Component.ConditionalRender({
-      component: Component.Dinkus({ mobileOnly: true }),
+      component: Component.Dinkus(),
       condition: (page) => isHome(page.fileData.slug!),
     }),
     // Component.MobileOnly(Component.Topics(topicsConfig)),

@@ -156,11 +156,42 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       const maybeBot = (chromeVersion && Number(chromeVersion[1]) < 140)
         || (/Windows|X11/.test(navigator.userAgent) && screen.width <= 1024);
       const countPath = () => (maybeBot ? '/possible-bot' : '') + location.pathname;
+      let stopReadTracking = () => {};
+      const trackReading = () => {
+        stopReadTracking();
+        stopReadTracking = () => {};
+        const slug = document.body.dataset.slug ?? '';
+        const article = document.querySelector('article');
+        if (maybeBot || !article || slug === 'index' || slug.endsWith('/index') || slug.startsWith('tags/')) return;
+        const path = location.pathname;
+        const sendEvent = (name) => goatcounter.count({ path: name + ': ' + path, event: true });
+        let seconds = 0;
+        const timer = setInterval(() => {
+          if (document.visibilityState !== 'visible') return;
+          seconds += 1;
+          if (seconds < 60) return;
+          clearInterval(timer);
+          sendEvent('stayed 1 min');
+        }, 1000);
+        const onScroll = () => {
+          if (article.offsetHeight < window.innerHeight * 1.5) return;
+          if (article.getBoundingClientRect().bottom > window.innerHeight) return;
+          window.removeEventListener('scroll', onScroll);
+          sendEvent('reached end');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        stopReadTracking = () => {
+          clearInterval(timer);
+          window.removeEventListener('scroll', onScroll);
+        };
+      };
       goatcounterScript.onload = () => {
         window.goatcounter.endpoint = endpoint;
         goatcounter.count({ path: countPath() });
+        trackReading();
         document.addEventListener('nav', () => {
           goatcounter.count({ path: countPath() });
+          trackReading();
         });
       };
 
