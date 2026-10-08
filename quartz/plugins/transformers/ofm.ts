@@ -510,6 +510,9 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                 node.children.splice(0, 1, ...blockquoteContent)
 
                 const classNames = ["callout", calloutType]
+                if (useDefaultTitle) {
+                  classNames.push("default-title")
+                }
                 if (collapse) {
                   classNames.push("is-collapsible")
                 }

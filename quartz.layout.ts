@@ -35,6 +35,8 @@ const topicsConfig = {
     "incomplete",
     "hypothetical",
     "empty",
+    "graph-exclude",
+    "book-quotes",
   ],
 };
 const explorerConfig: Partial<ExplorerOptions> = {
@@ -43,7 +45,7 @@ const explorerConfig: Partial<ExplorerOptions> = {
     if (!a.isFolder && b.isFolder) return 1;
 
     if (a.isFolder && b.isFolder) {
-      var order =["posts","notebooks","notes_folder","empty"];
+      var order =["posts","book_quotes","notebooks","notes_folder","empty"];
       var indexA = order.indexOf(a.slugSegment);
       var indexB = order.indexOf(b.slugSegment);
 

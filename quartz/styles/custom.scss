@@ -385,6 +385,10 @@ blockquote:not(.callout) {
             transform: scale(0.75);
         }
     }
+
+    &.default-title:not(.is-collapsible) > .callout-title {
+        display: none;
+    }
 }
 
 .callout[data-callout="note"] {
