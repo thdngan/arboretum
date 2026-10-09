@@ -11,6 +11,10 @@ draft: false
 
 
 ![[3_min.jpeg]]
+<span class="caption">  
+<i>Credits: BICEP2 Collaboration/CERN/NASA, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_History_of_the_Universe.jpg)
+</i>
+</span>
 
 
 

@@ -49,8 +49,16 @@ Remote sensing instruments directly measure radiance. This includes radiation re
 *Read more about the energy transfer in the atmosphere through my posts on [[tags/climate|climate and weather]]*
 
 ![[images/image processing/reflectance through atmosphere.png]]
+<span class="caption">  
+<i>Credits: [Planetary Spectrum Generator](https://psg.gsfc.nasa.gov/helpmodel.php) (NASA GSFC), cropped
+</i>
+</span>
 
 ![[images/image processing/diffuse_v_specular.png]]
+<span class="caption">  
+<i>Credits: [Hermary](https://hermary.com/learning/what-can-be-scanned/)
+</i>
+</span>
 
 So light gets messed with at every stage: on the way down through the atmosphere, when it diffusively reflects off the surface, and on the way back up where it scatters again. Which is why we want Top of Atmosphere (TOA) reflectance rather than the digital number. TOA reflectance is estimated mainly from the radiance leaving the ground, transmission factors and path radiance.
 
@@ -93,6 +101,10 @@ $$
 
 
 ![[images/image processing/bands_reflectance.png]]
+<span class="caption">  
+<i>Bottom panel: [NASA Landsat Science](https://science.nasa.gov/missions/landsat/sentinel-2a-launchesour-compliments-and-our-complements/)
+</i>
+</span>
 
 From the above figure, it is apparent that reflection in **NIR** wavelength over water bodies is **lower** than reflection in the **Red** wavelength. As a result, **water bodies** will have ***negative NDVI*** values. On the contrary, reflection in **Green** wavelength over water bodies is **higher** than reflection in **NIR** wavelength. Thus, **water bodies** will have ***positive NDWI*** values.
 

@@ -15,6 +15,10 @@ In this version we divide the Northern Hemisphere into nine bands, each spanning
 
 
 ![[ebm2.png]]
+<span class="caption">  
+<i>From Fig. 3.1 of Henderson-Sellers & McGuffie, A Climate Modelling Primer (Wiley, 1987)
+</i>
+</span>
 
 
 # Heat flows
@@ -22,14 +26,16 @@ In this version we divide the Northern Hemisphere into nine bands, each spanning
 In an energy balance model, the main goal is to account for all heat flows in and out of the system. In the model we are examining, both the solar flux and albedo vary with latitude. The solar flux is denoted by $S_i$ and the albedo is denoted by $\alpha_i$, where i ranges from 1 to 9 representing different latitude bands. The incoming heat flow for our system would be:
 
 $$
-P_{gain} = \frac{S_i(1-\alpha_i)}{4}
+P_{gain} = S_i(1-\alpha_i)
 $$
-According to [[Stefan-Boltzmann law]], the outgoing longwave radiation is:
+Here $S_i$ is already the average solar flux reaching band $i$, so there is no division by 4. In the code, that quarter is inside `SOL_FRAC`.
+
+The outgoing longwave radiation is approximated by a straight line in the surface temperature ([Budyko, 1969](https://doi.org/10.3402/tellusa.v21i5.10109)):
 
 $$
-R_i = \sigma T^4_i = A + BT_i
+R_i = A + BT_i
 $$
-where A and B are experiment parameters.
+where A and B are empirical parameters fitted to observations and $T_i$ is in °C. This is not $\sigma T_i^4$ from the [[Stefan-Boltzmann law]]. At 15 °C, $A + BT$ gives about 237 $Wm^{-2}$, while $\sigma T^4$ gives about 391 $Wm^{-2}$. The difference is the greenhouse effect: the atmosphere absorbs much of what the surface emits. A straight line fits because of water vapour's greenhouse effect ([Koll & Cronin, 2018](https://doi.org/10.1073/pnas.1809868115)).
 
 If a latitude band is colder or warmer than the global average, heat flows into or out of it. We assume this flow is proportional to the temperature difference $(T_i - T_{avg})$, with $k_t$ the diffusivity, so the energy exchange among latitude bands is:
 
@@ -60,7 +66,7 @@ EPSILON = 1.*10**-6   #Small value to check the stable condition of the Model
 ```python
 # infrared radiation
 A = 204.                 #infrared cooling ($Wm^{-2}$)
-B = 2.17                 #sigma*T^4 - a + bT, sigma: Stefan-Boltzmann constant
+B = 2.17                 #infrared cooling per degree ($Wm^{-2}$/degC)
 
 # heat transfer
 K = 3.81                 #diffusivity ($Wm^{-2}$/degC) (for energy exchange among latitudinal bands)
@@ -187,19 +193,19 @@ def ebm1d(a,b,k,i):
     plt.show()
 ```
 
-With the function created above, all we have to do now is to enter the parameters A, B, K and decide whether we want to find solar flux for the case Earth is entirely covered by ice or not.
+With the function created above, all we have to do now is to enter the parameters A, B, K and decide whether the Earth is entirely covered by ice or not.
 
 # Examples
 
-## Estimate the value of solar flux so that the Earth will be entirely covered by ice
+## An ice-covered Earth
 
-For this case, I entered the values for A, B and K, and i = 1 to notify that this is an icy case. The solar flux for each latitudinal band can be found in the following table:
+For this case, I entered the values for A, B and K, and i = 1 to notify that this is an icy case. The absorbed solar flux for each latitudinal band can be found in the following table:
 
 ```python
 ebm1d(204.,2.17,3.81,1)
 ```
 
-| Latitude (degree) | Equil. Temperature (degC) | Equil. Albedo | Solar Flux |
+| Latitude (degree) | Equil. Temperature (degC) | Equil. Albedo | Absorbed Solar Flux |
 |--------------------------|------------------------------------|------------------------|---------------------|
 | **5.0**             | -29.396811                         | 0.62                   | 158.42124           |
 | **15.0**            | -30.048784                         | 0.62                   | 154.52244           |
@@ -213,7 +219,8 @@ ebm1d(204.,2.17,3.81,1)
 
 
 ![[05_A-204.0_B-2.17_K-3.81_icy.png]]
-Apparently, the equilibrium albedo remains constant at 0.62 for all bands because this is what I defined in the function for an icy planet (although I think this could be improved by defining more complex assumptions). The equilibrium temperatures and solar fluxes, on the other hand, both decrease with latitude. We can also see that the temperatures are all extremely low (the highest temperature at the lowest latitude is only -29.4$\degree$ C). This seems to be correct for the case of an icy planet.
+Apparently, the equilibrium albedo remains constant at 0.62 for all bands because this is what I defined in the function for an icy planet (although I think this could be improved by defining more complex assumptions). The equilibrium temperatures and absorbed solar fluxes, on the other hand, both decrease with latitude. We can also see that the temperatures are all extremely low (the highest temperature at the lowest latitude is only -29.4$\degree$ C). Every band stays below -10$\degree$ C, the temperature below which the model makes a band fully icy. So the albedo didn't need to be forced, a planet that starts completely frozen stays frozen under today's sunlight. The next run uses the same A, B and K and ends up much warmer, so the model has two stable climates for the same sunlight.
+
 
 ## Different K values
 
@@ -223,7 +230,7 @@ Budyko (1969) let $k_t=3.81$.
 ebm1d(204.,2.17,3.81,0)
 ```
 
-| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Solar Flux** |
+| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Absorbed Solar Flux** |
 |-----------------------|------------------------------------|------------------------|----------------|
 | **5.0**               | 29.806494                          | 0.23                   | 321.01146      |
 | **15.0**              | 27.805394                          | 0.24                   | 309.04488      |
@@ -248,7 +255,7 @@ Budyko (1969) let $A = 202 Wm^{-2}$ and $B= 1.45 Wm^{-2}\degree C^{-1}$.
 ebm1d(202.,1.45,3.81,0)
 ```
 
-| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Solar Flux** |
+| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Absorbed Solar Flux** |
 |-----------------------|------------------------------------|------------------------|----------------|
 | **5.0**               | 42.820299                          | 0.230000               | 321.011460     |
 | **15.0**              | 40.545284                          | 0.240000               | 309.044880     |
@@ -269,7 +276,7 @@ Cess (1976) let $A = 212 Wm^{-2}$ and $B= 1.6 Wm^{-2}\degree C^{-1}$.
 ebm1d(212.,1.6,3.81,0)
 ```
 
-| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Solar Flux** |
+| **Latitude (degree)** | **Equilibrium Temperature (degC)** | **Equilibrium Albedo** | **Absorbed Solar Flux** |
 |-----------------------|------------------------------------|------------------------|----------------|
 | **5.0**               | 31.979023                          | 0.23                   | 321.01146      |
 | **15.0**              | 29.767086                          | 0.24                   | 309.04488      |

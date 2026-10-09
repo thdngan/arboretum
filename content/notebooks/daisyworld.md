@@ -5,7 +5,8 @@ tags:
   - climate
   - planetary-science
 ---
-Earth is kind of like one giant living organism. At least, that's what the Gaia Hypothesis suggests: the planet as a self-regulating system where the atmosphere, oceans, land and life all work together to keep conditions habitable. Living organisms adapt to their environment, and they also shape it in ways that keep the system stable.
+Earth is kind of like one giant living organism. At least, that's what the Gaia Hypothesis suggests: the planet as a self-regulating system where the atmosphere, oceans, land and life all work together to keep conditions habitable. In this view, living organisms adapt to their environment, and they also shape it in ways that keep the system stable. The idea that life has a large effect on the climate is widely accepted, but whether it keeps the planet stable is still debated ([Boyle, 2025](https://doi.org/10.1098/rstb.2024.0087)).
+
 
 To explore this idea, James Lovelock and Andrew Watson introduced **Daisyworld** in 1983. It's a very simplified fictional planet, built to show how biological feedback can regulate climate. Daisyworld has no atmospheric chemistry or plate tectonics, only two types of daisies:
 
@@ -43,6 +44,7 @@ Let's have a look at the little code I made during a class on Climate Modelling:
 
 Some parameters used in the code:
 - `S0`: Solar constant (total solar irradiance received at the planet's distance from the Sun).
+- `S0`: the model's reference solar flux. The temperature formula uses it with no division by 4 to treat the planet as flat. So it plays the role of the solar constant divided by 4 (compare [[ebm0d]]).
 - `sig`: [[Stefan-Boltzmann law|Stefan-Boltzmann]] constant.
 - `alb_w`: Albedo of white daisies.
 - `alb_b`: Albedo of black daisies.
@@ -116,7 +118,7 @@ Obviously, the growth rate plots of both types of daisies follow the same patter
 
 ## Equilibrium b and w values at `S = S0 = 1000`, with initial `b = w = 0.2`
 
-Next, I calculated the equilibrium values for the variables `b` and `w` in the model when the solar constant `S` is equal to `S0 = 1000`, with initial values of `b` and `w` set to 0.2.
+Next, I calculated the equilibrium values for the variables `b` and `w` in the model when the solar flux `S` is equal to `S0 = 1000`, with initial values of `b` and `w` set to 0.2.
 
 The `while` loop repeats these steps until the populations stop changing (`abs(dw + db)` below `tolerance`):
 - uncovered land: `x = 1 - b - w`
