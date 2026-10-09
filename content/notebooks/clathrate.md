@@ -11,7 +11,7 @@ draft: false
 ---
 >[!caption_right]
 >![[methane-clathrate.jpg]]
->Methane clathrate block (Oregon, USA)
+>Methane clathrate block (Oregon, USA). Credits: [Wusel007 / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gashydrat_mit_Struktur.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 Clathrate hydrates are crystalline structures of water molecules that form tiny cages, each able to trap a gas molecule such as methane, carbon dioxide or even hydrogen sulfide. The most common kind has methane inside, but under the right conditions many other gases can be trapped too.
 

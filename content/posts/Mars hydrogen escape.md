@@ -13,10 +13,10 @@ tags:
 
 >[!caption_row]
 >![[early_mars.png]]
->Artist illustration of early Mars
+>Artist illustration of early Mars (by [Kevin M. Gill](https://www.flickr.com/photos/kevinmgill/8969960651/), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/))
 >
 >![[current_mars.png]]
->Current Mars (by OSIRIS camera on Rosetta)
+>Current Mars (by OSIRIS camera on Rosetta). Credits: [ESA & MPS for OSIRIS Team](https://www.esa.int/ESA_Multimedia/Images/2007/02/True-colour_image_of_Mars_seen_by_OSIRIS) MPS/<wbr>UPD/<wbr>LAM/<wbr>IAA/<wbr>RSSD/<wbr>INTA/<wbr>UPM/<wbr>DASP/<wbr>IDA, [CC BY-SA 3.0 IGO](https://creativecommons.org/licenses/by-sa/3.0/igo/).
 
 Mars is dry, pretty obviously. But it wasn't always. The surface is covered in ancient river valleys, lake beds, and mineral deposits that only form when there's liquid water around. Mars lost most of that somewhere between then and now, and it's still losing what's left, very slowly, very high up in the atmosphere.
 
@@ -32,7 +32,7 @@ $$
 
 Atomic hydrogen is the lightest thing in the atmosphere, so at a given temperature it's also the fastest, and some of the H atoms rattling around in the upper thermosphere are moving fast enough to leave. If an atom reaches the exobase (the altitude, around 200 to 250 km, where the atmosphere is so thin that collisions are rare) and it is going fast enough, it escapes Mars's gravity for good. This is Jeans escape, or thermal escape, and it is the dominant mechanism by which Mars loses hydrogen today [@Jakosky.etal2018].
 
-The oxygen left behind mostly gets locked into the surface through oxidation, which is part of why Mars is red.
+The oxygen left behind mostly gets locked into the surface through oxidation, which is part of why Mars is red (actually this is still debated, [Valantinas et al. (2025)](https://doi.org/10.1038/s41467-025-56970-z) argued that the red dust is mostly ferrihydrite, an iron mineral that forms with cool water, rather than hematite, which forms in dry conditions).
 
 So over long enough timescales hydrogen escape is water loss, which is why quantifying it is worth the trouble.
 

@@ -889,10 +889,6 @@ div:has(> .readermode) {
   .callout[data-callout="caption_row"] .callout-content > p {
     flex: 1; /* Makes 2 or 3 or 4 columns exactly equal width */
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-
     text-align: center;
     margin: 0;
     padding: 2px;

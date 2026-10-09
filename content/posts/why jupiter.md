@@ -16,7 +16,7 @@ Except... it's probably not so simple. I often have to ask for clarification, or
 
 >[!caption]
 >![[jupiter.png]]
->Jupiter in visible light, as seen by Hubble on 19 May, 2017
+>Jupiter in visible light, as seen by Hubble on 19 May, 2017. Credits: [NASA, ESA, and M.H. Wong (UC Berkeley)](https://science.nasa.gov/asset/hubble/jupiter-may-19-2017/).
 
 Philippe Huneman, in *Why? The Philosophy Behind the Question*, retells an old joke: a bank robber is asked why he robs banks, and he answers, "Because that's where the money is." The joke works because he's answering *why banks, rather than grocery stores?* when the person asking meant *why rob, rather than work?* Why-questions often hide a *rather than*, and which one is meant depends on who is asking.
 
