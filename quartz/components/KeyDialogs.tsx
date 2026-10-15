@@ -24,7 +24,7 @@ const CloseIcon = () => (
 
 const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const lithium = resolveRelative(fileData.slug!, "posts/lithium" as SimpleSlug)
-  const neutrino = resolveRelative(fileData.slug!, "posts/neutrino-communication" as SimpleSlug)
+  const neutrino = resolveRelative(fileData.slug!, "notebooks/neutrino-communication" as SimpleSlug)
 
   return (
     <div class={classNames(displayClass, "home-modals")}>
@@ -171,7 +171,7 @@ const KeyDialogs: QuartzComponent = ({ fileData, displayClass }: QuartzComponent
           <CloseIcon />
         </button>
         <div class="home-modal-body">
-          <h3 id="home-modal-thanks-title">Colophon</h3>
+          <h3 id="home-modal-thanks-title">Credits</h3>
           <p>
             I stumbled upon an older version of <a href="https://quartz.jzhao.xyz/">Quartz</a>{" "}
             while trying to figure out how to publish my{" "}
