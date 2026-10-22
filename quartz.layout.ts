@@ -110,7 +110,10 @@ export const sharedPageComponents: SharedLayout = {
   ],
   // afterBody: Explorer[],
   afterBody: [
-    Component.KeyDialogs(),
+    Component.ConditionalRender({
+      component: Component.KeyDialogs(),
+      condition: (page) => isHome(page.fileData.slug!),
+    }),
     // Component.ConditionalRender({
     //   component: Component.NarrowOnly(
     //     Component.KeyRow({ keys: ["guide", "colophon", "hub"] }),
