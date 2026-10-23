@@ -38,7 +38,9 @@
       flex: 0 0 auto;
 
       & > .explorer-content {
-        display: none;
+        height: 0;
+        margin-top: 0;
+        visibility: hidden;
       }
     }
 
@@ -120,6 +122,10 @@ button.desktop-explorer {
   overflow: hidden;
   overflow-y: auto;
   margin-top: 0.5rem;
+
+  &.sliding > ul {
+    overflow: hidden;
+  }
 
   & ul {
     list-style: none;

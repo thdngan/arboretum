@@ -43,15 +43,40 @@ function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
 
+  const content = nearestExplorer.querySelector<HTMLElement>(".explorer-content")
+  const slide = this.classList.contains("desktop-explorer") ? content : null
+  const from = slide && {
+    height: `${slide.getBoundingClientRect().height}px`,
+    marginTop: getComputedStyle(slide).marginTop,
+  }
+  slide?.getAnimations().forEach((animation) => animation.cancel())
+
   const explorerCollapsed = nearestExplorer.classList.toggle("collapsed")
   nearestExplorer.setAttribute(
     "aria-expanded",
     nearestExplorer.getAttribute("aria-expanded") === "true" ? "false" : "true",
   )
 
-  const content = nearestExplorer.querySelector(".explorer-content")
   if (content) {
     content.classList.toggle("open", !explorerCollapsed)
+  }
+
+  if (slide && from) {
+    const to = {
+      height: `${slide.getBoundingClientRect().height}px`,
+      marginTop: getComputedStyle(slide).marginTop,
+    }
+    slide.classList.add("sliding")
+    const animation = slide.animate(
+      [
+        { ...from, visibility: "visible" },
+        { ...to, visibility: "visible" },
+      ],
+      { duration: 300, easing: "ease-in-out" },
+    )
+    animation.onfinish = () => {
+      if (slide.getAnimations().length === 0) slide.classList.remove("sliding")
+    }
   }
 
   if (!explorerCollapsed) {
